@@ -21,6 +21,7 @@ const emptyInputRow = () => ({ itemId: "", quantity: 1 });
 export default function BlueprintsPage() {
   const [grouped, setGrouped] = useState<GroupedBlueprints>([]);
   const [allItems, setAllItems] = useState<Item[]>([]);
+  const [factories, setFactories] = useState<{id: string; name: string}[]>([]);
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
   const [editId, setEditId] = useState<string | null>(null);
@@ -35,10 +36,12 @@ export default function BlueprintsPage() {
 
   const load = useCallback(async () => {
     setLoading(true);
-    const [bpRes, itemRes] = await Promise.all([fetch("/api/blueprints"), fetch("/api/items")]);
+    const [bpRes, itemRes, factoriesRes] = await Promise.all([fetch("/api/blueprints"), fetch("/api/items"), fetch("/api/factories")]);
     const blueprints: Blueprint[] = await bpRes.json();
     const items: Item[] = await itemRes.json();
+    const factoriesList: {id: string; name: string}[] = await factoriesRes.json();
     setAllItems(items);
+    setFactories(factoriesList);
 
     // Group blueprints by outputItem
     const map = new Map<string, { item: Item; blueprints: Blueprint[] }>();
@@ -226,13 +229,16 @@ export default function BlueprintsPage() {
 
             <label className="block mb-3">
               <span className="label">Factory</span>
-              <input
+              <select
                 className="input w-full mt-1"
-                placeholder="e.g. Basic Factory, Advanced Assembler…"
                 value={factory}
                 onChange={(e) => setFactory(e.target.value)}
-                autoFocus={!!editId}
-              />
+              >
+                <option value="">No factory</option>
+                {factories.map((f) => (
+                  <option key={f.id} value={f.name}>{f.name}</option>
+                ))}
+              </select>
             </label>
 
             <label className="block mb-4">
