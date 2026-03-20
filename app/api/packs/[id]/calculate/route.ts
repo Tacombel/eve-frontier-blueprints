@@ -2,7 +2,10 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { calculate, buildItemMap, CalcItem } from "@/lib/calculator";
 
-export async function GET(_req: NextRequest, { params }: { params: { id: string } }) {
+export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
+  const ignoreParam = req.nextUrl.searchParams.get("ignore");
+  const ignoredIds = new Set(ignoreParam ? ignoreParam.split(",").filter(Boolean) : []);
+
   const pack = await prisma.pack.findUnique({
     where: { id: params.id },
     include: { items: true },
@@ -48,8 +51,9 @@ export async function GET(_req: NextRequest, { params }: { params: { id: string 
 
   try {
     const packItemIds = new Set(pack.items.map((pi) => pi.itemId));
+    const activeItems = pack.items.filter((pi) => !ignoredIds.has(pi.itemId));
     const result = calculate(
-      pack.items.map((pi) => ({ itemId: pi.itemId, quantity: pi.quantity })),
+      activeItems.map((pi) => ({ itemId: pi.itemId, quantity: pi.quantity })),
       itemMap
     );
     // Move pack items from intermediates to finalProducts so they get their own stock inputs
@@ -63,6 +67,7 @@ export async function GET(_req: NextRequest, { params }: { params: { id: string 
         quantityNeeded: pi.quantity,
         actualStock: item?.stock ?? 0,
         factory: blueprint?.factory || undefined,
+        ignored: ignoredIds.has(pi.itemId),
       };
     });
 

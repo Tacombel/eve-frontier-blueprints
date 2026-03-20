@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import type { AsteroidInfo, CalculationResult } from "@/lib/calculator";
 
 function AsteroidTooltip({ asteroids }: { asteroids: AsteroidInfo[] }) {
@@ -33,19 +33,22 @@ export default function PackCalculation({ packId }: { packId: string }) {
   const [stock, setStock] = useState<Record<string, number>>({});
   const [saving, setSaving] = useState(false);
   const [executing, setExecuting] = useState(false);
+  const [ignoredItems, setIgnoredItems] = useState<Set<string>>(new Set());
+  const ignoredRef = useRef(ignoredItems);
 
   const load = useCallback((isReload = false) => {
     if (isReload) setRecalculating(true);
     else setLoading(true);
     setError("");
-    fetch(`/api/packs/${packId}/calculate`)
+    const ignored = ignoredRef.current;
+    const ignoreParam = ignored.size > 0 ? `?ignore=${[...ignored].join(",")}` : "";
+    fetch(`/api/packs/${packId}/calculate${ignoreParam}`)
       .then((r) => r.json())
       .then((data) => {
         if (data.error) {
           setError(data.error);
         } else {
           setResult(data);
-          // Seed inputs with actual stock quantities
           const seeded: Record<string, number> = {};
           for (const row of [...data.rawMaterials, ...data.intermediates, ...(data.finalProducts ?? [])]) {
             seeded[row.itemId] = row.actualStock;
@@ -66,6 +69,21 @@ export default function PackCalculation({ packId }: { packId: string }) {
   }, [packId]);
 
   useEffect(() => { load(); }, [load]);
+
+  function toggleIgnore(itemId: string) {
+    setIgnoredItems((prev) => {
+      const next = new Set(prev);
+      if (next.has(itemId)) next.delete(itemId);
+      else next.add(itemId);
+      ignoredRef.current = next;
+      return next;
+    });
+  }
+
+  useEffect(() => {
+    if (result !== null) load(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ignoredItems]);
 
   async function saveAll() {
     if (!result) return;
@@ -142,37 +160,59 @@ export default function PackCalculation({ packId }: { packId: string }) {
               <col className="w-20" />
               <col className="w-28" />
               <col className="w-24" />
+              <col className="w-12" />
             </colgroup>
             <thead>
               <tr className="text-gray-500 border-b border-gray-800">
                 <th className="text-left pb-1 pr-4">Item</th>
                 <th className="text-right pb-1 pr-4">Needed</th>
                 <th className="text-right pb-1 pr-4">Stock</th>
-                <th className="text-right pb-1"></th>
+                <th className="text-right pb-1 pr-2">in stock</th>
+                <th className="text-center pb-1" title="Include in this batch">Active</th>
               </tr>
             </thead>
             <tbody>
-              {result.finalProducts.map((row) => (
-                <tr key={row.itemId} className="border-b border-gray-800/40">
-                  <td className="py-1 pr-4 text-gray-200">
-                    {row.itemName}
-                    {row.factory && <span className="badge badge-blue ml-1.5">{row.factory}</span>}
-                  </td>
-                  <td className="py-1 pr-4 text-right text-gray-400">{row.quantityNeeded}</td>
-                  <td className="py-1 pr-4 text-right">
-                    <input
-                      type="number"
-                      min={0}
-                      className={`input w-24 text-right py-0.5 text-xs ${
-                        (stock[row.itemId] ?? row.actualStock) !== row.actualStock ? "border-cyan-600" : ""
-                      }`}
-                      value={stock[row.itemId] ?? row.actualStock}
-                      onChange={(e) => setStock((s) => ({ ...s, [row.itemId]: Number(e.target.value) }))}
-                    />
-                  </td>
-                  <td className="py-1 text-right text-gray-600 text-xs">in stock</td>
-                </tr>
-              ))}
+              {result.finalProducts.map((row) => {
+                const ignored = ignoredItems.has(row.itemId);
+                return (
+                  <tr key={row.itemId} className={`border-b border-gray-800/40 ${ignored ? "opacity-40" : ""}`}>
+                    <td className="py-1 pr-4 text-gray-200">
+                      {row.itemName}
+                      {row.factory && <span className="badge badge-blue ml-1.5">{row.factory}</span>}
+                    </td>
+                    <td className="py-1 pr-4 text-right text-gray-400">{row.quantityNeeded}</td>
+                    <td className="py-1 pr-4 text-right">
+                      <input
+                        type="number"
+                        min={0}
+                        disabled={ignored}
+                        className={`input w-24 text-right py-0.5 text-xs ${
+                          (stock[row.itemId] ?? row.actualStock) !== row.actualStock ? "border-cyan-600" : ""
+                        }`}
+                        value={stock[row.itemId] ?? row.actualStock}
+                        onChange={(e) => setStock((s) => ({ ...s, [row.itemId]: Number(e.target.value) }))}
+                      />
+                    </td>
+                    <td className="py-1 pr-2 text-right text-gray-600 text-xs">in stock</td>
+                    <td className="py-1 text-center">
+                      <button
+                        type="button"
+                        onClick={() => toggleIgnore(row.itemId)}
+                        title={ignored ? "Click to include in this batch" : "Click to ignore in this batch"}
+                        className={`relative inline-flex h-4 w-8 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 focus:outline-none ${
+                          ignored ? "bg-gray-600" : "bg-cyan-600"
+                        }`}
+                      >
+                        <span
+                          className={`inline-block h-3 w-3 transform rounded-full bg-white shadow transition duration-200 ${
+                            ignored ? "translate-x-0" : "translate-x-4"
+                          }`}
+                        />
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>

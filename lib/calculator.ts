@@ -64,6 +64,7 @@ export interface FinalProductResult {
   quantityNeeded: number;
   actualStock: number;
   factory?: string;
+  ignored?: boolean;
 }
 
 export interface CalculationResult {
