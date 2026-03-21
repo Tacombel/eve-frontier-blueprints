@@ -43,7 +43,7 @@ function PreviewSection({
       <p className={`text-xs font-medium mb-1 ${color}`}>
         {label} ({items.length})
       </p>
-      <ul className="text-xs text-gray-400 space-y-0.5 max-h-28 overflow-y-auto">
+      <ul className="text-xs text-gray-400 space-y-0.5">
         {items.map((name) => (
           <li key={name} className="truncate">{name}</li>
         ))}
