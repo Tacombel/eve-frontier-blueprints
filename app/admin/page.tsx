@@ -67,106 +67,123 @@ export default function AdminPage() {
   }
 
   return (
-    <div className="max-w-xl mx-auto space-y-4">
+    <div className="max-w-5xl mx-auto">
       <h1 className="text-2xl font-bold text-gray-100 mb-2">Admin</h1>
       <p className="text-gray-500 text-sm mb-6">Database management and collaboration tools.</p>
 
-      {/* Collaboration workflow */}
-      <div className="rounded-lg border border-gray-800 bg-gray-900 p-6">
-        <h2 className="text-base font-semibold text-gray-100 mb-3">Collaboration workflow</h2>
-        <div className="space-y-3 text-sm">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-start">
+
+        {/* Left column — actions */}
+        <div className="space-y-4">
+          {/* Export */}
+          <div className="rounded-lg border border-gray-800 bg-gray-900 p-6">
+            <h2 className="text-base font-semibold text-gray-100 mb-1">Export to seed.json</h2>
+            <p className="text-sm text-gray-500 mb-4">
+              Saves current game data to{" "}
+              <code className="text-cyan-400 bg-gray-800 px-1 rounded">prisma/seed.json</code>.
+              Stock and packs are not exported.
+            </p>
+            <button onClick={runExport} disabled={exporting} className="btn-primary disabled:opacity-50">
+              {exporting ? "Exporting…" : "⬆ Export to seed.json"}
+            </button>
+            {exportError && (
+              <div className="mt-4 rounded border border-red-800 bg-red-900/20 px-4 py-3 text-sm text-red-400">{exportError}</div>
+            )}
+            {exportResult && (
+              <div className="mt-4 rounded border border-green-800 bg-green-900/20 px-4 py-3">
+                <p className="text-sm font-medium text-green-400">Export successful — commit and push seed.json to share</p>
+                <CountList counts={exportResult.counts} />
+              </div>
+            )}
+          </div>
+
+          {/* Import — merge */}
+          <div className="rounded-lg border border-gray-800 bg-gray-900 p-6">
+            <h2 className="text-base font-semibold text-gray-100 mb-1">Merge import</h2>
+            <p className="text-sm text-gray-500 mb-4">
+              Adds and updates data from{" "}
+              <code className="text-cyan-400 bg-gray-800 px-1 rounded">prisma/seed.json</code>.
+              Existing data not present in the seed is <strong className="text-gray-300">kept</strong>.
+              Safe to use after pulling from GitHub.
+            </p>
+            <button onClick={() => runImport("merge")} disabled={importing} className="btn-primary disabled:opacity-50">
+              {importing ? "Importing…" : "⬇ Merge from seed.json"}
+            </button>
+            {importError && (
+              <div className="mt-4 rounded border border-red-800 bg-red-900/20 px-4 py-3 text-sm text-red-400">{importError}</div>
+            )}
+            {importResult?.mode === "merge" && (
+              <div className="mt-4 rounded border border-green-800 bg-green-900/20 px-4 py-3">
+                <p className="text-sm font-medium text-green-400">Merge successful</p>
+                <CountList counts={importResult.counts} />
+              </div>
+            )}
+          </div>
+
+          {/* Import — full reset */}
+          <div className="rounded-lg border border-red-900/40 bg-gray-900 p-6">
+            <h2 className="text-base font-semibold text-gray-100 mb-1">Full reset</h2>
+            <p className="text-sm text-gray-500 mb-4">
+              Deletes <strong className="text-red-400">all</strong> game data and reloads from{" "}
+              <code className="text-cyan-400 bg-gray-800 px-1 rounded">prisma/seed.json</code>.
+              Use only when you want a clean slate that exactly matches the seed.
+              Stock is preserved.
+            </p>
+            <button
+              onClick={() => runImport("reset")}
+              disabled={importing}
+              className="btn-sm bg-red-900 hover:bg-red-800 text-red-200 disabled:opacity-50"
+            >
+              {importing ? "Resetting…" : "⚠ Full reset from seed.json"}
+            </button>
+            {importResult?.mode === "reset" && (
+              <div className="mt-4 rounded border border-green-800 bg-green-900/20 px-4 py-3">
+                <p className="text-sm font-medium text-green-400">Reset successful</p>
+                <CountList counts={importResult.counts} />
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Right column — workflow */}
+        <div className="rounded-lg border border-gray-800 bg-gray-900 p-6 space-y-5 text-sm">
+          <h2 className="text-base font-semibold text-gray-100">Collaboration workflow</h2>
+
           <div>
-            <p className="text-cyan-400 font-medium mb-1">To contribute data</p>
-            <ol className="text-gray-400 space-y-1 list-decimal list-inside">
+            <p className="text-cyan-400 font-medium mb-2">To contribute data</p>
+            <ol className="text-gray-400 space-y-3 list-decimal list-inside">
               <li>Make your changes in the app (items, blueprints, etc.)</li>
-              <li>Export to seed.json <span className="text-gray-600">(button below)</span></li>
-              <li>
-                Commit and open a Pull Request on GitHub:
-                <pre className="mt-2 bg-gray-800 rounded p-3 text-xs text-gray-300 overflow-x-auto whitespace-pre">{`git add prisma/seed.json
+              <li>Export to seed.json using the button on the left</li>
+              <li className="list-none -ml-4">
+                <span className="ml-4">Commit and open a Pull Request on GitHub:</span>
+                <pre className="mt-2 bg-gray-800 rounded p-3 text-xs text-gray-300 overflow-x-auto">{`git add prisma/seed.json
 git commit -m "feat: describe your changes"
 git push
 # Then open a Pull Request at:
-# https://github.com/Tacombel/eve-frontier-blueprints/pulls`}</pre>
+# github.com/Tacombel/eve-frontier-blueprints/pulls`}</pre>
               </li>
             </ol>
           </div>
-          <div>
-            <p className="text-cyan-400 font-medium mb-1">To sync the latest data</p>
-            <ol className="text-gray-400 space-y-1 list-decimal list-inside">
-              <li>Pull the latest changes on GitHub (or ask the owner to merge your PR first)</li>
-              <li>Merge import <span className="text-gray-600">(button below)</span> to add new data without losing yours</li>
+
+          <div className="border-t border-gray-800 pt-5">
+            <p className="text-cyan-400 font-medium mb-2">To sync the latest data</p>
+            <ol className="text-gray-400 space-y-2 list-decimal list-inside">
+              <li>Pull the latest changes from GitHub (or ask the owner to merge your PR first)</li>
+              <li>Use <strong className="text-gray-300">Merge import</strong> to add new data without losing yours</li>
             </ol>
           </div>
+
+          <div className="border-t border-gray-800 pt-5">
+            <p className="text-cyan-400 font-medium mb-2">Conflict notes</p>
+            <ul className="text-gray-500 space-y-1 list-disc list-inside text-xs">
+              <li>Always export before pulling to avoid losing local changes</li>
+              <li>Merge import never deletes — safe for daily use</li>
+              <li>Full reset only if you want an exact copy of the seed</li>
+              <li>If two people add the same item name, the last merge wins</li>
+            </ul>
+          </div>
         </div>
-      </div>
 
-      {/* Export */}
-      <div className="rounded-lg border border-gray-800 bg-gray-900 p-6">
-        <h2 className="text-base font-semibold text-gray-100 mb-1">Export to seed.json</h2>
-        <p className="text-sm text-gray-500 mb-4">
-          Saves current game data to{" "}
-          <code className="text-cyan-400 bg-gray-800 px-1 rounded">prisma/seed.json</code>.
-          Stock and packs are not exported.
-        </p>
-        <button onClick={runExport} disabled={exporting} className="btn-primary disabled:opacity-50">
-          {exporting ? "Exporting…" : "⬆ Export to seed.json"}
-        </button>
-        {exportError && (
-          <div className="mt-4 rounded border border-red-800 bg-red-900/20 px-4 py-3 text-sm text-red-400">{exportError}</div>
-        )}
-        {exportResult && (
-          <div className="mt-4 rounded border border-green-800 bg-green-900/20 px-4 py-3">
-            <p className="text-sm font-medium text-green-400">Export successful — commit and push seed.json to share</p>
-            <CountList counts={exportResult.counts} />
-          </div>
-        )}
-      </div>
-
-      {/* Import — merge */}
-      <div className="rounded-lg border border-gray-800 bg-gray-900 p-6">
-        <h2 className="text-base font-semibold text-gray-100 mb-1">Merge import</h2>
-        <p className="text-sm text-gray-500 mb-4">
-          Adds and updates data from{" "}
-          <code className="text-cyan-400 bg-gray-800 px-1 rounded">prisma/seed.json</code>.
-          Existing data not present in the seed is <strong className="text-gray-300">kept</strong>.
-          Safe to use after pulling from GitHub.
-        </p>
-        <button onClick={() => runImport("merge")} disabled={importing} className="btn-primary disabled:opacity-50">
-          {importing ? "Importing…" : "⬇ Merge from seed.json"}
-        </button>
-        {importError && (
-          <div className="mt-4 rounded border border-red-800 bg-red-900/20 px-4 py-3 text-sm text-red-400">{importError}</div>
-        )}
-        {importResult?.mode === "merge" && (
-          <div className="mt-4 rounded border border-green-800 bg-green-900/20 px-4 py-3">
-            <p className="text-sm font-medium text-green-400">Merge successful</p>
-            <CountList counts={importResult.counts} />
-          </div>
-        )}
-      </div>
-
-      {/* Import — full reset */}
-      <div className="rounded-lg border border-red-900/40 bg-gray-900 p-6">
-        <h2 className="text-base font-semibold text-gray-100 mb-1">Full reset</h2>
-        <p className="text-sm text-gray-500 mb-4">
-          Deletes <strong className="text-red-400">all</strong> game data and reloads from{" "}
-          <code className="text-cyan-400 bg-gray-800 px-1 rounded">prisma/seed.json</code>.
-          Use only when you want a clean slate that exactly matches the seed.
-          Stock is preserved.
-        </p>
-        <button
-          onClick={() => runImport("reset")}
-          disabled={importing}
-          className="btn-sm bg-red-900 hover:bg-red-800 text-red-200 disabled:opacity-50"
-        >
-          {importing ? "Resetting…" : "⚠ Full reset from seed.json"}
-        </button>
-        {importResult?.mode === "reset" && (
-          <div className="mt-4 rounded border border-green-800 bg-green-900/20 px-4 py-3">
-            <p className="text-sm font-medium text-green-400">Reset successful</p>
-            <CountList counts={importResult.counts} />
-          </div>
-        )}
       </div>
     </div>
   );
