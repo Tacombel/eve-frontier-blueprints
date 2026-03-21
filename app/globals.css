@@ -43,6 +43,10 @@
     @apply bg-blue-900/50 text-blue-400;
   }
 
+  .badge-gray {
+    @apply bg-gray-700/60 text-gray-400;
+  }
+
   .modal-backdrop {
     @apply fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4;
   }

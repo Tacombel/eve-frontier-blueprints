@@ -104,8 +104,9 @@ export default function ItemsPage() {
                 <td className="py-2 pr-4 flex gap-1 flex-wrap">
                   {item.isRawMaterial && <span className="badge badge-yellow">Ore</span>}
                   {item.isFound && <span className="badge badge-blue">Raw</span>}
+                  {item.blueprints.length > 0 && !item.isFinalProduct && <span className="badge badge-gray">Intermediate</span>}
                   {item.isFinalProduct && <span className="badge badge-cyan">Final</span>}
-                  {!item.isRawMaterial && !item.isFound && !item.isFinalProduct && <span className="text-gray-600">—</span>}
+                  {!item.isRawMaterial && !item.isFound && !item.isFinalProduct && item.blueprints.length === 0 && <span className="text-gray-600">—</span>}
                 </td>
                 <td className="py-2 pr-4 text-gray-400">{item.stock?.quantity ?? 0}</td>
                 <td className="py-2 pr-4 text-gray-400">
