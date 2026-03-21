@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { ImportPreview } from "@/app/api/admin/import/preview/route";
 
 type ActionResult = {
@@ -165,6 +165,7 @@ export default function AdminPage() {
   const [preview, setPreview] = useState<ImportPreview | null>(null);
   const [previewLoading, setPreviewLoading] = useState(false);
   const [showPreview, setShowPreview] = useState(false);
+  const [seedStatus, setSeedStatus] = useState<"checking" | "up-to-date" | "updates-available" | "error">("checking");
 
   const [importing, setImporting] = useState(false);
   const [importResult, setImportResult] = useState<ActionResult | null>(null);
@@ -173,6 +174,24 @@ export default function AdminPage() {
   const [exporting, setExporting] = useState(false);
   const [exportResult, setExportResult] = useState<ActionResult | null>(null);
   const [exportError, setExportError] = useState("");
+
+  useEffect(() => {
+    fetch("/api/admin/import/preview", { method: "POST" })
+      .then((r) => r.json())
+      .then((data: ImportPreview) => {
+        const hasChanges =
+          data.factories.new.length > 0 ||
+          data.locations.new.length > 0 ||
+          data.items.new.length > 0 ||
+          data.items.updated.length > 0 ||
+          data.asteroidTypes.new.length > 0 ||
+          data.decompositions.new.length > 0 ||
+          data.blueprints.new.length > 0 ||
+          data.blueprints.updated.length > 0;
+        setSeedStatus(hasChanges ? "updates-available" : "up-to-date");
+      })
+      .catch(() => setSeedStatus("error"));
+  }, []);
 
   async function openPreview() {
     setShowPreview(true);
@@ -197,7 +216,7 @@ export default function AdminPage() {
     });
     const data = await res.json();
     if (!res.ok || data.error) setImportError(data.error ?? "Import failed");
-    else setImportResult(data);
+    else { setImportResult(data); setSeedStatus("up-to-date"); }
     setImporting(false);
   }
 
@@ -231,7 +250,31 @@ export default function AdminPage() {
   return (
     <div className="max-w-5xl mx-auto">
       <h1 className="text-2xl font-bold text-gray-100 mb-2">Admin</h1>
-      <p className="text-gray-500 text-sm mb-6">Database management and collaboration tools.</p>
+      <p className="text-gray-500 text-sm mb-4">Database management and collaboration tools.</p>
+
+      {seedStatus === "checking" && (
+        <div className="mb-4 flex items-center gap-2 text-sm text-gray-500">
+          <span className="animate-spin">⟳</span> Checking seed.json for updates…
+        </div>
+      )}
+      {seedStatus === "updates-available" && (
+        <div className="mb-4 flex items-center gap-2 rounded-md border border-yellow-700 bg-yellow-900/20 px-4 py-2.5 text-sm text-yellow-300">
+          <span>⚠</span>
+          <span>seed.json has changes not yet applied to your database. Use <strong>Merge import</strong> to sync.</span>
+        </div>
+      )}
+      {seedStatus === "up-to-date" && (
+        <div className="mb-4 flex items-center gap-2 rounded-md border border-green-800 bg-green-900/20 px-4 py-2.5 text-sm text-green-400">
+          <span>✓</span>
+          <span>Your database is up to date with seed.json.</span>
+        </div>
+      )}
+      {seedStatus === "error" && (
+        <div className="mb-4 flex items-center gap-2 rounded-md border border-gray-700 bg-gray-800/50 px-4 py-2.5 text-sm text-gray-500">
+          <span>—</span>
+          <span>Could not read seed.json.</span>
+        </div>
+      )}
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-start">
 
