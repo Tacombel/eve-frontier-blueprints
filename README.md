@@ -63,44 +63,29 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
-## Recommended workflow
-
-1. **Items** → Create all materials, intermediates, and products you use
-2. **Asteroids** → (Optional) Add asteroid types and their locations
-3. **Decompositions** → Define how ores break down into materials
-4. **Factories** → Add the factories you use for crafting
-5. **Blueprints** → Define crafting recipes for each item
-6. **Stock** → Enter your current inventory
-7. **Blueprints / Packs** → Use the ⚡ Calculate button to see what you need to craft
-
----
-
 ## Collaborative data
 
 Game data (items, blueprints, decompositions, factories, asteroid types) is stored in [`prisma/seed.json`](prisma/seed.json) and shared via this repository. Stock and packs are personal and stay local only.
 
 ### Sync the latest data from GitHub
 
-When someone pushes new data to `seed.json`, pull and reload your local database:
+When someone pushes new data to `seed.json`, pull the changes and import them via the app:
 
 ```bash
 git pull
-npm run db:seed
 ```
 
-> **Warning:** this resets all game data and reloads from `seed.json`. Your stock is preserved.
+Then open the app, go to **Admin → Merge import**. A preview will show what's new before anything is applied. Your stock is never affected.
+
+> If you prefer the terminal: `npm run db:seed` (full reset, also preserves stock).
 
 ### Contribute data
 
 1. Fork the repository (or ask to be added as a collaborator)
 2. Pull the latest changes: `git pull`
 3. Make your changes in the app (add items, blueprints, etc.)
-4. Export your database to `seed.json`:
-   ```bash
-   npm run db:export
-   ```
-5. Review the changes in `prisma/seed.json`
-6. Commit and open a Pull Request:
+4. Go to **Admin → Export to seed.json** (or run `npm run db:export`)
+5. Commit and open a Pull Request:
    ```bash
    git add prisma/seed.json
    git commit -m "feat: add blueprints for XYZ"
