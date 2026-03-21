@@ -1,89 +1,87 @@
 # EVE Frontier Industry Calculator
 
-Herramienta para gestionar blueprints, calcular materiales y controlar stock en EVE Frontier.
+A tool to manage blueprints, calculate required materials, and track stock in EVE Frontier.
 
-## Características
+## Features
 
-- **Items** — Catálogo de materiales, intermedios y productos finales
-- **Blueprints** — Recetas de fabricación con cálculo directo de materiales necesarios
-- **Packs** — Agrupa varios blueprints para calcular y ejecutar en lote
-- **Stock** — Control de inventario con edición directa
-- **Factories** — Gestión de fábricas de producción
-- **Decompositions** — Reglas de descomposición de minerales
-- **Asteroids** — Localización de tipos de asteroide por mineral
+- **Items** — Catalogue of raw materials, intermediates, and final products
+- **Blueprints** — Crafting recipes with direct material calculation
+- **Packs** — Group multiple blueprints to calculate and execute in batch
+- **Stock** — Inventory tracking with inline editing
+- **Factories** — Production factory management
+- **Decompositions** — Ore decomposition rules
+- **Asteroids** — Asteroid type locations per ore
 
 ---
 
-## Requisitos previos
+## Requirements
 
-- [Node.js](https://nodejs.org/) v18 o superior
-- npm (incluido con Node.js)
+- [Node.js](https://nodejs.org/) v18 or higher
+- npm (included with Node.js)
 - Git
 
 ---
 
-## Instalación
+## Installation
 
-### 1. Clonar el repositorio
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/Tacombel/eve-frontier-blueprints.git
 cd eve-frontier-blueprints
 ```
 
-### 2. Instalar dependencias
+### 2. Install dependencies
 
 ```bash
 npm install
 ```
 
-### 3. Configurar la base de datos
+### 3. Set up the database
 
-Crea el fichero `.env` en la raíz del proyecto con el siguiente contenido:
+Create a `.env` file in the project root with the following content:
 
 ```env
 DATABASE_URL="file:./prisma/dev.db"
 ```
 
-Después aplica las migraciones para crear la base de datos:
+Then apply the migrations to create the database:
 
 ```bash
 npx prisma migrate deploy
 npx prisma generate
 ```
 
-### 4. Arrancar la aplicación
+### 4. Start the app
 
 ```bash
 npm run dev
 ```
 
-Abre [http://localhost:3000](http://localhost:3000) en tu navegador.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
-## Uso básico
+## Recommended workflow
 
-El flujo recomendado para empezar es:
-
-1. **Items** → Crea todos los materiales, intermedios y productos que uses
-2. **Asteroids** → (Opcional) Añade tipos de asteroide y sus ubicaciones
-3. **Decompositions** → Define cómo se descomponen los minerales en materiales
-4. **Factories** → Crea las fábricas que uses para fabricar
-5. **Blueprints** → Define las recetas de fabricación para cada item
-6. **Stock** → Registra el inventario que tienes actualmente
-7. **Blueprints / Packs** → Usa el botón ⚡ Calculate para ver qué necesitas fabricar
+1. **Items** → Create all materials, intermediates, and products you use
+2. **Asteroids** → (Optional) Add asteroid types and their locations
+3. **Decompositions** → Define how ores break down into materials
+4. **Factories** → Add the factories you use for crafting
+5. **Blueprints** → Define crafting recipes for each item
+6. **Stock** → Enter your current inventory
+7. **Blueprints / Packs** → Use the ⚡ Calculate button to see what you need to craft
 
 ---
 
-## Stack técnico
+## Tech stack
 
-- [Next.js 14](https://nextjs.org/) — Framework React con App Router
-- [Prisma](https://www.prisma.io/) — ORM para base de datos SQLite
-- [Tailwind CSS](https://tailwindcss.com/) — Estilos
+- [Next.js 14](https://nextjs.org/) — React framework with App Router
+- [Prisma](https://www.prisma.io/) — ORM with SQLite
+- [Tailwind CSS](https://tailwindcss.com/) — Styling
 
 ---
 
-## Licencia
+## License
 
 © tacombel@gmail.com
