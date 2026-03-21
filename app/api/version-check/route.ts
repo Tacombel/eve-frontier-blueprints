@@ -33,9 +33,21 @@ export async function GET() {
 
     const data = await res.json();
     const remoteCommit: string = data.sha;
-    const upToDate = localCommit === remoteCommit;
 
-    return NextResponse.json({ upToDate, localCommit: localCommit.slice(0, 7), remoteCommit: remoteCommit.slice(0, 7) });
+    if (localCommit === remoteCommit) {
+      return NextResponse.json({ upToDate: true, localCommit: localCommit.slice(0, 7), remoteCommit: remoteCommit.slice(0, 7) });
+    }
+
+    // Check if remote is an ancestor of local (local is ahead → no update needed)
+    let localIsAhead = false;
+    try {
+      execSync(`git merge-base --is-ancestor ${remoteCommit} ${localCommit}`, { encoding: "utf8" });
+      localIsAhead = true;
+    } catch {
+      localIsAhead = false;
+    }
+
+    return NextResponse.json({ upToDate: localIsAhead, localCommit: localCommit.slice(0, 7), remoteCommit: remoteCommit.slice(0, 7) });
   } catch {
     return NextResponse.json({ error: "Network error reaching GitHub" }, { status: 502 });
   }
