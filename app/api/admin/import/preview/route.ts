@@ -22,7 +22,7 @@ export type ImportPreview = {
   blueprints: { new: string[]; updated: string[]; unchanged: number };
 };
 
-export async function POST() {
+export async function GET() {
   let data: SeedData;
   try {
     const seedPath = path.join(process.cwd(), "prisma/seed.json");

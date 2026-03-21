@@ -1,27 +1,8 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import type { AsteroidInfo, CalculationResult } from "@/lib/calculator";
-
-function AsteroidTooltip({ asteroids }: { asteroids: AsteroidInfo[] }) {
-  if (asteroids.length === 0) return null;
-  return (
-    <div className="absolute z-50 left-0 top-full mt-1 w-56 rounded border border-gray-700 bg-gray-900 shadow-lg p-2 text-xs pointer-events-none">
-      {asteroids.map((a) => (
-        <div key={a.name} className="mb-1 last:mb-0">
-          <span className="text-cyan-300 font-medium">{a.name}</span>
-          {a.locations.length > 0 && (
-            <div className="flex flex-wrap gap-1 mt-0.5">
-              {a.locations.map((l) => (
-                <span key={l} className="badge badge-blue">{l}</span>
-              ))}
-            </div>
-          )}
-        </div>
-      ))}
-    </div>
-  );
-}
+import type { CalculationResult } from "@/lib/calculator";
+import AsteroidTooltip from "@/components/common/AsteroidTooltip";
 
 export default function BlueprintCalculation({ itemId, itemName }: { itemId: string; itemName: string }) {
   const [quantity, setQuantity] = useState(1);
@@ -36,12 +17,18 @@ export default function BlueprintCalculation({ itemId, itemName }: { itemId: str
   const [executing, setExecuting] = useState(false);
   const quantityRef = useRef(quantity);
 
+  const abortRef = useRef<AbortController | null>(null);
+
   const load = useCallback((isReload = false) => {
+    abortRef.current?.abort();
+    const controller = new AbortController();
+    abortRef.current = controller;
+
     if (isReload) setRecalculating(true);
     else setLoading(true);
     setError("");
     const qty = quantityRef.current;
-    fetch(`/api/calculate?itemId=${itemId}&quantity=${qty}`)
+    fetch(`/api/calculate?itemId=${itemId}&quantity=${qty}`, { signal: controller.signal })
       .then((r) => r.json())
       .then((data) => {
         if (data.error) {
@@ -60,7 +47,8 @@ export default function BlueprintCalculation({ itemId, itemName }: { itemId: str
         setLoading(false);
         setRecalculating(false);
       })
-      .catch(() => {
+      .catch((err) => {
+        if (err.name === "AbortError") return;
         setError("Failed to calculate");
         setLoading(false);
         setRecalculating(false);

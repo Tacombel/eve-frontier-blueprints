@@ -250,13 +250,14 @@ export function calculate(
 
     // Pick the ore with the highest yield for this material
     const source = sources.reduce((best, s) => {
-      const bYield = best.decomposition!.outputs.find((o) => o.itemId === matId)!.quantity;
-      const sYield = s.decomposition!.outputs.find((o) => o.itemId === matId)!.quantity;
+      const bYield = best.decomposition?.outputs.find((o) => o.itemId === matId)?.quantity ?? 0;
+      const sYield = s.decomposition?.outputs.find((o) => o.itemId === matId)?.quantity ?? 0;
       return sYield > bYield ? s : best;
     });
 
     const dec = source.decomposition!;
-    const yieldPerRun = dec.outputs.find((o) => o.itemId === matId)!.quantity;
+    const yieldPerRun = dec.outputs.find((o) => o.itemId === matId)?.quantity ?? 0;
+    if (yieldPerRun <= 0) { remaining.delete(matId); continue; }
     const runsNeeded = Math.ceil(need / yieldPerRun);
 
     decompRuns.set(source.id, (decompRuns.get(source.id) ?? 0) + runsNeeded);

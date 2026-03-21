@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import type { ImportPreview } from "@/app/api/admin/import/preview/route";
+import { hasPreviewChanges } from "@/lib/preview";
 
 type ActionResult = {
   mode?: "merge" | "reset";
@@ -63,16 +64,7 @@ function PreviewModal({
   onConfirm: () => void;
   onCancel: () => void;
 }) {
-  const hasChanges = preview && (
-    preview.factories.new.length > 0 ||
-    preview.locations.new.length > 0 ||
-    preview.items.new.length > 0 ||
-    preview.items.updated.length > 0 ||
-    preview.asteroidTypes.new.length > 0 ||
-    preview.decompositions.new.length > 0 ||
-    preview.blueprints.new.length > 0 ||
-    preview.blueprints.updated.length > 0
-  );
+  const hasChanges = preview && hasPreviewChanges(preview);
 
   return (
     <div className="modal-backdrop" onClick={onCancel}>
@@ -180,19 +172,10 @@ export default function AdminPage() {
   const [renormalizeError, setRenormalizeError] = useState("");
 
   useEffect(() => {
-    fetch("/api/admin/import/preview", { method: "POST" })
+    fetch("/api/admin/import/preview")
       .then((r) => r.json())
       .then((data: ImportPreview) => {
-        const hasChanges =
-          data.factories.new.length > 0 ||
-          data.locations.new.length > 0 ||
-          data.items.new.length > 0 ||
-          data.items.updated.length > 0 ||
-          data.asteroidTypes.new.length > 0 ||
-          data.decompositions.new.length > 0 ||
-          data.blueprints.new.length > 0 ||
-          data.blueprints.updated.length > 0;
-        setSeedStatus(hasChanges ? "updates-available" : "up-to-date");
+        setSeedStatus(hasPreviewChanges(data) ? "updates-available" : "up-to-date");
       })
       .catch(() => setSeedStatus("error"));
   }, []);
@@ -203,7 +186,7 @@ export default function AdminPage() {
     setPreviewLoading(true);
     setImportResult(null);
     setImportError("");
-    const res = await fetch("/api/admin/import/preview", { method: "POST" });
+    const res = await fetch("/api/admin/import/preview");
     const data = await res.json();
     if (res.ok) setPreview(data);
     else setImportError(data.error ?? "Preview failed");

@@ -301,7 +301,7 @@ export default function BlueprintsPage() {
               <span className="label">Input Materials</span>
               <div className="space-y-2 mt-2">
                 {inputs.map((row, idx) => (
-                  <div key={idx} className="flex gap-2 items-center">
+                  <div key={row.itemId || idx} className="flex gap-2 items-center">
                     <select
                       className="input flex-1"
                       value={row.itemId}

@@ -1,27 +1,8 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import type { AsteroidInfo, CalculationResult } from "@/lib/calculator";
-
-function AsteroidTooltip({ asteroids }: { asteroids: AsteroidInfo[] }) {
-  if (asteroids.length === 0) return null;
-  return (
-    <div className="absolute z-50 left-0 top-full mt-1 w-56 rounded border border-gray-700 bg-gray-900 shadow-lg p-2 text-xs pointer-events-none">
-      {asteroids.map((a) => (
-        <div key={a.name} className="mb-1 last:mb-0">
-          <span className="text-cyan-300 font-medium">{a.name}</span>
-          {a.locations.length > 0 && (
-            <div className="flex flex-wrap gap-1 mt-0.5">
-              {a.locations.map((l) => (
-                <span key={l} className="badge badge-blue">{l}</span>
-              ))}
-            </div>
-          )}
-        </div>
-      ))}
-    </div>
-  );
-}
+import type { CalculationResult } from "@/lib/calculator";
+import AsteroidTooltip from "@/components/common/AsteroidTooltip";
 
 export default function PackCalculation({ packId }: { packId: string }) {
   const [result, setResult] = useState<CalculationResult | null>(null);
@@ -110,7 +91,8 @@ export default function PackCalculation({ packId }: { packId: string }) {
   async function execute() {
     if (!confirm("This will update stock: consume materials and add final products. Continue?")) return;
     setExecuting(true);
-    const res = await fetch(`/api/packs/${packId}/execute`, { method: "POST" });
+    const ignoreParam = ignoredItems.size > 0 ? `?ignore=${[...ignoredItems].join(",")}` : "";
+    const res = await fetch(`/api/packs/${packId}/execute${ignoreParam}`, { method: "POST" });
     if (!res.ok) {
       const d = await res.json();
       setError(d.error ?? "Execute failed");

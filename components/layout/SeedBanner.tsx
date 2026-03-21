@@ -3,28 +3,16 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import type { ImportPreview } from "@/app/api/admin/import/preview/route";
-
-function hasChanges(data: ImportPreview): boolean {
-  return (
-    data.factories.new.length > 0 ||
-    data.locations.new.length > 0 ||
-    data.items.new.length > 0 ||
-    data.items.updated.length > 0 ||
-    data.asteroidTypes.new.length > 0 ||
-    data.decompositions.new.length > 0 ||
-    data.blueprints.new.length > 0 ||
-    data.blueprints.updated.length > 0
-  );
-}
+import { hasPreviewChanges } from "@/lib/preview";
 
 export default function SeedBanner() {
   const [pending, setPending] = useState(false);
   const [dismissed, setDismissed] = useState(false);
 
   useEffect(() => {
-    fetch("/api/admin/import/preview", { method: "POST" })
+    fetch("/api/admin/import/preview")
       .then((r) => r.json())
-      .then((data: ImportPreview) => { if (hasChanges(data)) setPending(true); })
+      .then((data: ImportPreview) => { if (hasPreviewChanges(data)) setPending(true); })
       .catch(() => {/* silently ignore */});
   }, []);
 
