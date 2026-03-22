@@ -156,3 +156,10 @@ model Factory {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model Refinery {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

@@ -3,6 +3,7 @@
 import { useEffect, useState, useCallback } from "react";
 
 interface Item { id: string; name: string }
+interface Refinery { id: string; name: string }
 interface DecompositionOutput { id: string; itemId: string; quantity: number; item: Item }
 interface Decomposition {
   id: string;
@@ -18,6 +19,7 @@ const emptyOutputRow = () => ({ itemId: "", quantity: 1 });
 export default function DecompositionsPage() {
   const [decompositions, setDecompositions] = useState<Decomposition[]>([]);
   const [items, setItems] = useState<Item[]>([]);
+  const [refineries, setRefineries] = useState<Refinery[]>([]);
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
   const [editId, setEditId] = useState<string | null>(null);
@@ -31,12 +33,14 @@ export default function DecompositionsPage() {
 
   const load = useCallback(async () => {
     setLoading(true);
-    const [decRes, itemRes] = await Promise.all([
+    const [decRes, itemRes, refRes] = await Promise.all([
       fetch("/api/decompositions"),
       fetch("/api/items"),
+      fetch("/api/refineries"),
     ]);
     setDecompositions(await decRes.json());
     setItems(await itemRes.json());
+    setRefineries(await refRes.json());
     setLoading(false);
   }, []);
 
@@ -199,13 +203,16 @@ export default function DecompositionsPage() {
 
             <label className="block mb-3">
               <span className="label">Refinery</span>
-              <input
-                type="text"
-                placeholder="Leave empty for generic"
+              <select
                 className="input w-full mt-1"
                 value={refinery}
                 onChange={(e) => setRefinery(e.target.value)}
-              />
+              >
+                <option value="">Generic (no refinery)</option>
+                {refineries.map((r) => (
+                  <option key={r.id} value={r.name}>{r.name}</option>
+                ))}
+              </select>
             </label>
 
             <label className="block mb-4">
