@@ -23,7 +23,6 @@ export default function AdminPage() {
   const [resetPw, setResetPw] = useState("");
   const [resetCopied, setResetCopied] = useState(false);
   const [resetError, setResetError] = useState("");
-  const [resetOk, setResetOk] = useState<string | null>(null);
 
   // Renormalize
   const [renormalizing, setRenormalizing] = useState(false);
@@ -66,18 +65,29 @@ export default function AdminPage() {
   }
 
   function generatePassword() {
-    const chars = "abcdefghijkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789!@#$%";
+    const chars = "abcdefghijkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789";
     const arr = new Uint8Array(14);
     crypto.getRandomValues(arr);
     return Array.from(arr).map((b) => chars[b % chars.length]).join("");
   }
 
-  function openReset(userId: string) {
+  async function openReset(userId: string) {
+    const pw = generatePassword();
     setResetId(userId);
-    setResetPw(generatePassword());
+    setResetPw("");
     setResetCopied(false);
     setResetError("");
-    setResetOk(null);
+    const res = await fetch(`/api/admin/users/${userId}/password`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ newPassword: pw }),
+    });
+    const data = await res.json();
+    if (!res.ok) {
+      setResetError(data.error ?? "Error resetting password");
+      return;
+    }
+    setResetPw(pw);
   }
 
   function cancelReset() {
@@ -90,25 +100,6 @@ export default function AdminPage() {
   async function copyPassword() {
     await navigator.clipboard.writeText(resetPw);
     setResetCopied(true);
-  }
-
-  async function submitReset(userId: string) {
-    setResetError("");
-    const res = await fetch(`/api/admin/users/${userId}/password`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ newPassword: resetPw }),
-    });
-    const data = await res.json();
-    if (!res.ok) {
-      setResetError(data.error ?? "Error resetting password");
-      return;
-    }
-    setResetOk(userId);
-    setResetId(null);
-    setResetPw("");
-    setResetCopied(false);
-    setTimeout(() => setResetOk(null), 3000);
   }
 
   async function runRenormalize() {
@@ -166,15 +157,13 @@ export default function AdminPage() {
                         {new Date(u.createdAt).toLocaleDateString()}
                       </td>
                       <td className="py-2 text-right space-x-2 whitespace-nowrap">
-                        {resetOk === u.id && (
-                          <span className="text-xs text-green-400 mr-2">Password reset</span>
-                        )}
                         <button
                           onClick={() => isResetting ? cancelReset() : openReset(u.id)}
                           title="Reset password"
-                          className={`btn-ghost text-xs ${isResetting ? "text-gray-500" : ""}`}
+                          disabled={isResetting && !resetPw && !resetError}
+                          className={`btn-ghost text-xs disabled:opacity-30 disabled:cursor-not-allowed ${isResetting ? "text-gray-500" : ""}`}
                         >
-                          {isResetting ? "Cancel" : "Reset password"}
+                          {isResetting && !resetPw && !resetError ? "Resetting…" : isResetting ? "Cancel" : "Reset password"}
                         </button>
                         <button
                           onClick={() => toggleRole(u)}
@@ -197,29 +186,29 @@ export default function AdminPage() {
                     {isResetting && (
                       <tr className="border-b border-gray-800/50 bg-gray-800/20">
                         <td colSpan={4} className="px-2 py-3">
-                          <div className="flex items-center gap-2">
-                            <span className="text-xs text-gray-400 shrink-0">
-                              New password for <span className="text-gray-200">{u.username}</span>:
-                            </span>
-                            <code className="flex-1 min-w-0 font-mono text-sm text-cyan-300 bg-gray-950 border border-gray-700 rounded px-2 py-1 truncate select-all">
-                              {resetPw}
-                            </code>
-                            <button
-                              onClick={copyPassword}
-                              className="btn-ghost text-xs shrink-0"
-                              title="Copy to clipboard"
-                            >
-                              {resetCopied ? "Copied!" : "Copy"}
-                            </button>
-                            <button
-                              onClick={() => submitReset(u.id)}
-                              className="btn-sm btn-primary shrink-0"
-                            >
-                              Set
-                            </button>
-                          </div>
-                          {resetError && (
-                            <p className="mt-1 text-xs text-red-400">{resetError}</p>
+                          {resetError ? (
+                            <p className="text-xs text-red-400">{resetError}</p>
+                          ) : resetPw ? (
+                            <div className="flex items-center gap-2">
+                              <span className="text-xs text-gray-400 shrink-0">
+                                New password for <span className="text-gray-200">{u.username}</span>:
+                              </span>
+                              <code className="flex-1 min-w-0 font-mono text-sm text-cyan-300 bg-gray-950 border border-gray-700 rounded px-2 py-1 truncate select-all">
+                                {resetPw}
+                              </code>
+                              <button
+                                onClick={copyPassword}
+                                className="btn-ghost text-xs shrink-0"
+                                title="Copy to clipboard"
+                              >
+                                {resetCopied ? "Copied!" : "Copy"}
+                              </button>
+                              <button onClick={cancelReset} className="btn-ghost text-xs text-gray-500 shrink-0">
+                                Done
+                              </button>
+                            </div>
+                          ) : (
+                            <p className="text-xs text-gray-500">Applying…</p>
                           )}
                         </td>
                       </tr>
