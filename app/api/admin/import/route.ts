@@ -9,7 +9,7 @@ type SeedData = {
   locations: string[];
   items: { name: string; isRawMaterial: boolean; isFound: boolean; isFinalProduct: boolean }[];
   asteroidTypes: { name: string; locations: string[]; items: string[] }[];
-  decompositions: { sourceItem: string; inputQty: number; outputs: { item: string; quantity: number }[] }[];
+  decompositions: { sourceItem: string; refinery?: string; inputQty: number; isDefault?: boolean; outputs: { item: string; quantity: number }[] }[];
   blueprints: { outputItem: string; factory: string; outputQty: number; isDefault: boolean; inputs: { item: string; quantity: number }[] }[];
 };
 
@@ -62,14 +62,15 @@ async function applyAdditive(data: SeedData) {
     }
   }
 
-  // Decompositions — upsert by sourceItem, replace outputs
+  // Decompositions — upsert by (sourceItem, refinery), replace outputs
   for (const d of data.decompositions) {
     const source = await prisma.item.findUnique({ where: { name: normalizeName(d.sourceItem) } });
     if (!source) continue;
+    const normalizedRefinery = normalizeName(d.refinery ?? "");
     const decomp = await prisma.decomposition.upsert({
-      where: { sourceItemId: source.id },
-      update: { inputQty: d.inputQty },
-      create: { sourceItemId: source.id, inputQty: d.inputQty },
+      where: { sourceItemId_refinery: { sourceItemId: source.id, refinery: normalizedRefinery } },
+      update: { inputQty: d.inputQty, isDefault: d.isDefault ?? false },
+      create: { sourceItemId: source.id, refinery: normalizedRefinery, inputQty: d.inputQty, isDefault: d.isDefault ?? false },
     });
     // Replace outputs for this decomposition
     await prisma.decompositionOutput.deleteMany({ where: { decompositionId: decomp.id } });
@@ -142,9 +143,12 @@ async function applyReset(data: SeedData) {
   }
 
   for (const d of data.decompositions) {
-    const source = await prisma.item.findUnique({ where: { name: d.sourceItem } });
+    const source = await prisma.item.findUnique({ where: { name: normalizeName(d.sourceItem) } });
     if (!source) continue;
-    const decomp = await prisma.decomposition.create({ data: { sourceItemId: source.id, inputQty: d.inputQty } });
+    const normalizedRefinery = normalizeName(d.refinery ?? "");
+    const decomp = await prisma.decomposition.create({
+      data: { sourceItemId: source.id, refinery: normalizedRefinery, inputQty: d.inputQty, isDefault: d.isDefault ?? false },
+    });
     for (const out of d.outputs) {
       const outItem = await prisma.item.findUnique({ where: { name: normalizeName(out.item) } });
       if (outItem) await prisma.decompositionOutput.create({ data: { decompositionId: decomp.id, itemId: outItem.id, quantity: out.quantity } });

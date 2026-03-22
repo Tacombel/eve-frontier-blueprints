@@ -344,7 +344,9 @@
           "item": "Hydrocarbon residue",
           "quantity": 5
         }
-      ]
+      ],
+      "refinery": "",
+      "isDefault": true
     },
     {
       "sourceItem": "Hydrated sulfide matrix",
@@ -358,7 +360,9 @@
           "item": "Hydrocarbon residue",
           "quantity": 10
         }
-      ]
+      ],
+      "refinery": "",
+      "isDefault": true
     },
     {
       "sourceItem": "Platinum-paladium matrix",
@@ -376,7 +380,9 @@
           "item": "Palladium",
           "quantity": 4
         }
-      ]
+      ],
+      "refinery": "",
+      "isDefault": true
     }
   ],
   "blueprints": [

@@ -13,7 +13,7 @@ function makeItem(overrides: Partial<CalcItem>): CalcItem {
     stock: 0,
     volume: 1,
     blueprints: [],
-    decomposition: null,
+    decompositions: [],
     ...overrides,
   };
 }
@@ -122,10 +122,13 @@ describe("calculate", () => {
       name: "Ore",
       isRawMaterial: true,
       volume: 1,
-      decomposition: {
+      decompositions: [{
+        id: "dec1",
+        refinery: "",
         inputQty: 10,
+        isDefault: true,
         outputs: [{ itemId: "rawA", quantity: 5 }],
-      },
+      }],
     });
     const itemMap = buildItemMap([rawA, rawB, itemWithBp, rawWithDecomp]);
     const result = calculate([{ itemId: "product", quantity: 2 }], itemMap);

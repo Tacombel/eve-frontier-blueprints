@@ -7,7 +7,10 @@ export interface CalcBlueprint {
 }
 
 export interface CalcDecomposition {
+  id: string;
+  refinery: string;
   inputQty: number;
+  isDefault: boolean;
   outputs: { itemId: string; quantity: number }[];
 }
 
@@ -19,7 +22,7 @@ export interface CalcItem {
   stock: number;
   volume: number;
   blueprints: CalcBlueprint[];
-  decomposition: CalcDecomposition | null;
+  decompositions: CalcDecomposition[];
 }
 
 export interface AsteroidInfo {
@@ -87,6 +90,11 @@ type FactoryMap = Map<string, string>;
 function pickBlueprint(item: CalcItem): CalcBlueprint | null {
   if (item.blueprints.length === 0) return null;
   return item.blueprints.find((b) => b.isDefault) ?? item.blueprints[0];
+}
+
+function pickDecomposition(item: CalcItem): CalcDecomposition | null {
+  if (item.decompositions.length === 0) return null;
+  return item.decompositions.find((d) => d.isDefault) ?? item.decompositions[0];
 }
 
 function resolve(
@@ -220,8 +228,9 @@ export function calculate(
   // Build an index: outputItemId → [sourceItem]
   const decompByOutput = new Map<string, CalcItem[]>();
   for (const item of itemMap.values()) {
-    if (!item.decomposition) continue;
-    for (const out of item.decomposition.outputs) {
+    const dec = pickDecomposition(item);
+    if (!dec) continue;
+    for (const out of dec.outputs) {
       const list = decompByOutput.get(out.itemId) ?? [];
       list.push(item);
       decompByOutput.set(out.itemId, list);
@@ -254,12 +263,12 @@ export function calculate(
 
     // Pick the ore with the highest yield for this material
     const source = sources.reduce((best, s) => {
-      const bYield = best.decomposition?.outputs.find((o) => o.itemId === matId)?.quantity ?? 0;
-      const sYield = s.decomposition?.outputs.find((o) => o.itemId === matId)?.quantity ?? 0;
+      const bYield = pickDecomposition(best)?.outputs.find((o) => o.itemId === matId)?.quantity ?? 0;
+      const sYield = pickDecomposition(s)?.outputs.find((o) => o.itemId === matId)?.quantity ?? 0;
       return sYield > bYield ? s : best;
     });
 
-    const dec = source.decomposition!;
+    const dec = pickDecomposition(source)!;
     const yieldPerRun = dec.outputs.find((o) => o.itemId === matId)?.quantity ?? 0;
     if (yieldPerRun <= 0) { remaining.delete(matId); continue; }
     const runsNeeded = Math.ceil(need / yieldPerRun);
@@ -278,13 +287,13 @@ export function calculate(
 
   const decompUnits = new Map<string, number>();
   for (const [sourceId, runs] of decompRuns) {
-    decompUnits.set(sourceId, runs * itemMap.get(sourceId)!.decomposition!.inputQty);
+    decompUnits.set(sourceId, runs * pickDecomposition(itemMap.get(sourceId)!)!.inputQty);
   }
 
   const decompositions: DecompositionResult[] = [];
   for (const [sourceItemId, unitsToDecompose] of decompUnits) {
     const source = itemMap.get(sourceItemId)!;
-    const dec = source.decomposition!;
+    const dec = pickDecomposition(source)!;
     const runs = Math.ceil(unitsToDecompose / dec.inputQty);
     decompositions.push({
       sourceItemId,

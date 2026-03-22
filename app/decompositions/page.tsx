@@ -6,7 +6,9 @@ interface Item { id: string; name: string }
 interface DecompositionOutput { id: string; itemId: string; quantity: number; item: Item }
 interface Decomposition {
   id: string;
+  refinery: string;
   inputQty: number;
+  isDefault: boolean;
   sourceItem: Item;
   outputs: DecompositionOutput[];
 }
@@ -20,7 +22,9 @@ export default function DecompositionsPage() {
   const [showForm, setShowForm] = useState(false);
   const [editId, setEditId] = useState<string | null>(null);
   const [sourceItemId, setSourceItemId] = useState("");
+  const [refinery, setRefinery] = useState("");
   const [inputQty, setInputQty] = useState(1);
+  const [isDefault, setIsDefault] = useState(true);
   const [outputs, setOutputs] = useState([emptyOutputRow()]);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
@@ -38,20 +42,25 @@ export default function DecompositionsPage() {
 
   useEffect(() => { load(); }, [load]);
 
-  // Items that don't already have a decomposition (for new form)
-  const itemsWithoutDecomp = items.filter(
-    (i) => !decompositions.some((d) => d.sourceItem.id === i.id)
-  );
-
   function openNew() {
-    setEditId(null); setSourceItemId(""); setInputQty(1);
-    setOutputs([emptyOutputRow()]); setError(""); setShowForm(true);
+    setEditId(null); setSourceItemId(""); setRefinery(""); setInputQty(1);
+    setIsDefault(true); setOutputs([emptyOutputRow()]); setError(""); setShowForm(true);
   }
 
   function openEdit(d: Decomposition) {
-    setEditId(d.id); setSourceItemId(d.sourceItem.id); setInputQty(d.inputQty);
+    setEditId(d.id); setSourceItemId(d.sourceItem.id); setRefinery(d.refinery);
+    setInputQty(d.inputQty); setIsDefault(d.isDefault);
     setOutputs(d.outputs.map((o) => ({ itemId: o.itemId, quantity: o.quantity })));
     setError(""); setShowForm(true);
+  }
+
+  async function setDefault(id: string) {
+    await fetch(`/api/decompositions/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ isDefault: true }),
+    });
+    load();
   }
 
   function addRow() { setOutputs([...outputs, emptyOutputRow()]); }
@@ -70,8 +79,8 @@ export default function DecompositionsPage() {
     const url = editId ? `/api/decompositions/${editId}` : "/api/decompositions";
     const method = editId ? "PUT" : "POST";
     const body = editId
-      ? { inputQty, outputs }
-      : { sourceItemId, inputQty, outputs };
+      ? { refinery, inputQty, isDefault, outputs }
+      : { sourceItemId, refinery, inputQty, isDefault, outputs };
 
     const res = await fetch(url, {
       method,
@@ -82,13 +91,21 @@ export default function DecompositionsPage() {
     setSaving(false); setShowForm(false); load();
   }
 
-  async function remove(id: string, name: string) {
-    if (!confirm(`Delete decomposition for "${name}"?`)) return;
+  async function remove(id: string, name: string, ref: string) {
+    const label = ref ? `${name} (${ref})` : name;
+    if (!confirm(`Delete decomposition for "${label}"?`)) return;
     await fetch(`/api/decompositions/${id}`, { method: "DELETE" });
     load();
   }
 
-  // Items available as outputs (exclude the source item itself)
+  // Group decompositions by source item
+  const grouped = decompositions.reduce((acc, d) => {
+    const key = d.sourceItem.id;
+    if (!acc.has(key)) acc.set(key, []);
+    acc.get(key)!.push(d);
+    return acc;
+  }, new Map<string, Decomposition[]>());
+
   const outputItems = items.filter((i) => i.id !== sourceItemId);
 
   return (
@@ -98,30 +115,48 @@ export default function DecompositionsPage() {
         <button onClick={openNew} className="btn-primary">+ New Decomposition</button>
       </div>
       <p className="text-sm text-gray-500 mb-6">
-        Define how a basic material breaks down into raw materials when reprocessed.
+        Define how a material breaks down when reprocessed. Multiple refineries can yield different outputs.
       </p>
 
       {loading ? (
         <p className="text-gray-500">Loading…</p>
-      ) : decompositions.length === 0 ? (
+      ) : grouped.size === 0 ? (
         <p className="text-gray-500">No decompositions yet.</p>
       ) : (
         <div className="space-y-3">
-          {decompositions.map((d) => (
-            <div key={d.id} className="rounded-lg border border-gray-800 bg-gray-900 p-4">
-              <div className="flex items-center gap-3 mb-3">
-                <span className="font-semibold text-gray-100 flex-1">{d.sourceItem.name}</span>
-                <span className="text-xs text-gray-500">
-                  {d.inputQty} unit{d.inputQty > 1 ? "s" : ""} →
-                </span>
-                <button onClick={() => openEdit(d)} className="btn-sm">Edit</button>
-                <button onClick={() => remove(d.id, d.sourceItem.name)} className="btn-sm btn-danger">Del</button>
+          {Array.from(grouped.entries()).map(([, entries]) => (
+            <div key={entries[0].sourceItem.id} className="rounded-lg border border-gray-800 bg-gray-900">
+              <div className="px-4 py-3 border-b border-gray-800">
+                <span className="font-semibold text-gray-100">{entries[0].sourceItem.name}</span>
+                <span className="ml-2 text-xs text-gray-600">{entries.length} decomposition{entries.length > 1 ? "s" : ""}</span>
               </div>
-              <div className="flex flex-wrap gap-2">
-                {d.outputs.map((o) => (
-                  <span key={o.id} className="text-xs bg-gray-800 rounded px-2 py-1 text-gray-300">
-                    {o.item.name} <span className="text-yellow-400">×{o.quantity}</span>
-                  </span>
+              <div className="divide-y divide-gray-800/50">
+                {entries.map((d) => (
+                  <div key={d.id} className="px-4 py-3">
+                    <div className="flex items-center gap-3 mb-2">
+                      <button
+                        onClick={() => !d.isDefault && setDefault(d.id)}
+                        title={d.isDefault ? "Default decomposition" : "Set as default"}
+                        className={`text-base leading-none ${d.isDefault ? "text-yellow-400" : "text-gray-700 hover:text-yellow-600"}`}
+                      >
+                        ★
+                      </button>
+                      <span className="flex-1 text-sm text-gray-300">
+                        {d.refinery ? <span className="badge badge-blue">{d.refinery}</span> : <span className="text-gray-600 italic text-xs">No refinery</span>}
+                      </span>
+                      {d.isDefault && <span className="badge badge-yellow text-xs">Default</span>}
+                      <span className="text-xs text-gray-500">{d.inputQty} u/run</span>
+                      <button onClick={() => openEdit(d)} className="btn-sm">Edit</button>
+                      <button onClick={() => remove(d.id, d.sourceItem.name, d.refinery)} className="btn-sm btn-danger">Del</button>
+                    </div>
+                    <div className="flex flex-wrap gap-2 ml-6">
+                      {d.outputs.map((o) => (
+                        <span key={o.id} className="text-xs bg-gray-800 rounded px-2 py-1 text-gray-300">
+                          {o.item.name} <span className="text-yellow-400">×{o.quantity}</span>
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 ))}
               </div>
             </div>
@@ -147,7 +182,7 @@ export default function DecompositionsPage() {
                   autoFocus
                 >
                   <option value="">Select item…</option>
-                  {itemsWithoutDecomp.map((i) => (
+                  {items.map((i) => (
                     <option key={i.id} value={i.id}>{i.name}</option>
                   ))}
                 </select>
@@ -162,6 +197,17 @@ export default function DecompositionsPage() {
               </p>
             )}
 
+            <label className="block mb-3">
+              <span className="label">Refinery</span>
+              <input
+                type="text"
+                placeholder="Leave empty for generic"
+                className="input w-full mt-1"
+                value={refinery}
+                onChange={(e) => setRefinery(e.target.value)}
+              />
+            </label>
+
             <label className="block mb-4">
               <span className="label">Units of source per decomposition run</span>
               <input
@@ -170,6 +216,16 @@ export default function DecompositionsPage() {
                 value={inputQty}
                 onChange={(e) => setInputQty(Number(e.target.value))}
               />
+            </label>
+
+            <label className="flex items-center gap-3 mb-4 cursor-pointer">
+              <input
+                type="checkbox"
+                className="toggle"
+                checked={isDefault}
+                onChange={(e) => setIsDefault(e.target.checked)}
+              />
+              <span className="label">Use as default for calculations</span>
             </label>
 
             <div className="mb-2">

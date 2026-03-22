@@ -21,7 +21,7 @@ model Item {
   usedAsInput          BlueprintInput[]
   stock                Stock?
   packItems            PackItem[]
-  decomposition        Decomposition?
+  decompositions       Decomposition[]
   decompositionOutputs DecompositionOutput[]
   asteroidTypes        ItemAsteroidType[]
 }
@@ -61,15 +61,20 @@ model Stock {
 }
 
 // 1 unit of sourceItem → multiple output materials (reprocessing/decomposition)
+// Multiple decompositions per sourceItem are allowed (one per refinery)
 model Decomposition {
   id           String   @id @default(cuid())
-  sourceItemId String   @unique
+  sourceItemId String
+  refinery     String   @default("")
   inputQty     Int      @default(1)
+  isDefault    Boolean  @default(false)
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 
   sourceItem Item                  @relation(fields: [sourceItemId], references: [id], onDelete: Cascade)
   outputs    DecompositionOutput[]
+
+  @@unique([sourceItemId, refinery])
 }
 
 model DecompositionOutput {

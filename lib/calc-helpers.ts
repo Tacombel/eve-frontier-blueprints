@@ -10,8 +10,9 @@ export async function fetchCalcItems(): Promise<CalcItem[]> {
         include: { inputs: { select: { itemId: true, quantity: true } } },
         orderBy: { isDefault: "desc" },
       },
-      decomposition: {
+      decompositions: {
         include: { outputs: { select: { itemId: true, quantity: true } } },
+        orderBy: { isDefault: "desc" },
       },
     },
   });
@@ -30,9 +31,13 @@ export async function fetchCalcItems(): Promise<CalcItem[]> {
       isDefault: bp.isDefault,
       inputs: bp.inputs,
     })),
-    decomposition: item.decomposition
-      ? { inputQty: item.decomposition.inputQty, outputs: item.decomposition.outputs }
-      : null,
+    decompositions: item.decompositions.map((d) => ({
+      id: d.id,
+      refinery: d.refinery,
+      inputQty: d.inputQty,
+      isDefault: d.isDefault,
+      outputs: d.outputs,
+    })),
   }));
 }
 
