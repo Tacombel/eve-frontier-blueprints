@@ -41,3 +41,8 @@ next-env.d.ts
 # database files (use prisma/seed.json for shared data)
 *.db
 *.db-journal
+
+# SSH keys (generated at runtime)
+prisma/ssh/
+prisma/backup_remote.json
+prisma/backups/
