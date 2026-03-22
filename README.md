@@ -49,10 +49,11 @@ npx prisma migrate deploy
 npx prisma generate
 ```
 
-#### 4. Start the app
+#### 4. Build and start the app
 
 ```bash
-npm run dev
+npm run build
+npm start
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
@@ -62,29 +63,6 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 ### Option B — Docker *(Soon)*
 
 > Docker support is coming. A pre-built image for `linux/amd64` and `linux/arm64` will be available on Docker Hub.
-
----
-
-## Game data
-
-Game data (items, blueprints, decompositions, factories, asteroid types) is shared via this repository. Stock and packs are personal and stay local only.
-
-### Sync the latest data
-
-When new data is pushed to the repository, pull the changes:
-
-```bash
-git pull
-```
-
-Then open the app and go to **Admin**. You have two import options:
-
-| Option | What it does |
-|--------|-------------|
-| **Merge import** | Adds or updates records from the shared dataset. Existing data not in the file is left untouched. Safe for day-to-day updates. |
-| **Reset import** | Deletes **all** game data and replaces it with the shared dataset. Use this to fix inconsistencies or start clean. |
-
-> Your stock and packs are never affected by either import.
 
 ---
 
