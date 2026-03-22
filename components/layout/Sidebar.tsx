@@ -21,12 +21,13 @@ export default function Sidebar() {
   const pathname = usePathname();
   const router = useRouter();
   const [username, setUsername] = useState<string | null>(null);
+  const [role, setRole] = useState<string | null>(null);
 
   useEffect(() => {
     fetch("/api/auth/me")
       .then((r) => r.json())
-      .then((data) => setUsername(data?.username ?? null))
-      .catch(() => setUsername(null));
+      .then((data) => { setUsername(data?.username ?? null); setRole(data?.role ?? null); })
+      .catch(() => { setUsername(null); setRole(null); });
   }, [pathname]);
 
   async function handleLogout() {
@@ -80,7 +81,10 @@ export default function Sidebar() {
       <div className="px-4 py-3 border-t border-gray-800 text-xs text-gray-600">
         {username ? (
           <div className="flex items-center justify-between mb-1">
-            <span className="text-gray-400 truncate" title={username}>{username}</span>
+            <span className="text-gray-400 truncate" title={username}>
+              {username}
+              {role === "ADMIN" && <span className="ml-1 text-cyan-600 text-[10px]">ADMIN</span>}
+            </span>
             <button
               onClick={handleLogout}
               className="text-gray-600 hover:text-gray-300 transition-colors ml-2 shrink-0"

@@ -22,10 +22,13 @@ export async function POST(req: NextRequest) {
   }
 
   const hashed = await bcrypt.hash(password, 10);
+  const userCount = await prisma.user.count();
+  const role = userCount === 0 ? "ADMIN" : "USER";
+
   const user = await prisma.user.create({
-    data: { username: username.trim(), password: hashed },
+    data: { username: username.trim(), password: hashed, role },
   });
 
-  await createSession({ userId: user.id, username: user.username });
+  await createSession({ userId: user.id, username: user.username, role: user.role });
   return NextResponse.json({ username: user.username }, { status: 201 });
 }

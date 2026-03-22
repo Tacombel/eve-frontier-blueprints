@@ -7,6 +7,7 @@ const SESSION_DURATION = 60 * 60 * 24 * 7; // 7 days in seconds
 export interface SessionPayload {
   userId: string;
   username: string;
+  role: string;
 }
 
 function getSecret() {
@@ -37,7 +38,7 @@ export async function getSession(): Promise<SessionPayload | null> {
 
   try {
     const { payload } = await jwtVerify(cookie.value, getSecret());
-    return { userId: payload.userId as string, username: payload.username as string };
+    return { userId: payload.userId as string, username: payload.username as string, role: payload.role as string };
   } catch {
     return null;
   }
