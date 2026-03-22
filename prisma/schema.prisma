@@ -19,7 +19,7 @@ model Item {
 
   blueprints           Blueprint[]
   usedAsInput          BlueprintInput[]
-  stock                Stock?
+  stocks               Stock[]
   packItems            PackItem[]
   decompositions       Decomposition[]
   decompositionOutputs DecompositionOutput[]
@@ -51,13 +51,27 @@ model BlueprintInput {
   @@unique([blueprintId, itemId])
 }
 
+model User {
+  id        String   @id @default(cuid())
+  username  String   @unique
+  password  String
+  createdAt DateTime @default(now())
+
+  stocks Stock[]
+  packs  Pack[]
+}
+
 model Stock {
   id        String   @id @default(cuid())
-  itemId    String   @unique
+  itemId    String
+  userId    String
   quantity  Int      @default(0)
   updatedAt DateTime @updatedAt
 
   item Item @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([itemId, userId])
 }
 
 // 1 unit of sourceItem → multiple output materials (reprocessing/decomposition)
@@ -132,9 +146,11 @@ model Pack {
   id          String     @id @default(cuid())
   name        String
   description String?
+  userId      String
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
 
+  user  User       @relation(fields: [userId], references: [id], onDelete: Cascade)
   items PackItem[]
 }
 

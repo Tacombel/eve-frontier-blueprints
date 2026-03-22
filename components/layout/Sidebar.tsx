@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import pkg from "@/package.json";
 const version = pkg.version;
 
@@ -18,6 +19,22 @@ const navItems = [
 
 export default function Sidebar() {
   const pathname = usePathname();
+  const router = useRouter();
+  const [username, setUsername] = useState<string | null>(null);
+
+  useEffect(() => {
+    fetch("/api/auth/me")
+      .then((r) => r.json())
+      .then((data) => setUsername(data?.username ?? null))
+      .catch(() => setUsername(null));
+  }, [pathname]);
+
+  async function handleLogout() {
+    await fetch("/api/auth/logout", { method: "POST" });
+    setUsername(null);
+    router.push("/login");
+    router.refresh();
+  }
 
   return (
     <aside className="flex h-full w-56 flex-col bg-gray-900 border-r border-gray-800">
@@ -61,6 +78,22 @@ export default function Sidebar() {
       </div>
 
       <div className="px-4 py-3 border-t border-gray-800 text-xs text-gray-600">
+        {username ? (
+          <div className="flex items-center justify-between mb-1">
+            <span className="text-gray-400 truncate" title={username}>{username}</span>
+            <button
+              onClick={handleLogout}
+              className="text-gray-600 hover:text-gray-300 transition-colors ml-2 shrink-0"
+              title="Logout"
+            >
+              ⏻
+            </button>
+          </div>
+        ) : (
+          <Link href="/login" className="text-gray-500 hover:text-gray-300 transition-colors block mb-1">
+            Login
+          </Link>
+        )}
         <p>v{version}</p>
         <p>© tacombel@gmail.com</p>
       </div>

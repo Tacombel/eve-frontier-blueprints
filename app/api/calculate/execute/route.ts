@@ -1,13 +1,17 @@
 import { NextRequest, NextResponse } from "next/server";
 import { calculate, buildItemMap } from "@/lib/calculator";
 import { fetchCalcItems, buildStockDeltas, applyStockDeltas } from "@/lib/calc-helpers";
+import { getSession } from "@/lib/auth";
 
 export async function POST(req: NextRequest) {
+  const session = await getSession();
+  if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
   const { itemId, runs } = await req.json();
   if (!itemId) return NextResponse.json({ error: "itemId required" }, { status: 400 });
   if (!Number.isInteger(runs) || runs < 1) return NextResponse.json({ error: "runs must be a positive integer" }, { status: 400 });
 
-  const itemMap = buildItemMap(await fetchCalcItems());
+  const itemMap = buildItemMap(await fetchCalcItems(session.userId));
 
   let result;
   try {
@@ -34,6 +38,6 @@ export async function POST(req: NextRequest) {
   }
 
   const deltas = buildStockDeltas(result);
-  await applyStockDeltas(deltas);
+  await applyStockDeltas(deltas, session.userId);
   return NextResponse.json({ ok: true });
 }

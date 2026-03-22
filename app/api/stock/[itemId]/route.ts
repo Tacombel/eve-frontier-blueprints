@@ -1,7 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { getSession } from "@/lib/auth";
 
 export async function PUT(req: NextRequest, { params }: { params: { itemId: string } }) {
+  const session = await getSession();
+  if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
   const { quantity } = await req.json();
 
   if (typeof quantity !== "number" || quantity < 0) {
@@ -9,9 +13,9 @@ export async function PUT(req: NextRequest, { params }: { params: { itemId: stri
   }
 
   const stock = await prisma.stock.upsert({
-    where: { itemId: params.itemId },
+    where: { itemId_userId: { itemId: params.itemId, userId: session.userId } },
     update: { quantity },
-    create: { itemId: params.itemId, quantity },
+    create: { itemId: params.itemId, userId: session.userId, quantity },
   });
 
   return NextResponse.json(stock);

@@ -2,8 +2,12 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { calculate, buildItemMap } from "@/lib/calculator";
 import { fetchCalcItems, enrichAsteroids } from "@/lib/calc-helpers";
+import { getSession } from "@/lib/auth";
 
 export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
+  const session = await getSession();
+  if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
   const ignoreParam = req.nextUrl.searchParams.get("ignore");
   const ignoredIds = new Set(ignoreParam ? ignoreParam.split(",").filter(Boolean) : []);
 
@@ -13,11 +17,12 @@ export async function GET(req: NextRequest, { params }: { params: { id: string }
   });
 
   if (!pack) return NextResponse.json({ error: "Not found" }, { status: 404 });
+  if (pack.userId !== session.userId) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   if (pack.items.length === 0) {
     return NextResponse.json({ rawMaterials: [], intermediates: [], decompositions: [], finalProducts: [] });
   }
 
-  const itemMap = buildItemMap(await fetchCalcItems());
+  const itemMap = buildItemMap(await fetchCalcItems(session.userId));
 
   try {
     const packItemIds = new Set(pack.items.map((pi) => pi.itemId));

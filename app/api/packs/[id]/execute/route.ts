@@ -2,8 +2,12 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { calculate, buildItemMap } from "@/lib/calculator";
 import { fetchCalcItems, buildStockDeltas, applyStockDeltas } from "@/lib/calc-helpers";
+import { getSession } from "@/lib/auth";
 
 export async function POST(req: NextRequest, { params }: { params: { id: string } }) {
+  const session = await getSession();
+  if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
   const ignoreParam = req.nextUrl.searchParams.get("ignore");
   const ignoredIds = new Set(ignoreParam ? ignoreParam.split(",").filter(Boolean) : []);
 
@@ -12,9 +16,10 @@ export async function POST(req: NextRequest, { params }: { params: { id: string 
     include: { items: true },
   });
   if (!pack) return NextResponse.json({ error: "Not found" }, { status: 404 });
+  if (pack.userId !== session.userId) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   if (pack.items.length === 0) return NextResponse.json({ error: "Pack has no items" }, { status: 400 });
 
-  const itemMap = buildItemMap(await fetchCalcItems());
+  const itemMap = buildItemMap(await fetchCalcItems(session.userId));
   const packItemIds = new Set(pack.items.map((pi) => pi.itemId));
   const activeItems = pack.items.filter((pi) => !ignoredIds.has(pi.itemId));
 
@@ -40,6 +45,6 @@ export async function POST(req: NextRequest, { params }: { params: { id: string 
   }
 
   const deltas = buildStockDeltas(result);
-  await applyStockDeltas(deltas);
+  await applyStockDeltas(deltas, session.userId);
   return NextResponse.json({ ok: true });
 }

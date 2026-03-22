@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { calculate, buildItemMap } from "@/lib/calculator";
 import { fetchCalcItems, enrichAsteroids } from "@/lib/calc-helpers";
+import { getSession } from "@/lib/auth";
 
 export async function GET(req: NextRequest) {
   const itemId = req.nextUrl.searchParams.get("itemId");
@@ -9,7 +10,8 @@ export async function GET(req: NextRequest) {
   if (!itemId) return NextResponse.json({ error: "itemId required" }, { status: 400 });
   if (!Number.isInteger(runs) || runs < 1) return NextResponse.json({ error: "runs must be a positive integer" }, { status: 400 });
 
-  const itemMap = buildItemMap(await fetchCalcItems());
+  const session = await getSession();
+  const itemMap = buildItemMap(await fetchCalcItems(session?.userId));
 
   try {
     const outputItem = itemMap.get(itemId);

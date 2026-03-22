@@ -1,11 +1,11 @@
 import { prisma } from "@/lib/prisma";
 import type { CalcItem, CalculationResult } from "@/lib/calculator";
 
-/** Fetch all items from DB mapped to CalcItem shape. Used by all calculate routes. */
-export async function fetchCalcItems(): Promise<CalcItem[]> {
+/** Fetch all items from DB mapped to CalcItem shape. Pass userId to include user's stock. */
+export async function fetchCalcItems(userId?: string): Promise<CalcItem[]> {
   const allItems = await prisma.item.findMany({
     include: {
-      stock: true,
+      stocks: userId ? { where: { userId } } : false,
       blueprints: {
         include: { inputs: { select: { itemId: true, quantity: true } } },
         orderBy: { isDefault: "desc" },
@@ -22,7 +22,7 @@ export async function fetchCalcItems(): Promise<CalcItem[]> {
     name: item.name,
     isRawMaterial: item.isRawMaterial,
     isFound: item.isFound,
-    stock: item.stock?.quantity ?? 0,
+    stock: (userId ? (item.stocks as { quantity: number }[])[0]?.quantity : 0) ?? 0,
     volume: item.volume,
     blueprints: item.blueprints.map((bp) => ({
       id: bp.id,
@@ -79,14 +79,14 @@ export async function enrichAsteroids(result: CalculationResult): Promise<void> 
 }
 
 /**
- * Apply stock deltas to the DB, clamping consumed items to 0 (never go negative).
- * Positive deltas (produced items) use increment; negative deltas read current stock first.
+ * Apply stock deltas to the DB for a specific user, clamping consumed items to 0.
  */
-export async function applyStockDeltas(deltas: Map<string, number>): Promise<void> {
+export async function applyStockDeltas(deltas: Map<string, number>, userId: string): Promise<void> {
   const consumedIds = [...deltas.entries()].filter(([, d]) => d < 0).map(([id]) => id);
-  const currentStocks = consumedIds.length > 0
-    ? await prisma.stock.findMany({ where: { itemId: { in: consumedIds } } })
-    : [];
+  const currentStocks =
+    consumedIds.length > 0
+      ? await prisma.stock.findMany({ where: { itemId: { in: consumedIds }, userId } })
+      : [];
   const stockMap = new Map(currentStocks.map((s) => [s.itemId, s.quantity]));
 
   await prisma.$transaction(
@@ -94,15 +94,15 @@ export async function applyStockDeltas(deltas: Map<string, number>): Promise<voi
       if (delta < 0) {
         const newQty = Math.max(0, (stockMap.get(id) ?? 0) + delta);
         return prisma.stock.upsert({
-          where: { itemId: id },
+          where: { itemId_userId: { itemId: id, userId } },
           update: { quantity: newQty },
-          create: { itemId: id, quantity: 0 },
+          create: { itemId: id, userId, quantity: 0 },
         });
       }
       return prisma.stock.upsert({
-        where: { itemId: id },
+        where: { itemId_userId: { itemId: id, userId } },
         update: { quantity: { increment: delta } },
-        create: { itemId: id, quantity: delta },
+        create: { itemId: id, userId, quantity: delta },
       });
     })
   );
