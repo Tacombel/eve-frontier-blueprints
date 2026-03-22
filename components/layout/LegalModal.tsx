@@ -41,8 +41,8 @@ export default function LegalModal() {
           <div className="border-t border-gray-700 pt-4">
             <p className="font-medium text-gray-200 mb-1">Privacy</p>
             <p>
-              All your data (stock, packs, blueprints) is stored <span className="text-gray-100">locally on this server only</span>.
-              Nothing is sent to third parties. No analytics. No tracking.
+              All your data (stock, packs, blueprints) is stored on <span className="text-gray-100">private servers</span> under the same ownership.
+              Data may be replicated across servers for availability, but is never shared with or sold to third parties. No analytics. No tracking.
             </p>
             <p className="mt-2">
               A single <span className="text-gray-100">functional cookie</span> is used to keep you logged in during your session.

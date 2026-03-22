@@ -1,6 +1,6 @@
 {
   "name": "eve_frontier_blueprints",
-  "version": "1.15.8",
+  "version": "1.15.9",
   "private": true,
   "scripts": {
     "dev": "next dev",
