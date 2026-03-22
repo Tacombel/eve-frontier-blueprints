@@ -18,6 +18,12 @@ export default function AdminPage() {
   const [usersLoading, setUsersLoading] = useState(true);
   const [userError, setUserError] = useState("");
 
+  // Reset password inline state: userId → new password value
+  const [resetId, setResetId] = useState<string | null>(null);
+  const [resetPw, setResetPw] = useState("");
+  const [resetError, setResetError] = useState("");
+  const [resetOk, setResetOk] = useState<string | null>(null);
+
   // Renormalize
   const [renormalizing, setRenormalizing] = useState(false);
   const [renormalizeResult, setRenormalizeResult] = useState<{ total: { renamed: number; duplicatesRemoved: number } } | null>(null);
@@ -58,6 +64,41 @@ export default function AdminPage() {
     await loadUsers();
   }
 
+  function openReset(userId: string) {
+    setResetId(userId);
+    setResetPw("");
+    setResetError("");
+    setResetOk(null);
+  }
+
+  function cancelReset() {
+    setResetId(null);
+    setResetPw("");
+    setResetError("");
+  }
+
+  async function submitReset(userId: string) {
+    setResetError("");
+    if (resetPw.length < 6) {
+      setResetError("Password must be at least 6 characters");
+      return;
+    }
+    const res = await fetch(`/api/admin/users/${userId}/password`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ newPassword: resetPw }),
+    });
+    const data = await res.json();
+    if (!res.ok) {
+      setResetError(data.error ?? "Error resetting password");
+      return;
+    }
+    setResetOk(userId);
+    setResetId(null);
+    setResetPw("");
+    setTimeout(() => setResetOk(null), 3000);
+  }
+
   async function runRenormalize() {
     setRenormalizing(true);
     setRenormalizeResult(null);
@@ -90,46 +131,88 @@ export default function AdminPage() {
                 <th className="pb-2 pr-4">Username</th>
                 <th className="pb-2 pr-4">Role</th>
                 <th className="pb-2 pr-4">Registered</th>
-                <th className="pb-2 w-28"></th>
+                <th className="pb-2"></th>
               </tr>
             </thead>
             <tbody>
               {users.map((u) => {
-                const isSelf = u.id === me?.username ? false : u.username === me?.username;
                 const isSelfById = users.find(x => x.username === me?.username)?.id === u.id;
+                const isResetting = resetId === u.id;
                 return (
-                  <tr key={u.id} className="border-b border-gray-800/50 hover:bg-gray-800/30">
-                    <td className="py-2 pr-4 font-medium text-gray-200">
-                      {u.username}
-                      {isSelfById && <span className="ml-2 text-xs text-gray-600">(you)</span>}
-                    </td>
-                    <td className="py-2 pr-4">
-                      <span className={`badge ${u.role === "ADMIN" ? "badge-cyan" : "badge-gray"}`}>
-                        {u.role}
-                      </span>
-                    </td>
-                    <td className="py-2 pr-4 text-gray-500 text-xs">
-                      {new Date(u.createdAt).toLocaleDateString()}
-                    </td>
-                    <td className="py-2 text-right space-x-2">
-                      <button
-                        onClick={() => toggleRole(u)}
-                        disabled={isSelfById}
-                        title={isSelfById ? "You cannot change your own role" : u.role === "ADMIN" ? "Demote to USER" : "Promote to ADMIN"}
-                        className="btn-ghost text-xs disabled:opacity-30 disabled:cursor-not-allowed"
-                      >
-                        {u.role === "ADMIN" ? "↓ USER" : "↑ ADMIN"}
-                      </button>
-                      <button
-                        onClick={() => deleteUser(u)}
-                        disabled={isSelfById}
-                        title={isSelfById ? "You cannot delete your own account" : `Delete ${u.username}`}
-                        className="btn-ghost btn-danger text-xs disabled:opacity-30 disabled:cursor-not-allowed"
-                      >
-                        Del
-                      </button>
-                    </td>
-                  </tr>
+                  <>
+                    <tr key={u.id} className="border-b border-gray-800/50 hover:bg-gray-800/30">
+                      <td className="py-2 pr-4 font-medium text-gray-200">
+                        {u.username}
+                        {isSelfById && <span className="ml-2 text-xs text-gray-600">(you)</span>}
+                      </td>
+                      <td className="py-2 pr-4">
+                        <span className={`badge ${u.role === "ADMIN" ? "badge-cyan" : "badge-gray"}`}>
+                          {u.role}
+                        </span>
+                      </td>
+                      <td className="py-2 pr-4 text-gray-500 text-xs">
+                        {new Date(u.createdAt).toLocaleDateString()}
+                      </td>
+                      <td className="py-2 text-right space-x-2 whitespace-nowrap">
+                        {resetOk === u.id && (
+                          <span className="text-xs text-green-400 mr-2">Password reset</span>
+                        )}
+                        <button
+                          onClick={() => isResetting ? cancelReset() : openReset(u.id)}
+                          title="Reset password"
+                          className={`btn-ghost text-xs ${isResetting ? "text-gray-500" : ""}`}
+                        >
+                          {isResetting ? "Cancel" : "Reset pw"}
+                        </button>
+                        <button
+                          onClick={() => toggleRole(u)}
+                          disabled={isSelfById}
+                          title={isSelfById ? "You cannot change your own role" : u.role === "ADMIN" ? "Demote to USER" : "Promote to ADMIN"}
+                          className="btn-ghost text-xs disabled:opacity-30 disabled:cursor-not-allowed"
+                        >
+                          {u.role === "ADMIN" ? "↓ USER" : "↑ ADMIN"}
+                        </button>
+                        <button
+                          onClick={() => deleteUser(u)}
+                          disabled={isSelfById}
+                          title={isSelfById ? "You cannot delete your own account" : `Delete ${u.username}`}
+                          className="btn-ghost btn-danger text-xs disabled:opacity-30 disabled:cursor-not-allowed"
+                        >
+                          Del
+                        </button>
+                      </td>
+                    </tr>
+                    {isResetting && (
+                      <tr key={`${u.id}-reset`} className="border-b border-gray-800/50 bg-gray-800/20">
+                        <td colSpan={4} className="px-2 py-3">
+                          <div className="flex items-center gap-2">
+                            <span className="text-xs text-gray-400 shrink-0">New password for <span className="text-gray-200">{u.username}</span>:</span>
+                            <input
+                              type="password"
+                              value={resetPw}
+                              onChange={(e) => setResetPw(e.target.value)}
+                              placeholder="min. 6 characters"
+                              className="input text-sm flex-1 min-w-0"
+                              autoFocus
+                              onKeyDown={(e) => {
+                                if (e.key === "Enter") submitReset(u.id);
+                                if (e.key === "Escape") cancelReset();
+                              }}
+                            />
+                            <button
+                              onClick={() => submitReset(u.id)}
+                              className="btn-sm btn-primary shrink-0"
+                            >
+                              Set
+                            </button>
+                          </div>
+                          {resetError && (
+                            <p className="mt-1 text-xs text-red-400">{resetError}</p>
+                          )}
+                        </td>
+                      </tr>
+                    )}
+                  </>
                 );
               })}
             </tbody>

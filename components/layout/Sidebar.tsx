@@ -83,10 +83,10 @@ export default function Sidebar() {
       <div className="px-4 py-3 border-t border-gray-800 text-xs text-gray-600">
         {username ? (
           <div className="flex items-center justify-between mb-1">
-            <span className="text-gray-400 truncate" title={username}>
+            <Link href="/profile" className="text-gray-400 hover:text-gray-200 transition-colors truncate" title={username}>
               {username}
               {role === "ADMIN" && <span className="ml-1 text-cyan-600 text-[10px]">ADMIN</span>}
-            </span>
+            </Link>
             <button
               onClick={handleLogout}
               className="text-gray-600 hover:text-gray-300 transition-colors ml-2 shrink-0"

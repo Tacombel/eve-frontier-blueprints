@@ -2,8 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { jwtVerify } from "jose";
 
 // Require any authenticated user
-const USER_PAGES = ["/stock", "/packs"];
-const USER_API = ["/api/stock", "/api/packs"];
+const USER_PAGES = ["/stock", "/packs", "/profile"];
+const USER_API = ["/api/stock", "/api/packs", "/api/auth/password"];
 
 // Require ADMIN role
 const ADMIN_PAGES = ["/admin"];
@@ -57,9 +57,12 @@ export const config = {
   matcher: [
     "/stock/:path*",
     "/packs/:path*",
+    "/profile/:path*",
+    "/profile",
     "/admin/:path*",
     "/api/stock/:path*",
     "/api/packs/:path*",
+    "/api/auth/password",
     "/api/admin/:path*",
   ],
 };
