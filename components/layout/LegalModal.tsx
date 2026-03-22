@@ -29,7 +29,7 @@ export default function LegalModal() {
           <p className="text-xs text-gray-500">Fan-made tool · Unofficial · Not affiliated with CCP hf.</p>
         </div>
 
-        <div className="space-y-4 text-sm text-gray-300 leading-relaxed">
+        <div className="space-y-4 text-sm text-gray-300 leading-relaxed text-justify">
           <p>
             This is an <span className="text-gray-100 font-medium">unofficial, community-made tool</span> for EVE Frontier.
             It is not affiliated with, endorsed by, or connected to <span className="text-gray-100">CCP hf.</span> in any way.
