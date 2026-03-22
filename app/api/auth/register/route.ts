@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Username already taken" }, { status: 409 });
   }
 
-  const hashed = await bcrypt.hash(password, 10);
+  const hashed = await bcrypt.hash(password, 12);
   const userCount = await prisma.user.count();
   const role = userCount === 0 ? "ADMIN" : "USER";
 

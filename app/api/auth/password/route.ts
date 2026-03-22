@@ -22,7 +22,7 @@ export async function PATCH(req: NextRequest) {
   const valid = await bcrypt.compare(currentPassword, user.password);
   if (!valid) return NextResponse.json({ error: "Current password is incorrect" }, { status: 403 });
 
-  const hashed = await bcrypt.hash(newPassword, 10);
+  const hashed = await bcrypt.hash(newPassword, 12);
   await prisma.user.update({ where: { id: session.userId }, data: { password: hashed } });
 
   return NextResponse.json({ ok: true });

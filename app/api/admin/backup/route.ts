@@ -24,11 +24,11 @@ function resolveDbPath(): string | null {
 }
 
 function getTablesFromFile(dbPath: string): string[] {
-  const code = `const{DatabaseSync}=require('node:sqlite');const db=new DatabaseSync(${JSON.stringify(dbPath)});const r=db.prepare("SELECT name FROM sqlite_master WHERE type='table'").all();process.stdout.write(JSON.stringify(r.map(x=>x.name)));db.close();`;
+  const code = `const{DatabaseSync}=require('node:sqlite');const db=new DatabaseSync(process.env._DB_PATH);const r=db.prepare("SELECT name FROM sqlite_master WHERE type='table'").all();process.stdout.write(JSON.stringify(r.map(x=>x.name)));db.close();`;
   const out = execFileSync(process.execPath, ["-e", code], {
     encoding: "utf8",
     timeout: 5000,
-    env: { ...process.env, NODE_NO_WARNINGS: "1" },
+    env: { ...process.env, NODE_NO_WARNINGS: "1", _DB_PATH: dbPath },
   });
   return JSON.parse(out) as string[];
 }
