@@ -162,7 +162,7 @@ export default function AdminPage() {
                           title="Reset password"
                           className={`btn-ghost text-xs ${isResetting ? "text-gray-500" : ""}`}
                         >
-                          {isResetting ? "Cancel" : "Reset pw"}
+                          {isResetting ? "Cancel" : "Reset password"}
                         </button>
                         <button
                           onClick={() => toggleRole(u)}
