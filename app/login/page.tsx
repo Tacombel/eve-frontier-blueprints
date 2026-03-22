@@ -1,10 +1,9 @@
 "use client";
 
 import { Suspense, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 
 function LoginForm() {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const [mode, setMode] = useState<"login" | "register">("login");
   const [username, setUsername] = useState("");
@@ -32,9 +31,8 @@ function LoginForm() {
       return;
     }
 
-    const from = searchParams.get("from") ?? "/packs";
-    router.push(from);
-    router.refresh();
+    const from = searchParams.get("from") ?? "/blueprints";
+    window.location.href = from;
   }
 
   return (

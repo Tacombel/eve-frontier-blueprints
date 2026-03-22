@@ -164,7 +164,7 @@ export default function AsteroidsPage() {
               <tr className="text-gray-500 border-b border-gray-800 text-left">
                 <th className="pb-2 pr-4">Name</th>
                 <th className="pb-2 pr-4">Locations</th>
-                <th className="pb-2 pr-4">Ore Items</th>
+                <th className="pb-2 pr-4 w-96">Ore Items</th>
                 <th className="pb-2 w-20"></th>
               </tr>
             </thead>
@@ -182,11 +182,11 @@ export default function AsteroidsPage() {
                     </div>
                   </td>
                   <td className="py-2 pr-4">
-                    <div className="flex flex-wrap gap-1">
+                    <div className="flex flex-nowrap gap-1">
                       {a.items.length === 0
                         ? <span className="text-gray-600 text-xs">—</span>
                         : a.items.map((i) => (
-                          <span key={i.item.id} className="badge badge-yellow">{i.item.name}</span>
+                          <span key={i.item.id} className="badge badge-yellow whitespace-nowrap">{i.item.name}</span>
                         ))}
                     </div>
                   </td>

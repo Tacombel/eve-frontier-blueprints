@@ -1,6 +1,6 @@
 {
   "name": "eve_frontier_blueprints",
-  "version": "1.11.2",
+  "version": "1.11.3",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,8 +9,7 @@
     "lint": "next lint",
     "test": "vitest run",
     "test:watch": "vitest",
-    "db:seed": "tsx prisma/seed.ts",
-    "db:export": "tsx scripts/export-seed.ts"
+    "db:seed": "tsx prisma/seed.ts"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
