@@ -116,6 +116,88 @@ describe("calculate", () => {
     expect(a?.totalNeeded).toBe(6);
   });
 
+  it("stock exactly equal to totalNeeded → toBuy is 0", () => {
+    const rawAWithStock = { ...rawA, stock: 3 };
+    const itemMap = buildItemMap([rawAWithStock, rawB, itemWithBp]);
+    const result = calculate([{ itemId: "product", quantity: 2 }], itemMap);
+
+    // rawA needed=3, stock=3 → toBuy=0, inStock=3
+    const a = result.rawMaterials.find((r) => r.itemId === "rawA");
+    expect(a?.toBuy).toBe(0);
+    expect(a?.inStock).toBe(3);
+  });
+
+  it("blueprint outputQty > 1 rounds runs up and scales inputs", () => {
+    const itemMap = buildItemMap([rawA, rawB, itemWithBp]);
+    // outputQty=2, need 5 → ceil(5/2)=3 runs → rawA×9, rawB×3
+    const result = calculate([{ itemId: "product", quantity: 5 }], itemMap);
+    const a = result.rawMaterials.find((r) => r.itemId === "rawA");
+    const b = result.rawMaterials.find((r) => r.itemId === "rawB");
+    expect(a?.totalNeeded).toBe(9);
+    expect(b?.totalNeeded).toBe(3);
+    const inter = result.intermediates.find((i) => i.itemId === "product");
+    expect(inter?.blueprintRuns).toBe(3);
+  });
+
+  it("item without blueprint and not raw/found falls into rawMaterials", () => {
+    const mystery = makeItem({ id: "mystery", name: "Mystery", isRawMaterial: false, isFound: false });
+    const caller = makeItem({
+      id: "caller",
+      name: "Caller",
+      blueprints: [{ id: "bpC", outputQty: 1, factory: "", isDefault: true, inputs: [{ itemId: "mystery", quantity: 2 }] }],
+    });
+    const itemMap = buildItemMap([mystery, caller]);
+    const result = calculate([{ itemId: "caller", quantity: 1 }], itemMap);
+    const raw = result.rawMaterials.find((r) => r.itemId === "mystery");
+    expect(raw).toBeDefined();
+    expect(raw?.toBuy).toBe(2);
+  });
+
+  it("diamond dependency: shared raw material is not double-counted", () => {
+    // A requires B and C; B requires rawA×2; C requires rawA×3
+    // Total rawA needed: 2 + 3 = 5 (not double-counted)
+    const itemB = makeItem({
+      id: "itemB", name: "B",
+      blueprints: [{ id: "bpB", outputQty: 1, factory: "", isDefault: true, inputs: [{ itemId: "rawA", quantity: 2 }] }],
+    });
+    const itemC = makeItem({
+      id: "itemC", name: "C",
+      blueprints: [{ id: "bpC", outputQty: 1, factory: "", isDefault: true, inputs: [{ itemId: "rawA", quantity: 3 }] }],
+    });
+    const itemA = makeItem({
+      id: "itemA", name: "A",
+      blueprints: [{ id: "bpA", outputQty: 1, factory: "", isDefault: true, inputs: [{ itemId: "itemB", quantity: 1 }, { itemId: "itemC", quantity: 1 }] }],
+    });
+    const itemMap = buildItemMap([rawA, itemB, itemC, itemA]);
+    const result = calculate([{ itemId: "itemA", quantity: 1 }], itemMap);
+    const a = result.rawMaterials.find((r) => r.itemId === "rawA");
+    expect(a?.totalNeeded).toBe(5);
+    expect(a?.toBuy).toBe(5);
+  });
+
+  it("diamond dependency: shared raw material stock deducted only once", () => {
+    const rawAWithStock = { ...rawA, stock: 3 };
+    const itemB = makeItem({
+      id: "itemB", name: "B",
+      blueprints: [{ id: "bpB", outputQty: 1, factory: "", isDefault: true, inputs: [{ itemId: "rawA", quantity: 2 }] }],
+    });
+    const itemC = makeItem({
+      id: "itemC", name: "C",
+      blueprints: [{ id: "bpC", outputQty: 1, factory: "", isDefault: true, inputs: [{ itemId: "rawA", quantity: 3 }] }],
+    });
+    const itemA = makeItem({
+      id: "itemA", name: "A",
+      blueprints: [{ id: "bpA", outputQty: 1, factory: "", isDefault: true, inputs: [{ itemId: "itemB", quantity: 1 }, { itemId: "itemC", quantity: 1 }] }],
+    });
+    const itemMap = buildItemMap([rawAWithStock, itemB, itemC, itemA]);
+    const result = calculate([{ itemId: "itemA", quantity: 1 }], itemMap);
+    const a = result.rawMaterials.find((r) => r.itemId === "rawA");
+    // total needed=5, stock=3 → toBuy=2
+    expect(a?.totalNeeded).toBe(5);
+    expect(a?.toBuy).toBe(2);
+    expect(a?.inStock).toBe(3);
+  });
+
   it("includes decomposition suggestions for raw materials", () => {
     const rawWithDecomp = makeItem({
       id: "ore",

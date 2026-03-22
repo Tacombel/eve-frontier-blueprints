@@ -28,18 +28,25 @@ export default function OreSection({
 
   if (decomps.length === 0 && directOres.length === 0) return null;
 
-  const suggestion = computeOreSubstitution(decomps, cargoCapacity);
+  // Units still pending to mine for each ore (after stock)
+  const toMineMap = new Map<string, number>();
+  for (const d of decomps) {
+    toMineMap.set(d.sourceItemId, Math.max(0, d.unitsToDecompose - (stock[d.sourceItemId] ?? d.actualStock)));
+  }
 
-  // Compute picos for display
+  const suggestion = computeOreSubstitution(decomps, cargoCapacity, toMineMap);
+
+  // Compute picos for display using pending-to-mine volume
   const picoMap = new Map<string, OreWithPico>();
   if (cargoCapacity > 0) {
     for (const d of decomps) {
-      const totalVolume = d.unitsToDecompose * d.volumePerUnit;
+      const unitsToMine = toMineMap.get(d.sourceItemId) ?? 0;
+      const totalVolume = unitsToMine * d.volumePerUnit;
       const pico = totalVolume % cargoCapacity;
       picoMap.set(d.sourceItemId, {
         d,
         totalVolume,
-        trips: Math.ceil(totalVolume / cargoCapacity),
+        trips: unitsToMine > 0 ? Math.ceil(totalVolume / cargoCapacity) : 0,
         pico,
         spare: pico < 0.0001 ? 0 : cargoCapacity - pico,
       });
@@ -104,7 +111,10 @@ export default function OreSection({
             ))}
           </div>
           {(() => {
-            const totalTrips = decomps.reduce((s, d) => s + Math.ceil(d.unitsToDecompose * d.volumePerUnit / cargoCapacity), 0);
+            const totalTrips = decomps.reduce((s, d) => {
+                    const unitsToMine = toMineMap.get(d.sourceItemId) ?? 0;
+                    return unitsToMine > 0 ? s + Math.ceil((unitsToMine * d.volumePerUnit) / cargoCapacity) : s;
+                  }, 0);
             const extraTripsTotal = suggestion.adjustments.reduce((s, a) => s + a.extraTrips, 0);
             const saved = suggestion.target.trips - extraTripsTotal;
             const optimized = totalTrips - saved;
@@ -273,8 +283,9 @@ export default function OreSection({
           </span>
           {cargoCapacity > 0 && (() => {
             const totalTrips = decomps.reduce((sum, d) => {
-              const totalVolume = d.unitsToDecompose * d.volumePerUnit;
-              return sum + Math.ceil(totalVolume / cargoCapacity);
+              const unitsToMine = toMineMap.get(d.sourceItemId) ?? 0;
+              if (unitsToMine === 0) return sum;
+              return sum + Math.ceil((unitsToMine * d.volumePerUnit) / cargoCapacity);
             }, 0);
             return (
               <span className="text-sm text-gray-400">

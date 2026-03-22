@@ -78,6 +78,36 @@ export async function enrichAsteroids(result: CalculationResult): Promise<void> 
   }
 }
 
+/**
+ * Apply stock deltas to the DB, clamping consumed items to 0 (never go negative).
+ * Positive deltas (produced items) use increment; negative deltas read current stock first.
+ */
+export async function applyStockDeltas(deltas: Map<string, number>): Promise<void> {
+  const consumedIds = [...deltas.entries()].filter(([, d]) => d < 0).map(([id]) => id);
+  const currentStocks = consumedIds.length > 0
+    ? await prisma.stock.findMany({ where: { itemId: { in: consumedIds } } })
+    : [];
+  const stockMap = new Map(currentStocks.map((s) => [s.itemId, s.quantity]));
+
+  await prisma.$transaction(
+    [...deltas.entries()].map(([id, delta]) => {
+      if (delta < 0) {
+        const newQty = Math.max(0, (stockMap.get(id) ?? 0) + delta);
+        return prisma.stock.upsert({
+          where: { itemId: id },
+          update: { quantity: newQty },
+          create: { itemId: id, quantity: 0 },
+        });
+      }
+      return prisma.stock.upsert({
+        where: { itemId: id },
+        update: { quantity: { increment: delta } },
+        create: { itemId: id, quantity: delta },
+      });
+    })
+  );
+}
+
 /** Build stock deltas from a calculation result: consume materials, produce final products. */
 export function buildStockDeltas(result: CalculationResult): Map<string, number> {
   const deltas = new Map<string, number>();

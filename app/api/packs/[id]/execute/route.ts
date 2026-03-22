@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { calculate, buildItemMap } from "@/lib/calculator";
-import { fetchCalcItems, buildStockDeltas } from "@/lib/calc-helpers";
+import { fetchCalcItems, buildStockDeltas, applyStockDeltas } from "@/lib/calc-helpers";
 
 export async function POST(req: NextRequest, { params }: { params: { id: string } }) {
   const ignoreParam = req.nextUrl.searchParams.get("ignore");
@@ -40,16 +40,6 @@ export async function POST(req: NextRequest, { params }: { params: { id: string 
   }
 
   const deltas = buildStockDeltas(result);
-
-  await prisma.$transaction(
-    [...deltas.entries()].map(([itemId, delta]) =>
-      prisma.stock.upsert({
-        where: { itemId },
-        update: { quantity: { increment: delta } },
-        create: { itemId, quantity: Math.max(0, delta) },
-      })
-    )
-  );
-
+  await applyStockDeltas(deltas);
   return NextResponse.json({ ok: true });
 }

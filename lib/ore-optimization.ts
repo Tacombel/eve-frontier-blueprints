@@ -1,5 +1,7 @@
 import type { DecompositionResult } from "./calculator";
 
+const EPSILON = 0.0001;
+
 export interface OreWithPico {
   d: DecompositionResult;
   trips: number;
@@ -24,19 +26,21 @@ export interface OreSubstitution {
 
 export function computeOreSubstitution(
   decomps: DecompositionResult[],
-  cargoCapacity: number
+  cargoCapacity: number,
+  toMineMap?: Map<string, number>
 ): OreSubstitution | null {
   if (!cargoCapacity || decomps.length < 2) return null;
 
   const ores: OreWithPico[] = decomps.map((d) => {
-    const totalVolume = d.unitsToDecompose * d.volumePerUnit;
+    const unitsToMine = toMineMap?.get(d.sourceItemId) ?? d.unitsToDecompose;
+    const totalVolume = unitsToMine * d.volumePerUnit;
     const pico = totalVolume % cargoCapacity;
     return {
       d,
       totalVolume,
       trips: Math.ceil(totalVolume / cargoCapacity),
       pico,
-      spare: pico < 0.0001 ? 0 : cargoCapacity - pico,
+      spare: pico < EPSILON ? 0 : cargoCapacity - pico,
     };
   });
 
@@ -69,11 +73,14 @@ export function computeOreSubstitution(
       if (providers.length === 0) { feasible = false; break; }
 
       const best = providers.reduce((b, o) => {
+        if (o.d.unitsToDecompose <= 0) return b;
+        if (b.d.unitsToDecompose <= 0) return o;
         const rateO = o.d.outputs.find((x) => x.itemId === mat.itemId)!.quantityObtained / o.d.unitsToDecompose;
         const rateB = b.d.outputs.find((x) => x.itemId === mat.itemId)!.quantityObtained / b.d.unitsToDecompose;
         return rateO > rateB ? o : b;
       });
 
+      if (best.d.unitsToDecompose <= 0) { feasible = false; break; }
       const rate = best.d.outputs.find((x) => x.itemId === mat.itemId)!.quantityObtained / best.d.unitsToDecompose;
       const extraRaw = Math.ceil(needed / rate);
       const extra = Math.ceil(extraRaw / best.d.inputQty) * best.d.inputQty;
@@ -95,7 +102,7 @@ export function computeOreSubstitution(
     const adjustments: OreAdjustment[] = Array.from(extraPerOre.entries()).map(([oreId, extraUnits]) => {
       const ore = ores.find((o) => o.d.sourceItemId === oreId)!;
       const extraVolume = extraUnits * ore.d.volumePerUnit;
-      const fitsInSpare = extraVolume <= ore.spare + 0.0001;
+      const fitsInSpare = extraVolume <= ore.spare + EPSILON;
       const overSpare = Math.max(0, extraVolume - ore.spare);
       const extraTrips = fitsInSpare ? 0 : Math.ceil(overSpare / cargoCapacity);
       return { ore, extraUnits, newTotal: ore.d.unitsToDecompose + extraUnits, fitsInSpare, extraTrips };
