@@ -289,7 +289,7 @@ export default function PackCalculation({ packId }: { packId: string }) {
                 <th className="text-left pb-1 pr-4">Material</th>
                 <th className="text-right pb-1 pr-4">Needed</th>
                 <th className="text-right pb-1 pr-4">Stock</th>
-                <th className="text-right pb-1">To Buy/Mine</th>
+                <th className="text-right pb-1">To Buy/Refine</th>
                 <th />
               </tr>
             </thead>
