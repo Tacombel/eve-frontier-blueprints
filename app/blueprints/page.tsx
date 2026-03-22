@@ -123,9 +123,12 @@ export default function BlueprintsPage() {
   }
 
   const inputItems = allItems.filter((i) => i.id !== outputItemId);
-  const filteredGrouped = search.trim()
+  const searchFiltered = search.trim()
     ? grouped.filter(({ item }) => item.name.toLowerCase().includes(search.trim().toLowerCase()))
     : grouped;
+  const filteredGrouped = calcItemId
+    ? searchFiltered.filter(({ item }) => item.id === calcItemId)
+    : searchFiltered;
 
   return (
     <div className="max-w-4xl mx-auto">

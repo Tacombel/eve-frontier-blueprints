@@ -8,11 +8,12 @@ interface Item {
   isRawMaterial: boolean;
   isFound: boolean;
   isFinalProduct: boolean;
+  volume: number;
   stock: { quantity: number } | null;
   blueprints: { id: string; factory: string; outputQty: number; isDefault: boolean }[];
 }
 
-const emptyForm = { name: "", isRawMaterial: false, isFound: false, isFinalProduct: false };
+const emptyForm = { name: "", isRawMaterial: false, isFound: false, isFinalProduct: false, volume: 0 };
 
 export default function ItemsPage() {
   const [items, setItems] = useState<Item[]>([]);
@@ -44,7 +45,7 @@ export default function ItemsPage() {
   }
 
   function openEdit(item: Item) {
-    setForm({ name: item.name, isRawMaterial: item.isRawMaterial, isFound: item.isFound, isFinalProduct: item.isFinalProduct });
+    setForm({ name: item.name, isRawMaterial: item.isRawMaterial, isFound: item.isFound, isFinalProduct: item.isFinalProduct, volume: item.volume });
     setEditId(item.id);
     setError("");
     setShowForm(true);
@@ -92,6 +93,7 @@ export default function ItemsPage() {
             <tr className="text-left text-gray-400 border-b border-gray-800">
               <th className="pb-2 pr-4">Name</th>
               <th className="pb-2 pr-4">Type</th>
+              <th className="pb-2 pr-4 text-right">Volume</th>
               <th className="pb-2 pr-4">Stock</th>
               <th className="pb-2 pr-4">Blueprints</th>
               <th className="pb-2"></th>
@@ -107,6 +109,9 @@ export default function ItemsPage() {
                   {item.blueprints.length > 0 && !item.isFinalProduct && <span className="badge badge-gray">Intermediate</span>}
                   {item.isFinalProduct && <span className="badge badge-cyan">Final</span>}
                   {!item.isRawMaterial && !item.isFound && !item.isFinalProduct && item.blueprints.length === 0 && <span className="text-gray-600">—</span>}
+                </td>
+                <td className="py-2 pr-4 text-right text-gray-400">
+                  {item.volume > 0 ? <span>{item.volume} m³</span> : <span className="text-gray-600">—</span>}
                 </td>
                 <td className="py-2 pr-4 text-gray-400">{item.stock?.quantity ?? 0}</td>
                 <td className="py-2 pr-4 text-gray-400">
@@ -162,7 +167,7 @@ export default function ItemsPage() {
               <span className="label">Raw material (found/looted)</span>
             </label>
 
-            <label className="flex items-center gap-3 mb-6 cursor-pointer">
+            <label className="flex items-center gap-3 mb-4 cursor-pointer">
               <input
                 type="checkbox"
                 className="toggle"
@@ -170,6 +175,21 @@ export default function ItemsPage() {
                 onChange={(e) => setForm({ ...form, isFinalProduct: e.target.checked })}
               />
               <span className="label">Final Product (top of chain)</span>
+            </label>
+
+            <label className="block mb-6">
+              <span className="label">Volume (m³ per unit)</span>
+              <div className="flex items-center gap-2 mt-1">
+                <input
+                  type="number"
+                  min={0}
+                  step={0.01}
+                  className="input w-32"
+                  value={form.volume}
+                  onChange={(e) => setForm({ ...form, volume: Math.max(0, Number(e.target.value)) })}
+                />
+                <span className="text-gray-500 text-sm">m³</span>
+              </div>
             </label>
 
             <div className="flex gap-3 justify-end">

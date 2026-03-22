@@ -129,7 +129,7 @@ export default function PackCalculation({ packId }: { packId: string }) {
       {stockSufficient && (
         <div className="flex items-center gap-2 rounded-md bg-green-900/30 border border-green-800 px-3 py-2">
           <span className="text-green-400 text-base">✓</span>
-          <span className="text-green-300 text-sm font-medium">Stock suficiente</span>
+          <span className="text-green-300 text-sm font-medium">Stock sufficient</span>
         </div>
       )}
       {/* Final products stock */}

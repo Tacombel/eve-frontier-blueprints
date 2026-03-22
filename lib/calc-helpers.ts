@@ -22,6 +22,7 @@ export async function fetchCalcItems(): Promise<CalcItem[]> {
     isRawMaterial: item.isRawMaterial,
     isFound: item.isFound,
     stock: item.stock?.quantity ?? 0,
+    volume: item.volume,
     blueprints: item.blueprints.map((bp) => ({
       id: bp.id,
       outputQty: bp.outputQty,

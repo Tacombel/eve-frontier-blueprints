@@ -23,14 +23,14 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
   const body = await req.json();
-  const { name, isRawMaterial = false, isFound = false, isFinalProduct = false } = body;
+  const { name, isRawMaterial = false, isFound = false, isFinalProduct = false, volume = 0 } = body;
 
   if (!name?.trim()) {
     return NextResponse.json({ error: "Name is required" }, { status: 400 });
   }
 
   const item = await prisma.item.create({
-    data: { name: normalizeName(name), isRawMaterial, isFound, isFinalProduct },
+    data: { name: normalizeName(name), isRawMaterial, isFound, isFinalProduct, volume },
     include: { stock: true, blueprints: { select: { id: true, factory: true, outputQty: true, isDefault: true } } },
   });
 

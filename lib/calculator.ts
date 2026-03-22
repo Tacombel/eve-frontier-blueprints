@@ -17,6 +17,7 @@ export interface CalcItem {
   isRawMaterial: boolean;
   isFound: boolean;
   stock: number;
+  volume: number;
   blueprints: CalcBlueprint[];
   decomposition: CalcDecomposition | null;
 }
@@ -53,6 +54,7 @@ export interface DecompositionResult {
   sourceItemId: string;
   sourceItemName: string;
   unitsToDecompose: number;
+  volumePerUnit: number;
   inputQty: number;      // units per decomposition run
   runs: number;
   actualStock: number;
@@ -286,6 +288,7 @@ export function calculate(
       sourceItemId,
       sourceItemName: source.name,
       unitsToDecompose,
+      volumePerUnit: source.volume,
       inputQty: dec.inputQty,
       runs,
       actualStock: source.stock,
