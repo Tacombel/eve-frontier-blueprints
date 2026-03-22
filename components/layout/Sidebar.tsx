@@ -65,17 +65,28 @@ export default function Sidebar() {
       </nav>
 
       {role === "ADMIN" && (
-        <div className="px-2 pb-2">
+        <div className="px-2 pb-2 space-y-1">
           <Link
             href="/admin"
             className={`flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors ${
-              pathname.startsWith("/admin")
+              pathname === "/admin"
                 ? "bg-cyan-900/50 text-cyan-300"
                 : "text-gray-600 hover:bg-gray-800 hover:text-gray-400"
             }`}
           >
             <span className="w-5 text-center shrink-0">⚙</span>
             Admin
+          </Link>
+          <Link
+            href="/admin/backup"
+            className={`flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors ${
+              pathname.startsWith("/admin/backup")
+                ? "bg-cyan-900/50 text-cyan-300"
+                : "text-gray-600 hover:bg-gray-800 hover:text-gray-400"
+            }`}
+          >
+            <span className="w-5 text-center shrink-0">💾</span>
+            Backup
           </Link>
         </div>
       )}
