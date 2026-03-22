@@ -45,13 +45,20 @@ Create a `.env` file in the project root with the following content:
 DATABASE_URL="file:./prisma/dev.db"
 ```
 
-Apply the migrations to create the database structure, then load the shared game data:
+Apply the migrations to create the database structure:
 
 ```bash
 npx prisma migrate deploy
 npx prisma generate
+```
+
+Then load the shared game data:
+
+```bash
 npm run db:seed
 ```
+
+> **Note:** `npm run db:seed` does a **full reset** of all game data (items, blueprints, decompositions, factories, asteroid types) and replaces it with the contents of `prisma/seed.json`. Your personal stock and packs are **never affected**.
 
 ### 4. Start the app
 
@@ -69,15 +76,22 @@ Game data (items, blueprints, decompositions, factories, asteroid types) is stor
 
 ### Sync the latest data from GitHub
 
-When someone pushes new data to `seed.json`, pull the changes and import them via the app:
+When someone pushes new data to `seed.json`, pull the changes:
 
 ```bash
 git pull
 ```
 
-Then open the app, go to **Admin → Merge import**. A preview will show what's new before anything is applied. Your stock is never affected.
+Then open the app and go to **Admin**. You have two import options:
 
-> If you prefer the terminal: `npm run db:seed` (full reset, also preserves stock).
+| Option | What it does |
+|--------|-------------|
+| **Merge import** | Adds or updates records from `seed.json`. Existing data not in the file is left untouched. Safe for day-to-day updates. |
+| **Reset import** | Deletes **all** game data and replaces it with `seed.json`. Use this to fix inconsistencies or start clean. |
+
+> Your stock and packs are never affected by either import.
+
+If you prefer the terminal, `npm run db:seed` is equivalent to a full reset import.
 
 ### Contribute data
 
