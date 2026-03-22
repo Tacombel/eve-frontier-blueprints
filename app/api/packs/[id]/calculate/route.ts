@@ -31,10 +31,13 @@ export async function GET(req: NextRequest, { params }: { params: { id: string }
     result.finalProducts = pack.items.map((pi) => {
       const item = itemMap.get(pi.itemId);
       const blueprint = item?.blueprints.find((b) => b.isDefault) ?? item?.blueprints[0];
+      const outputQty = blueprint?.outputQty ?? 1;
       return {
         itemId: pi.itemId,
         itemName: item?.name ?? pi.itemId,
         quantityNeeded: pi.quantity,
+        outputQty,
+        blueprintRuns: Math.ceil(pi.quantity / outputQty),
         actualStock: item?.stock ?? 0,
         factory: blueprint?.factory || undefined,
         ignored: ignoredIds.has(pi.itemId),

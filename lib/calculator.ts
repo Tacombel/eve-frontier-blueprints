@@ -70,6 +70,8 @@ export interface FinalProductResult {
   itemId: string;
   itemName: string;
   quantityNeeded: number;
+  outputQty: number;
+  blueprintRuns: number;
   actualStock: number;
   factory?: string;
   ignored?: boolean;

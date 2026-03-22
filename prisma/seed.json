@@ -138,6 +138,12 @@
       "isFinalProduct": false
     },
     {
+      "name": "Nursery",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
       "name": "Palladium",
       "isRawMaterial": false,
       "isFound": true,
@@ -561,6 +567,18 @@
         {
           "item": "Fossilized exotronics",
           "quantity": 5
+        }
+      ]
+    },
+    {
+      "outputItem": "Nursery",
+      "factory": "Build",
+      "outputQty": 1,
+      "isDefault": true,
+      "inputs": [
+        {
+          "item": "Building foam",
+          "quantity": 20
         }
       ]
     },

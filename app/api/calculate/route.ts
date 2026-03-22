@@ -4,25 +4,30 @@ import { fetchCalcItems, enrichAsteroids } from "@/lib/calc-helpers";
 
 export async function GET(req: NextRequest) {
   const itemId = req.nextUrl.searchParams.get("itemId");
-  const quantity = Number(req.nextUrl.searchParams.get("quantity") ?? "1");
+  const runs = Number(req.nextUrl.searchParams.get("runs") ?? "1");
 
   if (!itemId) return NextResponse.json({ error: "itemId required" }, { status: 400 });
-  if (quantity < 1) return NextResponse.json({ error: "quantity must be >= 1" }, { status: 400 });
+  if (runs < 1) return NextResponse.json({ error: "runs must be >= 1" }, { status: 400 });
 
   const itemMap = buildItemMap(await fetchCalcItems());
 
   try {
+    const outputItem = itemMap.get(itemId);
+    const blueprint = outputItem?.blueprints.find((b) => b.isDefault) ?? outputItem?.blueprints[0];
+    const outputQty = blueprint?.outputQty ?? 1;
+    const quantity = runs * outputQty;
+
     const result = calculate([{ itemId, quantity }], itemMap);
 
     // Move the output item from intermediates to finalProducts
     result.intermediates = result.intermediates.filter((i) => i.itemId !== itemId);
-    const outputItem = itemMap.get(itemId);
-    const blueprint = outputItem?.blueprints.find((b) => b.isDefault) ?? outputItem?.blueprints[0];
     result.finalProducts = [
       {
         itemId,
         itemName: outputItem?.name ?? itemId,
         quantityNeeded: quantity,
+        outputQty,
+        blueprintRuns: runs,
         actualStock: outputItem?.stock ?? 0,
         factory: blueprint?.factory || undefined,
         ignored: false,
