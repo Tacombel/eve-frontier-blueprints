@@ -41,7 +41,7 @@ export async function POST() {
   try { unlinkSync(`${keyPath}.pub`); } catch { /* no existía */ }
 
   try {
-    execFileSync("ssh-keygen", ["-t", "ed25519", "-N", "", "-f", keyPath, "-C", "eve-backup"], {
+    execFileSync("ssh-keygen", ["-t", "ed25519", "-N", "", "-f", keyPath, "-C", "ef_industry_backup"], {
       timeout: 10_000,
     });
   } catch (err: unknown) {
