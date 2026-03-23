@@ -31,13 +31,14 @@ COPY --from=builder --chown=nextjs:nodejs /app/public ./public
 
 # Prisma: schema, migrations and CLI for migrate deploy at startup
 COPY --from=builder --chown=nextjs:nodejs /app/prisma ./prisma
-COPY --from=builder --chown=nextjs:nodejs /app/node_modules/.bin/prisma ./node_modules/.bin/prisma
+RUN ln -sf /app/node_modules/prisma/build/index.js /app/node_modules/.bin/prisma
 COPY --from=builder --chown=nextjs:nodejs /app/node_modules/prisma ./node_modules/prisma
 COPY --from=builder --chown=nextjs:nodejs /app/node_modules/@prisma ./node_modules/@prisma
 
 COPY --chown=nextjs:nodejs docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
+RUN mkdir -p /data && chown nextjs:nodejs /data
 VOLUME ["/data"]
 EXPOSE 3000
 
