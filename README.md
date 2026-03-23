@@ -60,9 +60,9 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
-### Option B — Docker *(Soon)*
+### Option B — Docker
 
-> Docker support is coming. A pre-built image for `linux/amd64` and `linux/arm64` will be available on Docker Hub.
+> Deploy via Docker using `docker-compose up --build -d`. Requires cloning the repo on the server first.
 
 ---
 

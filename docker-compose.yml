@@ -1,8 +1,7 @@
 services:
   app:
-    image: tacombel/eve-frontier-blueprints:latest
+    build: .
     container_name: eve-frontier-blueprints
-    platform: linux/arm64
     ports:
       - "${HOST_PORT:-3000}:3000"
     environment:
