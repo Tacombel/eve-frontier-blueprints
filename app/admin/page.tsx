@@ -11,7 +11,7 @@ interface User {
 }
 
 export default function AdminPage() {
-  const { user: me } = useSession();
+  const { user: me, isSuperAdmin: amISuperAdmin } = useSession();
 
   // Users
   const [users, setUsers] = useState<User[]>([]);
@@ -38,8 +38,7 @@ export default function AdminPage() {
 
   useEffect(() => { loadUsers(); }, []);
 
-  async function toggleRole(user: User) {
-    const newRole = user.role === "ADMIN" ? "USER" : "ADMIN";
+  async function setRole(user: User, newRole: string) {
     setUserError("");
     const res = await fetch(`/api/admin/users/${user.id}`, {
       method: "PATCH",
@@ -144,17 +143,44 @@ export default function AdminPage() {
             </thead>
             <tbody>
               {users.map((u) => {
-                const isSelfById = selfId === u.id;
+                const isSelf = selfId === u.id;
+                const isTargetSA = u.role === "SUPERADMIN";
                 const isResetting = resetId === u.id;
+
+                // ADMIN cannot touch a SUPERADMIN
+                const canTouch = amISuperAdmin || !isTargetSA;
+
+                // Reset password: cannot reset own, cannot touch SA unless actor is SA
+                const canReset = !isSelf && canTouch;
+                const resetDisabledTitle = !canTouch
+                  ? "Only a superadmin can reset a superadmin's password"
+                  : isSelf
+                  ? "You cannot reset your own password here"
+                  : undefined;
+
+                // Delete: ADMIN cannot delete self; SA can delete self if backend allows it
+                const canDelete = canTouch && (!isSelf || amISuperAdmin);
+                const deleteDisabledTitle = !canTouch
+                  ? "Only a superadmin can delete a superadmin"
+                  : isSelf && !amISuperAdmin
+                  ? "You cannot delete your own account"
+                  : undefined;
+
                 return (
                   <Fragment key={u.id}>
                     <tr className="border-b border-gray-800/50 hover:bg-gray-800/30">
                       <td className="py-2 pr-4 font-medium text-gray-200">
                         {u.username}
-                        {isSelfById && <span className="ml-2 text-xs text-gray-600">(you)</span>}
+                        {isSelf && <span className="ml-2 text-xs text-gray-600">(you)</span>}
                       </td>
                       <td className="py-2 pr-4">
-                        <span className={`badge ${u.role === "ADMIN" ? "badge-cyan" : "badge-gray"}`}>
+                        <span className={`badge ${
+                          u.role === "SUPERADMIN"
+                            ? "badge-amber"
+                            : u.role === "ADMIN"
+                            ? "badge-cyan"
+                            : "badge-gray"
+                        }`}>
                           {u.role}
                         </span>
                       </td>
@@ -164,24 +190,61 @@ export default function AdminPage() {
                       <td className="py-2 text-right space-x-2 whitespace-nowrap">
                         <button
                           onClick={() => isResetting ? cancelReset() : openReset(u.id)}
-                          title="Reset password"
-                          disabled={isResetting && !resetPw && !resetError}
+                          title={resetDisabledTitle ?? "Reset password"}
+                          disabled={!canReset || (isResetting && !resetPw && !resetError)}
                           className={`btn-ghost text-xs disabled:opacity-30 disabled:cursor-not-allowed ${isResetting ? "text-gray-500" : ""}`}
                         >
                           {isResetting && !resetPw && !resetError ? "Resetting…" : isResetting ? "Cancel" : "Reset password"}
                         </button>
-                        <button
-                          onClick={() => toggleRole(u)}
-                          disabled={isSelfById}
-                          title={isSelfById ? "You cannot change your own role" : u.role === "ADMIN" ? "Demote to USER" : "Promote to ADMIN"}
-                          className="btn-ghost text-xs disabled:opacity-30 disabled:cursor-not-allowed"
-                        >
-                          {u.role === "ADMIN" ? "↓ USER" : "↑ ADMIN"}
-                        </button>
+
+                        {/* Role buttons */}
+                        {u.role === "USER" && (
+                          <button
+                            onClick={() => setRole(u, "ADMIN")}
+                            disabled={isSelf}
+                            title={isSelf ? "You cannot change your own role" : "Promote to ADMIN"}
+                            className="btn-ghost text-xs disabled:opacity-30 disabled:cursor-not-allowed"
+                          >
+                            ↑ ADMIN
+                          </button>
+                        )}
+                        {u.role === "ADMIN" && (
+                          <>
+                            <button
+                              onClick={() => setRole(u, "USER")}
+                              disabled={isSelf}
+                              title={isSelf ? "You cannot change your own role" : "Demote to USER"}
+                              className="btn-ghost text-xs disabled:opacity-30 disabled:cursor-not-allowed"
+                            >
+                              ↓ USER
+                            </button>
+                            {amISuperAdmin && (
+                              <button
+                                onClick={() => setRole(u, "SUPERADMIN")}
+                                disabled={isSelf}
+                                title={isSelf ? "You cannot change your own role" : "Promote to SUPERADMIN"}
+                                className="btn-ghost text-xs text-amber-500 disabled:opacity-30 disabled:cursor-not-allowed"
+                              >
+                                ↑ SA
+                              </button>
+                            )}
+                          </>
+                        )}
+                        {u.role === "SUPERADMIN" && amISuperAdmin && (
+                          <button
+                            onClick={() => setRole(u, "ADMIN")}
+                            disabled={isSelf}
+                            title={isSelf ? "You cannot change your own role" : "Demote to ADMIN"}
+                            className="btn-ghost text-xs disabled:opacity-30 disabled:cursor-not-allowed"
+                          >
+                            ↓ ADMIN
+                          </button>
+                        )}
+
                         <button
                           onClick={() => deleteUser(u)}
-                          disabled={isSelfById}
-                          title={isSelfById ? "You cannot delete your own account" : `Delete ${u.username}`}
+                          disabled={!canDelete}
+                          title={deleteDisabledTitle ?? `Delete ${u.username}`}
                           className="btn-ghost btn-danger text-xs disabled:opacity-30 disabled:cursor-not-allowed"
                         >
                           Del

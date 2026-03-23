@@ -1,11 +1,21 @@
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/prisma";
-import { requireAdmin } from "@/lib/auth";
+import { requireAdmin, getSession } from "@/lib/auth";
 
 export async function PATCH(req: NextRequest, { params }: { params: { id: string } }) {
   const authError = await requireAdmin();
   if (authError) return authError;
+
+  const session = await getSession();
+
+  const target = await prisma.user.findUnique({ where: { id: params.id }, select: { role: true } });
+  if (!target) return NextResponse.json({ error: "User not found" }, { status: 404 });
+
+  // Only SUPERADMIN can reset a SUPERADMIN's password
+  if (target.role === "SUPERADMIN" && session!.role !== "SUPERADMIN") {
+    return NextResponse.json({ error: "Only a superadmin can reset a superadmin's password" }, { status: 403 });
+  }
 
   const { newPassword } = await req.json();
 

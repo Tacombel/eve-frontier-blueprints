@@ -39,6 +39,10 @@
     @apply bg-cyan-900/50 text-cyan-400;
   }
 
+  .badge-amber {
+    @apply bg-amber-900/50 text-amber-400;
+  }
+
   .badge-blue {
     @apply bg-blue-900/50 text-blue-400;
   }

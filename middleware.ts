@@ -39,7 +39,7 @@ export async function middleware(req: NextRequest) {
     const { payload } = await jwtVerify(token, getSecret());
     const role = payload.role as string;
 
-    if ((isAdminPage || isAdminApi) && role !== "ADMIN") {
+    if ((isAdminPage || isAdminApi) && role !== "ADMIN" && role !== "SUPERADMIN") {
       if (isAdminApi) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
       const url = req.nextUrl.clone();
       url.pathname = "/";

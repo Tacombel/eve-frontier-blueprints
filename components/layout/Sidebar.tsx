@@ -64,7 +64,7 @@ export default function Sidebar() {
         })}
       </nav>
 
-      {role === "ADMIN" && (
+      {(role === "ADMIN" || role === "SUPERADMIN") && (
         <div className="px-2 pb-2 space-y-1">
           <Link
             href="/admin"
@@ -96,6 +96,7 @@ export default function Sidebar() {
           <div className="flex items-center justify-between mb-1">
             <Link href="/profile" className="text-gray-400 hover:text-gray-200 transition-colors truncate" title={username}>
               {username}
+              {role === "SUPERADMIN" && <span className="ml-1 text-amber-500 text-[10px]">SUPERADMIN</span>}
               {role === "ADMIN" && <span className="ml-1 text-cyan-600 text-[10px]">ADMIN</span>}
             </Link>
             <button

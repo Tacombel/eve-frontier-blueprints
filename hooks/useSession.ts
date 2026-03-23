@@ -20,7 +20,8 @@ export function useSession() {
   return {
     user,
     isLoading: user === undefined,
-    isAdmin: user?.role === "ADMIN",
+    isSuperAdmin: user?.role === "SUPERADMIN",
+    isAdmin: user?.role === "ADMIN" || user?.role === "SUPERADMIN",
     isLoggedIn: user != null,
   };
 }
