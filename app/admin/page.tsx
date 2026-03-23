@@ -118,7 +118,7 @@ export default function AdminPage() {
   );
 
   return (
-    <div className="max-w-2xl mx-auto space-y-6">
+    <div className="max-w-4xl mx-auto space-y-6">
       <h1 className="text-2xl font-bold text-gray-100">Admin</h1>
 
       {/* Users */}
@@ -187,7 +187,7 @@ export default function AdminPage() {
                       <td className="py-2 pr-4 text-gray-500 text-xs">
                         {new Date(u.createdAt).toLocaleDateString()}
                       </td>
-                      <td className="py-2 text-right space-x-2 whitespace-nowrap">
+                      <td className="py-2 text-right space-x-2">
                         <button
                           onClick={() => isResetting ? cancelReset() : openReset(u.id)}
                           title={resetDisabledTitle ?? "Reset password"}
