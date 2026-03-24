@@ -22,12 +22,25 @@ export default function Sidebar() {
   const router = useRouter();
   const [username, setUsername] = useState<string | null>(null);
   const [role, setRole] = useState<string | null>(null);
+  const [itemCount, setItemCount] = useState<number | null>(null);
+  const [blueprintCount, setBlueprintCount] = useState<number | null>(null);
 
   useEffect(() => {
     fetch("/api/auth/me")
       .then((r) => r.json())
       .then((data) => { setUsername(data?.username ?? null); setRole(data?.role ?? null); })
       .catch(() => { setUsername(null); setRole(null); });
+
+    Promise.all([fetch("/api/items"), fetch("/api/blueprints")])
+      .then(([iRes, bRes]) => Promise.all([iRes.json(), bRes.json()]))
+      .then(([items, blueprints]) => {
+        setItemCount(items.length);
+        setBlueprintCount(blueprints.length);
+      })
+      .catch(() => {
+        setItemCount(null);
+        setBlueprintCount(null);
+      });
   }, [pathname]);
 
   async function handleLogout() {
@@ -47,6 +60,7 @@ export default function Sidebar() {
       <nav className="flex-1 px-2 py-4 space-y-1">
         {navItems.map((item) => {
           const active = pathname.startsWith(item.href);
+          const count = item.label === "Items" ? itemCount : item.label === "Blueprints" ? blueprintCount : null;
           return (
             <Link
               key={item.href}
@@ -58,7 +72,8 @@ export default function Sidebar() {
               }`}
             >
               <span className="w-5 text-center shrink-0">{item.icon}</span>
-              {item.label}
+              <span className="flex-1">{item.label}</span>
+              {count !== null && <span className="text-xs text-gray-500">{count}</span>}
             </Link>
           );
         })}
