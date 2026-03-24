@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useSession } from "@/hooks/useSession";
 
-interface Item {
+interface ItemData {
   id: string;
   name: string;
   isRawMaterial: boolean;
@@ -14,11 +14,22 @@ interface Item {
   blueprints: { id: string; factory: string; outputQty: number; isDefault: boolean }[];
 }
 
+interface Blueprint {
+  outputItem?: { id: string };
+  factory?: string;
+}
+
+interface Decomposition {
+  sourceItem?: { id: string };
+  refinery?: string;
+  outputs?: Array<{ itemId: string }>;
+}
+
 const emptyForm = { name: "", isRawMaterial: false, isFound: false, isFinalProduct: false, volume: 0 };
 
 export default function ItemsPage() {
   const { isAdmin } = useSession();
-  const [items, setItems] = useState<Item[]>([]);
+  const [items, setItems] = useState<ItemData[]>([]);
   const [totalItems, setTotalItems] = useState(0);
   const [search, setSearch] = useState("");
   const [showOre, setShowOre] = useState(false);
@@ -47,22 +58,19 @@ export default function ItemsPage() {
     const decomps = await decompsRes.json();
     const bps = await bpsRes.json();
 
-    const bpOutputIds = new Set(bps.map((b: any) => b.outputItem?.id).filter(Boolean));
-    const decompSourceIdSet = new Set(decomps.map((d: any) => d.sourceItem?.id).filter(Boolean));
-    const loot = allItems.filter((i: any) => !bpOutputIds.has(i.id) && !decompSourceIdSet.has(i.id));
-    const lootIdSet = new Set(loot.map((i: any) => i.id));
+    const bpOutputIds = new Set<string>(bps.map((b: Blueprint) => b.outputItem?.id).filter((id: string | undefined): id is string => Boolean(id)));
 
     // Loot = items sin blueprint AND no ores (raw materials) AND no outputs de descomposición
-    const decompOutputIds = new Set();
-    decomps.forEach((d: any) => {
+    const decompOutputIds = new Set<string>();
+    decomps.forEach((d: Decomposition) => {
       if (d.outputs && Array.isArray(d.outputs)) {
-        d.outputs.forEach((o: any) => decompOutputIds.add(o.itemId));
+        d.outputs.forEach((o) => decompOutputIds.add(o.itemId));
       }
     });
-    const trueLoot = allItems.filter((i: any) =>
+    const trueLoot = allItems.filter((i: ItemData) =>
       !bpOutputIds.has(i.id) && !i.isRawMaterial && !decompOutputIds.has(i.id)
     );
-    const trueLootIdSet = new Set(trueLoot.map((i: any) => i.id));
+    const trueLootIdSet = new Set<string>(trueLoot.map((i: ItemData) => i.id));
 
     // Build recipes map: itemId -> { factories, refineries }
     const recipes = new Map<string, { factories: string[]; refineries: string[] }>();
@@ -90,7 +98,7 @@ export default function ItemsPage() {
       }
     }
 
-    const ores = allItems.filter((i: any) => i.isRawMaterial && !i.isFound && i.blueprints.length === 0 && !i.isFinalProduct);
+    const ores = allItems.filter((i: ItemData) => i.isRawMaterial && !i.isFound && i.blueprints.length === 0 && !i.isFinalProduct);
 
     setTotalItems(allItems.length);
     setOreCount(ores.length);
@@ -112,7 +120,7 @@ export default function ItemsPage() {
     setShowForm(true);
   }
 
-  function openEdit(item: Item) {
+  function openEdit(item: ItemData) {
     setForm({ name: item.name, isRawMaterial: item.isRawMaterial, isFound: item.isFound, isFinalProduct: item.isFinalProduct, volume: item.volume });
     setEditId(item.id);
     setError("");

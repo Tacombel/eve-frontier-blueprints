@@ -48,7 +48,7 @@ diff(
   "factories",
   legacy.factories.map((n: string) => ({ name: n })),
   current.factories.map((n: string) => ({ name: n })),
-  (x) => x.name
+  (x: { name: string }) => x.name
 );
 
 section("Refineries");
@@ -57,7 +57,7 @@ diff(
   "refineries",
   legacyRefineries.map((n) => ({ name: n })),
   current.refineries.map((n: string) => ({ name: n })),
-  (x) => x.name
+  (x: { name: string }) => x.name
 );
 
 section("Locations");
@@ -65,16 +65,16 @@ diff(
   "locations",
   legacy.locations.map((n: string) => ({ name: n })),
   current.locations.map((n: string) => ({ name: n })),
-  (x) => x.name
+  (x: { name: string }) => x.name
 );
 
 section("Items");
-diff(
+diff<{ name: string; isRawMaterial: boolean; isFound: boolean; isFinalProduct: boolean }>(
   "items",
   legacy.items,
   current.items,
-  (x: { name: string }) => x.name,
-  (x: { isRawMaterial: boolean; isFound: boolean; isFinalProduct: boolean }) => {
+  (x) => x.name,
+  (x) => {
     const flags = [];
     if (x.isRawMaterial) flags.push("raw");
     if (x.isFound) flags.push("found");
@@ -104,22 +104,22 @@ if (changed.length > 0) {
 }
 
 section("Blueprints");
-diff(
+diff<{ outputItem: string; factory: string; outputQty: number; inputs: { item: string; quantity: number }[] }>(
   "blueprints",
   legacy.blueprints,
   current.blueprints,
-  (x: { outputItem: string; factory: string }) => `${x.outputItem} @ ${x.factory}`,
-  (x: { outputQty: number; inputs: { item: string; quantity: number }[] }) =>
+  (x) => `${x.outputItem} @ ${x.factory}`,
+  (x) =>
     `→ ${x.outputQty}x  [${x.inputs.map((i) => `${i.quantity}x ${i.item}`).join(", ")}]`
 );
 
 section("Decompositions");
-diff(
+diff<{ sourceItem: string; refinery?: string; inputQty: number; outputs: { item: string; quantity: number }[] }>(
   "decompositions",
   legacy.decompositions,
   current.decompositions,
-  (x: { sourceItem: string; refinery?: string }) => `${x.sourceItem}${x.refinery ? " @ " + x.refinery : ""}`,
-  (x: { inputQty: number; outputs: { item: string; quantity: number }[] }) =>
+  (x) => `${x.sourceItem}${x.refinery ? " @ " + x.refinery : ""}`,
+  (x) =>
     `${x.inputQty}x → [${x.outputs.map((o) => `${o.quantity}x ${o.item}`).join(", ")}]`
 );
 
