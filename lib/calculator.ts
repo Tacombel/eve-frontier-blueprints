@@ -150,10 +150,9 @@ function resolve(
 
   const blueprint = pickBlueprint(item);
 
-  // Secondary refinery only applies to items that are neither raw nor found.
-  // Raw/found items are always leaves — the post-process greedy handles their
-  // ore/field-refinery decompositions.
-  const producedBy = (item.isRawMaterial || item.isFound) ? null : pickProducedBy(item);
+  // Secondary refinery applies to items that are produced by decompositions.
+  // Found items (looted directly) don't have secondary decompositions.
+  const producedBy = item.isFound ? null : pickProducedBy(item);
 
   // Leaf: no production path — accumulate raw demand
   if (!blueprint && !producedBy) {
@@ -230,7 +229,7 @@ export function calculate(
   for (const [itemId, needed] of demand) {
     const item = itemMap.get(itemId)!;
     const blueprint = pickBlueprint(item);
-    const producedBy = (item.isRawMaterial || item.isFound) ? null : pickProducedBy(item);
+    const producedBy = item.isFound ? null : pickProducedBy(item);
 
     if (!blueprint && !producedBy) {
       // Raw material leaf
