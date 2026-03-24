@@ -189,7 +189,7 @@ export default function ItemsPage() {
             </tr>
           </thead>
           <tbody>
-            {(showOre ? items.filter(i => i.isRawMaterial) : showLoot ? items.filter(i => lootIds.has(i.id)) : items).map((item) => (
+            {(showOre ? items.filter(i => i.isRawMaterial && !i.isFound && i.blueprints.length === 0 && !i.isFinalProduct) : showLoot ? items.filter(i => lootIds.has(i.id)) : items).map((item) => (
               <tr key={item.id} className="border-b border-gray-800/50 hover:bg-gray-800/30">
                 <td className="py-2 pr-4 font-medium text-gray-100">{item.name}</td>
                 <td className="py-2 pr-4 flex gap-1 flex-wrap">
