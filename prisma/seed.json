@@ -103,9 +103,10 @@
     },
     {
       "name": "Aromatic Carbon Weave",
-      "isRawMaterial": false,
+      "isRawMaterial": true,
       "isFound": false,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "volume": 1
     },
     {
       "name": "Assembler",
@@ -163,9 +164,10 @@
     },
     {
       "name": "Brine",
-      "isRawMaterial": false,
-      "isFound": true,
-      "isFinalProduct": false
+      "isRawMaterial": true,
+      "isFound": false,
+      "isFinalProduct": false,
+      "volume": 1
     },
     {
       "name": "Building Foam",
@@ -277,9 +279,10 @@
     },
     {
       "name": "Chitinous Organics",
-      "isRawMaterial": false,
+      "isRawMaterial": true,
       "isFound": false,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "volume": 1
     },
     {
       "name": "Coated Armor Plates II",
@@ -325,9 +328,10 @@
     },
     {
       "name": "D1 Fuel",
-      "isRawMaterial": false,
-      "isFound": true,
-      "isFinalProduct": false
+      "isRawMaterial": true,
+      "isFound": false,
+      "isFinalProduct": false,
+      "volume": 1
     },
     {
       "name": "D2 Fuel",
@@ -367,15 +371,17 @@
     },
     {
       "name": "EU-40 Fuel",
-      "isRawMaterial": false,
+      "isRawMaterial": true,
       "isFound": false,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "volume": 1
     },
     {
       "name": "Eupraxite",
-      "isRawMaterial": false,
+      "isRawMaterial": true,
       "isFound": false,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "volume": 1
     },
     {
       "name": "Explo-electro Nanitic Brace II",
@@ -433,9 +439,10 @@
     },
     {
       "name": "Feldspar Crystal Shards",
-      "isRawMaterial": false,
-      "isFound": true,
-      "isFinalProduct": false
+      "isRawMaterial": true,
+      "isFound": false,
+      "isFinalProduct": false,
+      "volume": 1
     },
     {
       "name": "Feldspar Crystals",
@@ -509,9 +516,10 @@
     },
     {
       "name": "Hydrocarbon Residue",
-      "isRawMaterial": false,
-      "isFound": true,
-      "isFinalProduct": false
+      "isRawMaterial": true,
+      "isFound": false,
+      "isFinalProduct": false,
+      "volume": 1
     },
     {
       "name": "Iridosmine Nodules",
@@ -522,15 +530,17 @@
     },
     {
       "name": "Iron-Rich Nodules",
-      "isRawMaterial": false,
-      "isFound": true,
-      "isFinalProduct": false
+      "isRawMaterial": true,
+      "isFound": false,
+      "isFinalProduct": false,
+      "volume": 1
     },
     {
       "name": "Kerogen Tar",
-      "isRawMaterial": false,
+      "isRawMaterial": true,
       "isFound": false,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "volume": 1
     },
     {
       "name": "Kinetic Field Array II",
@@ -625,9 +635,10 @@
     },
     {
       "name": "Nickel-Iron Veins",
-      "isRawMaterial": false,
-      "isFound": true,
-      "isFinalProduct": false
+      "isRawMaterial": true,
+      "isFound": false,
+      "isFinalProduct": false,
+      "volume": 1
     },
     {
       "name": "Nimble Armor Plates II",
@@ -661,15 +672,17 @@
     },
     {
       "name": "Palladium",
-      "isRawMaterial": false,
-      "isFound": true,
-      "isFinalProduct": false
+      "isRawMaterial": true,
+      "isFound": false,
+      "isFinalProduct": false,
+      "volume": 1
     },
     {
       "name": "Platinum-Group Veins",
-      "isRawMaterial": false,
-      "isFound": true,
-      "isFinalProduct": false
+      "isRawMaterial": true,
+      "isFound": false,
+      "isFinalProduct": false,
+      "volume": 1
     },
     {
       "name": "Platinum-Palladium Matrix",
@@ -809,9 +822,10 @@
     },
     {
       "name": "Salt",
-      "isRawMaterial": false,
-      "isFound": true,
-      "isFinalProduct": false
+      "isRawMaterial": true,
+      "isFound": false,
+      "isFinalProduct": false,
+      "volume": 1
     },
     {
       "name": "Salvaged Materials",
@@ -839,15 +853,17 @@
     },
     {
       "name": "Silica Grains",
-      "isRawMaterial": false,
-      "isFound": true,
-      "isFinalProduct": false
+      "isRawMaterial": true,
+      "isFound": false,
+      "isFinalProduct": false,
+      "volume": 1
     },
     {
       "name": "Silicon Dust",
-      "isRawMaterial": false,
-      "isFound": true,
-      "isFinalProduct": false
+      "isRawMaterial": true,
+      "isFound": false,
+      "isFinalProduct": false,
+      "volume": 1
     },
     {
       "name": "Skip",
@@ -863,9 +879,10 @@
     },
     {
       "name": "SOF-40 Fuel",
-      "isRawMaterial": false,
+      "isRawMaterial": true,
       "isFound": false,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "volume": 1
     },
     {
       "name": "Sojourn",
@@ -875,9 +892,10 @@
     },
     {
       "name": "Sophrogon",
-      "isRawMaterial": false,
+      "isRawMaterial": true,
       "isFound": false,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "volume": 1
     },
     {
       "name": "Stack Slice 31F",
@@ -1091,9 +1109,10 @@
     },
     {
       "name": "Tholin Aggregates",
-      "isRawMaterial": false,
-      "isFound": true,
-      "isFinalProduct": false
+      "isRawMaterial": true,
+      "isFound": false,
+      "isFinalProduct": false,
+      "volume": 1
     },
     {
       "name": "Tholin Nodules",
@@ -1176,9 +1195,10 @@
     },
     {
       "name": "Troilite Sulfide Grains",
-      "isRawMaterial": false,
-      "isFound": true,
-      "isFinalProduct": false
+      "isRawMaterial": true,
+      "isFound": false,
+      "isFinalProduct": false,
+      "volume": 1
     },
     {
       "name": "Tuho 7",
@@ -1242,9 +1262,10 @@
     },
     {
       "name": "Water Ice",
-      "isRawMaterial": false,
-      "isFound": true,
-      "isFinalProduct": false
+      "isRawMaterial": true,
+      "isFound": false,
+      "isFinalProduct": false,
+      "volume": 1
     },
     {
       "name": "Wend",
