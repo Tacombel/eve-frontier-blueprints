@@ -63,6 +63,10 @@
     @apply bg-green-900/60 text-green-300;
   }
 
+  .badge-loot {
+    @apply bg-emerald-900/60 text-emerald-300;
+  }
+
   .modal-backdrop {
     @apply fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4;
   }

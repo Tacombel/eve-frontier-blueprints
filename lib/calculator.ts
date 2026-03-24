@@ -101,12 +101,19 @@ export interface FinalProductResult {
   ignored?: boolean;
 }
 
+export interface CalculationWarning {
+  materialId: string;
+  materialName: string;
+  excludedSources: string[]; // names of excluded ores that could have produced it
+}
+
 export interface CalculationResult {
   rawMaterials: RawMaterialResult[];
   intermediates: IntermediateResult[];
   decompositions: DecompositionResult[];
   secondaryDecompositions: SecondaryDecompositionResult[];
   finalProducts: FinalProductResult[];
+  warnings?: CalculationWarning[];
 }
 
 type ItemMap = Map<string, CalcItem>;
@@ -318,6 +325,18 @@ export function calculate(
   secondaryDecompositions.sort((a, b) => a.sourceItemName.localeCompare(b.sourceItemName));
 
   // ── Primary ore decomposition suggestions ────────────────────────────────
+  // Full map (all ores, no exclusions) — used to detect blocked materials
+  const allDecompByOutput = new Map<string, CalcItem[]>();
+  for (const item of itemMap.values()) {
+    const dec = pickDecomposition(item);
+    if (!dec) continue;
+    for (const out of dec.outputs) {
+      const list = allDecompByOutput.get(out.itemId) ?? [];
+      list.push(item);
+      allDecompByOutput.set(out.itemId, list);
+    }
+  }
+  // Filtered map (exclusions applied) — used by greedy
   const decompByOutput = new Map<string, CalcItem[]>();
   for (const item of itemMap.values()) {
     if (options?.excludedOreIds?.has(item.id)) continue;
@@ -478,7 +497,26 @@ export function calculate(
   rawMaterials.sort((a, b) => a.itemName.localeCompare(b.itemName));
   intermediates.sort((a, b) => a.itemName.localeCompare(b.itemName));
 
-  return { rawMaterials, intermediates, decompositions, secondaryDecompositions, finalProducts: [] };
+  // Detect materials blocked by exclusions (have ore sources, but all are excluded)
+  const warnings: CalculationWarning[] = [];
+  if (options?.excludedOreIds?.size) {
+    for (const row of rawMaterials) {
+      if (row.toBuy <= 0) continue;
+      const allSources = allDecompByOutput.get(row.itemId) ?? [];
+      const availableSources = decompByOutput.get(row.itemId) ?? [];
+      if (allSources.length > 0 && availableSources.length === 0) {
+        warnings.push({
+          materialId: row.itemId,
+          materialName: row.itemName,
+          excludedSources: allSources
+            .filter((s) => options.excludedOreIds!.has(s.id))
+            .map((s) => s.name),
+        });
+      }
+    }
+  }
+
+  return { rawMaterials, intermediates, decompositions, secondaryDecompositions, finalProducts: [], warnings: warnings.length ? warnings : undefined };
 }
 
 export function buildItemMap(items: CalcItem[]): ItemMap {
