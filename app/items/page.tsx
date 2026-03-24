@@ -21,6 +21,7 @@ export default function ItemsPage() {
   const [items, setItems] = useState<Item[]>([]);
   const [totalItems, setTotalItems] = useState(0);
   const [search, setSearch] = useState("");
+  const [showNoBlueprints, setShowNoBlueprints] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const [form, setForm] = useState(emptyForm);
   const [editId, setEditId] = useState<string | null>(null);
@@ -89,12 +90,21 @@ export default function ItemsPage() {
         {isAdmin && <button onClick={openNew} className="btn-primary">+ New Item</button>}
       </div>
 
-      <input
-        className="input mb-4 w-full max-w-xs"
-        placeholder="Search items…"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
+      <div className="flex gap-3 mb-4 items-end">
+        <input
+          className="input flex-1 max-w-xs"
+          placeholder="Search items…"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+        <button
+          onClick={() => setShowNoBlueprints(!showNoBlueprints)}
+          className={`btn-sm ${showNoBlueprints ? "bg-amber-700 hover:bg-amber-600 text-amber-100" : ""}`}
+          title="Show only items without blueprints (49)"
+        >
+          {showNoBlueprints ? "✓ No Blueprint" : "No Blueprint (49)"}
+        </button>
+      </div>
 
       {loading ? (
         <p className="text-gray-500">Loading…</p>
@@ -113,7 +123,7 @@ export default function ItemsPage() {
             </tr>
           </thead>
           <tbody>
-            {items.map((item) => (
+            {(showNoBlueprints ? items.filter(i => i.blueprints.length === 0) : items).map((item) => (
               <tr key={item.id} className="border-b border-gray-800/50 hover:bg-gray-800/30">
                 <td className="py-2 pr-4 font-medium text-gray-100">{item.name}</td>
                 <td className="py-2 pr-4 flex gap-1 flex-wrap">
