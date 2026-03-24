@@ -1,9 +1,110 @@
 {
   "factories": [],
-  "refineries": [],
+  "refineries": [
+    "Field Refinery"
+  ],
   "locations": [],
-  "items": [],
+  "items": [
+    { "name": "Brine",                     "isRawMaterial": false, "isFound": true,  "isFinalProduct": false },
+    { "name": "D1 Fuel",                   "isRawMaterial": false, "isFound": true,  "isFinalProduct": false },
+    { "name": "D2 Fuel",                   "isRawMaterial": true,  "isFound": false, "isFinalProduct": false },
+    { "name": "Eupraxite",                 "isRawMaterial": false, "isFound": true,  "isFinalProduct": false },
+    { "name": "Feldspar Crystals",         "isRawMaterial": true,  "isFound": false, "isFinalProduct": false },
+    { "name": "Fine Old Crude Matter",     "isRawMaterial": true,  "isFound": false, "isFinalProduct": false },
+    { "name": "Fine Young Crude Matter",   "isRawMaterial": true,  "isFound": false, "isFinalProduct": false },
+    { "name": "Hydrocarbon Residue",       "isRawMaterial": false, "isFound": true,  "isFinalProduct": false },
+    { "name": "Hydrated Sulfide Matrix",   "isRawMaterial": true,  "isFound": false, "isFinalProduct": false },
+    { "name": "Iron-Rich Nodules",         "isRawMaterial": false, "isFound": true,  "isFinalProduct": false },
+    { "name": "Mummified Clone",           "isRawMaterial": false, "isFound": true,  "isFinalProduct": false },
+    { "name": "Palladium",                 "isRawMaterial": false, "isFound": true,  "isFinalProduct": false },
+    { "name": "Platinum-Palladium Matrix", "isRawMaterial": true,  "isFound": false, "isFinalProduct": false },
+    { "name": "Reinforced Alloys",         "isRawMaterial": false, "isFound": false, "isFinalProduct": false },
+    { "name": "Salt",                      "isRawMaterial": false, "isFound": true,  "isFinalProduct": false },
+    { "name": "Salvaged Materials",        "isRawMaterial": false, "isFound": true,  "isFinalProduct": false },
+    { "name": "Silica Grains",             "isRawMaterial": false, "isFound": true,  "isFinalProduct": false },
+    { "name": "Sophrogon",                 "isRawMaterial": false, "isFound": true,  "isFinalProduct": false },
+    { "name": "Water Ice",                 "isRawMaterial": false, "isFound": true,  "isFinalProduct": false }
+  ],
   "asteroidTypes": [],
-  "decompositions": [],
+  "decompositions": [
+    {
+      "sourceItem": "Platinum-Palladium Matrix",
+      "refinery": "Field Refinery",
+      "inputQty": 20,
+      "outputs": [
+        { "item": "Silica Grains",   "quantity": 8  },
+        { "item": "Iron-Rich Nodules", "quantity": 15 },
+        { "item": "Palladium",       "quantity": 4  }
+      ]
+    },
+    {
+      "sourceItem": "D2 Fuel",
+      "refinery": "Field Refinery",
+      "inputQty": 200,
+      "outputs": [
+        { "item": "Salt", "quantity": 1 }
+      ]
+    },
+    {
+      "sourceItem": "Fine Young Crude Matter",
+      "refinery": "Field Refinery",
+      "inputQty": 30,
+      "outputs": [
+        { "item": "Eupraxite", "quantity": 3  },
+        { "item": "Brine",     "quantity": 26 }
+      ]
+    },
+    {
+      "sourceItem": "Feldspar Crystals",
+      "refinery": "Field Refinery",
+      "inputQty": 20,
+      "outputs": [
+        { "item": "Hydrocarbon Residue", "quantity": 5  },
+        { "item": "Silica Grains",       "quantity": 15 }
+      ]
+    },
+    {
+      "sourceItem": "Hydrated Sulfide Matrix",
+      "refinery": "Field Refinery",
+      "inputQty": 20,
+      "outputs": [
+        { "item": "Hydrocarbon Residue", "quantity": 10  },
+        { "item": "Water Ice",           "quantity": 150 }
+      ]
+    },
+    {
+      "sourceItem": "Mummified Clone",
+      "refinery": "Field Refinery",
+      "inputQty": 1,
+      "outputs": [
+        { "item": "Water Ice", "quantity": 7 }
+      ]
+    },
+    {
+      "sourceItem": "Salvaged Materials",
+      "refinery": "Field Refinery",
+      "inputQty": 3,
+      "outputs": [
+        { "item": "Reinforced Alloys", "quantity": 1 }
+      ]
+    },
+    {
+      "sourceItem": "Fine Old Crude Matter",
+      "refinery": "Field Refinery",
+      "inputQty": 30,
+      "outputs": [
+        { "item": "Sophrogon", "quantity": 3  },
+        { "item": "Brine",     "quantity": 26 }
+      ]
+    },
+    {
+      "sourceItem": "Water Ice",
+      "refinery": "Field Refinery",
+      "inputQty": 275,
+      "outputs": [
+        { "item": "D1 Fuel", "quantity": 75 }
+      ]
+    }
+  ],
   "blueprints": []
 }
