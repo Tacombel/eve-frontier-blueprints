@@ -21,6 +21,8 @@ export default function ItemsPage() {
   const [items, setItems] = useState<Item[]>([]);
   const [totalItems, setTotalItems] = useState(0);
   const [search, setSearch] = useState("");
+  const [showOre, setShowOre] = useState(false);
+  const [oreCount, setOreCount] = useState(0);
   const [showLoot, setShowLoot] = useState(false);
   const [lootCount, setLootCount] = useState(0);
   const [lootIds, setLootIds] = useState<Set<string>>(new Set());
@@ -88,7 +90,10 @@ export default function ItemsPage() {
       }
     }
 
+    const ores = allItems.filter((i: any) => i.isRawMaterial);
+
     setTotalItems(allItems.length);
+    setOreCount(ores.length);
     setLootCount(trueLoot.length);
     setLootIds(trueLootIdSet);
     setRecipesByItem(recipes);
@@ -152,6 +157,13 @@ export default function ItemsPage() {
           onChange={(e) => setSearch(e.target.value)}
         />
         <button
+          onClick={() => setShowOre(!showOre)}
+          className={`btn-sm ${showOre ? "bg-yellow-700 hover:bg-yellow-600 text-yellow-100" : ""}`}
+          title="Show only mining ores (raw materials)"
+        >
+          {showOre ? `✓ Ore (${oreCount})` : `Ore (${oreCount})`}
+        </button>
+        <button
           onClick={() => setShowLoot(!showLoot)}
           className={`btn-sm ${showLoot ? "bg-amber-700 hover:bg-amber-600 text-amber-100" : ""}`}
           title="Show only loot (items without blueprint or decomposition)"
@@ -177,7 +189,7 @@ export default function ItemsPage() {
             </tr>
           </thead>
           <tbody>
-            {(showLoot ? items.filter(i => lootIds.has(i.id)) : items).map((item) => (
+            {(showOre ? items.filter(i => i.isRawMaterial) : showLoot ? items.filter(i => lootIds.has(i.id)) : items).map((item) => (
               <tr key={item.id} className="border-b border-gray-800/50 hover:bg-gray-800/30">
                 <td className="py-2 pr-4 font-medium text-gray-100">{item.name}</td>
                 <td className="py-2 pr-4 flex gap-1 flex-wrap">
