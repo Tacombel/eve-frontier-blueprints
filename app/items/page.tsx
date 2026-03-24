@@ -177,33 +177,34 @@ export default function ItemsPage() {
       ) : items.length === 0 ? (
         <p className="text-gray-500">No items found.</p>
       ) : (
-        <table className="w-full text-sm">
+        <div className="overflow-x-auto">
+          <table className="w-max text-sm">
           <thead>
             <tr className="text-left text-gray-400 border-b border-gray-800">
-              <th className="pb-2 pr-4">Name</th>
-              <th className="pb-2 pr-4">Type</th>
-              <th className="pb-2 pr-4 text-right">Volume</th>
-              <th className="pb-2 pr-4">Stock</th>
-              <th className="pb-2 pr-4">Recipes</th>
-              <th className="pb-2"></th>
+              <th className="pb-2 pr-3">Name</th>
+              <th className="pb-2 pr-3">Type</th>
+              <th className="pb-2 pr-3 text-right">Volume</th>
+              <th className="pb-2 pr-3">Stock</th>
+              <th className="pb-2 pr-3">Recipes</th>
+              <th className="pb-2 pl-2"></th>
             </tr>
           </thead>
           <tbody>
             {(showOre ? items.filter(i => i.isRawMaterial && !i.isFound && i.blueprints.length === 0 && !i.isFinalProduct) : showLoot ? items.filter(i => lootIds.has(i.id)) : items).map((item) => (
               <tr key={item.id} className="border-b border-gray-800/50 hover:bg-gray-800/30 h-8">
-                <td className="py-1 pr-4 font-medium text-gray-100 whitespace-nowrap">{item.name}</td>
-                <td className="py-1 pr-4 flex gap-0.5 items-center whitespace-nowrap">
+                <td className="py-1 pr-3 font-medium text-gray-100 whitespace-nowrap">{item.name}</td>
+                <td className="py-1 pr-3 flex gap-0.5 items-center whitespace-nowrap">
                   {item.isRawMaterial && <span className="badge badge-yellow">Ore</span>}
                   {item.isFound && <span className="badge badge-blue">Raw</span>}
                   {item.blueprints.length > 0 && !item.isFinalProduct && <span className="badge badge-gray">Intermediate</span>}
                   {item.isFinalProduct && <span className="badge badge-cyan">Final</span>}
                   {!item.isRawMaterial && !item.isFound && !item.isFinalProduct && item.blueprints.length === 0 && <span className="text-gray-600">—</span>}
                 </td>
-                <td className="py-1 pr-4 text-right text-gray-400 whitespace-nowrap">
+                <td className="py-1 pr-3 text-right text-gray-400 whitespace-nowrap">
                   {item.volume > 0 ? <span>{item.volume} m³</span> : <span className="text-gray-600">—</span>}
                 </td>
-                <td className="py-1 pr-4 text-gray-400 whitespace-nowrap">{item.stock?.quantity ?? 0}</td>
-                <td className="py-1 pr-4 flex gap-0.5 items-center whitespace-nowrap overflow-x-auto">
+                <td className="py-1 pr-3 text-gray-400 whitespace-nowrap">{item.stock?.quantity ?? 0}</td>
+                <td className="py-1 pr-3 flex gap-0.5 items-center whitespace-nowrap overflow-x-auto">
                   {(() => {
                     if (item.isRawMaterial) {
                       return <span className="badge badge-yellow">Mining</span>;
@@ -224,7 +225,7 @@ export default function ItemsPage() {
                   })()}
                 </td>
                 {isAdmin && (
-                  <td className="py-1 flex gap-2 justify-end whitespace-nowrap">
+                  <td className="py-1 pl-2 flex gap-2 justify-end whitespace-nowrap">
                     <button onClick={() => openEdit(item)} className="btn-sm">Edit</button>
                     <button onClick={() => remove(item.id, item.name)} className="btn-sm btn-danger">Del</button>
                   </td>
@@ -232,7 +233,8 @@ export default function ItemsPage() {
               </tr>
             ))}
           </tbody>
-        </table>
+          </table>
+        </div>
       )}
 
       {showForm && (
