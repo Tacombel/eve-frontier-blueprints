@@ -375,6 +375,8 @@ export function calculate(
   }
 
   const decompositions: DecompositionResult[] = [];
+  const includedDecomps = new Set<string>();
+
   for (const [sourceItemId, unitsToDecompose] of decompUnits) {
     const source = itemMap.get(sourceItemId)!;
     const dec = pickDecomposition(source)!;
@@ -393,6 +395,35 @@ export function calculate(
           itemId: o.itemId,
           itemName: outItem?.name ?? o.itemId,
           quantityObtained: o.quantity * runs,
+        };
+      }),
+    });
+    includedDecomps.add(sourceItemId);
+  }
+
+  // Add optional decompositions for raw materials that are used directly but could be decomposed
+  for (const row of rawMaterials) {
+    if (includedDecomps.has(row.itemId)) continue; // Already included
+    const source = itemMap.get(row.itemId);
+    if (!source) continue;
+    const dec = pickDecomposition(source);
+    if (!dec) continue; // No decomposition available
+
+    // Show optional decomposition with units = 0 (user can choose to decompose)
+    decompositions.push({
+      sourceItemId: row.itemId,
+      sourceItemName: row.itemName,
+      unitsToDecompose: 0, // Optional
+      volumePerUnit: source.volume,
+      inputQty: dec.inputQty,
+      runs: 0,
+      actualStock: source.stock,
+      outputs: dec.outputs.map((o) => {
+        const outItem = itemMap.get(o.itemId);
+        return {
+          itemId: o.itemId,
+          itemName: outItem?.name ?? o.itemId,
+          quantityObtained: 0,
         };
       }),
     });
