@@ -24,7 +24,7 @@ export default function ItemsPage() {
   const [showLoot, setShowLoot] = useState(false);
   const [lootCount, setLootCount] = useState(0);
   const [lootIds, setLootIds] = useState<Set<string>>(new Set());
-  const [decompSourceIds, setDecompSourceIds] = useState<Set<string>>(new Set());
+  const [recipesByItem, setRecipesByItem] = useState<Map<string, { factories: string[]; refineries: string[] }>>(new Map());
   const [showForm, setShowForm] = useState(false);
   const [form, setForm] = useState(emptyForm);
   const [editId, setEditId] = useState<string | null>(null);
@@ -50,10 +50,36 @@ export default function ItemsPage() {
     const loot = allItems.filter((i: any) => !bpOutputIds.has(i.id) && !decompSourceIdSet.has(i.id));
     const lootIdSet = new Set(loot.map((i: any) => i.id));
 
+    // Build recipes map: itemId -> { factories, refineries }
+    const recipes = new Map<string, { factories: string[]; refineries: string[] }>();
+    for (const bp of bps) {
+      const itemId = bp.outputItem?.id;
+      if (!itemId) continue;
+      if (!recipes.has(itemId)) recipes.set(itemId, { factories: [], refineries: [] });
+      const factories = recipes.get(itemId)!.factories;
+      if (bp.factory && !factories.includes(bp.factory)) {
+        factories.push(bp.factory);
+      }
+    }
+    for (const d of decomps) {
+      const itemId = d.sourceItem?.id;
+      if (!itemId) continue;
+      // Find all outputs of this decomposition to link them
+      if (d.outputs && Array.isArray(d.outputs)) {
+        for (const output of d.outputs) {
+          if (!recipes.has(output.itemId)) recipes.set(output.itemId, { factories: [], refineries: [] });
+          const refineries = recipes.get(output.itemId)!.refineries;
+          if (d.refinery && !refineries.includes(d.refinery)) {
+            refineries.push(d.refinery);
+          }
+        }
+      }
+    }
+
     setTotalItems(allItems.length);
     setLootCount(loot.length);
     setLootIds(lootIdSet);
-    setDecompSourceIds(decompSourceIdSet);
+    setRecipesByItem(recipes);
     setLoading(false);
   }
 
@@ -153,10 +179,17 @@ export default function ItemsPage() {
                   {item.volume > 0 ? <span>{item.volume} m³</span> : <span className="text-gray-600">—</span>}
                 </td>
                 <td className="py-2 pr-4 text-gray-400">{item.stock?.quantity ?? 0}</td>
-                <td className="py-2 pr-4 flex gap-1 flex-wrap">
-                  {item.blueprints.length > 0 && <span className="badge badge-green">Blueprint ×{item.blueprints.length}</span>}
-                  {decompSourceIds.has(item.id) && <span className="badge badge-purple">Decompose</span>}
-                  {item.blueprints.length === 0 && !decompSourceIds.has(item.id) && <span className="text-gray-600">—</span>}
+                <td className="py-2 pr-4 text-sm text-gray-400">
+                  {(() => {
+                    const recipe = recipesByItem.get(item.id);
+                    if (!recipe || (recipe.factories.length === 0 && recipe.refineries.length === 0)) {
+                      return <span className="text-gray-600">—</span>;
+                    }
+                    const parts = [];
+                    if (recipe.factories.length > 0) parts.push(recipe.factories.join(", "));
+                    if (recipe.refineries.length > 0) parts.push(recipe.refineries.join(", "));
+                    return <span>{parts.join(" / ")}</span>;
+                  })()}
                 </td>
                 {isAdmin && (
                   <td className="py-2 flex gap-2 justify-end">
