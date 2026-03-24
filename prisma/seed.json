@@ -1,12 +1,41 @@
 {
-  "factories": [
-    "Assembler",
-    "Build",
-    "Field printer",
-    "Heavy printer",
-    "Mini berth",
-    "Mini printer",
-    "Printer"
+  "facilities": [
+    {
+      "name": "Assembler",
+      "type": "factory"
+    },
+    {
+      "name": "Build",
+      "type": "factory"
+    },
+    {
+      "name": "Field printer",
+      "type": "factory"
+    },
+    {
+      "name": "Heavy printer",
+      "type": "factory"
+    },
+    {
+      "name": "Mini berth",
+      "type": "factory"
+    },
+    {
+      "name": "Mini printer",
+      "type": "factory"
+    },
+    {
+      "name": "Printer",
+      "type": "factory"
+    },
+    {
+      "name": "Field Refinery",
+      "type": "refinery"
+    },
+    {
+      "name": "Refinery",
+      "type": "refinery"
+    }
   ],
   "locations": [
     "Inner ancient cluster",
@@ -24,15 +53,57 @@
   ],
   "items": [
     {
+      "name": "AC Gyrojet Ammo 1 (S)",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Adaptive Nanitic Armor Weave II",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Adaptive Nanitic Armor Weave III",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Adaptive Nanitic Armor Weave IV",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
       "name": "Afterburner II",
       "isRawMaterial": false,
       "isFound": false,
       "isFinalProduct": true
     },
     {
-      "name": "Aromatic carbon veins",
+      "name": "Afterburner III",
       "isRawMaterial": false,
-      "isFound": true,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Afterburner IV",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Aromatic Carbon Veins",
+      "isRawMaterial": true,
+      "isFound": false,
+      "isFinalProduct": false
+    },
+    {
+      "name": "Aromatic Carbon Weave",
+      "isRawMaterial": false,
+      "isFound": false,
       "isFinalProduct": false
     },
     {
@@ -42,34 +113,370 @@
       "isFinalProduct": true
     },
     {
-      "name": "Building foam",
-      "isRawMaterial": false,
-      "isFound": false,
-      "isFinalProduct": false
-    },
-    {
-      "name": "Carbon weave",
-      "isRawMaterial": false,
-      "isFound": false,
-      "isFinalProduct": false
-    },
-    {
-      "name": "Cargo grid II",
+      "name": "Attuned Shield Generator II",
       "isRawMaterial": false,
       "isFound": false,
       "isFinalProduct": true
     },
     {
-      "name": "Feldspar crystals",
+      "name": "Attuned Shield Generator III",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Attuned Shield Generator IV",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Base Autocannon (S)",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Base Coilgun (M)",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Base Coilgun (S)",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Base Howitzer (M)",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Base Rapid Plasma (S)",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Brine",
+      "isRawMaterial": false,
+      "isFound": true,
+      "isFinalProduct": false
+    },
+    {
+      "name": "Building Foam",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": false
+    },
+    {
+      "name": "Bulky Armor Plates II",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Bulky Armor Plates III",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Bulky Armor Plates V",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Bulwark Shield Generator II",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Bulwark Shield Generator III",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Bulwark Shield Generator IV",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Carbon Weave",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": false
+    },
+    {
+      "name": "Cargo Grid II",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Cargo Grid III",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Cargo Grid IV",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Cargo Grid V",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Cargo Grid VI",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Carom",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Carom Stack",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Celerity CD01",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Celerity CD02",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Celerity CD03",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Chitinous Organics",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": false
+    },
+    {
+      "name": "Coated Armor Plates II",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Coated Armor Plates III",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Coated Armor Plates IV",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Coilgun Ammo 1 (S)",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Compressed Coolant",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Crude Extractor",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Cryogenic Ejector S",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "D1 Fuel",
+      "isRawMaterial": false,
+      "isFound": true,
+      "isFinalProduct": false
+    },
+    {
+      "name": "D2 Fuel",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": false
+    },
+    {
+      "name": "Echo Chamber",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": false
+    },
+    {
+      "name": "EM Field Array II",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "EM Field Array III",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "EM Field Array IV",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Embark",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "EU-40 Fuel",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": false
+    },
+    {
+      "name": "Eupraxite",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": false
+    },
+    {
+      "name": "Explo-electro Nanitic Brace II",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Explo-electro Nanitic Brace III",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Explo-electro Nanitic Brace IV",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Explonetic-electro Nanitic Brace II",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Explonetic-electro Nanitic Brace III",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Explonetic-electro Nanitic Brace IV",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Explosive Field Array II",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Explosive Field Array III",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Explosive Field Array IV",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Feldspar Crystal Shards",
+      "isRawMaterial": false,
+      "isFound": true,
+      "isFinalProduct": false
+    },
+    {
+      "name": "Feldspar Crystals",
       "isRawMaterial": true,
       "isFound": false,
       "isFinalProduct": false
     },
     {
-      "name": "Fossilized exotronics",
+      "name": "Feral Echo",
       "isRawMaterial": false,
       "isFound": true,
       "isFinalProduct": false
+    },
+    {
+      "name": "Fine Old Crude Matter",
+      "isRawMaterial": false,
+      "isFound": true,
+      "isFinalProduct": false
+    },
+    {
+      "name": "Fine Young Crude Matter",
+      "isRawMaterial": false,
+      "isFound": true,
+      "isFinalProduct": false
+    },
+    {
+      "name": "Fossilized Exotronics",
+      "isRawMaterial": false,
+      "isFound": true,
+      "isFinalProduct": false
+    },
+    {
+      "name": "Heat Exchanger S",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Heat Exchanger XS",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
     },
     {
       "name": "Heavy printer",
@@ -78,31 +485,103 @@
       "isFinalProduct": true
     },
     {
-      "name": "Hydrated sulfide matrix",
+      "name": "Hop",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Hull Repairer",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Hydrated Sulfide Matrix",
       "isRawMaterial": true,
       "isFound": false,
       "isFinalProduct": false
     },
     {
-      "name": "Hydrocarbon residue",
+      "name": "Hydrocarbon Residue",
       "isRawMaterial": false,
       "isFound": true,
       "isFinalProduct": false
     },
     {
-      "name": "Iridosmine modules",
+      "name": "Iridosmine Nodules",
       "isRawMaterial": true,
       "isFound": false,
       "isFinalProduct": false
     },
     {
-      "name": "Iron-rich nodules",
+      "name": "Iron-Rich Nodules",
       "isRawMaterial": false,
       "isFound": true,
       "isFinalProduct": false
     },
     {
-      "name": "Methane ice shards",
+      "name": "Kerogen Tar",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": false
+    },
+    {
+      "name": "Kinetic Field Array II",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Kinetic Field Array III",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Kinetic Field Array IV",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Large Cutting Laser",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Leap",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Luminalis",
+      "isRawMaterial": false,
+      "isFound": true,
+      "isFinalProduct": false
+    },
+    {
+      "name": "Luminalis Mining Lens",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Lunge",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Medium Cutting Laser",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Methane Ice Shards",
       "isRawMaterial": true,
       "isFound": false,
       "isFinalProduct": false
@@ -126,13 +605,43 @@
       "isFinalProduct": true
     },
     {
+      "name": "Mummified Clone",
+      "isRawMaterial": false,
+      "isFound": true,
+      "isFinalProduct": false
+    },
+    {
       "name": "Network node",
       "isRawMaterial": false,
       "isFound": false,
       "isFinalProduct": true
     },
     {
-      "name": "Nomad program frame",
+      "name": "Nickel-Iron Veins",
+      "isRawMaterial": false,
+      "isFound": true,
+      "isFinalProduct": false
+    },
+    {
+      "name": "Nimble Armor Plates II",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Nimble Armor Plates III",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Nimble Armor Plates IV",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Nomad Program Frame",
       "isRawMaterial": false,
       "isFound": false,
       "isFinalProduct": false
@@ -150,25 +659,79 @@
       "isFinalProduct": false
     },
     {
-      "name": "Platinum-paladium matrix",
+      "name": "Platinum-Group Veins",
+      "isRawMaterial": false,
+      "isFound": true,
+      "isFinalProduct": false
+    },
+    {
+      "name": "Platinum-Palladium Matrix",
       "isRawMaterial": true,
       "isFound": false,
       "isFinalProduct": false
     },
     {
-      "name": "Primitive kerogen matrix",
+      "name": "Primitive Kerogen Matrix",
       "isRawMaterial": true,
       "isFound": false,
       "isFinalProduct": false
     },
     {
-      "name": "Printed circuits",
+      "name": "Printed Circuits",
       "isRawMaterial": false,
       "isFound": false,
       "isFinalProduct": false
     },
     {
       "name": "Printer",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Radiantium",
+      "isRawMaterial": false,
+      "isFound": true,
+      "isFinalProduct": false
+    },
+    {
+      "name": "Radiantium Mining Lens",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Rapid Plasma (M)",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Rapid Plasma Ammo 1 (S)",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Reactive Armor Plates II",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Reactive Armor Plates III",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Reactive Armor Plates IV",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Recurve",
       "isRawMaterial": false,
       "isFound": false,
       "isFinalProduct": true
@@ -192,10 +755,22 @@
       "isFinalProduct": true
     },
     {
-      "name": "Reinforced alloys",
+      "name": "Reinforced Alloys",
       "isRawMaterial": false,
       "isFound": false,
       "isFinalProduct": false
+    },
+    {
+      "name": "Reinforced Shield Generator II",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Reinforced Shield Generator III",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
     },
     {
       "name": "Reiver",
@@ -210,16 +785,76 @@
       "isFinalProduct": true
     },
     {
-      "name": "Silica grains",
+      "name": "Rough Old Crude Matter",
       "isRawMaterial": false,
       "isFound": true,
       "isFinalProduct": false
     },
     {
-      "name": "Small cutting laser",
+      "name": "Rough Young Crude Matter",
+      "isRawMaterial": false,
+      "isFound": true,
+      "isFinalProduct": false
+    },
+    {
+      "name": "Salt",
+      "isRawMaterial": false,
+      "isFound": true,
+      "isFinalProduct": false
+    },
+    {
+      "name": "Salvaged Materials",
+      "isRawMaterial": false,
+      "isFound": true,
+      "isFinalProduct": false
+    },
+    {
+      "name": "Shield Restorer II",
       "isRawMaterial": false,
       "isFound": false,
       "isFinalProduct": true
+    },
+    {
+      "name": "Shield Restorer III",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Shield Restorer IV",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Silica Grains",
+      "isRawMaterial": false,
+      "isFound": true,
+      "isFinalProduct": false
+    },
+    {
+      "name": "Silicon Dust",
+      "isRawMaterial": false,
+      "isFound": true,
+      "isFinalProduct": false
+    },
+    {
+      "name": "Skip",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Small Cutting Laser",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "SOF-40 Fuel",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": false
     },
     {
       "name": "Sojourn",
@@ -228,28 +863,400 @@
       "isFinalProduct": true
     },
     {
-      "name": "Synthetic mining lens",
+      "name": "Sophrogon",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": false
+    },
+    {
+      "name": "Stack Slice 31F",
+      "isRawMaterial": false,
+      "isFound": true,
+      "isFinalProduct": false
+    },
+    {
+      "name": "Stack Slice 31P",
+      "isRawMaterial": false,
+      "isFound": true,
+      "isFinalProduct": false
+    },
+    {
+      "name": "Stack Slice 31Q",
+      "isRawMaterial": false,
+      "isFound": true,
+      "isFinalProduct": false
+    },
+    {
+      "name": "Stack Slice 31V",
+      "isRawMaterial": false,
+      "isFound": true,
+      "isFinalProduct": false
+    },
+    {
+      "name": "Stack Slice 5C0",
+      "isRawMaterial": false,
+      "isFound": true,
+      "isFinalProduct": false
+    },
+    {
+      "name": "Stack Slice 5C1",
+      "isRawMaterial": false,
+      "isFound": true,
+      "isFinalProduct": false
+    },
+    {
+      "name": "Stack Slice 5DE",
+      "isRawMaterial": false,
+      "isFound": true,
+      "isFinalProduct": false
+    },
+    {
+      "name": "Stack Slice 5DK",
+      "isRawMaterial": false,
+      "isFound": true,
+      "isFinalProduct": false
+    },
+    {
+      "name": "Stack Slice 5DW",
+      "isRawMaterial": false,
+      "isFound": true,
+      "isFinalProduct": false
+    },
+    {
+      "name": "Stack Slice 5DZ",
+      "isRawMaterial": false,
+      "isFound": true,
+      "isFinalProduct": false
+    },
+    {
+      "name": "Stasis Net II",
       "isRawMaterial": false,
       "isFound": false,
       "isFinalProduct": true
     },
     {
-      "name": "Thermal composite",
+      "name": "Stasis Net III",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Stasis Net IV",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Stasis Net V",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Stasis Net VI",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Still Kernel",
       "isRawMaterial": false,
       "isFound": false,
       "isFinalProduct": false
     },
     {
-      "name": "Tholin nodules",
+      "name": "Still Knot",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": false
+    },
+    {
+      "name": "Stride",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Stride Stack",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Synthetic Mining Lens",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Systematic Armor Restorer II",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Systematic Armor Restorer III",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Systematic Armor Restorer IV",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Tempo CD41",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Tempo CD42",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Thermal Composites",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": false
+    },
+    {
+      "name": "Thermal Field Array II",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Thermal Field Array III",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Thermal Field Array IV",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Thermal-electro Nanitic Brace II",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Thermal-electro Nanitic Brace III",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Thermal-electro Nanitic Brace IV",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Thermalnetic Nanitic Brace II",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Thermalnetic Nanitic Brace III",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Thermalnetic Nanitic Brace IV",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Tholin Aggregates",
+      "isRawMaterial": false,
+      "isFound": true,
+      "isFinalProduct": false
+    },
+    {
+      "name": "Tholin Nodules",
       "isRawMaterial": true,
       "isFound": false,
       "isFinalProduct": false
     },
     {
-      "name": "Water ice",
+      "name": "Tier 2 Autocannon (S)",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Tier 2 Coilgun (M)",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Tier 2 Coilgun (S)",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Tier 2 Howitzer (M)",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Tier 2 Rapid Plasma (M)",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Tier 2 Rapid Plasma (S)",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Tier 3 Autocannon (S)",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Tier 3 Coilgun (M)",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Tier 3 Coilgun (S)",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Tier 3 Howitzer (M)",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Tier 3 Rapid Plasma (M)",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Tier 3 Rapid Plasma (S)",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Troilite Sulfide Grains",
       "isRawMaterial": false,
       "isFound": true,
       "isFinalProduct": false
+    },
+    {
+      "name": "Tuho 7",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Tuho 9",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Tuho S",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Velocity CD81",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Velocity CD82",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Warp Entangler II",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Warp Entangler III",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Warp Entangler IV",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Warp Entangler V",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Warp Entangler VI",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Water Ice",
+      "isRawMaterial": false,
+      "isFound": true,
+      "isFinalProduct": false
+    },
+    {
+      "name": "Wend",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Xoru 7",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Xoru 9",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Xoru S",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
     }
   ],
   "asteroidTypes": [
@@ -264,7 +1271,7 @@
         "Trojan garden"
       ],
       "items": [
-        "Feldspar crystals"
+        "Feldspar Crystals"
       ]
     },
     {
@@ -275,7 +1282,7 @@
         "Outer grove"
       ],
       "items": [
-        "Hydrated sulfide matrix"
+        "Hydrated Sulfide Matrix"
       ]
     },
     {
@@ -284,7 +1291,7 @@
         "Outer grove"
       ],
       "items": [
-        "Methane ice shards"
+        "Methane Ice Shards"
       ]
     },
     {
@@ -296,7 +1303,7 @@
         "Trojan garden"
       ],
       "items": [
-        "Primitive kerogen matrix"
+        "Primitive Kerogen Matrix"
       ]
     },
     {
@@ -306,7 +1313,7 @@
         "Trojan garden"
       ],
       "items": [
-        "Aromatic carbon veins"
+        "Aromatic Carbon Veins"
       ]
     },
     {
@@ -319,7 +1326,7 @@
         "Trojan garden"
       ],
       "items": [
-        "Iridosmine modules"
+        "Iridosmine Nodules"
       ]
     },
     {
@@ -333,7 +1340,7 @@
         "Trojan garden"
       ],
       "items": [
-        "Platinum-paladium matrix"
+        "Platinum-Palladium Matrix"
       ]
     },
     {
@@ -347,329 +1354,687 @@
   ],
   "decompositions": [
     {
-      "sourceItem": "Feldspar crystals",
+      "sourceItem": "Platinum-Palladium Matrix",
+      "facility": "Field Refinery",
       "inputQty": 20,
+      "runTime": 3,
       "outputs": [
         {
-          "item": "Silica grains",
-          "quantity": 15
-        },
-        {
-          "item": "Hydrocarbon residue",
-          "quantity": 5
-        }
-      ]
-    },
-    {
-      "sourceItem": "Hydrated sulfide matrix",
-      "inputQty": 20,
-      "outputs": [
-        {
-          "item": "Water ice",
-          "quantity": 150
-        },
-        {
-          "item": "Hydrocarbon residue",
-          "quantity": 10
-        }
-      ]
-    },
-    {
-      "sourceItem": "Platinum-paladium matrix",
-      "inputQty": 20,
-      "outputs": [
-        {
-          "item": "Iron-rich nodules",
-          "quantity": 15
-        },
-        {
-          "item": "Silica grains",
+          "item": "Silica Grains",
           "quantity": 8
+        },
+        {
+          "item": "Iron-Rich Nodules",
+          "quantity": 15
         },
         {
           "item": "Palladium",
           "quantity": 4
+        }
+      ]
+    },
+    {
+      "sourceItem": "D2 Fuel",
+      "facility": "Field Refinery",
+      "inputQty": 200,
+      "runTime": 3,
+      "outputs": [
+        {
+          "item": "Salt",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "sourceItem": "Fine Young Crude Matter",
+      "facility": "Field Refinery",
+      "inputQty": 30,
+      "runTime": 20,
+      "outputs": [
+        {
+          "item": "Eupraxite",
+          "quantity": 3
+        },
+        {
+          "item": "Brine",
+          "quantity": 26
+        }
+      ]
+    },
+    {
+      "sourceItem": "Feldspar Crystals",
+      "facility": "Field Refinery",
+      "inputQty": 20,
+      "runTime": 3,
+      "outputs": [
+        {
+          "item": "Hydrocarbon Residue",
+          "quantity": 5
+        },
+        {
+          "item": "Silica Grains",
+          "quantity": 15
+        }
+      ]
+    },
+    {
+      "sourceItem": "Hydrated Sulfide Matrix",
+      "facility": "Field Refinery",
+      "inputQty": 20,
+      "runTime": 3,
+      "outputs": [
+        {
+          "item": "Hydrocarbon Residue",
+          "quantity": 10
+        },
+        {
+          "item": "Water Ice",
+          "quantity": 150
+        }
+      ]
+    },
+    {
+      "sourceItem": "Mummified Clone",
+      "facility": "Field Refinery",
+      "inputQty": 1,
+      "runTime": 3,
+      "outputs": [
+        {
+          "item": "Water Ice",
+          "quantity": 7
+        }
+      ]
+    },
+    {
+      "sourceItem": "Salvaged Materials",
+      "facility": "Field Refinery",
+      "inputQty": 3,
+      "runTime": 3,
+      "outputs": [
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "sourceItem": "Fine Old Crude Matter",
+      "facility": "Field Refinery",
+      "inputQty": 30,
+      "runTime": 20,
+      "outputs": [
+        {
+          "item": "Sophrogon",
+          "quantity": 3
+        },
+        {
+          "item": "Brine",
+          "quantity": 26
+        }
+      ]
+    },
+    {
+      "sourceItem": "Water Ice",
+      "facility": "Field Refinery",
+      "inputQty": 275,
+      "runTime": 3,
+      "outputs": [
+        {
+          "item": "D1 Fuel",
+          "quantity": 75
+        }
+      ]
+    },
+    {
+      "sourceItem": "Platinum-Palladium Matrix",
+      "facility": "Refinery",
+      "inputQty": 40,
+      "runTime": 3,
+      "outputs": [
+        {
+          "item": "Silica Grains",
+          "quantity": 10
+        },
+        {
+          "item": "Iron-Rich Nodules",
+          "quantity": 30
+        },
+        {
+          "item": "Palladium",
+          "quantity": 8
+        }
+      ]
+    },
+    {
+      "sourceItem": "Aromatic Carbon Veins",
+      "facility": "Refinery",
+      "inputQty": 100,
+      "runTime": 15,
+      "outputs": [
+        {
+          "item": "Chitinous Organics",
+          "quantity": 1
+        },
+        {
+          "item": "Aromatic Carbon Weave",
+          "quantity": 4
+        },
+        {
+          "item": "Kerogen Tar",
+          "quantity": 8
+        }
+      ]
+    },
+    {
+      "sourceItem": "D2 Fuel",
+      "facility": "Refinery",
+      "inputQty": 200,
+      "runTime": 3,
+      "outputs": [
+        {
+          "item": "Salt",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "sourceItem": "Eupraxite",
+      "facility": "Refinery",
+      "inputQty": 10,
+      "runTime": 18,
+      "outputs": [
+        {
+          "item": "EU-40 Fuel",
+          "quantity": 600
+        }
+      ]
+    },
+    {
+      "sourceItem": "Fine Young Crude Matter",
+      "facility": "Refinery",
+      "inputQty": 30,
+      "runTime": 20,
+      "outputs": [
+        {
+          "item": "Eupraxite",
+          "quantity": 3
+        },
+        {
+          "item": "Brine",
+          "quantity": 26
+        }
+      ]
+    },
+    {
+      "sourceItem": "Feldspar Crystals",
+      "facility": "Refinery",
+      "inputQty": 40,
+      "runTime": 3,
+      "outputs": [
+        {
+          "item": "Hydrocarbon Residue",
+          "quantity": 10
+        },
+        {
+          "item": "Silica Grains",
+          "quantity": 30
+        }
+      ]
+    },
+    {
+      "sourceItem": "Hydrated Sulfide Matrix",
+      "facility": "Refinery",
+      "inputQty": 40,
+      "runTime": 3,
+      "outputs": [
+        {
+          "item": "Hydrocarbon Residue",
+          "quantity": 20
+        },
+        {
+          "item": "Water Ice",
+          "quantity": 200
+        }
+      ]
+    },
+    {
+      "sourceItem": "Hydrocarbon Residue",
+      "facility": "Refinery",
+      "inputQty": 20,
+      "runTime": 9,
+      "outputs": [
+        {
+          "item": "Troilite Sulfide Grains",
+          "quantity": 20
+        },
+        {
+          "item": "Tholin Aggregates",
+          "quantity": 180
+        }
+      ]
+    },
+    {
+      "sourceItem": "Iridosmine Nodules",
+      "facility": "Refinery",
+      "inputQty": 40,
+      "runTime": 5,
+      "outputs": [
+        {
+          "item": "Iron-Rich Nodules",
+          "quantity": 40
+        }
+      ]
+    },
+    {
+      "sourceItem": "Iron-Rich Nodules",
+      "facility": "Refinery",
+      "inputQty": 10,
+      "runTime": 9,
+      "outputs": [
+        {
+          "item": "Platinum-Group Veins",
+          "quantity": 20
+        },
+        {
+          "item": "Nickel-Iron Veins",
+          "quantity": 198
+        }
+      ]
+    },
+    {
+      "sourceItem": "Methane Ice Shards",
+      "facility": "Refinery",
+      "inputQty": 100,
+      "runTime": 15,
+      "outputs": [
+        {
+          "item": "Chitinous Organics",
+          "quantity": 1
+        },
+        {
+          "item": "Tholin Aggregates",
+          "quantity": 126
+        },
+        {
+          "item": "Water Ice",
+          "quantity": 349
+        }
+      ]
+    },
+    {
+      "sourceItem": "Mummified Clone",
+      "facility": "Refinery",
+      "inputQty": 5,
+      "runTime": 3,
+      "outputs": [
+        {
+          "item": "Aromatic Carbon Weave",
+          "quantity": 1
+        },
+        {
+          "item": "Kerogen Tar",
+          "quantity": 1
+        },
+        {
+          "item": "Water Ice",
+          "quantity": 50
+        }
+      ]
+    },
+    {
+      "sourceItem": "Primitive Kerogen Matrix",
+      "facility": "Refinery",
+      "inputQty": 100,
+      "runTime": 15,
+      "outputs": [
+        {
+          "item": "Chitinous Organics",
+          "quantity": 1
+        },
+        {
+          "item": "Kerogen Tar",
+          "quantity": 16
+        }
+      ]
+    },
+    {
+      "sourceItem": "Rough Old Crude Matter",
+      "facility": "Refinery",
+      "inputQty": 30,
+      "runTime": 20,
+      "outputs": [
+        {
+          "item": "Salt",
+          "quantity": 16
+        },
+        {
+          "item": "Sophrogon",
+          "quantity": 28
+        }
+      ]
+    },
+    {
+      "sourceItem": "Rough Young Crude Matter",
+      "facility": "Refinery",
+      "inputQty": 30,
+      "runTime": 20,
+      "outputs": [
+        {
+          "item": "Salt",
+          "quantity": 1
+        },
+        {
+          "item": "Eupraxite",
+          "quantity": 28
+        }
+      ]
+    },
+    {
+      "sourceItem": "Salvaged Materials",
+      "facility": "Refinery",
+      "inputQty": 10,
+      "runTime": 4,
+      "outputs": [
+        {
+          "item": "Carbon Weave",
+          "quantity": 1
+        },
+        {
+          "item": "Thermal Composites",
+          "quantity": 2
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 6
+        }
+      ]
+    },
+    {
+      "sourceItem": "Silica Grains",
+      "facility": "Refinery",
+      "inputQty": 20,
+      "runTime": 9,
+      "outputs": [
+        {
+          "item": "Feldspar Crystal Shards",
+          "quantity": 50
+        },
+        {
+          "item": "Silicon Dust",
+          "quantity": 150
+        }
+      ]
+    },
+    {
+      "sourceItem": "Sophrogon",
+      "facility": "Refinery",
+      "inputQty": 10,
+      "runTime": 18,
+      "outputs": [
+        {
+          "item": "SOF-40 Fuel",
+          "quantity": 600
+        }
+      ]
+    },
+    {
+      "sourceItem": "Fine Old Crude Matter",
+      "facility": "Refinery",
+      "inputQty": 30,
+      "runTime": 20,
+      "outputs": [
+        {
+          "item": "Sophrogon",
+          "quantity": 3
+        },
+        {
+          "item": "Brine",
+          "quantity": 26
+        }
+      ]
+    },
+    {
+      "sourceItem": "Tholin Nodules",
+      "facility": "Refinery",
+      "inputQty": 100,
+      "runTime": 15,
+      "outputs": [
+        {
+          "item": "Chitinous Organics",
+          "quantity": 1
+        },
+        {
+          "item": "Aromatic Carbon Weave",
+          "quantity": 8
+        }
+      ]
+    },
+    {
+      "sourceItem": "Water Ice",
+      "facility": "Refinery",
+      "inputQty": 275,
+      "runTime": 3,
+      "outputs": [
+        {
+          "item": "D1 Fuel",
+          "quantity": 75
         }
       ]
     }
   ],
   "blueprints": [
     {
-      "outputItem": "Afterburner II",
-      "factory": "Field printer",
-      "outputQty": 1,
-      "isDefault": true,
+      "outputItem": "Thermal Composites",
+      "facility": "Field printer",
+      "outputQty": 14,
+      "runTime": 4,
       "inputs": [
         {
-          "item": "Thermal composite",
+          "item": "Hydrocarbon Residue",
+          "quantity": 140
+        },
+        {
+          "item": "Silica Grains",
+          "quantity": 90
+        }
+      ]
+    },
+    {
+      "outputItem": "AC Gyrojet Ammo 1 (S)",
+      "facility": "Field printer",
+      "outputQty": 100,
+      "runTime": 3,
+      "inputs": [
+        {
+          "item": "Iron-Rich Nodules",
+          "quantity": 24
+        }
+      ]
+    },
+    {
+      "outputItem": "Afterburner II",
+      "facility": "Field printer",
+      "outputQty": 1,
+      "runTime": 97,
+      "inputs": [
+        {
+          "item": "Thermal Composites",
           "quantity": 1
         }
       ]
     },
     {
-      "outputItem": "Assembler",
-      "factory": "Build",
+      "outputItem": "Base Autocannon (S)",
+      "facility": "Field printer",
       "outputQty": 1,
-      "isDefault": true,
+      "runTime": 156,
       "inputs": [
         {
-          "item": "Reinforced alloys",
-          "quantity": 20
-        },
-        {
-          "item": "Carbon weave",
+          "item": "Iron-Rich Nodules",
           "quantity": 10
         },
         {
-          "item": "Printed circuits",
-          "quantity": 5
+          "item": "Silica Grains",
+          "quantity": 30
         }
       ]
     },
     {
-      "outputItem": "Building foam",
-      "factory": "Mini printer",
-      "outputQty": 10,
-      "isDefault": true,
-      "inputs": [
-        {
-          "item": "Reinforced alloys",
-          "quantity": 65
-        },
-        {
-          "item": "Carbon weave",
-          "quantity": 65
-        },
-        {
-          "item": "Thermal composite",
-          "quantity": 65
-        }
-      ]
-    },
-    {
-      "outputItem": "Carbon weave",
-      "factory": "Field printer",
-      "outputQty": 14,
-      "isDefault": true,
-      "inputs": [
-        {
-          "item": "Hydrocarbon residue",
-          "quantity": 350
-        }
-      ]
-    },
-    {
-      "outputItem": "Cargo grid II",
-      "factory": "Assembler",
+      "outputItem": "Bulky Armor Plates II",
+      "facility": "Field printer",
       "outputQty": 1,
-      "isDefault": true,
+      "runTime": 155,
       "inputs": [
         {
-          "item": "Carbon weave",
-          "quantity": 7
-        },
-        {
-          "item": "Reinforced alloys",
+          "item": "Reinforced Alloys",
           "quantity": 4
         }
       ]
     },
     {
-      "outputItem": "Heavy printer",
-      "factory": "Build",
+      "outputItem": "Bulwark Shield Generator II",
+      "facility": "Field printer",
       "outputQty": 1,
-      "isDefault": true,
+      "runTime": 207,
       "inputs": [
         {
-          "item": "Building foam",
-          "quantity": 100
+          "item": "Printed Circuits",
+          "quantity": 4
+        },
+        {
+          "item": "Carbon Weave",
+          "quantity": 7
+        },
+        {
+          "item": "Palladium",
+          "quantity": 150
         }
       ]
     },
     {
-      "outputItem": "Mini berth",
-      "factory": "Build",
-      "outputQty": 1,
-      "isDefault": true,
+      "outputItem": "Carbon Weave",
+      "facility": "Field printer",
+      "outputQty": 14,
+      "runTime": 5,
       "inputs": [
         {
-          "item": "Reinforced alloys",
-          "quantity": 20
-        },
-        {
-          "item": "Carbon weave",
-          "quantity": 10
-        },
-        {
-          "item": "Printed circuits",
-          "quantity": 5
+          "item": "Hydrocarbon Residue",
+          "quantity": 350
         }
       ]
     },
     {
-      "outputItem": "Mini printer",
-      "factory": "Build",
-      "outputQty": 1,
-      "isDefault": true,
+      "outputItem": "Compressed Coolant",
+      "facility": "Field printer",
+      "outputQty": 10,
+      "runTime": 3,
       "inputs": [
         {
-          "item": "Printed circuits",
-          "quantity": 15
+          "item": "D1 Fuel",
+          "quantity": 115
         },
         {
-          "item": "Reinforced alloys",
-          "quantity": 15
-        }
-      ]
-    },
-    {
-      "outputItem": "Mini storage",
-      "factory": "Build",
-      "outputQty": 1,
-      "isDefault": true,
-      "inputs": [
-        {
-          "item": "Feldspar crystals",
-          "quantity": 250
-        },
-        {
-          "item": "Platinum-paladium matrix",
-          "quantity": 250
-        }
-      ]
-    },
-    {
-      "outputItem": "Network node",
-      "factory": "Build",
-      "outputQty": 1,
-      "isDefault": true,
-      "inputs": [
-        {
-          "item": "Printed circuits",
-          "quantity": 10
-        },
-        {
-          "item": "Carbon weave",
-          "quantity": 10
-        },
-        {
-          "item": "Thermal composite",
-          "quantity": 10
-        }
-      ]
-    },
-    {
-      "outputItem": "Nomad program frame",
-      "factory": "Field printer",
-      "outputQty": 1,
-      "isDefault": true,
-      "inputs": [
-        {
-          "item": "Fossilized exotronics",
-          "quantity": 5
-        }
-      ]
-    },
-    {
-      "outputItem": "Nursery",
-      "factory": "Build",
-      "outputQty": 1,
-      "isDefault": true,
-      "inputs": [
-        {
-          "item": "Building foam",
-          "quantity": 20
-        }
-      ]
-    },
-    {
-      "outputItem": "Printed circuits",
-      "factory": "Field printer",
-      "outputQty": 1,
-      "isDefault": true,
-      "inputs": [
-        {
-          "item": "Silica grains",
-          "quantity": 5
-        },
-        {
-          "item": "Hydrocarbon residue",
-          "quantity": 3
-        }
-      ]
-    },
-    {
-      "outputItem": "Printer",
-      "factory": "Build",
-      "outputQty": 1,
-      "isDefault": true,
-      "inputs": [
-        {
-          "item": "Building foam",
-          "quantity": 20
-        }
-      ]
-    },
-    {
-      "outputItem": "Refinery",
-      "factory": "Build",
-      "outputQty": 1,
-      "isDefault": true,
-      "inputs": [
-        {
-          "item": "Reinforced alloys",
-          "quantity": 15
-        },
-        {
-          "item": "Thermal composite",
-          "quantity": 15
-        }
-      ]
-    },
-    {
-      "outputItem": "Reflex",
-      "factory": "Field printer",
-      "outputQty": 1,
-      "isDefault": true,
-      "inputs": [
-        {
-          "item": "Hydrocarbon residue",
-          "quantity": 40
-        },
-        {
-          "item": "Reinforced alloys",
-          "quantity": 28
-        },
-        {
-          "item": "Nomad program frame",
+          "item": "Iron-Rich Nodules",
           "quantity": 1
         }
       ]
     },
     {
-      "outputItem": "Refuge",
-      "factory": "Build",
+      "outputItem": "Heat Exchanger XS",
+      "facility": "Field printer",
       "outputQty": 1,
-      "isDefault": true,
+      "runTime": 197,
       "inputs": [
         {
-          "item": "Platinum-paladium matrix",
-          "quantity": 50
+          "item": "Reinforced Alloys",
+          "quantity": 3
+        },
+        {
+          "item": "D1 Fuel",
+          "quantity": 280
+        },
+        {
+          "item": "Palladium",
+          "quantity": 2
         }
       ]
     },
     {
-      "outputItem": "Reinforced alloys",
-      "factory": "Field printer",
-      "outputQty": 8,
-      "isDefault": true,
+      "outputItem": "Hop",
+      "facility": "Field printer",
+      "outputQty": 1,
+      "runTime": 120,
       "inputs": [
         {
-          "item": "Silica grains",
+          "item": "Thermal Composites",
+          "quantity": 2
+        },
+        {
+          "item": "Printed Circuits",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "outputItem": "Nomad Program Frame",
+      "facility": "Field printer",
+      "outputQty": 1,
+      "runTime": 20,
+      "inputs": [
+        {
+          "item": "Fossilized Exotronics",
+          "quantity": 5
+        }
+      ]
+    },
+    {
+      "outputItem": "Printed Circuits",
+      "facility": "Field printer",
+      "outputQty": 1,
+      "runTime": 3,
+      "inputs": [
+        {
+          "item": "Hydrocarbon Residue",
+          "quantity": 3
+        },
+        {
+          "item": "Silica Grains",
+          "quantity": 5
+        }
+      ]
+    },
+    {
+      "outputItem": "Reflex",
+      "facility": "Field printer",
+      "outputQty": 1,
+      "runTime": 50,
+      "inputs": [
+        {
+          "item": "Nomad Program Frame",
+          "quantity": 1
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 28
+        },
+        {
+          "item": "Hydrocarbon Residue",
+          "quantity": 40
+        }
+      ]
+    },
+    {
+      "outputItem": "Reinforced Alloys",
+      "facility": "Field printer",
+      "outputQty": 8,
+      "runTime": 4,
+      "inputs": [
+        {
+          "item": "Silica Grains",
           "quantity": 105
         },
         {
-          "item": "Iron-rich nodules",
+          "item": "Iron-Rich Nodules",
           "quantity": 70
         },
         {
@@ -679,106 +2044,2742 @@
       ]
     },
     {
-      "outputItem": "Reiver",
-      "factory": "Mini berth",
+      "outputItem": "Skip",
+      "facility": "Field printer",
       "outputQty": 1,
-      "isDefault": true,
+      "runTime": 97,
       "inputs": [
         {
-          "item": "Reinforced alloys",
-          "quantity": 78
-        },
+          "item": "Thermal Composites",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "outputItem": "Small Cutting Laser",
+      "facility": "Field printer",
+      "outputQty": 1,
+      "runTime": 167,
+      "inputs": [
         {
-          "item": "Carbon weave",
-          "quantity": 33
-        },
-        {
-          "item": "Thermal composite",
-          "quantity": 33
-        },
-        {
-          "item": "Nomad program frame",
+          "item": "Printed Circuits",
           "quantity": 2
-        }
-      ]
-    },
-    {
-      "outputItem": "Relay",
-      "factory": "Build",
-      "outputQty": 1,
-      "isDefault": true,
-      "inputs": [
-        {
-          "item": "Printed circuits",
-          "quantity": 6
         },
         {
-          "item": "Carbon weave",
-          "quantity": 6
-        },
-        {
-          "item": "Thermal composite",
-          "quantity": 6
-        }
-      ]
-    },
-    {
-      "outputItem": "Small cutting laser",
-      "factory": "Field printer",
-      "outputQty": 1,
-      "isDefault": true,
-      "inputs": [
-        {
-          "item": "Carbon weave",
+          "item": "Carbon Weave",
           "quantity": 3
-        },
-        {
-          "item": "Printed circuits",
-          "quantity": 2
         }
       ]
     },
     {
       "outputItem": "Sojourn",
-      "factory": "Field printer",
+      "facility": "Field printer",
       "outputQty": 1,
-      "isDefault": true,
+      "runTime": 39,
       "inputs": [
         {
-          "item": "Hydrocarbon residue",
-          "quantity": 10
+          "item": "Reinforced Alloys",
+          "quantity": 2
         },
         {
-          "item": "Reinforced alloys",
-          "quantity": 2
+          "item": "Hydrocarbon Residue",
+          "quantity": 10
         }
       ]
     },
     {
-      "outputItem": "Synthetic mining lens",
-      "factory": "Field printer",
+      "outputItem": "Synthetic Mining Lens",
+      "facility": "Field printer",
       "outputQty": 1,
-      "isDefault": true,
+      "runTime": 3,
       "inputs": [
         {
-          "item": "Silica grains",
+          "item": "Silica Grains",
           "quantity": 3
         }
       ]
     },
     {
-      "outputItem": "Thermal composite",
-      "factory": "Field printer",
-      "outputQty": 14,
-      "isDefault": true,
+      "outputItem": "AC Gyrojet Ammo 1 (S)",
+      "facility": "Mini printer",
+      "outputQty": 100,
+      "runTime": 3,
       "inputs": [
         {
-          "item": "Hydrocarbon residue",
+          "item": "Iron-Rich Nodules",
+          "quantity": 24
+        }
+      ]
+    },
+    {
+      "outputItem": "Building Foam",
+      "facility": "Mini printer",
+      "outputQty": 10,
+      "runTime": 25,
+      "inputs": [
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 65
+        },
+        {
+          "item": "Carbon Weave",
+          "quantity": 65
+        },
+        {
+          "item": "Thermal Composites",
+          "quantity": 65
+        }
+      ]
+    },
+    {
+      "outputItem": "Carbon Weave",
+      "facility": "Mini printer",
+      "outputQty": 14,
+      "runTime": 5,
+      "inputs": [
+        {
+          "item": "Tholin Aggregates",
+          "quantity": 3150
+        }
+      ]
+    },
+    {
+      "outputItem": "Carom Stack",
+      "facility": "Mini printer",
+      "outputQty": 1,
+      "runTime": 43200,
+      "inputs": [
+        {
+          "item": "Stack Slice 5DW",
+          "quantity": 1
+        },
+        {
+          "item": "Stack Slice 5DE",
+          "quantity": 1
+        },
+        {
+          "item": "Stack Slice 5C1",
+          "quantity": 1
+        },
+        {
+          "item": "Stack Slice 31V",
+          "quantity": 1
+        },
+        {
+          "item": "Stack Slice 31Q",
+          "quantity": 1
+        },
+        {
+          "item": "Stack Slice 31F",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "outputItem": "Coilgun Ammo 1 (S)",
+      "facility": "Mini printer",
+      "outputQty": 100,
+      "runTime": 5,
+      "inputs": [
+        {
+          "item": "Nickel-Iron Veins",
+          "quantity": 230
+        }
+      ]
+    },
+    {
+      "outputItem": "Compressed Coolant",
+      "facility": "Mini printer",
+      "outputQty": 10,
+      "runTime": 3,
+      "inputs": [
+        {
+          "item": "D1 Fuel",
+          "quantity": 115
+        },
+        {
+          "item": "Iron-Rich Nodules",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "outputItem": "D2 Fuel",
+      "facility": "Mini printer",
+      "outputQty": 200,
+      "runTime": 6,
+      "inputs": [
+        {
+          "item": "Salt",
+          "quantity": 1
+        },
+        {
+          "item": "D1 Fuel",
+          "quantity": 200
+        }
+      ]
+    },
+    {
+      "outputItem": "Echo Chamber",
+      "facility": "Mini printer",
+      "outputQty": 1,
+      "runTime": 17,
+      "inputs": [
+        {
+          "item": "Nickel-Iron Veins",
+          "quantity": 120
+        },
+        {
+          "item": "Troilite Sulfide Grains",
+          "quantity": 45
+        },
+        {
+          "item": "Feldspar Crystal Shards",
+          "quantity": 105
+        }
+      ]
+    },
+    {
+      "outputItem": "Luminalis Mining Lens",
+      "facility": "Mini printer",
+      "outputQty": 1,
+      "runTime": 3,
+      "inputs": [
+        {
+          "item": "Silicon Dust",
+          "quantity": 45
+        },
+        {
+          "item": "Luminalis",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "outputItem": "Nomad Program Frame",
+      "facility": "Mini printer",
+      "outputQty": 1,
+      "runTime": 20,
+      "inputs": [
+        {
+          "item": "Fossilized Exotronics",
+          "quantity": 5
+        }
+      ]
+    },
+    {
+      "outputItem": "Printed Circuits",
+      "facility": "Mini printer",
+      "outputQty": 1,
+      "runTime": 3,
+      "inputs": [
+        {
+          "item": "Silicon Dust",
+          "quantity": 37
+        },
+        {
+          "item": "Tholin Aggregates",
+          "quantity": 22
+        }
+      ]
+    },
+    {
+      "outputItem": "Radiantium Mining Lens",
+      "facility": "Mini printer",
+      "outputQty": 1,
+      "runTime": 3,
+      "inputs": [
+        {
+          "item": "Silicon Dust",
+          "quantity": 45
+        },
+        {
+          "item": "Radiantium",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "outputItem": "Rapid Plasma Ammo 1 (S)",
+      "facility": "Mini printer",
+      "outputQty": 100,
+      "runTime": 5,
+      "inputs": [
+        {
+          "item": "Platinum-Group Veins",
+          "quantity": 400
+        },
+        {
+          "item": "Troilite Sulfide Grains",
+          "quantity": 400
+        }
+      ]
+    },
+    {
+      "outputItem": "Reinforced Alloys",
+      "facility": "Mini printer",
+      "outputQty": 14,
+      "runTime": 4,
+      "inputs": [
+        {
+          "item": "Nickel-Iron Veins",
+          "quantity": 1050
+        },
+        {
+          "item": "Feldspar Crystal Shards",
+          "quantity": 1050
+        }
+      ]
+    },
+    {
+      "outputItem": "Still Kernel",
+      "facility": "Mini printer",
+      "outputQty": 1,
+      "runTime": 11,
+      "inputs": [
+        {
+          "item": "Brine",
+          "quantity": 50
+        },
+        {
+          "item": "Tholin Nodules",
+          "quantity": 5
+        }
+      ]
+    },
+    {
+      "outputItem": "Still Knot",
+      "facility": "Mini printer",
+      "outputQty": 1,
+      "runTime": 11,
+      "inputs": [
+        {
+          "item": "Salt",
+          "quantity": 5
+        },
+        {
+          "item": "Feral Echo",
+          "quantity": 5
+        }
+      ]
+    },
+    {
+      "outputItem": "Stride Stack",
+      "facility": "Mini printer",
+      "outputQty": 1,
+      "runTime": 43200,
+      "inputs": [
+        {
+          "item": "Stack Slice 5DZ",
+          "quantity": 1
+        },
+        {
+          "item": "Stack Slice 5DK",
+          "quantity": 1
+        },
+        {
+          "item": "Stack Slice 5C0",
+          "quantity": 1
+        },
+        {
+          "item": "Stack Slice 31P",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "outputItem": "Synthetic Mining Lens",
+      "facility": "Mini printer",
+      "outputQty": 1,
+      "runTime": 3,
+      "inputs": [
+        {
+          "item": "Silica Grains",
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "outputItem": "Carom",
+      "facility": "Mini berth",
+      "outputQty": 1,
+      "runTime": 10260,
+      "inputs": [
+        {
+          "item": "Carom Stack",
+          "quantity": 1
+        },
+        {
+          "item": "Nomad Program Frame",
+          "quantity": 2
+        },
+        {
+          "item": "Carbon Weave",
+          "quantity": 44
+        },
+        {
+          "item": "Thermal Composites",
+          "quantity": 44
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 88
+        }
+      ]
+    },
+    {
+      "outputItem": "Recurve",
+      "facility": "Mini berth",
+      "outputQty": 1,
+      "runTime": 130,
+      "inputs": [
+        {
+          "item": "Nomad Program Frame",
+          "quantity": 2
+        },
+        {
+          "item": "Carbon Weave",
+          "quantity": 25
+        },
+        {
+          "item": "Thermal Composites",
+          "quantity": 25
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 45
+        },
+        {
+          "item": "Still Kernel",
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "outputItem": "Reflex",
+      "facility": "Mini berth",
+      "outputQty": 1,
+      "runTime": 50,
+      "inputs": [
+        {
+          "item": "Nomad Program Frame",
+          "quantity": 1
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 28
+        },
+        {
+          "item": "Hydrocarbon Residue",
+          "quantity": 40
+        }
+      ]
+    },
+    {
+      "outputItem": "Reiver",
+      "facility": "Mini berth",
+      "outputQty": 1,
+      "runTime": 150,
+      "inputs": [
+        {
+          "item": "Nomad Program Frame",
+          "quantity": 2
+        },
+        {
+          "item": "Carbon Weave",
+          "quantity": 33
+        },
+        {
+          "item": "Thermal Composites",
+          "quantity": 33
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 78
+        }
+      ]
+    },
+    {
+      "outputItem": "Stride",
+      "facility": "Mini berth",
+      "outputQty": 1,
+      "runTime": 10630,
+      "inputs": [
+        {
+          "item": "Stride Stack",
+          "quantity": 1
+        },
+        {
+          "item": "Nomad Program Frame",
+          "quantity": 2
+        },
+        {
+          "item": "Carbon Weave",
+          "quantity": 48
+        },
+        {
+          "item": "Thermal Composites",
+          "quantity": 48
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 96
+        }
+      ]
+    },
+    {
+      "outputItem": "Wend",
+      "facility": "Mini berth",
+      "outputQty": 1,
+      "runTime": 60,
+      "inputs": [
+        {
+          "item": "Nomad Program Frame",
+          "quantity": 1
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 34
+        },
+        {
+          "item": "Carbon Weave",
+          "quantity": 17
+        },
+        {
+          "item": "Thermal Composites",
+          "quantity": 17
+        }
+      ]
+    },
+    {
+      "outputItem": "Thermal Composites",
+      "facility": "Mini printer",
+      "outputQty": 14,
+      "runTime": 4,
+      "inputs": [
+        {
+          "item": "Silicon Dust",
+          "quantity": 630
+        },
+        {
+          "item": "Tholin Aggregates",
+          "quantity": 1260
+        },
+        {
+          "item": "Feldspar Crystal Shards",
+          "quantity": 210
+        }
+      ]
+    },
+    {
+      "outputItem": "Adaptive Nanitic Armor Weave II",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 97,
+      "inputs": [
+        {
+          "item": "Thermal Composites",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "outputItem": "Adaptive Nanitic Armor Weave III",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 194,
+      "inputs": [
+        {
+          "item": "Thermal Composites",
+          "quantity": 1
+        },
+        {
+          "item": "Still Kernel",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "outputItem": "Adaptive Nanitic Armor Weave IV",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 804,
+      "inputs": [
+        {
+          "item": "Thermal Composites",
+          "quantity": 12
+        },
+        {
+          "item": "Still Kernel",
+          "quantity": 6
+        }
+      ]
+    },
+    {
+      "outputItem": "Afterburner II",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 97,
+      "inputs": [
+        {
+          "item": "Thermal Composites",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "outputItem": "Afterburner III",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 194,
+      "inputs": [
+        {
+          "item": "Thermal Composites",
+          "quantity": 1
+        },
+        {
+          "item": "Still Kernel",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "outputItem": "Afterburner IV",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 798,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 4
+        },
+        {
+          "item": "Carbon Weave",
+          "quantity": 4
+        },
+        {
+          "item": "Thermal Composites",
+          "quantity": 4
+        },
+        {
+          "item": "Still Kernel",
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "outputItem": "Attuned Shield Generator II",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 207,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 4
+        },
+        {
+          "item": "Carbon Weave",
+          "quantity": 8
+        }
+      ]
+    },
+    {
+      "outputItem": "Attuned Shield Generator III",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 505,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 12
+        },
+        {
+          "item": "Carbon Weave",
+          "quantity": 24
+        }
+      ]
+    },
+    {
+      "outputItem": "Attuned Shield Generator IV",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 1169,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 31
+        },
+        {
+          "item": "Carbon Weave",
+          "quantity": 62
+        }
+      ]
+    },
+    {
+      "outputItem": "Base Autocannon (S)",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 156,
+      "inputs": [
+        {
+          "item": "Iron-Rich Nodules",
+          "quantity": 10
+        },
+        {
+          "item": "Silica Grains",
+          "quantity": 30
+        }
+      ]
+    },
+    {
+      "outputItem": "Base Coilgun (M)",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 574,
+      "inputs": [
+        {
+          "item": "Platinum-Group Veins",
+          "quantity": 120
+        },
+        {
+          "item": "Printed Circuits",
+          "quantity": 2
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 2
+        },
+        {
+          "item": "Palladium",
+          "quantity": 120
+        }
+      ]
+    },
+    {
+      "outputItem": "Base Coilgun (S)",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 115,
+      "inputs": [
+        {
+          "item": "Platinum-Group Veins",
+          "quantity": 60
+        },
+        {
+          "item": "Printed Circuits",
+          "quantity": 1
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 1
+        },
+        {
+          "item": "Palladium",
+          "quantity": 60
+        }
+      ]
+    },
+    {
+      "outputItem": "Base Howitzer (M)",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 632,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 2
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 2
+        },
+        {
+          "item": "Feldspar Crystal Shards",
+          "quantity": 150
+        }
+      ]
+    },
+    {
+      "outputItem": "Base Rapid Plasma (S)",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 132,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 1
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 1
+        },
+        {
+          "item": "Troilite Sulfide Grains",
+          "quantity": 90
+        }
+      ]
+    },
+    {
+      "outputItem": "Bulky Armor Plates II",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 155,
+      "inputs": [
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 4
+        }
+      ]
+    },
+    {
+      "outputItem": "Cargo Grid II",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 209,
+      "inputs": [
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 4
+        },
+        {
+          "item": "Carbon Weave",
+          "quantity": 7
+        }
+      ]
+    },
+    {
+      "outputItem": "Bulky Armor Plates III",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 357,
+      "inputs": [
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 7
+        }
+      ]
+    },
+    {
+      "outputItem": "Bulky Armor Plates V",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 921,
+      "inputs": [
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 24
+        }
+      ]
+    },
+    {
+      "outputItem": "Bulwark Shield Generator III",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 505,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 12
+        },
+        {
+          "item": "Carbon Weave",
+          "quantity": 21
+        },
+        {
+          "item": "Palladium",
+          "quantity": 450
+        }
+      ]
+    },
+    {
+      "outputItem": "Bulwark Shield Generator IV",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 1169,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 31
+        },
+        {
+          "item": "Carbon Weave",
+          "quantity": 60
+        },
+        {
+          "item": "Palladium",
+          "quantity": 600
+        }
+      ]
+    },
+    {
+      "outputItem": "Cargo Grid III",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 469,
+      "inputs": [
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 7
+        },
+        {
+          "item": "Carbon Weave",
+          "quantity": 13
+        }
+      ]
+    },
+    {
+      "outputItem": "Cargo Grid IV",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 1054,
+      "inputs": [
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 14
+        },
+        {
+          "item": "Carbon Weave",
+          "quantity": 26
+        }
+      ]
+    },
+    {
+      "outputItem": "Cargo Grid V",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 2339,
+      "inputs": [
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 28
+        },
+        {
+          "item": "Carbon Weave",
+          "quantity": 52
+        }
+      ]
+    },
+    {
+      "outputItem": "Cargo Grid VI",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 5144,
+      "inputs": [
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 56
+        },
+        {
+          "item": "Carbon Weave",
+          "quantity": 104
+        }
+      ]
+    },
+    {
+      "outputItem": "Celerity CD01",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 207,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 4
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 4
+        },
+        {
+          "item": "Thermal Composites",
+          "quantity": 8
+        }
+      ]
+    },
+    {
+      "outputItem": "Celerity CD02",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 471,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 8
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 8
+        },
+        {
+          "item": "Thermal Composites",
+          "quantity": 16
+        },
+        {
+          "item": "Still Kernel",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "outputItem": "Celerity CD03",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 4230,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 16
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 16
+        },
+        {
+          "item": "Thermal Composites",
+          "quantity": 32
+        },
+        {
+          "item": "Still Kernel",
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "outputItem": "Coated Armor Plates II",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 172,
+      "inputs": [
+        {
+          "item": "Carbon Weave",
+          "quantity": 4
+        }
+      ]
+    },
+    {
+      "outputItem": "Coated Armor Plates III",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 391,
+      "inputs": [
+        {
+          "item": "Carbon Weave",
+          "quantity": 7
+        }
+      ]
+    },
+    {
+      "outputItem": "Coated Armor Plates IV",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 921,
+      "inputs": [
+        {
+          "item": "Carbon Weave",
+          "quantity": 16
+        }
+      ]
+    },
+    {
+      "outputItem": "Crude Extractor",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 750,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 3
+        },
+        {
+          "item": "Carbon Weave",
+          "quantity": 5
+        }
+      ]
+    },
+    {
+      "outputItem": "Cryogenic Ejector S",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 904,
+      "inputs": [
+        {
+          "item": "Platinum-Group Veins",
+          "quantity": 35
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 6
+        },
+        {
+          "item": "D1 Fuel",
+          "quantity": 560
+        },
+        {
+          "item": "Palladium",
+          "quantity": 35
+        }
+      ]
+    },
+    {
+      "outputItem": "EM Field Array II",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 218,
+      "inputs": [
+        {
+          "item": "Carbon Weave",
+          "quantity": 12
+        }
+      ]
+    },
+    {
+      "outputItem": "EM Field Array III",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 461,
+      "inputs": [
+        {
+          "item": "Carbon Weave",
+          "quantity": 16
+        }
+      ]
+    },
+    {
+      "outputItem": "EM Field Array IV",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 949,
+      "inputs": [
+        {
+          "item": "Carbon Weave",
+          "quantity": 19
+        }
+      ]
+    },
+    {
+      "outputItem": "Embark",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 89,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 2
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 2
+        },
+        {
+          "item": "Thermal Composites",
+          "quantity": 4
+        }
+      ]
+    },
+    {
+      "outputItem": "Explo-electro Nanitic Brace II",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 159,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 1
+        },
+        {
+          "item": "Carbon Weave",
+          "quantity": 2
+        },
+        {
+          "item": "Thermal Composites",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "outputItem": "Explo-electro Nanitic Brace III",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 350,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 1
+        },
+        {
+          "item": "Carbon Weave",
+          "quantity": 2
+        },
+        {
+          "item": "Thermal Composites",
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "outputItem": "Explo-electro Nanitic Brace IV",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 796,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 1
+        },
+        {
+          "item": "Carbon Weave",
+          "quantity": 2
+        },
+        {
+          "item": "Thermal Composites",
+          "quantity": 8
+        }
+      ]
+    },
+    {
+      "outputItem": "Explonetic-electro Nanitic Brace II",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 159,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 1
+        },
+        {
+          "item": "Carbon Weave",
+          "quantity": 2
+        },
+        {
+          "item": "Thermal Composites",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "outputItem": "Explonetic-electro Nanitic Brace III",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 362,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 1
+        },
+        {
+          "item": "Carbon Weave",
+          "quantity": 2
+        },
+        {
+          "item": "Thermal Composites",
+          "quantity": 4
+        }
+      ]
+    },
+    {
+      "outputItem": "Explonetic-electro Nanitic Brace IV",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 835,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 1
+        },
+        {
+          "item": "Carbon Weave",
+          "quantity": 2
+        },
+        {
+          "item": "Thermal Composites",
+          "quantity": 11
+        }
+      ]
+    },
+    {
+      "outputItem": "Explosive Field Array II",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 201,
+      "inputs": [
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 6
+        },
+        {
+          "item": "Thermal Composites",
+          "quantity": 6
+        }
+      ]
+    },
+    {
+      "outputItem": "Explosive Field Array III",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 415,
+      "inputs": [
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 7
+        },
+        {
+          "item": "Thermal Composites",
+          "quantity": 7
+        }
+      ]
+    },
+    {
+      "outputItem": "Explosive Field Array IV",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 863,
+      "inputs": [
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 9
+        },
+        {
+          "item": "Thermal Composites",
+          "quantity": 8
+        }
+      ]
+    },
+    {
+      "outputItem": "Heat Exchanger S",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 452,
+      "inputs": [
+        {
+          "item": "Platinum-Group Veins",
+          "quantity": 35
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 6
+        },
+        {
+          "item": "D1 Fuel",
+          "quantity": 560
+        },
+        {
+          "item": "Palladium",
+          "quantity": 35
+        }
+      ]
+    },
+    {
+      "outputItem": "Heat Exchanger XS",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 197,
+      "inputs": [
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 3
+        },
+        {
+          "item": "D1 Fuel",
+          "quantity": 280
+        },
+        {
+          "item": "Palladium",
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "outputItem": "Hop",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 120,
+      "inputs": [
+        {
+          "item": "Thermal Composites",
+          "quantity": 2
+        },
+        {
+          "item": "Printed Circuits",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "outputItem": "Hull Repairer",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 148,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 1
+        },
+        {
+          "item": "Carbon Weave",
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "outputItem": "Kinetic Field Array II",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 184,
+      "inputs": [
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 8
+        }
+      ]
+    },
+    {
+      "outputItem": "Kinetic Field Array III",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 387,
+      "inputs": [
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 10
+        }
+      ]
+    },
+    {
+      "outputItem": "Kinetic Field Array IV",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 804,
+      "inputs": [
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 12
+        }
+      ]
+    },
+    {
+      "outputItem": "Large Cutting Laser",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 14863,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 7
+        },
+        {
+          "item": "Carbon Weave",
+          "quantity": 15
+        }
+      ]
+    },
+    {
+      "outputItem": "Leap",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 320,
+      "inputs": [
+        {
+          "item": "Thermal Composites",
+          "quantity": 4
+        },
+        {
+          "item": "Printed Circuits",
+          "quantity": 4
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 4
+        }
+      ]
+    },
+    {
+      "outputItem": "Lunge",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 800,
+      "inputs": [
+        {
+          "item": "Thermal Composites",
+          "quantity": 8
+        },
+        {
+          "item": "Printed Circuits",
+          "quantity": 16
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 16
+        }
+      ]
+    },
+    {
+      "outputItem": "Medium Cutting Laser",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 863,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 5
+        },
+        {
+          "item": "Carbon Weave",
+          "quantity": 10
+        }
+      ]
+    },
+    {
+      "outputItem": "Nimble Armor Plates II",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 150,
+      "inputs": [
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 2
+        },
+        {
+          "item": "Carbon Weave",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "outputItem": "Nimble Armor Plates III",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 357,
+      "inputs": [
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 4
+        },
+        {
+          "item": "Carbon Weave",
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "outputItem": "Nimble Armor Plates IV",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 830,
+      "inputs": [
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 8
+        },
+        {
+          "item": "Carbon Weave",
+          "quantity": 4
+        }
+      ]
+    },
+    {
+      "outputItem": "Rapid Plasma (M)",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 643,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 2
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 2
+        },
+        {
+          "item": "Troilite Sulfide Grains",
+          "quantity": 180
+        }
+      ]
+    },
+    {
+      "outputItem": "Reactive Armor Plates II",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 182,
+      "inputs": [
+        {
+          "item": "Carbon Weave",
+          "quantity": 3
+        },
+        {
+          "item": "Thermal Composites",
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "outputItem": "Reactive Armor Plates III",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 421,
+      "inputs": [
+        {
+          "item": "Carbon Weave",
+          "quantity": 6
+        },
+        {
+          "item": "Thermal Composites",
+          "quantity": 6
+        }
+      ]
+    },
+    {
+      "outputItem": "Reactive Armor Plates IV",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 943,
+      "inputs": [
+        {
+          "item": "Carbon Weave",
+          "quantity": 11
+        },
+        {
+          "item": "Thermal Composites",
+          "quantity": 11
+        }
+      ]
+    },
+    {
+      "outputItem": "Reinforced Shield Generator II",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 207,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 4
+        },
+        {
+          "item": "Carbon Weave",
+          "quantity": 8
+        }
+      ]
+    },
+    {
+      "outputItem": "Reinforced Shield Generator III",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 505,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 12
+        },
+        {
+          "item": "Carbon Weave",
+          "quantity": 24
+        }
+      ]
+    },
+    {
+      "outputItem": "Shield Restorer II",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 243,
+      "inputs": [
+        {
+          "item": "Platinum-Group Veins",
+          "quantity": 13
+        },
+        {
+          "item": "Printed Circuits",
+          "quantity": 17
+        },
+        {
+          "item": "Carbon Weave",
+          "quantity": 17
+        }
+      ]
+    },
+    {
+      "outputItem": "Shield Restorer III",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 496,
+      "inputs": [
+        {
+          "item": "Platinum-Group Veins",
+          "quantity": 15
+        },
+        {
+          "item": "Printed Circuits",
+          "quantity": 20
+        },
+        {
+          "item": "Carbon Weave",
+          "quantity": 19
+        }
+      ]
+    },
+    {
+      "outputItem": "Shield Restorer IV",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 970,
+      "inputs": [
+        {
+          "item": "Platinum-Group Veins",
+          "quantity": 13
+        },
+        {
+          "item": "Printed Circuits",
+          "quantity": 17
+        },
+        {
+          "item": "Carbon Weave",
+          "quantity": 17
+        },
+        {
+          "item": "Still Kernel",
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "outputItem": "Small Cutting Laser",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 167,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 2
+        },
+        {
+          "item": "Carbon Weave",
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "outputItem": "Sojourn",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 39,
+      "inputs": [
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 2
+        },
+        {
+          "item": "Hydrocarbon Residue",
+          "quantity": 10
+        }
+      ]
+    },
+    {
+      "outputItem": "Stasis Net II",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 178,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 2
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 2
+        },
+        {
+          "item": "Thermal Composites",
+          "quantity": 4
+        }
+      ]
+    },
+    {
+      "outputItem": "Stasis Net III",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 366,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 2
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 3
+        },
+        {
+          "item": "Thermal Composites",
+          "quantity": 4
+        }
+      ]
+    },
+    {
+      "outputItem": "Stasis Net IV",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 760,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 3
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 3
+        },
+        {
+          "item": "Thermal Composites",
+          "quantity": 5
+        }
+      ]
+    },
+    {
+      "outputItem": "Stasis Net V",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 1553,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 3
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 4
+        },
+        {
+          "item": "Thermal Composites",
+          "quantity": 5
+        }
+      ]
+    },
+    {
+      "outputItem": "Stasis Net VI",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 3192,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 4
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 4
+        },
+        {
+          "item": "Thermal Composites",
+          "quantity": 6
+        }
+      ]
+    },
+    {
+      "outputItem": "Systematic Armor Restorer II",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 111,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 1
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "outputItem": "Systematic Armor Restorer III",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 222,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 1
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 1
+        },
+        {
+          "item": "Still Kernel",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "outputItem": "Systematic Armor Restorer IV",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 962,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 22
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 22
+        },
+        {
+          "item": "Still Kernel",
+          "quantity": 4
+        }
+      ]
+    },
+    {
+      "outputItem": "Tempo CD41",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 413,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 4
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 4
+        },
+        {
+          "item": "Thermal Composites",
+          "quantity": 8
+        }
+      ]
+    },
+    {
+      "outputItem": "Tempo CD42",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 942,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 8
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 8
+        },
+        {
+          "item": "Thermal Composites",
+          "quantity": 16
+        },
+        {
+          "item": "Still Kernel",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "outputItem": "Thermal Field Array II",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 201,
+      "inputs": [
+        {
+          "item": "Thermal Composites",
+          "quantity": 12
+        }
+      ]
+    },
+    {
+      "outputItem": "Thermal Field Array III",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 426,
+      "inputs": [
+        {
+          "item": "Thermal Composites",
+          "quantity": 16
+        }
+      ]
+    },
+    {
+      "outputItem": "Thermal Field Array IV",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 881,
+      "inputs": [
+        {
+          "item": "Thermal Composites",
+          "quantity": 19
+        }
+      ]
+    },
+    {
+      "outputItem": "Thermal-electro Nanitic Brace II",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 181,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 1
+        },
+        {
+          "item": "Carbon Weave",
+          "quantity": 2
+        },
+        {
+          "item": "Thermal Composites",
+          "quantity": 4
+        }
+      ]
+    },
+    {
+      "outputItem": "Thermal-electro Nanitic Brace III",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 405,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 1
+        },
+        {
+          "item": "Carbon Weave",
+          "quantity": 2
+        },
+        {
+          "item": "Thermal Composites",
+          "quantity": 9
+        }
+      ]
+    },
+    {
+      "outputItem": "Thermal-electro Nanitic Brace IV",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 916,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 1
+        },
+        {
+          "item": "Carbon Weave",
+          "quantity": 2
+        },
+        {
+          "item": "Thermal Composites",
+          "quantity": 20
+        }
+      ]
+    },
+    {
+      "outputItem": "Thermalnetic Nanitic Brace II",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 181,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 1
+        },
+        {
+          "item": "Carbon Weave",
+          "quantity": 2
+        },
+        {
+          "item": "Thermal Composites",
+          "quantity": 4
+        }
+      ]
+    },
+    {
+      "outputItem": "Thermalnetic Nanitic Brace III",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 405,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 1
+        },
+        {
+          "item": "Thermal Composites",
+          "quantity": 12
+        }
+      ]
+    },
+    {
+      "outputItem": "Thermalnetic Nanitic Brace IV",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 923,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 1
+        },
+        {
+          "item": "Thermal Composites",
+          "quantity": 24
+        }
+      ]
+    },
+    {
+      "outputItem": "Tier 2 Autocannon (S)",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 276,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 1
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 1
+        },
+        {
+          "item": "Feldspar Crystal Shards",
+          "quantity": 125
+        }
+      ]
+    },
+    {
+      "outputItem": "Tier 2 Coilgun (M)",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 2457,
+      "inputs": [
+        {
+          "item": "Platinum-Group Veins",
+          "quantity": 70
+        },
+        {
+          "item": "Printed Circuits",
+          "quantity": 2
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 1
+        },
+        {
+          "item": "Palladium",
+          "quantity": 70
+        }
+      ]
+    },
+    {
+      "outputItem": "Tier 2 Coilgun (S)",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 249,
+      "inputs": [
+        {
+          "item": "Platinum-Group Veins",
           "quantity": 140
         },
         {
-          "item": "Silica grains",
-          "quantity": 90
+          "item": "Printed Circuits",
+          "quantity": 2
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "outputItem": "Tier 2 Howitzer (M)",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 2667,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 2
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 2
+        },
+        {
+          "item": "Feldspar Crystal Shards",
+          "quantity": 250
+        }
+      ]
+    },
+    {
+      "outputItem": "Tier 2 Rapid Plasma (M)",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 2727,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 2
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 2
+        },
+        {
+          "item": "Troilite Sulfide Grains",
+          "quantity": 300
+        }
+      ]
+    },
+    {
+      "outputItem": "Tier 2 Rapid Plasma (S)",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 283,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 1
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 1
+        },
+        {
+          "item": "Troilite Sulfide Grains",
+          "quantity": 150
+        }
+      ]
+    },
+    {
+      "outputItem": "Tier 3 Autocannon (S)",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 577,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 1
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 1
+        },
+        {
+          "item": "Feldspar Crystal Shards",
+          "quantity": 170
+        }
+      ]
+    },
+    {
+      "outputItem": "Tier 3 Coilgun (M)",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 9935,
+      "inputs": [
+        {
+          "item": "Platinum-Group Veins",
+          "quantity": 440
+        },
+        {
+          "item": "Printed Circuits",
+          "quantity": 4
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "outputItem": "Tier 3 Coilgun (S)",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 505,
+      "inputs": [
+        {
+          "item": "Platinum-Group Veins",
+          "quantity": 110
+        },
+        {
+          "item": "Printed Circuits",
+          "quantity": 2
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 1
+        },
+        {
+          "item": "Palladium",
+          "quantity": 110
+        }
+      ]
+    },
+    {
+      "outputItem": "Tier 3 Howitzer (M)",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 11086,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 2
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 2
+        },
+        {
+          "item": "Feldspar Crystal Shards",
+          "quantity": 340
+        }
+      ]
+    },
+    {
+      "outputItem": "Tier 3 Rapid Plasma (M)",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 11412,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 2
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 2
+        },
+        {
+          "item": "Troilite Sulfide Grains",
+          "quantity": 420
+        }
+      ]
+    },
+    {
+      "outputItem": "Tier 3 Rapid Plasma (S)",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 597,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 1
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 1
+        },
+        {
+          "item": "Troilite Sulfide Grains",
+          "quantity": 210
+        }
+      ]
+    },
+    {
+      "outputItem": "Tuho 7",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 137,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 4
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "outputItem": "Tuho 9",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 301,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 4
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "outputItem": "Tuho S",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 620,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 5
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "outputItem": "Velocity CD81",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 825,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 4
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 4
+        },
+        {
+          "item": "Thermal Composites",
+          "quantity": 8
+        }
+      ]
+    },
+    {
+      "outputItem": "Velocity CD82",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 1883,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 8
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 8
+        },
+        {
+          "item": "Thermal Composites",
+          "quantity": 16
+        },
+        {
+          "item": "Still Kernel",
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "outputItem": "Warp Entangler II",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 181,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 2
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 2
+        },
+        {
+          "item": "Carbon Weave",
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "outputItem": "Warp Entangler III",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 371,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 2
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 3
+        },
+        {
+          "item": "Carbon Weave",
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "outputItem": "Warp Entangler IV",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 777,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 3
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 3
+        },
+        {
+          "item": "Carbon Weave",
+          "quantity": 4
+        }
+      ]
+    },
+    {
+      "outputItem": "Warp Entangler V",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 1585,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 3
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 4
+        },
+        {
+          "item": "Carbon Weave",
+          "quantity": 4
+        }
+      ]
+    },
+    {
+      "outputItem": "Warp Entangler VI",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 3274,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 4
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 4
+        },
+        {
+          "item": "Carbon Weave",
+          "quantity": 5
+        }
+      ]
+    },
+    {
+      "outputItem": "Xoru 7",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 664,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 8
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "outputItem": "Xoru 9",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 2872,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 8
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 4
+        }
+      ]
+    },
+    {
+      "outputItem": "Xoru S",
+      "facility": "Assembler",
+      "outputQty": 1,
+      "runTime": 11770,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 10
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 4
+        }
+      ]
+    },
+    {
+      "outputItem": "Assembler",
+      "facility": "Build",
+      "outputQty": 1,
+      "runTime": 0,
+      "inputs": [
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 20
+        },
+        {
+          "item": "Carbon Weave",
+          "quantity": 10
+        },
+        {
+          "item": "Printed Circuits",
+          "quantity": 5
+        }
+      ]
+    },
+    {
+      "outputItem": "Heavy printer",
+      "facility": "Build",
+      "outputQty": 1,
+      "runTime": 0,
+      "inputs": [
+        {
+          "item": "Building Foam",
+          "quantity": 100
+        }
+      ]
+    },
+    {
+      "outputItem": "Mini berth",
+      "facility": "Build",
+      "outputQty": 1,
+      "runTime": 0,
+      "inputs": [
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 20
+        },
+        {
+          "item": "Carbon Weave",
+          "quantity": 10
+        },
+        {
+          "item": "Printed Circuits",
+          "quantity": 5
+        }
+      ]
+    },
+    {
+      "outputItem": "Mini printer",
+      "facility": "Build",
+      "outputQty": 1,
+      "runTime": 0,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 15
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 15
+        }
+      ]
+    },
+    {
+      "outputItem": "Mini storage",
+      "facility": "Build",
+      "outputQty": 1,
+      "runTime": 0,
+      "inputs": [
+        {
+          "item": "Feldspar Crystals",
+          "quantity": 250
+        },
+        {
+          "item": "Platinum-Palladium Matrix",
+          "quantity": 250
+        }
+      ]
+    },
+    {
+      "outputItem": "Network node",
+      "facility": "Build",
+      "outputQty": 1,
+      "runTime": 0,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 10
+        },
+        {
+          "item": "Carbon Weave",
+          "quantity": 10
+        },
+        {
+          "item": "Thermal Composites",
+          "quantity": 10
+        }
+      ]
+    },
+    {
+      "outputItem": "Nursery",
+      "facility": "Build",
+      "outputQty": 1,
+      "runTime": 0,
+      "inputs": [
+        {
+          "item": "Building Foam",
+          "quantity": 20
+        }
+      ]
+    },
+    {
+      "outputItem": "Printer",
+      "facility": "Build",
+      "outputQty": 1,
+      "runTime": 0,
+      "inputs": [
+        {
+          "item": "Building Foam",
+          "quantity": 20
+        }
+      ]
+    },
+    {
+      "outputItem": "Refinery",
+      "facility": "Build",
+      "outputQty": 1,
+      "runTime": 0,
+      "inputs": [
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 15
+        },
+        {
+          "item": "Thermal Composites",
+          "quantity": 15
+        }
+      ]
+    },
+    {
+      "outputItem": "Refuge",
+      "facility": "Build",
+      "outputQty": 1,
+      "runTime": 0,
+      "inputs": [
+        {
+          "item": "Platinum-Palladium Matrix",
+          "quantity": 50
+        }
+      ]
+    },
+    {
+      "outputItem": "Relay",
+      "facility": "Build",
+      "outputQty": 1,
+      "runTime": 0,
+      "inputs": [
+        {
+          "item": "Printed Circuits",
+          "quantity": 6
+        },
+        {
+          "item": "Carbon Weave",
+          "quantity": 6
+        },
+        {
+          "item": "Thermal Composites",
+          "quantity": 6
         }
       ]
     }
