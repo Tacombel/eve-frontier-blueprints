@@ -2,6 +2,7 @@
   "factories": [
     "Build",
     "Field Printer",
+    "Mini Berth",
     "Mini Printer"
   ],
   "refineries": [
@@ -198,6 +199,12 @@
     },
     {
       "name": "Cargo Grid VI",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Carom",
       "isRawMaterial": false,
       "isFound": false,
       "isFinalProduct": true
@@ -686,6 +693,12 @@
       "isFinalProduct": true
     },
     {
+      "name": "Recurve",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
       "name": "Refinery",
       "isRawMaterial": false,
       "isFound": false,
@@ -717,6 +730,12 @@
     },
     {
       "name": "Reinforced Shield Generator III",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
+    },
+    {
+      "name": "Reiver",
       "isRawMaterial": false,
       "isFound": false,
       "isFinalProduct": true
@@ -912,6 +931,12 @@
       "isRawMaterial": false,
       "isFound": false,
       "isFinalProduct": false
+    },
+    {
+      "name": "Stride",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
     },
     {
       "name": "Stride Stack",
@@ -1164,6 +1189,12 @@
       "isRawMaterial": false,
       "isFound": true,
       "isFinalProduct": false
+    },
+    {
+      "name": "Wend",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true
     },
     {
       "name": "Xoru 7",
@@ -2160,6 +2191,35 @@
         {
           "item": "Reinforced Alloys",
           "quantity": 56
+        }
+      ]
+    },
+    {
+      "outputItem": "Carom",
+      "factory": "Mini Berth",
+      "outputQty": 1,
+      "runTime": 10260,
+      "isDefault": false,
+      "inputs": [
+        {
+          "item": "Carbon Weave",
+          "quantity": 44
+        },
+        {
+          "item": "Carom Stack",
+          "quantity": 1
+        },
+        {
+          "item": "Nomad Program Frame",
+          "quantity": 2
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 88
+        },
+        {
+          "item": "Thermal Composites",
+          "quantity": 44
         }
       ]
     },
@@ -3195,6 +3255,35 @@
       ]
     },
     {
+      "outputItem": "Recurve",
+      "factory": "Mini Berth",
+      "outputQty": 1,
+      "runTime": 130,
+      "isDefault": false,
+      "inputs": [
+        {
+          "item": "Carbon Weave",
+          "quantity": 25
+        },
+        {
+          "item": "Nomad Program Frame",
+          "quantity": 2
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 45
+        },
+        {
+          "item": "Still Kernel",
+          "quantity": 2
+        },
+        {
+          "item": "Thermal Composites",
+          "quantity": 25
+        }
+      ]
+    },
+    {
       "outputItem": "Refinery",
       "factory": "Build",
       "outputQty": 1,
@@ -3214,6 +3303,27 @@
       "outputItem": "Reflex",
       "factory": "Field Printer",
       "outputQty": 1,
+      "isDefault": false,
+      "inputs": [
+        {
+          "item": "Hydrocarbon Residue",
+          "quantity": 40
+        },
+        {
+          "item": "Nomad Program Frame",
+          "quantity": 1
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 28
+        }
+      ]
+    },
+    {
+      "outputItem": "Reflex",
+      "factory": "Mini Berth",
+      "outputQty": 1,
+      "runTime": 50,
       "isDefault": false,
       "inputs": [
         {
@@ -3309,6 +3419,31 @@
         {
           "item": "Printed Circuits",
           "quantity": 12
+        }
+      ]
+    },
+    {
+      "outputItem": "Reiver",
+      "factory": "Mini Berth",
+      "outputQty": 1,
+      "runTime": 150,
+      "isDefault": false,
+      "inputs": [
+        {
+          "item": "Carbon Weave",
+          "quantity": 33
+        },
+        {
+          "item": "Nomad Program Frame",
+          "quantity": 2
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 78
+        },
+        {
+          "item": "Thermal Composites",
+          "quantity": 33
         }
       ]
     },
@@ -3579,6 +3714,35 @@
         {
           "item": "Salt",
           "quantity": 5
+        }
+      ]
+    },
+    {
+      "outputItem": "Stride",
+      "factory": "Mini Berth",
+      "outputQty": 1,
+      "runTime": 10630,
+      "isDefault": false,
+      "inputs": [
+        {
+          "item": "Carbon Weave",
+          "quantity": 48
+        },
+        {
+          "item": "Nomad Program Frame",
+          "quantity": 2
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 96
+        },
+        {
+          "item": "Stride Stack",
+          "quantity": 1
+        },
+        {
+          "item": "Thermal Composites",
+          "quantity": 48
         }
       ]
     },
@@ -4366,6 +4530,31 @@
         {
           "item": "Reinforced Alloys",
           "quantity": 4
+        }
+      ]
+    },
+    {
+      "outputItem": "Wend",
+      "factory": "Mini Berth",
+      "outputQty": 1,
+      "runTime": 60,
+      "isDefault": false,
+      "inputs": [
+        {
+          "item": "Carbon Weave",
+          "quantity": 17
+        },
+        {
+          "item": "Nomad Program Frame",
+          "quantity": 1
+        },
+        {
+          "item": "Reinforced Alloys",
+          "quantity": 34
+        },
+        {
+          "item": "Thermal Composites",
+          "quantity": 17
         }
       ]
     },
