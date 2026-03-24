@@ -13,6 +13,10 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 RUN npx prisma generate
 RUN npm run build
+RUN node_modules/.bin/esbuild prisma/seed-static.ts \
+    --bundle --platform=node --target=node22 --format=cjs \
+    --outfile=prisma/seed-static.cjs \
+    --external:@prisma/client
 
 # ─── runner ────────────────────────────────────────────────────────────────────
 FROM node:22-alpine AS runner
@@ -29,7 +33,10 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 COPY --from=builder --chown=nextjs:nodejs /app/public ./public
 
-# Prisma: schema, migrations and CLI for migrate deploy at startup
+# Static game data
+COPY --from=builder --chown=nextjs:nodejs /app/data ./data
+
+# Prisma: schema, migrations, CLI and compiled seed-static for startup
 COPY --from=builder --chown=nextjs:nodejs /app/prisma ./prisma
 COPY --from=builder --chown=nextjs:nodejs /app/node_modules/prisma ./node_modules/prisma
 RUN mkdir -p /app/node_modules/.bin && ln -sf /app/node_modules/prisma/build/index.js /app/node_modules/.bin/prisma

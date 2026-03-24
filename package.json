@@ -1,6 +1,6 @@
 {
   "name": "ef-industry",
-  "version": "1.16.6",
+  "version": "1.17.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,7 +9,10 @@
     "lint": "next lint",
     "test": "vitest run",
     "test:watch": "vitest",
-    "db:seed": "tsx prisma/seed.ts"
+    "db:seed": "tsx prisma/seed.ts",
+    "db:seed:static": "tsx prisma/seed-static.ts",
+    "db:export": "tsx scripts/export-game-data.ts",
+    "db:compare": "tsx scripts/compare-seed.ts"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
