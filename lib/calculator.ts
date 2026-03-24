@@ -210,7 +210,8 @@ function resolve(
 
 export function calculate(
   packItems: { itemId: string; quantity: number }[],
-  itemMap: ItemMap
+  itemMap: ItemMap,
+  options?: { excludedOreIds?: Set<string> }
 ): CalculationResult {
   const demand: DemandMap = new Map();
   const grossDemand: DemandMap = new Map();
@@ -319,6 +320,7 @@ export function calculate(
   // ── Primary ore decomposition suggestions ────────────────────────────────
   const decompByOutput = new Map<string, CalcItem[]>();
   for (const item of itemMap.values()) {
+    if (options?.excludedOreIds?.has(item.id)) continue;
     const dec = pickDecomposition(item);
     if (!dec) continue;
     for (const out of dec.outputs) {

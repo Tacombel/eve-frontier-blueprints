@@ -13,6 +13,7 @@ interface OreSectionProps {
   onCargoChange: (v: number) => void;
   stock: Record<string, number>;
   onStockChange: (itemId: string, value: number) => void;
+  onExcludeOre?: (id: string, name: string) => void;
 }
 
 export default function OreSection({
@@ -23,6 +24,7 @@ export default function OreSection({
   onCargoChange,
   stock,
   onStockChange,
+  onExcludeOre,
 }: OreSectionProps) {
   const [hoveredItemId, setHoveredItemId] = useState<string | null>(null);
 
@@ -168,6 +170,15 @@ export default function OreSection({
                     <AsteroidTooltip asteroids={d.asteroids} />
                   )}
                 </span>
+                {onExcludeOre && (
+                  <button
+                    onClick={() => onExcludeOre(d.sourceItemId, d.sourceItemName)}
+                    className="text-xs text-gray-600 hover:text-red-400 transition-colors"
+                    title="Excluir este ore del cálculo"
+                  >
+                    ⊗ Excluir
+                  </button>
+                )}
                 <span className="text-xs text-gray-500">
                   Decompose <span className="text-purple-300 font-semibold">{d.unitsToDecompose}</span> units
                   · <span className="text-gray-300 font-semibold">{d.runs}</span> batch{d.runs > 1 ? "es" : ""}

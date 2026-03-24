@@ -6,6 +6,8 @@ import { getSession } from "@/lib/auth";
 export async function GET(req: NextRequest) {
   const itemId = req.nextUrl.searchParams.get("itemId");
   const runs = Number(req.nextUrl.searchParams.get("runs") ?? "1");
+  const excludedOres = req.nextUrl.searchParams.get("excludedOres");
+  const excludedOreIds = excludedOres ? new Set(excludedOres.split(",").filter(Boolean)) : undefined;
 
   if (!itemId) return NextResponse.json({ error: "itemId required" }, { status: 400 });
   if (!Number.isInteger(runs) || runs < 1) return NextResponse.json({ error: "runs must be a positive integer" }, { status: 400 });
@@ -19,7 +21,7 @@ export async function GET(req: NextRequest) {
     const outputQty = blueprint?.outputQty ?? 1;
     const quantity = runs * outputQty;
 
-    const result = calculate([{ itemId, quantity }], itemMap);
+    const result = calculate([{ itemId, quantity }], itemMap, { excludedOreIds });
 
     // Move the output item from intermediates to finalProducts
     result.intermediates = result.intermediates.filter((i) => i.itemId !== itemId);

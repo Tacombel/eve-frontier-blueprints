@@ -11,7 +11,10 @@ export default function BlueprintCalculation({ itemId, itemName }: { itemId: str
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
   const [recalculating, setRecalculating] = useState(false);
-const [stock, setStock] = useState<Record<string, number>>({});
+  const [stock, setStock] = useState<Record<string, number>>({});
+  const [excludedOreIds, setExcludedOreIds] = useState<Set<string>>(new Set());
+  const excludedOreIdsRef = useRef<Set<string>>(new Set());
+  const [excludedOreNames, setExcludedOreNames] = useState<Map<string, string>>(new Map());
   const [cargoCapacity, setCargoCapacity] = useState<number>(() => {
     if (typeof window === "undefined") return 0;
     return Number(localStorage.getItem("cargoVolume") ?? 0);
@@ -37,7 +40,9 @@ const [stock, setStock] = useState<Record<string, number>>({});
     else setLoading(true);
     setError("");
     const qty = quantityRef.current;
-    fetch(`/api/calculate?itemId=${itemId}&runs=${qty}`, { signal: controller.signal })
+    const excluded = [...excludedOreIdsRef.current].join(",");
+    const url = `/api/calculate?itemId=${itemId}&runs=${qty}${excluded ? `&excludedOres=${excluded}` : ""}`;
+    fetch(url, { signal: controller.signal })
       .then((r) => r.json())
       .then((data) => {
         if (data.error) {
@@ -69,6 +74,24 @@ const [stock, setStock] = useState<Record<string, number>>({});
   function applyQuantity() {
     quantityRef.current = pendingQty;
     setQuantity(pendingQty);
+    load(true);
+  }
+
+  function excludeOre(oreId: string, oreName: string) {
+    const next = new Set(excludedOreIdsRef.current);
+    next.add(oreId);
+    excludedOreIdsRef.current = next;
+    setExcludedOreIds(next);
+    setExcludedOreNames((m) => new Map(m).set(oreId, oreName));
+    load(true);
+  }
+
+  function restoreOre(oreId: string) {
+    const next = new Set(excludedOreIdsRef.current);
+    next.delete(oreId);
+    excludedOreIdsRef.current = next;
+    setExcludedOreIds(next);
+    setExcludedOreNames((m) => { const n = new Map(m); n.delete(oreId); return n; });
     load(true);
   }
 
@@ -313,6 +336,23 @@ const [stock, setStock] = useState<Record<string, number>>({});
         ) : null;
       })()}
 
+      {/* Excluded ores banner */}
+      {excludedOreIds.size > 0 && (
+        <div className="flex flex-wrap items-center gap-2 rounded border border-gray-700 bg-gray-800/40 px-3 py-2">
+          <span className="text-xs text-gray-500">Excluidos:</span>
+          {[...excludedOreIds].map((id) => (
+            <span key={id} className="flex items-center gap-1 rounded bg-gray-700 px-2 py-0.5 text-xs text-gray-300">
+              {excludedOreNames.get(id) ?? id}
+              <button
+                onClick={() => restoreOre(id)}
+                className="ml-0.5 text-gray-400 hover:text-white"
+                title="Restablecer"
+              >×</button>
+            </span>
+          ))}
+        </div>
+      )}
+
       {/* Ore section */}
       <OreSection
         decomps={result.decompositions ?? []}
@@ -322,6 +362,7 @@ const [stock, setStock] = useState<Record<string, number>>({});
         onCargoChange={updateCargoCapacity}
         stock={stock}
         onStockChange={(id, v) => setStock((s) => ({ ...s, [id]: v }))}
+        onExcludeOre={excludeOre}
       />
 
       {result.rawMaterials.length === 0 && result.intermediates.length === 0 && (
