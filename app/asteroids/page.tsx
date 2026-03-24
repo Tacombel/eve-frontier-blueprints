@@ -12,6 +12,7 @@ interface Item {
   id: string;
   name: string;
   isRawMaterial: boolean;
+  isFound?: boolean;
 }
 
 interface AsteroidType {
