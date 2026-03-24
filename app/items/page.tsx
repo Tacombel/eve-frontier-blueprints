@@ -90,7 +90,7 @@ export default function ItemsPage() {
       }
     }
 
-    const ores = allItems.filter((i: any) => i.isRawMaterial);
+    const ores = allItems.filter((i: any) => i.isRawMaterial && !i.isFound && i.blueprints.length === 0 && !i.isFinalProduct);
 
     setTotalItems(allItems.length);
     setOreCount(ores.length);
