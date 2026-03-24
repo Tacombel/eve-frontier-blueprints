@@ -191,8 +191,8 @@ export default function ItemsPage() {
           </thead>
           <tbody>
             {(showOre ? items.filter(i => i.isRawMaterial && !i.isFound && i.blueprints.length === 0 && !i.isFinalProduct) : showLoot ? items.filter(i => lootIds.has(i.id)) : items).map((item) => (
-              <tr key={item.id} className="border-b border-gray-800/50 hover:bg-gray-800/30 h-8">
-                <td className="py-1 pr-3 font-medium text-gray-100 whitespace-nowrap">{item.name}</td>
+              <tr key={item.id} className="border-b border-gray-800/50 hover:bg-gray-800/30 h-8 align-middle">
+                <td className="py-1 pr-3 font-medium text-gray-100 whitespace-nowrap align-middle">{item.name}</td>
                 <td className="py-1 pr-3 inline-flex gap-0.5 items-center whitespace-nowrap">
                   {item.isRawMaterial && <span className="badge badge-yellow inline-block">Ore</span>}
                   {item.isFound && <span className="badge badge-blue inline-block">Raw</span>}
