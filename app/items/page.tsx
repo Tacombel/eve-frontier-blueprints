@@ -191,10 +191,12 @@ export default function ItemsPage() {
                     if (!recipe || (recipe.factories.length === 0 && recipe.refineries.length === 0)) {
                       return <span className="text-gray-600">—</span>;
                     }
-                    const parts = [];
-                    if (recipe.factories.length > 0) parts.push(recipe.factories.join(", "));
-                    if (recipe.refineries.length > 0) parts.push(recipe.refineries.join(", "));
-                    return <span className="text-gray-400">{parts.join(" / ")}</span>;
+                    return (
+                      <>
+                        {recipe.factories.map((f) => <span key={f} className="badge badge-blue">{f}</span>)}
+                        {recipe.refineries.map((r) => <span key={r} className="badge badge-purple">{r}</span>)}
+                      </>
+                    );
                   })()}
                 </td>
                 {isAdmin && (
