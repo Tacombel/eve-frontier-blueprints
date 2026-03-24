@@ -150,9 +150,9 @@ function resolve(
 
   const blueprint = pickBlueprint(item);
 
-  // Secondary refinery applies to items that are produced by decompositions.
-  // Found items (looted directly) don't have secondary decompositions.
-  const producedBy = item.isFound ? null : pickProducedBy(item);
+  // Raw/found items are always leaves in the resolve tree — the post-process
+  // greedy handles their ore decompositions.
+  const producedBy = (item.isRawMaterial || item.isFound) ? null : pickProducedBy(item);
 
   // Leaf: no production path — accumulate raw demand
   if (!blueprint && !producedBy) {
@@ -334,6 +334,8 @@ export function calculate(
   }
 
   const decompRuns = new Map<string, number>();
+  // Track surplus byproducts already committed by prior greedy steps
+  const surplus = new Map<string, number>();
 
   while (remaining.size > 0) {
     let matId = "";
@@ -345,7 +347,12 @@ export function calculate(
     }
     if (!matId || !remaining.has(matId)) break;
 
-    const need = remaining.get(matId)!;
+    // Apply any surplus already produced for this material
+    const available = surplus.get(matId) ?? 0;
+    const need = Math.max(0, remaining.get(matId)! - available);
+    if (available > 0) surplus.set(matId, Math.max(0, available - remaining.get(matId)!));
+    if (need <= 0) { remaining.delete(matId); continue; }
+
     const sources = decompByOutput.get(matId)!;
 
     const source = sources.reduce((best, s) => {
@@ -360,12 +367,22 @@ export function calculate(
     const runsNeeded = Math.ceil(need / yieldPerRun);
 
     decompRuns.set(source.id, (decompRuns.get(source.id) ?? 0) + runsNeeded);
+    remaining.delete(matId);
 
     for (const out of dec.outputs) {
+      if (out.itemId === matId) continue;
+      const produced = out.quantity * runsNeeded;
       if (remaining.has(out.itemId)) {
-        const newNeed = remaining.get(out.itemId)! - out.quantity * runsNeeded;
-        if (newNeed <= 0) remaining.delete(out.itemId);
-        else remaining.set(out.itemId, newNeed);
+        const newNeed = remaining.get(out.itemId)! - produced;
+        if (newNeed <= 0) {
+          surplus.set(out.itemId, (surplus.get(out.itemId) ?? 0) + Math.abs(newNeed));
+          remaining.delete(out.itemId);
+        } else {
+          remaining.set(out.itemId, newNeed);
+        }
+      } else {
+        // Track byproducts that may reduce future needs
+        surplus.set(out.itemId, (surplus.get(out.itemId) ?? 0) + produced);
       }
     }
   }
