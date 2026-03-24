@@ -9,7 +9,20 @@
     "Field Refinery",
     "Refinery"
   ],
-  "locations": [],
+  "locations": [
+    "Inner ancient cluster",
+    "Inner derelict bay",
+    "Inner derelict quarry",
+    "Inner stone cluster",
+    "Outer abandoned factory",
+    "Outer abandoned foundry",
+    "Outer blue rift",
+    "Outer grove",
+    "Rift 0020",
+    "Rift f935",
+    "Trojan drifting annex",
+    "Trojan garden"
+  ],
   "items": [
     {
       "name": "AC Gyrojet Ammo 1 (S)",
@@ -1215,7 +1228,99 @@
       "isFinalProduct": true
     }
   ],
-  "asteroidTypes": [],
+  "asteroidTypes": [
+    {
+      "name": "Char",
+      "locations": [
+        "Inner ancient cluster",
+        "Inner derelict bay",
+        "Inner derelict quarry",
+        "Inner stone cluster",
+        "Trojan drifting annex",
+        "Trojan garden"
+      ],
+      "items": [
+        "Feldspar crystals"
+      ]
+    },
+    {
+      "name": "Comet",
+      "locations": [
+        "Outer abandoned foundry",
+        "Outer blue rift",
+        "Outer grove"
+      ],
+      "items": [
+        "Hydrated sulfide matrix"
+      ]
+    },
+    {
+      "name": "Dewdrop",
+      "locations": [
+        "Outer grove"
+      ],
+      "items": [
+        "Methane ice shards"
+      ]
+    },
+    {
+      "name": "Ember",
+      "locations": [
+        "Outer abandoned foundry",
+        "Outer grove",
+        "Trojan drifting annex",
+        "Trojan garden"
+      ],
+      "items": [
+        "Primitive kerogen matrix"
+      ]
+    },
+    {
+      "name": "Glint",
+      "locations": [
+        "Outer abandoned foundry",
+        "Trojan garden"
+      ],
+      "items": [
+        "Aromatic carbon veins"
+      ]
+    },
+    {
+      "name": "Ingot",
+      "locations": [
+        "Inner ancient cluster",
+        "Inner derelict quarry",
+        "Inner stone cluster",
+        "Trojan drifting annex",
+        "Trojan garden"
+      ],
+      "items": [
+        "Iridosmine modules"
+      ]
+    },
+    {
+      "name": "Slag",
+      "locations": [
+        "Inner ancient cluster",
+        "Inner derelict bay",
+        "Inner derelict quarry",
+        "Inner stone cluster",
+        "Trojan drifting annex",
+        "Trojan garden"
+      ],
+      "items": [
+        "Platinum-paladium matrix"
+      ]
+    },
+    {
+      "name": "Soot",
+      "locations": [
+        "Outer grove",
+        "Trojan garden"
+      ],
+      "items": []
+    }
+  ],
   "decompositions": [
     {
       "sourceItem": "Aromatic Carbon Veins",
