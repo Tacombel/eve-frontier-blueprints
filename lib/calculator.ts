@@ -369,6 +369,18 @@ export function calculate(
     decompRuns.set(source.id, (decompRuns.get(source.id) ?? 0) + runsNeeded);
     remaining.delete(matId);
 
+    // Deduct the source units consumed from remaining (source item may also be a raw material)
+    const unitsConsumed = runsNeeded * dec.inputQty;
+    if (remaining.has(source.id)) {
+      const newSourceNeed = remaining.get(source.id)! - unitsConsumed;
+      if (newSourceNeed <= 0) {
+        surplus.set(source.id, (surplus.get(source.id) ?? 0) + Math.abs(newSourceNeed));
+        remaining.delete(source.id);
+      } else {
+        remaining.set(source.id, newSourceNeed);
+      }
+    }
+
     for (const out of dec.outputs) {
       if (out.itemId === matId) continue;
       const produced = out.quantity * runsNeeded;
