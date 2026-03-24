@@ -231,8 +231,9 @@ export function calculate(
     const blueprint = pickBlueprint(item);
     const producedBy = item.isFound ? null : pickProducedBy(item);
 
-    if (!blueprint && !producedBy) {
-      // Raw material leaf
+    // Raw materials are shown in rawMaterials section (including those with producedBy secondary decomps)
+    // Also includes leaf nodes that have no blueprint and no producedBy
+    if (item.isRawMaterial || item.isFound || (!blueprint && !producedBy)) {
       const gross = grossDemand.get(itemId) ?? needed;
       const inStock = Math.min(item.stock, gross);
       rawMaterials.push({
@@ -261,7 +262,7 @@ export function calculate(
         factory: factoryMap.get(itemId) ?? blueprint.factory,
       });
     }
-    // Secondary refinery products that appear in demand are also shown
+    // Secondary refinery products (items with producedBy but no blueprint) are shown
     // as part of secondaryDecompositions (built below) — no separate entry here.
   }
 
