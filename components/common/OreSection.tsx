@@ -231,7 +231,10 @@ export default function OreSection({
           );
         })}
 
-        {directOres.map((row) => {
+        {(() => {
+          const unrefinedIds = new Set(decomps.filter(d => d.isUnrefined).map(d => d.sourceItemId));
+          return directOres.filter(row => !unrefinedIds.has(row.itemId));
+        })().map((row) => {
           const toMine = Math.max(0, row.totalNeeded - (stock[row.itemId] ?? row.actualStock));
           const directTrips = (cargoCapacity > 0 && row.volume > 0 && toMine > 0)
             ? Math.ceil((toMine * row.volume) / cargoCapacity)
@@ -275,7 +278,7 @@ export default function OreSection({
               </div>
             </div>
           );
-        })}
+        })()
       </div>
 
       {decomps.length > 0 && (
