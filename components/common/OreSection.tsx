@@ -156,29 +156,31 @@ export default function OreSection({
               }`}
             >
               <div className="flex items-center gap-3 mb-2">
-                <span
-                  className={`relative text-xs font-medium flex-1 ${
-                    isTarget ? "text-yellow-300" : "text-gray-200"
-                  } ${d.asteroids?.length ? "cursor-help" : ""}`}
-                  onMouseEnter={() => d.asteroids?.length && setHoveredItemId(d.sourceItemId)}
-                  onMouseLeave={() => setHoveredItemId(null)}
-                >
-                  {d.sourceItemName}
-                  {d.asteroids?.length && <span className="ml-1 text-purple-400 text-xs">🪨</span>}
-                  {isTarget && <span className="ml-1.5 text-yellow-500 text-xs">⚠ optimization candidate</span>}
-                  {hoveredItemId === d.sourceItemId && d.asteroids?.length && (
-                    <AsteroidTooltip asteroids={d.asteroids} />
-                  )}
-                </span>
-                {onExcludeOre && (
-                  <button
-                    onClick={() => onExcludeOre(d.sourceItemId, d.sourceItemName)}
-                    className="text-xs text-gray-600 hover:text-red-400 transition-colors"
-                    title="Excluir este ore del cálculo"
+                <div className="flex-1 flex items-center gap-2 min-w-0">
+                  <span
+                    className={`relative text-xs font-medium ${
+                      isTarget ? "text-yellow-300" : "text-gray-200"
+                    } ${d.asteroids?.length ? "cursor-help" : ""}`}
+                    onMouseEnter={() => d.asteroids?.length && setHoveredItemId(d.sourceItemId)}
+                    onMouseLeave={() => setHoveredItemId(null)}
                   >
-                    ⊗ Excluir
-                  </button>
-                )}
+                    {d.sourceItemName}
+                    {d.asteroids?.length && <span className="ml-1 text-purple-400 text-xs">🪨</span>}
+                    {isTarget && <span className="ml-1.5 text-yellow-500 text-xs">⚠ optimization candidate</span>}
+                    {hoveredItemId === d.sourceItemId && d.asteroids?.length && (
+                      <AsteroidTooltip asteroids={d.asteroids} />
+                    )}
+                  </span>
+                  {onExcludeOre && (
+                    <button
+                      onClick={() => onExcludeOre(d.sourceItemId, d.sourceItemName)}
+                      className="text-xs px-1.5 py-0.5 rounded border border-gray-600 text-gray-400 hover:border-red-500 hover:text-red-400 hover:bg-red-900/20 transition-colors"
+                      title="Exclude this ore from calculation"
+                    >
+                      ⊗ Exclude
+                    </button>
+                  )}
+                </div>
                 <span className="text-xs text-gray-500">
                   Decompose <span className="text-purple-300 font-semibold">{d.unitsToDecompose}</span> units
                   · <span className="text-gray-300 font-semibold">{d.runs}</span> batch{d.runs > 1 ? "es" : ""}

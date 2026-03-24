@@ -339,14 +339,14 @@ export default function BlueprintCalculation({ itemId, itemName }: { itemId: str
       {/* Excluded ores banner */}
       {excludedOreIds.size > 0 && (
         <div className="flex flex-wrap items-center gap-2 rounded border border-gray-700 bg-gray-800/40 px-3 py-2">
-          <span className="text-xs text-gray-500">Excluidos:</span>
+          <span className="text-xs text-gray-500">Excluded:</span>
           {[...excludedOreIds].map((id) => (
             <span key={id} className="flex items-center gap-1 rounded bg-gray-700 px-2 py-0.5 text-xs text-gray-300">
               {excludedOreNames.get(id) ?? id}
               <button
                 onClick={() => restoreOre(id)}
                 className="ml-0.5 text-gray-400 hover:text-white"
-                title="Restablecer"
+                title="Restore"
               >×</button>
             </span>
           ))}
