@@ -61,7 +61,6 @@ export default function OreSection({
           <h3 className="text-sm font-semibold text-yellow-400 mb-2">Raw Materials</h3>
           <div className="space-y-2">
             {directOres.map((row) => {
-              const isUnrefined = decomps.some(d => d.sourceItemId === row.itemId && d.isUnrefined);
               const toMine = Math.max(0, row.totalNeeded - (stock[row.itemId] ?? row.actualStock));
               const directTrips = (cargoCapacity > 0 && row.volume > 0 && toMine > 0)
                 ? Math.ceil((toMine * row.volume) / cargoCapacity)
@@ -100,14 +99,6 @@ export default function OreSection({
                       ? <span className="text-xs font-semibold text-red-400 w-24 text-right">⛏ {toMine}</span>
                       : <span className="text-xs font-semibold text-green-400 w-24 text-right">✓</span>}
                   </div>
-                  {isUnrefined && (
-                    <div className="flex flex-wrap gap-1 text-xs mt-2">
-                      <span className="text-gray-600 self-center">→</span>
-                      <span className="bg-gray-700 border border-gray-600 rounded px-1.5 py-0.5 text-gray-400 italic">
-                        Consumed without refining
-                      </span>
-                    </div>
-                  )}
                 </div>
               );
             })}
