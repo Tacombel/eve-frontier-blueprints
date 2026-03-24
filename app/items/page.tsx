@@ -138,7 +138,7 @@ export default function ItemsPage() {
   }
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="w-full">
       <div className="flex items-center justify-between mb-6">
         <div>
           <h1 className="text-2xl font-bold text-gray-100">Items</h1>
@@ -177,8 +177,8 @@ export default function ItemsPage() {
       ) : items.length === 0 ? (
         <p className="text-gray-500">No items found.</p>
       ) : (
-        <div className="overflow-x-auto">
-          <table className="w-max text-sm">
+        <div className="overflow-x-auto -mx-6 px-6">
+          <table className="w-full text-xs">
           <thead>
             <tr className="text-left text-gray-400 border-b border-gray-800">
               <th className="pb-2 pr-3">Name</th>
@@ -193,24 +193,24 @@ export default function ItemsPage() {
             {(showOre ? items.filter(i => i.isRawMaterial && !i.isFound && i.blueprints.length === 0 && !i.isFinalProduct) : showLoot ? items.filter(i => lootIds.has(i.id)) : items).map((item) => (
               <tr key={item.id} className="border-b border-gray-800/50 hover:bg-gray-800/30 h-8">
                 <td className="py-1 pr-3 font-medium text-gray-100 whitespace-nowrap">{item.name}</td>
-                <td className="py-1 pr-3 flex gap-0.5 items-center whitespace-nowrap">
-                  {item.isRawMaterial && <span className="badge badge-yellow">Ore</span>}
-                  {item.isFound && <span className="badge badge-blue">Raw</span>}
-                  {item.blueprints.length > 0 && !item.isFinalProduct && <span className="badge badge-gray">Intermediate</span>}
-                  {item.isFinalProduct && <span className="badge badge-cyan">Final</span>}
+                <td className="py-1 pr-3 inline-flex gap-0.5 items-center whitespace-nowrap">
+                  {item.isRawMaterial && <span className="badge badge-yellow inline-block">Ore</span>}
+                  {item.isFound && <span className="badge badge-blue inline-block">Raw</span>}
+                  {item.blueprints.length > 0 && !item.isFinalProduct && <span className="badge badge-gray inline-block">Intermediate</span>}
+                  {item.isFinalProduct && <span className="badge badge-cyan inline-block">Final</span>}
                   {!item.isRawMaterial && !item.isFound && !item.isFinalProduct && item.blueprints.length === 0 && <span className="text-gray-600">—</span>}
                 </td>
                 <td className="py-1 pr-3 text-right text-gray-400 whitespace-nowrap">
                   {item.volume > 0 ? <span>{item.volume} m³</span> : <span className="text-gray-600">—</span>}
                 </td>
                 <td className="py-1 pr-3 text-gray-400 whitespace-nowrap">{item.stock?.quantity ?? 0}</td>
-                <td className="py-1 pr-3 flex gap-0.5 items-center whitespace-nowrap overflow-x-auto">
+                <td className="py-1 pr-3 inline-flex gap-0.5 items-center whitespace-nowrap overflow-x-auto">
                   {(() => {
                     if (item.isRawMaterial) {
-                      return <span className="badge badge-yellow">Mining</span>;
+                      return <span className="badge badge-yellow inline-block">Mining</span>;
                     }
                     if (lootIds.has(item.id)) {
-                      return <span className="badge badge-orange">Loot</span>;
+                      return <span className="badge badge-orange inline-block">Loot</span>;
                     }
                     const recipe = recipesByItem.get(item.id);
                     if (!recipe || (recipe.factories.length === 0 && recipe.refineries.length === 0)) {
@@ -218,8 +218,8 @@ export default function ItemsPage() {
                     }
                     return (
                       <>
-                        {recipe.factories.map((f) => <span key={f} className="badge badge-blue">{f}</span>)}
-                        {recipe.refineries.map((r) => <span key={r} className="badge badge-purple">{r}</span>)}
+                        {recipe.factories.map((f) => <span key={f} className="badge badge-blue inline-block">{f}</span>)}
+                        {recipe.refineries.map((r) => <span key={r} className="badge badge-purple inline-block">{r}</span>)}
                       </>
                     );
                   })()}
