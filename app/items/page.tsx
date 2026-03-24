@@ -19,6 +19,7 @@ const emptyForm = { name: "", isRawMaterial: false, isFound: false, isFinalProdu
 export default function ItemsPage() {
   const { isAdmin } = useSession();
   const [items, setItems] = useState<Item[]>([]);
+  const [totalItems, setTotalItems] = useState(0);
   const [search, setSearch] = useState("");
   const [showForm, setShowForm] = useState(false);
   const [form, setForm] = useState(emptyForm);
@@ -29,8 +30,13 @@ export default function ItemsPage() {
 
   async function load() {
     setLoading(true);
-    const res = await fetch(`/api/items?search=${encodeURIComponent(search)}`);
-    setItems(await res.json());
+    const [filteredRes, totalRes] = await Promise.all([
+      fetch(`/api/items?search=${encodeURIComponent(search)}`),
+      fetch("/api/items"),
+    ]);
+    setItems(await filteredRes.json());
+    const allItems = await totalRes.json();
+    setTotalItems(allItems.length);
     setLoading(false);
   }
 
@@ -74,7 +80,12 @@ export default function ItemsPage() {
   return (
     <div className="max-w-4xl mx-auto">
       <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold text-gray-100">Items</h1>
+        <div>
+          <h1 className="text-2xl font-bold text-gray-100">Items</h1>
+          <p className="text-xs text-gray-500 mt-1">
+            {loading ? "Loading…" : search ? `${items.length} of ${totalItems} items` : `${totalItems} items`}
+          </p>
+        </div>
         {isAdmin && <button onClick={openNew} className="btn-primary">+ New Item</button>}
       </div>
 

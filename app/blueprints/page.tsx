@@ -135,7 +135,12 @@ export default function BlueprintsPage() {
   return (
     <div className="max-w-6xl mx-auto">
       <div className="flex items-center justify-between mb-4">
-        <h1 className="text-2xl font-bold text-gray-100">Blueprints</h1>
+        <div>
+          <h1 className="text-2xl font-bold text-gray-100">Blueprints</h1>
+          <p className="text-xs text-gray-500 mt-1">
+            {loading ? "Loading…" : `${filteredGrouped.length} of ${grouped.length} items`}
+          </p>
+        </div>
         {isAdmin && <button onClick={openNew} className="btn-primary">+ New Blueprint</button>}
       </div>
       <div className="mb-4">
