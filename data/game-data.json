@@ -344,7 +344,7 @@
     },
     {
       "name": "Eupraxite",
-      "isRawMaterial": false,
+      "isRawMaterial": true,
       "isFound": true,
       "isFinalProduct": false
     },
@@ -478,7 +478,7 @@
     },
     {
       "name": "Hydrocarbon Residue",
-      "isRawMaterial": false,
+      "isRawMaterial": true,
       "isFound": true,
       "isFinalProduct": false
     },
@@ -490,7 +490,7 @@
     },
     {
       "name": "Iron-Rich Nodules",
-      "isRawMaterial": false,
+      "isRawMaterial": true,
       "isFound": true,
       "isFinalProduct": false
     },
@@ -809,7 +809,7 @@
     },
     {
       "name": "Silica Grains",
-      "isRawMaterial": false,
+      "isRawMaterial": true,
       "isFound": true,
       "isFinalProduct": false
     },
@@ -839,7 +839,7 @@
     },
     {
       "name": "Sophrogon",
-      "isRawMaterial": false,
+      "isRawMaterial": true,
       "isFound": true,
       "isFinalProduct": false
     },
@@ -1199,7 +1199,7 @@
     },
     {
       "name": "Water Ice",
-      "isRawMaterial": false,
+      "isRawMaterial": true,
       "isFound": true,
       "isFinalProduct": false
     },
