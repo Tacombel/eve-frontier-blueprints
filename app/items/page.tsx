@@ -169,19 +169,24 @@ export default function ItemsPage() {
               <tr key={item.id} className="border-b border-gray-800/50 hover:bg-gray-800/30">
                 <td className="py-2 pr-4 font-medium text-gray-100">{item.name}</td>
                 <td className="py-2 pr-4 flex gap-1 flex-wrap">
-                  {item.isRawMaterial && <span className="badge badge-yellow">Mining</span>}
+                  {item.isRawMaterial && <span className="badge badge-yellow">Ore</span>}
                   {item.isFound && <span className="badge badge-blue">Raw</span>}
                   {item.blueprints.length > 0 && !item.isFinalProduct && <span className="badge badge-gray">Intermediate</span>}
                   {item.isFinalProduct && <span className="badge badge-cyan">Final</span>}
-                  {lootIds.has(item.id) && <span className="badge badge-orange">Loot</span>}
-                  {!item.isRawMaterial && !item.isFound && !item.isFinalProduct && !lootIds.has(item.id) && item.blueprints.length === 0 && <span className="text-gray-600">—</span>}
+                  {!item.isRawMaterial && !item.isFound && !item.isFinalProduct && item.blueprints.length === 0 && <span className="text-gray-600">—</span>}
                 </td>
                 <td className="py-2 pr-4 text-right text-gray-400">
                   {item.volume > 0 ? <span>{item.volume} m³</span> : <span className="text-gray-600">—</span>}
                 </td>
                 <td className="py-2 pr-4 text-gray-400">{item.stock?.quantity ?? 0}</td>
-                <td className="py-2 pr-4 text-sm text-gray-400">
+                <td className="py-2 pr-4 flex gap-1 flex-wrap items-center">
                   {(() => {
+                    if (item.isRawMaterial) {
+                      return <span className="badge badge-yellow">Mining</span>;
+                    }
+                    if (lootIds.has(item.id)) {
+                      return <span className="badge badge-orange">Loot</span>;
+                    }
                     const recipe = recipesByItem.get(item.id);
                     if (!recipe || (recipe.factories.length === 0 && recipe.refineries.length === 0)) {
                       return <span className="text-gray-600">—</span>;
@@ -189,7 +194,7 @@ export default function ItemsPage() {
                     const parts = [];
                     if (recipe.factories.length > 0) parts.push(recipe.factories.join(", "));
                     if (recipe.refineries.length > 0) parts.push(recipe.refineries.join(", "));
-                    return <span>{parts.join(" / ")}</span>;
+                    return <span className="text-gray-400">{parts.join(" / ")}</span>;
                   })()}
                 </td>
                 {isAdmin && (
