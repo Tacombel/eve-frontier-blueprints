@@ -251,9 +251,6 @@ export default function OreSection({
                     <AsteroidTooltip asteroids={row.asteroids} />
                   )}
                 </span>
-                <span className="text-xs text-gray-500">
-                  Mine <span className="text-purple-300 font-semibold">{row.totalNeeded}</span> units
-                </span>
                 {directTrips !== null && (
                   <span className="text-xs text-gray-600">
                     {directTrips} trip{directTrips > 1 ? "s" : ""}
