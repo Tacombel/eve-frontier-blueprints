@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { useSession } from "@/hooks/useSession";
 
 interface Factory {
@@ -11,6 +11,12 @@ interface Factory {
 export default function FactoriesPage() {
   const { isAdmin } = useSession();
   const [factories, setFactories] = useState<Factory[]>([]);
+  const [blueprints, setBlueprints] = useState<{ factory: string }[]>([]);
+  const blueprintsByFactory = useMemo(() => {
+    const counts: Record<string, number> = {};
+    for (const bp of blueprints) counts[bp.factory] = (counts[bp.factory] ?? 0) + 1;
+    return counts;
+  }, [blueprints]);
   const [showForm, setShowForm] = useState(false);
   const [editId, setEditId] = useState<string | null>(null);
   const [name, setName] = useState("");
@@ -18,8 +24,9 @@ export default function FactoriesPage() {
   const [error, setError] = useState("");
 
   async function load() {
-    const res = await fetch("/api/factories");
-    setFactories(await res.json());
+    const [fRes, bRes] = await Promise.all([fetch("/api/factories"), fetch("/api/blueprints")]);
+    setFactories(await fRes.json());
+    setBlueprints(await bRes.json());
   }
 
   useEffect(() => { load(); }, []);
@@ -73,13 +80,15 @@ export default function FactoriesPage() {
           <thead>
             <tr className="text-gray-500 border-b border-gray-800 text-left">
               <th className="pb-2 pr-4">Name</th>
-              <th className="pb-2 w-24"></th>
+              <th className="pb-2 pr-4 text-right">Blueprints</th>
+              <th className="pb-2 w-16"></th>
             </tr>
           </thead>
           <tbody>
             {factories.map((f) => (
               <tr key={f.id} className="border-b border-gray-800/50 hover:bg-gray-800/30">
                 <td className="py-2 pr-4 font-medium text-gray-200">{f.name}</td>
+                <td className="py-2 pr-4 text-right text-gray-500 text-xs">{blueprintsByFactory[f.name] ?? 0}</td>
                 {isAdmin && (
                   <td className="py-2 text-right">
                     <button className="btn-ghost text-xs" onClick={() => openEdit(f)}>Edit</button>

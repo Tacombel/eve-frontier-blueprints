@@ -25,6 +25,8 @@ export default function Sidebar() {
   const [itemCount, setItemCount] = useState<number | null>(null);
   const [blueprintCount, setBlueprintCount] = useState<number | null>(null);
   const [decompositionCount, setDecompositionCount] = useState<number | null>(null);
+  const [factoryCount, setFactoryCount] = useState<number | null>(null);
+  const [refineryCount, setRefineryCount] = useState<number | null>(null);
 
   useEffect(() => {
     fetch("/api/auth/me")
@@ -32,17 +34,21 @@ export default function Sidebar() {
       .then((data) => { setUsername(data?.username ?? null); setRole(data?.role ?? null); })
       .catch(() => { setUsername(null); setRole(null); });
 
-    Promise.all([fetch("/api/items"), fetch("/api/blueprints"), fetch("/api/decompositions")])
-      .then(([iRes, bRes, dRes]) => Promise.all([iRes.json(), bRes.json(), dRes.json()]))
-      .then(([items, blueprints, decompositions]) => {
+    Promise.all([fetch("/api/items"), fetch("/api/blueprints"), fetch("/api/decompositions"), fetch("/api/factories"), fetch("/api/refineries")])
+      .then(([iRes, bRes, dRes, fRes, rRes]) => Promise.all([iRes.json(), bRes.json(), dRes.json(), fRes.json(), rRes.json()]))
+      .then(([items, blueprints, decompositions, factories, refineries]) => {
         setItemCount(items.length);
         setBlueprintCount(blueprints.length);
         setDecompositionCount(decompositions.length);
+        setFactoryCount(factories.length);
+        setRefineryCount(refineries.length);
       })
       .catch(() => {
         setItemCount(null);
         setBlueprintCount(null);
         setDecompositionCount(null);
+        setFactoryCount(null);
+        setRefineryCount(null);
       });
   }, [pathname]);
 
@@ -63,7 +69,7 @@ export default function Sidebar() {
       <nav className="flex-1 px-2 py-4 space-y-1">
         {navItems.map((item) => {
           const active = pathname.startsWith(item.href);
-          const count = item.label === "Items" ? itemCount : item.label === "Blueprints" ? blueprintCount : item.label === "Decompositions" ? decompositionCount : null;
+          const count = item.label === "Items" ? itemCount : item.label === "Blueprints" ? blueprintCount : item.label === "Decompositions" ? decompositionCount : item.label === "Factories" ? factoryCount : item.label === "Refineries" ? refineryCount : null;
           return (
             <Link
               key={item.href}

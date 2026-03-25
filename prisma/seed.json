@@ -5,11 +5,19 @@
       "type": "factory"
     },
     {
+      "name": "Berth",
+      "type": "factory"
+    },
+    {
       "name": "Build",
       "type": "factory"
     },
     {
       "name": "Field printer",
+      "type": "factory"
+    },
+    {
+      "name": "Heavy berth",
       "type": "factory"
     },
     {
@@ -30,6 +38,10 @@
     },
     {
       "name": "Field Refinery",
+      "type": "refinery"
+    },
+    {
+      "name": "Heavy refinery",
       "type": "refinery"
     },
     {
@@ -173,6 +185,13 @@
     },
     {
       "name": "Base Rapid Plasma (S)",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true,
+      "volume": 0
+    },
+    {
+      "name": "Berth",
       "isRawMaterial": false,
       "isFound": false,
       "isFinalProduct": true,
@@ -515,6 +534,13 @@
       "volume": 0
     },
     {
+      "name": "Field Refinery",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true,
+      "volume": 0
+    },
+    {
       "name": "Fine Old Crude Matter",
       "isRawMaterial": true,
       "isFound": false,
@@ -550,7 +576,21 @@
       "volume": 0
     },
     {
+      "name": "Heavy berth",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true,
+      "volume": 0
+    },
+    {
       "name": "Heavy printer",
+      "isRawMaterial": false,
+      "isFound": false,
+      "isFinalProduct": true,
+      "volume": 0
+    },
+    {
+      "name": "Heavy refinery",
       "isRawMaterial": false,
       "isFound": false,
       "isFinalProduct": true,

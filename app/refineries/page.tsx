@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { useSession } from "@/hooks/useSession";
 
 interface Refinery {
@@ -11,6 +11,12 @@ interface Refinery {
 export default function RefineriesPage() {
   const { isAdmin } = useSession();
   const [refineries, setRefineries] = useState<Refinery[]>([]);
+  const [decompositions, setDecompositions] = useState<{ refinery: string }[]>([]);
+  const decompositionsByRefinery = useMemo(() => {
+    const counts: Record<string, number> = {};
+    for (const d of decompositions) counts[d.refinery] = (counts[d.refinery] ?? 0) + 1;
+    return counts;
+  }, [decompositions]);
   const [showForm, setShowForm] = useState(false);
   const [editId, setEditId] = useState<string | null>(null);
   const [name, setName] = useState("");
@@ -18,8 +24,9 @@ export default function RefineriesPage() {
   const [error, setError] = useState("");
 
   async function load() {
-    const res = await fetch("/api/refineries");
-    setRefineries(await res.json());
+    const [rRes, dRes] = await Promise.all([fetch("/api/refineries"), fetch("/api/decompositions")]);
+    setRefineries(await rRes.json());
+    setDecompositions(await dRes.json());
   }
 
   useEffect(() => { load(); }, []);
@@ -67,13 +74,15 @@ export default function RefineriesPage() {
           <thead>
             <tr className="text-gray-500 border-b border-gray-800 text-left">
               <th className="pb-2 pr-4">Name</th>
-              <th className="pb-2 w-24"></th>
+              <th className="pb-2 pr-4 text-right">Decompositions</th>
+              <th className="pb-2 w-16"></th>
             </tr>
           </thead>
           <tbody>
             {refineries.map((r) => (
               <tr key={r.id} className="border-b border-gray-800/50 hover:bg-gray-800/30">
                 <td className="py-2 pr-4 font-medium text-gray-200">{r.name}</td>
+                <td className="py-2 pr-4 text-right text-gray-500 text-xs">{decompositionsByRefinery[r.name] ?? 0}</td>
                 {isAdmin && (
                   <td className="py-2 text-right">
                     <button className="btn-ghost text-xs" onClick={() => openEdit(r)}>Edit</button>
