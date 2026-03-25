@@ -9,7 +9,7 @@ interface Factory {
 }
 
 export default function FactoriesPage() {
-  const { isAdmin } = useSession();
+  const { canEdit: isAdmin } = useSession();
   const [factories, setFactories] = useState<Factory[]>([]);
   const [blueprints, setBlueprints] = useState<{ factory: string }[]>([]);
   const blueprintsByFactory = useMemo(() => {

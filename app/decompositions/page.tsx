@@ -18,7 +18,7 @@ interface Decomposition {
 const emptyOutputRow = () => ({ itemId: "", quantity: 1 });
 
 export default function DecompositionsPage() {
-  const { isAdmin } = useSession();
+  const { canEdit: isAdmin } = useSession();
   const [decompositions, setDecompositions] = useState<Decomposition[]>([]);
   const [items, setItems] = useState<Item[]>([]);
   const [refineries, setRefineries] = useState<Refinery[]>([]);

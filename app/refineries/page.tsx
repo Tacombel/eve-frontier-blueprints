@@ -9,7 +9,7 @@ interface Refinery {
 }
 
 export default function RefineriesPage() {
-  const { isAdmin } = useSession();
+  const { canEdit: isAdmin } = useSession();
   const [refineries, setRefineries] = useState<Refinery[]>([]);
   const [decompositions, setDecompositions] = useState<{ refinery: string }[]>([]);
   const decompositionsByRefinery = useMemo(() => {

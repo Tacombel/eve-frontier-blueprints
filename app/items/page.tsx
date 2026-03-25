@@ -28,7 +28,7 @@ interface Decomposition {
 const emptyForm = { name: "", isRawMaterial: false, isFound: false, isFinalProduct: false, volume: 0 };
 
 export default function ItemsPage() {
-  const { isAdmin } = useSession();
+  const { canEdit: isAdmin } = useSession();
   const [items, setItems] = useState<ItemData[]>([]);
   const [totalItems, setTotalItems] = useState(0);
   const [search, setSearch] = useState("");

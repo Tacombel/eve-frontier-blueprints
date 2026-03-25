@@ -31,7 +31,7 @@ export default function AsteroidsPage() {
 
   const [showAsteroidForm, setShowAsteroidForm] = useState(false);
   const [editAsteroidId, setEditAsteroidId] = useState<string | null>(null);
-  const { isAdmin } = useSession();
+  const { canEdit: isAdmin } = useSession();
   const [asteroidForm, setAsteroidForm] = useState(emptyForm);
 
   const [showLocationForm, setShowLocationForm] = useState(false);

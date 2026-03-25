@@ -25,7 +25,7 @@ export default function BlueprintsPage() {
   const [allItems, setAllItems] = useState<Item[]>([]);
   const [factories, setFactories] = useState<{id: string; name: string}[]>([]);
   const [loading, setLoading] = useState(true);
-  const { isAdmin } = useSession();
+  const { canEdit: isAdmin } = useSession();
   const [showForm, setShowForm] = useState(false);
   const [editId, setEditId] = useState<string | null>(null);
   const [outputItemId, setOutputItemId] = useState("");

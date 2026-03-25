@@ -17,11 +17,13 @@ export function useSession() {
       .catch(() => setUser(null));
   }, []);
 
+  const isAdmin = user?.role === "ADMIN" || user?.role === "SUPERADMIN";
   return {
     user,
     isLoading: user === undefined,
     isSuperAdmin: user?.role === "SUPERADMIN",
-    isAdmin: user?.role === "ADMIN" || user?.role === "SUPERADMIN",
+    isAdmin,
+    canEdit: process.env.NODE_ENV !== "production" && isAdmin,
     isLoggedIn: user != null,
   };
 }
