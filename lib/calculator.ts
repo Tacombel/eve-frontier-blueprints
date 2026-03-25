@@ -357,6 +357,7 @@ export function calculate(
   for (const row of rawMaterials) {
     if (row.toBuy > 0) remaining.set(row.itemId, row.toBuy);
   }
+  const initialRemaining = new Map(remaining); // snapshot before greedy modifies it
 
 
   const decompRuns = new Map<string, number>();
@@ -446,6 +447,101 @@ export function calculate(
   const decompUnits = new Map<string, number>();
   for (const [sourceId, runs] of decompRuns) {
     decompUnits.set(sourceId, runs * pickDecomposition(itemMap.get(sourceId)!)!.inputQty);
+  }
+
+  // Second pass: items that appear in both rawMaterials (direct use) and decompUnits (decomp source)
+  // may have a combined shortfall not visible to the first greedy pass.
+  // Resolve by finding what ores produce those items and scheduling additional decompositions.
+  const rawByItemId = new Map(rawMaterials.map(r => [r.itemId, r]));
+  for (const [sourceId, unitsForDecomp] of new Map(decompUnits)) {
+    const raw = rawByItemId.get(sourceId);
+    if (!raw) continue;
+    const source = itemMap.get(sourceId)!;
+
+    // Subtract any of sourceId already produced as byproduct by existing ore runs
+    let alreadyProduced = 0;
+    for (const [oreId, oreRuns] of decompRuns) {
+      const oreDec = pickDecomposition(itemMap.get(oreId)!);
+      if (!oreDec) continue;
+      const out = oreDec.outputs.find(o => o.itemId === sourceId);
+      if (out) alreadyProduced += out.quantity * oreRuns;
+    }
+
+    const shortfall = Math.max(0, raw.totalNeeded + unitsForDecomp - source.stock - alreadyProduced);
+    if (shortfall <= 0) continue;
+    const producers = decompByOutput.get(sourceId) ?? [];
+    if (producers.length === 0) continue;
+    const bestProducer = producers.reduce((best, s) => {
+      const bY = pickDecomposition(best)?.outputs.find(o => o.itemId === sourceId)?.quantity ?? 0;
+      const sY = pickDecomposition(s)?.outputs.find(o => o.itemId === sourceId)?.quantity ?? 0;
+      return sY > bY ? s : best;
+    });
+    const dec = pickDecomposition(bestProducer)!;
+    const yieldPerRun = dec.outputs.find(o => o.itemId === sourceId)?.quantity ?? 0;
+    if (yieldPerRun <= 0) continue;
+    const existingRuns = decompRuns.get(bestProducer.id) ?? 0;
+    const alreadyCoveredByProducer = existingRuns * yieldPerRun;
+    const remainingShortfall = Math.max(0, shortfall - alreadyCoveredByProducer);
+    if (remainingShortfall <= 0) continue;
+    const additionalRuns = Math.ceil(remainingShortfall / yieldPerRun);
+    decompRuns.set(bestProducer.id, existingRuns + additionalRuns);
+    decompUnits.set(bestProducer.id,
+      decompRuns.get(bestProducer.id)! * pickDecomposition(bestProducer)!.inputQty
+    );
+  }
+
+  // ── Cleanup pass: reduce over-scheduled ores ─────────────────────────────
+  // Build the true effective need for each output item (already accounts for stock):
+  //   - Items only in initialRemaining: their toBuy value
+  //   - Dual-role items (also decomp sources): combined direct + decomp need minus stock
+  const effectiveNeedsForOutput = new Map<string, number>();
+  for (const [id, need] of initialRemaining) {
+    effectiveNeedsForOutput.set(id, need);
+  }
+  for (const [sourceId, unitsForDecomp] of decompUnits) {
+    const raw = rawByItemId.get(sourceId);
+    if (!raw) continue;
+    const source = itemMap.get(sourceId)!;
+    const combinedNeed = Math.max(0, raw.totalNeeded + unitsForDecomp - source.stock);
+    effectiveNeedsForOutput.set(sourceId, combinedNeed);
+  }
+
+  // Iteratively reduce each ore's runs to the minimum required given coverage from other ores.
+  let cleanupChanged = true;
+  while (cleanupChanged) {
+    cleanupChanged = false;
+    for (const [oreId, currentRuns] of new Map(decompRuns)) {
+      if (currentRuns === 0) { decompRuns.delete(oreId); continue; }
+      const oreItem = itemMap.get(oreId)!;
+      const oreDec = pickDecomposition(oreItem)!;
+      let minRunsRequired = 0;
+      for (const out of oreDec.outputs) {
+        const effectiveNeed = effectiveNeedsForOutput.get(out.itemId) ?? 0;
+        if (effectiveNeed <= 0) continue;
+        // Coverage for this output from every OTHER ore currently scheduled
+        let otherCoverage = 0;
+        for (const [otherOreId, otherRuns] of decompRuns) {
+          if (otherOreId === oreId) continue;
+          const otherDec = pickDecomposition(itemMap.get(otherOreId)!);
+          if (!otherDec) continue;
+          const otherOut = otherDec.outputs.find(o => o.itemId === out.itemId);
+          if (otherOut) otherCoverage += otherOut.quantity * otherRuns;
+        }
+        const deficit = Math.max(0, effectiveNeed - otherCoverage);
+        const runsForThis = out.quantity > 0 ? Math.ceil(deficit / out.quantity) : 0;
+        minRunsRequired = Math.max(minRunsRequired, runsForThis);
+      }
+      if (minRunsRequired < currentRuns) {
+        if (minRunsRequired === 0) {
+          decompRuns.delete(oreId);
+          decompUnits.delete(oreId);
+        } else {
+          decompRuns.set(oreId, minRunsRequired);
+          decompUnits.set(oreId, minRunsRequired * oreDec.inputQty);
+        }
+        cleanupChanged = true;
+      }
+    }
   }
 
   const decompositions: DecompositionResult[] = [];

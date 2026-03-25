@@ -372,7 +372,13 @@ export default function BlueprintCalculation({ itemId, itemName }: { itemId: str
       <OreSection
         decomps={result.decompositions ?? []}
         directOres={[]}
-        neededIds={new Set(result.rawMaterials.filter((r) => r.toBuy > 0).map((r) => r.itemId))}
+        neededIds={new Set([
+          ...result.rawMaterials.filter((r) => r.toBuy > 0).map((r) => r.itemId),
+          ...(result.decompositions ?? [])
+            .filter((d) => !d.isUnrefined && d.sourceIsFound &&
+              (d.unitsToDecompose + (d.directNeed ?? 0)) > (stock[d.sourceItemId] ?? d.actualStock))
+            .map((d) => d.sourceItemId),
+        ])}
         cargoCapacity={cargoCapacity}
         onCargoChange={updateCargoCapacity}
         stock={stock}
