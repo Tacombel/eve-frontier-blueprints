@@ -175,11 +175,7 @@ export default function AsteroidsPage() {
                       {a.items.length === 0
                         ? <span className="text-gray-600 text-xs">—</span>
                         : a.items.map((i) => (
-                          <div key={i.item.id} className="flex gap-0.5 items-center whitespace-nowrap text-xs">
-                            <span className="badge badge-yellow">{i.item.name}</span>
-                            {i.item.isRawMaterial && <span className="badge badge-yellow">Ore</span>}
-                            {i.item.isFound && <span className="badge badge-blue">Raw</span>}
-                          </div>
+                          <span key={i.item.id} className="badge badge-yellow">{i.item.name}</span>
                         ))}
                     </div>
                   </td>

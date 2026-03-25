@@ -24,6 +24,7 @@ export default function Sidebar() {
   const [role, setRole] = useState<string | null>(null);
   const [itemCount, setItemCount] = useState<number | null>(null);
   const [blueprintCount, setBlueprintCount] = useState<number | null>(null);
+  const [decompositionCount, setDecompositionCount] = useState<number | null>(null);
 
   useEffect(() => {
     fetch("/api/auth/me")
@@ -31,15 +32,17 @@ export default function Sidebar() {
       .then((data) => { setUsername(data?.username ?? null); setRole(data?.role ?? null); })
       .catch(() => { setUsername(null); setRole(null); });
 
-    Promise.all([fetch("/api/items"), fetch("/api/blueprints")])
-      .then(([iRes, bRes]) => Promise.all([iRes.json(), bRes.json()]))
-      .then(([items, blueprints]) => {
+    Promise.all([fetch("/api/items"), fetch("/api/blueprints"), fetch("/api/decompositions")])
+      .then(([iRes, bRes, dRes]) => Promise.all([iRes.json(), bRes.json(), dRes.json()]))
+      .then(([items, blueprints, decompositions]) => {
         setItemCount(items.length);
         setBlueprintCount(blueprints.length);
+        setDecompositionCount(decompositions.length);
       })
       .catch(() => {
         setItemCount(null);
         setBlueprintCount(null);
+        setDecompositionCount(null);
       });
   }, [pathname]);
 
@@ -60,7 +63,7 @@ export default function Sidebar() {
       <nav className="flex-1 px-2 py-4 space-y-1">
         {navItems.map((item) => {
           const active = pathname.startsWith(item.href);
-          const count = item.label === "Items" ? itemCount : item.label === "Blueprints" ? blueprintCount : null;
+          const count = item.label === "Items" ? itemCount : item.label === "Blueprints" ? blueprintCount : item.label === "Decompositions" ? decompositionCount : null;
           return (
             <Link
               key={item.href}

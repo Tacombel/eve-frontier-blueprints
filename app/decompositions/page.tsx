@@ -32,6 +32,7 @@ export default function DecompositionsPage() {
   const [outputs, setOutputs] = useState([emptyOutputRow()]);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
+  const [search, setSearch] = useState("");
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -107,15 +108,30 @@ export default function DecompositionsPage() {
 
   const outputItems = items.filter((i) => i.id !== sourceItemId);
 
+  const filteredGrouped = search.trim()
+    ? Array.from(grouped.entries()).filter(([, entries]) => {
+        const q = search.trim().toLowerCase();
+        return entries[0].sourceItem.name.toLowerCase().includes(q) ||
+          entries.some((d) => d.outputs.some((o) => o.item.name.toLowerCase().includes(q)));
+      })
+    : Array.from(grouped.entries());
+
   return (
     <div className="max-w-4xl mx-auto">
       <div className="flex items-center justify-between mb-2">
         <h1 className="text-2xl font-bold text-gray-100">Decompositions</h1>
         {isAdmin && <button onClick={openNew} className="btn-primary">+ New Decomposition</button>}
       </div>
-      <p className="text-sm text-gray-500 mb-6">
+      <p className="text-sm text-gray-500 mb-3">
         Define how a material breaks down when reprocessed. Multiple refineries can yield different outputs.
       </p>
+      <input
+        type="search"
+        placeholder="Search by input or output…"
+        className="input w-full mb-6"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+      />
 
       {loading ? (
         <p className="text-gray-500">Loading…</p>
@@ -123,7 +139,10 @@ export default function DecompositionsPage() {
         <p className="text-gray-500">No decompositions yet.</p>
       ) : (
         <div className="space-y-3">
-          {Array.from(grouped.entries()).map(([, entries]) => (
+          {filteredGrouped.length === 0 && (
+            <p className="text-gray-500">No decompositions match &quot;{search}&quot;.</p>
+          )}
+          {filteredGrouped.map(([, entries]) => (
             <div key={entries[0].sourceItem.id} className="rounded-lg border border-gray-800 bg-gray-900">
               <div className="px-4 py-3 border-b border-gray-800">
                 <span className="font-semibold text-gray-100">{entries[0].sourceItem.name}</span>
@@ -132,7 +151,7 @@ export default function DecompositionsPage() {
               <div className="divide-y divide-gray-800/50">
                 {entries.map((d) => (
                   <div key={d.id} className="px-4 py-3">
-                    <div className="flex items-center gap-3 mb-2">
+                    <div className="flex items-center gap-3 flex-wrap">
                       <button
                         onClick={() => !d.isDefault && setDefault(d.id)}
                         title={d.isDefault ? "Default decomposition" : "Set as default"}
@@ -140,19 +159,22 @@ export default function DecompositionsPage() {
                       >
                         ★
                       </button>
-                      <span className="flex-1 text-sm text-gray-300">
-                        {d.refinery ? <span className="badge badge-blue">{d.refinery}</span> : <span className="text-gray-600 italic text-xs">No refinery</span>}
+                      {d.refinery ? <span className="badge badge-blue">{d.refinery}</span> : <span className="text-gray-600 italic text-xs">No refinery</span>}
+                      <span className="text-sm text-gray-300">
+                        <span className="text-yellow-400">{d.inputQty}×</span> {entries[0].sourceItem.name}
                       </span>
-                      {d.isDefault && <span className="badge badge-yellow text-xs">Default</span>}
-                      <span className="text-xs text-gray-500">{d.inputQty} u/run</span>
-                      {isAdmin && <button onClick={() => openEdit(d)} className="btn-sm">Edit</button>}
-                    </div>
-                    <div className="flex flex-wrap gap-2 ml-6">
-                      {d.outputs.map((o) => (
-                        <span key={o.id} className="text-xs bg-gray-800 rounded px-2 py-1 text-gray-300">
-                          {o.item.name} <span className="text-yellow-400">×{o.quantity}</span>
-                        </span>
-                      ))}
+                      <span className="text-gray-600">→</span>
+                      <div className="flex flex-wrap gap-1">
+                        {d.outputs.map((o) => (
+                          <span key={o.id} className="text-xs bg-gray-800 rounded px-2 py-1 text-gray-300">
+                            {o.item.name} <span className="text-yellow-400">×{o.quantity}</span>
+                          </span>
+                        ))}
+                      </div>
+                      <div className="ml-auto flex items-center gap-2">
+                        {d.isDefault && <span className="badge badge-yellow text-xs">Default</span>}
+                        {isAdmin && <button onClick={() => openEdit(d)} className="btn-sm">Edit</button>}
+                      </div>
                     </div>
                   </div>
                 ))}
