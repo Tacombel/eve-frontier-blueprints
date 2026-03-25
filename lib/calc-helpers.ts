@@ -1,11 +1,10 @@
 import { prisma } from "@/lib/prisma";
 import type { CalcItem, CalculationResult } from "@/lib/calculator";
 
-/** Fetch all items from DB mapped to CalcItem shape. Pass userId to include user's stock. */
-export async function fetchCalcItems(userId?: string): Promise<CalcItem[]> {
+/** Fetch all items from DB mapped to CalcItem shape. Pass stockMap (itemId -> quantity) to include stock. */
+export async function fetchCalcItems(stockMap: Map<string, number> = new Map()): Promise<CalcItem[]> {
   const allItems = await prisma.item.findMany({
     include: {
-      stocks: userId ? { where: { userId } } : false,
       blueprints: {
         include: { inputs: { select: { itemId: true, quantity: true } } },
         orderBy: { isDefault: "desc" },
@@ -29,7 +28,7 @@ export async function fetchCalcItems(userId?: string): Promise<CalcItem[]> {
     name: item.name,
     isRawMaterial: item.isRawMaterial,
     isFound: item.isFound,
-    stock: (userId ? (item.stocks as { quantity: number }[])[0]?.quantity : 0) ?? 0,
+    stock: stockMap.get(item.id) ?? 0,
     volume: item.volume,
     blueprints: item.blueprints.map((bp) => ({
       id: bp.id,

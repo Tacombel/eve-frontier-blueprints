@@ -12,7 +12,8 @@ const navItems = [
   { href: "/decompositions", label: "Decompositions", icon: "🔩" },
   { href: "/factories", label: "Factories", icon: "🏭" },
   { href: "/refineries", label: "Refineries", icon: "⚗️" },
-  { href: "/stock", label: "Stock", icon: "📦" },
+  { href: "/ssu", label: "SSU", icon: "🛰️" },
+  { href: "/profile", label: "Profile", icon: "👤" },
   { href: "/blueprints", label: "Blueprints", icon: "📐" },
   { href: "/packs", label: "Packs", icon: "🗃️" },
 ];

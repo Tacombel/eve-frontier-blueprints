@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { calculate, buildItemMap } from "@/lib/calculator";
-import { fetchCalcItems, buildStockDeltas, applyStockDeltas } from "@/lib/calc-helpers";
+import { fetchCalcItems } from "@/lib/calc-helpers";
+import { fetchUserStockMap } from "@/lib/sui";
 import { getSession } from "@/lib/auth";
 
 export async function POST(req: NextRequest) {
@@ -11,7 +12,8 @@ export async function POST(req: NextRequest) {
   if (!itemId) return NextResponse.json({ error: "itemId required" }, { status: 400 });
   if (!Number.isInteger(runs) || runs < 1) return NextResponse.json({ error: "runs must be a positive integer" }, { status: 400 });
 
-  const itemMap = buildItemMap(await fetchCalcItems(session.userId));
+  const stockMap = await fetchUserStockMap(session.userId);
+  const itemMap = buildItemMap(await fetchCalcItems(stockMap));
 
   let result;
   try {
@@ -37,7 +39,5 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: message }, { status: 422 });
   }
 
-  const deltas = buildStockDeltas(result);
-  await applyStockDeltas(deltas, session.userId);
   return NextResponse.json({ ok: true });
 }

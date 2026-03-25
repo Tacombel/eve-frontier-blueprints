@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { calculate, buildItemMap } from "@/lib/calculator";
-import { fetchCalcItems, buildStockDeltas, applyStockDeltas } from "@/lib/calc-helpers";
+import { fetchCalcItems } from "@/lib/calc-helpers";
+import { fetchUserStockMap } from "@/lib/sui";
 import { getSession } from "@/lib/auth";
 
 export async function POST(req: NextRequest, { params }: { params: { id: string } }) {
@@ -19,7 +20,8 @@ export async function POST(req: NextRequest, { params }: { params: { id: string 
   if (pack.userId !== session.userId) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   if (pack.items.length === 0) return NextResponse.json({ error: "Pack has no items" }, { status: 400 });
 
-  const itemMap = buildItemMap(await fetchCalcItems(session.userId));
+  const stockMap = await fetchUserStockMap(session.userId);
+  const itemMap = buildItemMap(await fetchCalcItems(stockMap));
   const packItemIds = new Set(pack.items.map((pi) => pi.itemId));
   const activeItems = pack.items.filter((pi) => !ignoredIds.has(pi.itemId));
 
@@ -46,7 +48,5 @@ export async function POST(req: NextRequest, { params }: { params: { id: string 
     return NextResponse.json({ error: message }, { status: 422 });
   }
 
-  const deltas = buildStockDeltas(result);
-  await applyStockDeltas(deltas, session.userId);
   return NextResponse.json({ ok: true });
 }

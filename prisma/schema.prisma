@@ -11,6 +11,7 @@ datasource db {
 model Item {
   id             String   @id @default(cuid())
   name           String   @unique
+  typeId         Int?
   isRawMaterial  Boolean  @default(false)
   isFound        Boolean  @default(false)
   isFinalProduct Boolean  @default(false)
@@ -56,11 +57,12 @@ model BlueprintInput {
 }
 
 model User {
-  id        String   @id @default(cuid())
-  username  String   @unique
-  password  String
-  role      String   @default("USER")
-  createdAt DateTime @default(now())
+  id         String   @id @default(cuid())
+  username   String   @unique
+  password   String
+  role       String   @default("USER")
+  ssuAddress String?
+  createdAt  DateTime @default(now())
 
   stocks Stock[]
   packs  Pack[]

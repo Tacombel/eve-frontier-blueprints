@@ -28,199 +28,232 @@
       "name": "AC Gyrojet Ammo 1 (S)",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 82128
     },
     {
       "name": "Adaptive Nanitic Armor Weave II",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83441
     },
     {
       "name": "Adaptive Nanitic Armor Weave III",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83442
     },
     {
       "name": "Adaptive Nanitic Armor Weave IV",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83443
     },
     {
       "name": "Afterburner II",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 82681
     },
     {
       "name": "Afterburner III",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83536
     },
     {
       "name": "Afterburner IV",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 82915
     },
     {
       "name": "Aromatic Carbon Veins",
       "isRawMaterial": true,
       "isFound": false,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "typeId": 78448
     },
     {
       "name": "Aromatic Carbon Weave",
       "isRawMaterial": false,
       "isFound": true,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "typeId": 88782
     },
     {
       "name": "Assembler",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 91708
     },
     {
       "name": "Attuned Shield Generator II",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 82653
     },
     {
       "name": "Attuned Shield Generator III",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83450
     },
     {
       "name": "Attuned Shield Generator IV",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83451
     },
     {
       "name": "Base Autocannon (S)",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 81974
     },
     {
       "name": "Base Coilgun (M)",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 82028
     },
     {
       "name": "Base Coilgun (S)",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 81972
     },
     {
       "name": "Base Howitzer (M)",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 82030
     },
     {
       "name": "Base Rapid Plasma (S)",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 82032
     },
     {
       "name": "Brine",
       "isRawMaterial": false,
       "isFound": true,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "typeId": 92422
     },
     {
       "name": "Building Foam",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "typeId": 89089
     },
     {
       "name": "Bulky Armor Plates II",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 82647
     },
     {
       "name": "Bulky Armor Plates III",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83421
     },
     {
       "name": "Bulky Armor Plates V",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83423
     },
     {
       "name": "Bulwark Shield Generator II",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 82652
     },
     {
       "name": "Bulwark Shield Generator III",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83448
     },
     {
       "name": "Bulwark Shield Generator IV",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83449
     },
     {
       "name": "Carbon Weave",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "typeId": 84210
     },
     {
       "name": "Cargo Grid II",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83497
     },
     {
       "name": "Cargo Grid III",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83498
     },
     {
       "name": "Cargo Grid IV",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83499
     },
     {
       "name": "Cargo Grid V",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83500
     },
     {
       "name": "Cargo Grid VI",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83501
     },
     {
       "name": "Carom",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 91107
     },
     {
       "name": "Carom Stack",
@@ -232,224 +265,261 @@
       "name": "Celerity CD01",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 78506
     },
     {
       "name": "Celerity CD02",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 78507
     },
     {
       "name": "Celerity CD03",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 78508
     },
     {
       "name": "Chitinous Organics",
       "isRawMaterial": false,
       "isFound": true,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "typeId": 88781
     },
     {
       "name": "Coated Armor Plates II",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 82648
     },
     {
       "name": "Coated Armor Plates III",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83425
     },
     {
       "name": "Coated Armor Plates IV",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83426
     },
     {
       "name": "Coilgun Ammo 1 (S)",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 82133
     },
     {
       "name": "Compressed Coolant",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 88887
     },
     {
       "name": "Crude Extractor",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 77484
     },
     {
       "name": "Cryogenic Ejector S",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 87599
     },
     {
       "name": "D1 Fuel",
       "isRawMaterial": false,
       "isFound": true,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "typeId": 88335
     },
     {
       "name": "D2 Fuel",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "typeId": 88319
     },
     {
       "name": "EM Field Array II",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83768
     },
     {
       "name": "EM Field Array III",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83769
     },
     {
       "name": "EM Field Array IV",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83770
     },
     {
       "name": "EU-40 Fuel",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "typeId": 78516
     },
     {
       "name": "Echo Chamber",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "typeId": 88780
     },
     {
       "name": "Embark",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 77753
     },
     {
       "name": "Eupraxite",
       "isRawMaterial": true,
       "isFound": true,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "typeId": 78435
     },
     {
       "name": "Explo-electro Nanitic Brace II",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83623
     },
     {
       "name": "Explo-electro Nanitic Brace III",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83624
     },
     {
       "name": "Explo-electro Nanitic Brace IV",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83625
     },
     {
       "name": "Explonetic-electro Nanitic Brace II",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83618
     },
     {
       "name": "Explonetic-electro Nanitic Brace III",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83619
     },
     {
       "name": "Explonetic-electro Nanitic Brace IV",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83620
     },
     {
       "name": "Explosive Field Array II",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83777
     },
     {
       "name": "Explosive Field Array III",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83778
     },
     {
       "name": "Explosive Field Array IV",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83779
     },
     {
       "name": "Feldspar Crystal Shards",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "typeId": 88235
     },
     {
       "name": "Feldspar Crystals",
       "isRawMaterial": true,
       "isFound": false,
       "isFinalProduct": false,
-      "volume": 1
+      "volume": 1,
+      "typeId": 77800
     },
     {
       "name": "Feral Echo",
       "isRawMaterial": false,
       "isFound": true,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "typeId": 88564
     },
     {
       "name": "Fine Old Crude Matter",
       "isRawMaterial": true,
       "isFound": false,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "typeId": 92414
     },
     {
       "name": "Fine Young Crude Matter",
       "isRawMaterial": true,
       "isFound": false,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "typeId": 92394
     },
     {
       "name": "Fossilized Exotronics",
       "isRawMaterial": false,
       "isFound": true,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "typeId": 83818
     },
     {
       "name": "Heat Exchanger S",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 88889
     },
     {
       "name": "Heat Exchanger XS",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 88886
     },
     {
       "name": "Heavy Printer",
@@ -461,62 +531,72 @@
       "name": "Hop",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 90887
     },
     {
       "name": "Hull Repairer",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 72960
     },
     {
       "name": "Hydrated Sulfide Matrix",
       "isRawMaterial": true,
       "isFound": false,
       "isFinalProduct": false,
-      "volume": 1
+      "volume": 1,
+      "typeId": 77811
     },
     {
       "name": "Hydrocarbon Residue",
       "isRawMaterial": true,
       "isFound": true,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "typeId": 89258
     },
     {
       "name": "Iridosmine Nodules",
       "isRawMaterial": true,
       "isFound": false,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "typeId": 78426
     },
     {
       "name": "Iron-Rich Nodules",
       "isRawMaterial": true,
       "isFound": true,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "typeId": 89260
     },
     {
       "name": "Kerogen Tar",
       "isRawMaterial": false,
       "isFound": true,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "typeId": 88783
     },
     {
       "name": "Kinetic Field Array II",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83782
     },
     {
       "name": "Kinetic Field Array III",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83783
     },
     {
       "name": "Kinetic Field Array IV",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83784
     },
     {
       "name": "Large Cutting Laser",
@@ -528,37 +608,43 @@
       "name": "Leap",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 92421
     },
     {
       "name": "Luminalis",
       "isRawMaterial": false,
       "isFound": true,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "typeId": 83892
     },
     {
       "name": "Luminalis Mining Lens",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83897
     },
     {
       "name": "Lunge",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 92390
     },
     {
       "name": "Medium Cutting Laser",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83528
     },
     {
       "name": "Methane Ice Shards",
       "isRawMaterial": true,
       "isFound": false,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "typeId": 78446
     },
     {
       "name": "Mini Berth",
@@ -582,7 +668,8 @@
       "name": "Mummified Clone",
       "isRawMaterial": false,
       "isFound": true,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "typeId": 88765
     },
     {
       "name": "Network Node",
@@ -594,254 +681,296 @@
       "name": "Nickel-Iron Veins",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "typeId": 77801
     },
     {
       "name": "Nimble Armor Plates II",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 82650
     },
     {
       "name": "Nimble Armor Plates III",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83433
     },
     {
       "name": "Nimble Armor Plates IV",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83434
     },
     {
       "name": "Nomad Program Frame",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "typeId": 78418
     },
     {
       "name": "Nursery",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 92165
     },
     {
       "name": "Palladium",
       "isRawMaterial": false,
       "isFound": true,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "typeId": 99001
     },
     {
       "name": "Platinum-Group Veins",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "typeId": 77805
     },
     {
       "name": "Platinum-Palladium Matrix",
       "isRawMaterial": true,
       "isFound": false,
       "isFinalProduct": false,
-      "volume": 1
+      "volume": 1,
+      "typeId": 77810
     },
     {
       "name": "Primitive Kerogen Matrix",
       "isRawMaterial": true,
       "isFound": false,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "typeId": 78447
     },
     {
       "name": "Printed Circuits",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "typeId": 84180
     },
     {
       "name": "Printer",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 91701
     },
     {
       "name": "Radiantium",
       "isRawMaterial": false,
       "isFound": true,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "typeId": 83894
     },
     {
       "name": "Radiantium Mining Lens",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83895
     },
     {
       "name": "Rapid Plasma (M)",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 82033
     },
     {
       "name": "Rapid Plasma Ammo 1 (S)",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 82130
     },
     {
       "name": "Reactive Armor Plates II",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 82649
     },
     {
       "name": "Reactive Armor Plates III",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83429
     },
     {
       "name": "Reactive Armor Plates IV",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83430
     },
     {
       "name": "Recurve",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 87846
     },
     {
       "name": "Refinery",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 91703
     },
     {
       "name": "Reflex",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 87847
     },
     {
       "name": "Refuge",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 91751
     },
     {
       "name": "Reinforced Alloys",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "typeId": 84182
     },
     {
       "name": "Reinforced Shield Generator II",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 82654
     },
     {
       "name": "Reinforced Shield Generator III",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83456
     },
     {
       "name": "Reiver",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 87848
     },
     {
       "name": "Relay",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 91717
     },
     {
       "name": "Rough Old Crude Matter",
       "isRawMaterial": true,
       "isFound": false,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "typeId": 77729
     },
     {
       "name": "Rough Young Crude Matter",
       "isRawMaterial": true,
       "isFound": false,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "typeId": 78434
     },
     {
       "name": "SOF-40 Fuel",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "typeId": 84868
     },
     {
       "name": "Salt",
       "isRawMaterial": false,
       "isFound": true,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "typeId": 83839
     },
     {
       "name": "Salvaged Materials",
       "isRawMaterial": false,
       "isFound": true,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "typeId": 88764
     },
     {
       "name": "Shield Restorer II",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 82667
     },
     {
       "name": "Shield Restorer III",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83458
     },
     {
       "name": "Shield Restorer IV",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83459
     },
     {
       "name": "Silica Grains",
       "isRawMaterial": true,
       "isFound": true,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "typeId": 89259
     },
     {
       "name": "Silicon Dust",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "typeId": 77803
     },
     {
       "name": "Skip",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 92389
     },
     {
       "name": "Small Cutting Laser",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 77852
     },
     {
       "name": "Sojourn",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 81846
     },
     {
       "name": "Sophrogon",
       "isRawMaterial": true,
       "isFound": true,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "typeId": 77728
     },
     {
       "name": "Stack Slice 31F",
@@ -907,49 +1036,57 @@
       "name": "Stasis Net II",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 82683
     },
     {
       "name": "Stasis Net III",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83520
     },
     {
       "name": "Stasis Net IV",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83521
     },
     {
       "name": "Stasis Net V",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83522
     },
     {
       "name": "Stasis Net VI",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83523
     },
     {
       "name": "Still Kernel",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "typeId": 92483
     },
     {
       "name": "Still Knot",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "typeId": 88565
     },
     {
       "name": "Stride",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 91106
     },
     {
       "name": "Stride Stack",
@@ -961,271 +1098,316 @@
       "name": "Synthetic Mining Lens",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83463
     },
     {
       "name": "Systematic Armor Restorer II",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 82651
     },
     {
       "name": "Systematic Armor Restorer III",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83437
     },
     {
       "name": "Systematic Armor Restorer IV",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83438
     },
     {
       "name": "Tempo CD41",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 78511
     },
     {
       "name": "Tempo CD42",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 78510
     },
     {
       "name": "Thermal Composites",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "typeId": 88561
     },
     {
       "name": "Thermal Field Array II",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83772
     },
     {
       "name": "Thermal Field Array III",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83773
     },
     {
       "name": "Thermal Field Array IV",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83774
     },
     {
       "name": "Thermal-electro Nanitic Brace II",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83613
     },
     {
       "name": "Thermal-electro Nanitic Brace III",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83614
     },
     {
       "name": "Thermal-electro Nanitic Brace IV",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83615
     },
     {
       "name": "Thermalnetic Nanitic Brace II",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83628
     },
     {
       "name": "Thermalnetic Nanitic Brace III",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83629
     },
     {
       "name": "Thermalnetic Nanitic Brace IV",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83630
     },
     {
       "name": "Tholin Aggregates",
       "isRawMaterial": false,
       "isFound": true,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "typeId": 77804
     },
     {
       "name": "Tholin Nodules",
       "isRawMaterial": true,
       "isFound": false,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "typeId": 78449
     },
     {
       "name": "Tier 2 Autocannon (S)",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 82084
     },
     {
       "name": "Tier 2 Coilgun (M)",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 82092
     },
     {
       "name": "Tier 2 Coilgun (S)",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 82088
     },
     {
       "name": "Tier 2 Rapid Plasma (M)",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 82096
     },
     {
       "name": "Tier 2 Rapid Plasma (S)",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 82086
     },
     {
       "name": "Tier 3 Autocannon (S)",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 82085
     },
     {
       "name": "Tier 3 Coilgun (M)",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 82093
     },
     {
       "name": "Tier 3 Coilgun (S)",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 82089
     },
     {
       "name": "Tier 3 Howitzer (M)",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 82099
     },
     {
       "name": "Tier 3 Rapid Plasma (M)",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 82097
     },
     {
       "name": "Tier 3 Rapid Plasma (S)",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 82087
     },
     {
       "name": "Troilite Sulfide Grains",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "typeId": 88234
     },
     {
       "name": "Tuho 7",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 81656
     },
     {
       "name": "Tuho 9",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 82090
     },
     {
       "name": "Tuho S",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 82091
     },
     {
       "name": "Velocity CD81",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 78490
     },
     {
       "name": "Velocity CD82",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 78502
     },
     {
       "name": "Warp Entangler II",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 82682
     },
     {
       "name": "Warp Entangler III",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83516
     },
     {
       "name": "Warp Entangler IV",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83517
     },
     {
       "name": "Warp Entangler V",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83518
     },
     {
       "name": "Warp Entangler VI",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 83519
     },
     {
       "name": "Water Ice",
       "isRawMaterial": true,
       "isFound": true,
-      "isFinalProduct": false
+      "isFinalProduct": false,
+      "typeId": 78423
     },
     {
       "name": "Wend",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 87698
     },
     {
       "name": "Xoru 7",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 81657
     },
     {
       "name": "Xoru 9",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 82094
     },
     {
       "name": "Xoru S",
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true
+      "isFinalProduct": true,
+      "typeId": 82095
     }
   ],
   "asteroidTypes": [

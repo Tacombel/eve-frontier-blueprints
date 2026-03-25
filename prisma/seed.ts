@@ -28,7 +28,7 @@ async function main() {
   for (const item of data.items) {
     await prisma.item.upsert({
       where: { name: item.name },
-      update: { isRawMaterial: item.isRawMaterial, isFound: item.isFound, isFinalProduct: item.isFinalProduct, volume: item.volume ?? 0 },
+      update: { isRawMaterial: item.isRawMaterial, isFound: item.isFound, isFinalProduct: item.isFinalProduct, volume: item.volume ?? 0, typeId: item.typeId ?? null },
       create: { ...item, volume: item.volume ?? 0 },
     });
   }

@@ -11,8 +11,6 @@ interface OreSectionProps {
   neededIds: Set<string>;
   cargoCapacity: number;
   onCargoChange: (v: number) => void;
-  stock: Record<string, number>;
-  onStockChange: (itemId: string, value: number) => void;
   onExcludeOre?: (id: string, name: string) => void;
 }
 
@@ -22,8 +20,6 @@ export default function OreSection({
   neededIds,
   cargoCapacity,
   onCargoChange,
-  stock,
-  onStockChange,
   onExcludeOre,
 }: OreSectionProps) {
   const [hoveredItemId, setHoveredItemId] = useState<string | null>(null);
@@ -36,7 +32,7 @@ export default function OreSection({
   // Units still pending to mine for each ore (after stock)
   const toMineMap = new Map<string, number>();
   for (const d of oreDecomps) {
-    toMineMap.set(d.sourceItemId, Math.max(0, d.unitsToDecompose - (stock[d.sourceItemId] ?? d.actualStock)));
+    toMineMap.set(d.sourceItemId, Math.max(0, d.unitsToDecompose - d.actualStock));
   }
 
   const suggestion = computeOreSubstitution(oreDecomps, cargoCapacity, toMineMap, neededIds);
@@ -66,9 +62,8 @@ export default function OreSection({
           <h3 className="text-sm font-semibold text-amber-400 mb-2">Raw Materials to Decompose</h3>
           <div className="space-y-2">
             {foundDecomps.map((d) => {
-              const currentStock = stock[d.sourceItemId] ?? d.actualStock;
               const totalNeeded = d.unitsToDecompose + (d.directNeed ?? 0);
-              const stillNeeded = Math.max(0, totalNeeded - currentStock);
+              const stillNeeded = Math.max(0, totalNeeded - d.actualStock);
               return (
                 <div key={d.sourceItemId} className="rounded border border-gray-800 bg-gray-800/40 p-3">
                   <div className="flex items-center gap-3 mb-2">
@@ -81,16 +76,7 @@ export default function OreSection({
                         <span><span className="text-amber-300 font-semibold">{d.unitsToDecompose}</span> to refine · {d.runs} batch{d.runs > 1 ? "es" : ""} of {d.inputQty}</span>
                       )}
                     </div>
-                    <input
-                      type="number"
-                      min={0}
-                      title="Stock"
-                      className={`input w-24 text-right py-0.5 text-xs ${
-                        currentStock !== d.actualStock ? "border-cyan-600" : ""
-                      }`}
-                      value={currentStock}
-                      onChange={(e) => onStockChange(d.sourceItemId, Number(e.target.value))}
-                    />
+                    <span className="text-xs text-gray-300 font-medium w-24 text-right">{d.actualStock}</span>
                     <span className="text-xs text-gray-600">in stock</span>
                     <span className={`text-xs font-semibold w-16 text-right ${stillNeeded > 0 ? "text-red-400" : "text-green-400"}`}>
                       {stillNeeded > 0 ? `${stillNeeded} needed` : "✓"}
@@ -250,19 +236,10 @@ export default function OreSection({
                   · <span className="text-gray-300 font-semibold">{d.runs}</span> batch{d.runs > 1 ? "es" : ""}
                   <span className="text-gray-600"> of {d.inputQty} u</span>
                 </span>
-                <input
-                  type="number"
-                  min={0}
-                  title="Stock"
-                  className={`input w-24 text-right py-0.5 text-xs ${
-                    (stock[d.sourceItemId] ?? d.actualStock) !== d.actualStock ? "border-cyan-600" : ""
-                  }`}
-                  value={stock[d.sourceItemId] ?? d.actualStock}
-                  onChange={(e) => onStockChange(d.sourceItemId, Number(e.target.value))}
-                />
+                <span className="text-xs text-gray-300 font-medium w-24 text-right">{d.actualStock}</span>
                 <span className="text-xs text-gray-600">in stock</span>
                 {(() => {
-                  const toMine = Math.max(0, d.unitsToDecompose - (stock[d.sourceItemId] ?? d.actualStock));
+                  const toMine = Math.max(0, d.unitsToDecompose - d.actualStock);
                   return (
                     <div className="flex flex-col items-end w-32">
                       {toMine > 0
