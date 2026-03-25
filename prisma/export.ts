@@ -63,6 +63,7 @@ async function main() {
       isFound: i.isFound,
       isFinalProduct: i.isFinalProduct,
       volume: i.volume,
+      ...(i.typeId !== null ? { typeId: i.typeId } : {}),
     })),
     asteroidTypes: asteroidTypes.map((at) => ({
       name: at.name,
