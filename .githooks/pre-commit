@@ -1,14 +1,2 @@
 #!/bin/sh
-# Export static DB data to seed.json before each commit.
-# Non-blocking: if the export fails, the commit proceeds with the existing seed.json.
-
-echo "⏳ Exporting DB to seed.json..."
-
-if npm run db:export --silent; then
-  git add prisma/seed.json prisma/seed.json.bak 2>/dev/null
-  echo "✅ seed.json updated and staged."
-else
-  echo "⚠️  DB export failed — committing with existing seed.json (check DB connection)."
-fi
-
 exit 0
