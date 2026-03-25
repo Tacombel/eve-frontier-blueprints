@@ -70,7 +70,8 @@ export interface IntermediateResult {
 export interface DecompositionResult {
   sourceItemId: string;
   sourceItemName: string;
-  unitsToDecompose: number;
+  unitsToDecompose: number;   // units that go into the refinery
+  directNeed?: number;         // units needed directly (not decomposed) — consolidated from rawMaterials
   volumePerUnit: number;
   inputQty: number;
   runs: number;
@@ -78,6 +79,7 @@ export interface DecompositionResult {
   outputs: { itemId: string; itemName: string; quantityObtained: number }[];
   asteroids?: AsteroidInfo[];
   isUnrefined?: boolean; // True if material is used directly without refining
+  sourceIsFound?: boolean; // True if source is a found/looted item (not a mined ore)
 }
 
 export interface SecondaryDecompositionResult {
@@ -461,6 +463,7 @@ export function calculate(
       inputQty: dec.inputQty,
       runs,
       actualStock: source.stock,
+      sourceIsFound: source.isFound,
       outputs: dec.outputs.map((o) => {
         const outItem = itemMap.get(o.itemId);
         return {
@@ -474,7 +477,9 @@ export function calculate(
   }
 
   // Add optional decompositions for raw materials that are used directly but could be decomposed
+  // Only applies to true ores (isRawMaterial=true); isFound items (decomposition outputs) are not ores
   for (const row of rawMaterials) {
+    if (!row.isRawMaterial) continue; // Skip decomposition outputs and loot
     if (includedDecomps.has(row.itemId)) continue; // Already included
     const source = itemMap.get(row.itemId);
     if (!source) continue;
@@ -493,6 +498,17 @@ export function calculate(
       isUnrefined: true, // Mark as "consumed without refining"
       outputs: [], // No outputs shown for unrefined materials
     });
+  }
+
+  // Consolidate: if an item appears in both rawMaterials and decompositions (as source),
+  // absorb its direct need into the decomp entry and remove it from rawMaterials.
+  for (const decomp of decompositions) {
+    if (decomp.isUnrefined) continue;
+    const rawIdx = rawMaterials.findIndex(r => r.itemId === decomp.sourceItemId);
+    if (rawIdx === -1) continue;
+    const raw = rawMaterials[rawIdx];
+    decomp.directNeed = raw.totalNeeded;
+    rawMaterials.splice(rawIdx, 1);
   }
 
   decompositions.sort((a, b) => a.sourceItemName.localeCompare(b.sourceItemName));

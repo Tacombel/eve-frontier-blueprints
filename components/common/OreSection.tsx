@@ -28,20 +28,23 @@ export default function OreSection({
 }: OreSectionProps) {
   const [hoveredItemId, setHoveredItemId] = useState<string | null>(null);
 
-  if (decomps.length === 0 && directOres.length === 0) return null;
+  const foundDecomps = decomps.filter(d => !d.isUnrefined && d.sourceIsFound);
+  const oreDecomps = decomps.filter(d => !d.isUnrefined && !d.sourceIsFound);
+
+  if (oreDecomps.length === 0 && foundDecomps.length === 0 && directOres.length === 0) return null;
 
   // Units still pending to mine for each ore (after stock)
   const toMineMap = new Map<string, number>();
-  for (const d of decomps) {
+  for (const d of oreDecomps) {
     toMineMap.set(d.sourceItemId, Math.max(0, d.unitsToDecompose - (stock[d.sourceItemId] ?? d.actualStock)));
   }
 
-  const suggestion = computeOreSubstitution(decomps, cargoCapacity, toMineMap, neededIds);
+  const suggestion = computeOreSubstitution(oreDecomps, cargoCapacity, toMineMap, neededIds);
 
   // Compute picos for display using pending-to-mine volume
   const picoMap = new Map<string, OreWithPico>();
   if (cargoCapacity > 0) {
-    for (const d of decomps) {
+    for (const d of oreDecomps) {
       const unitsToMine = toMineMap.get(d.sourceItemId) ?? 0;
       const totalVolume = unitsToMine * d.volumePerUnit;
       const pico = totalVolume % cargoCapacity;
@@ -56,7 +59,68 @@ export default function OreSection({
   }
 
   return (
-    <div>
+    <div className="space-y-4">
+      {/* Raw Materials to Decompose (found/looted items that need refining) */}
+      {foundDecomps.length > 0 && (
+        <div>
+          <h3 className="text-sm font-semibold text-amber-400 mb-2">Raw Materials to Decompose</h3>
+          <div className="space-y-2">
+            {foundDecomps.map((d) => {
+              const currentStock = stock[d.sourceItemId] ?? d.actualStock;
+              const totalNeeded = d.unitsToDecompose + (d.directNeed ?? 0);
+              const stillNeeded = Math.max(0, totalNeeded - currentStock);
+              return (
+                <div key={d.sourceItemId} className="rounded border border-gray-800 bg-gray-800/40 p-3">
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className="text-xs font-medium text-gray-200 flex-1">{d.sourceItemName}</span>
+                    <div className="flex flex-col gap-0.5 text-xs text-gray-500">
+                      {d.directNeed ? (
+                        <span><span className="text-gray-300 font-semibold">{d.directNeed}</span> · for use in blueprints</span>
+                      ) : null}
+                      {d.unitsToDecompose > 0 && (
+                        <span><span className="text-amber-300 font-semibold">{d.unitsToDecompose}</span> to refine · {d.runs} batch{d.runs > 1 ? "es" : ""} of {d.inputQty}</span>
+                      )}
+                    </div>
+                    <input
+                      type="number"
+                      min={0}
+                      title="Stock"
+                      className={`input w-24 text-right py-0.5 text-xs ${
+                        currentStock !== d.actualStock ? "border-cyan-600" : ""
+                      }`}
+                      value={currentStock}
+                      onChange={(e) => onStockChange(d.sourceItemId, Number(e.target.value))}
+                    />
+                    <span className="text-xs text-gray-600">in stock</span>
+                    <span className={`text-xs font-semibold w-16 text-right ${stillNeeded > 0 ? "text-red-400" : "text-green-400"}`}>
+                      {stillNeeded > 0 ? `${stillNeeded} needed` : "✓"}
+                    </span>
+                  </div>
+                  <div className="flex flex-wrap gap-1 text-xs">
+                    <span className="text-gray-600 self-center">→</span>
+                    {d.outputs.map((o) => {
+                      const needed = neededIds.has(o.itemId);
+                      return needed ? (
+                        <span key={o.itemId} className="bg-amber-900/40 border border-amber-700 rounded px-1.5 py-0.5 text-amber-200 font-medium">
+                          {o.itemName} <span className="text-yellow-400">×{o.quantityObtained}</span>
+                        </span>
+                      ) : (
+                        <span key={o.itemId} className="bg-gray-700 border border-gray-500 rounded px-1.5 py-0.5 text-gray-300">
+                          {o.itemName} <span className="text-gray-400">×{o.quantityObtained}</span>
+                        </span>
+                      );
+                    })}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
+      {/* Ore to Decompose (mined ores) */}
+      {(oreDecomps.length > 0 || directOres.length > 0) && (
+      <div>
       {/* Header + cargo capacity input for Ore to Decompose */}
       <div className="flex items-center gap-3 mb-2">
         <h3 className="text-sm font-semibold text-purple-400 flex-1">Ore to Decompose</h3>
@@ -76,7 +140,7 @@ export default function OreSection({
       </div>
 
       {/* Trip optimization banner */}
-      {!suggestion && cargoCapacity > 0 && decomps.length >= 2 && (
+      {!suggestion && cargoCapacity > 0 && oreDecomps.length >= 2 && (
         <div className="mb-3 rounded border border-gray-800 bg-gray-800/30 p-3 text-xs text-gray-500">
           💡 No trip optimization possible for this combination.
         </div>
@@ -113,7 +177,7 @@ export default function OreSection({
             ))}
           </div>
           {(() => {
-            const totalTrips = decomps.reduce((s, d) => {
+            const totalTrips = oreDecomps.reduce((s, d) => {
                     const unitsToMine = toMineMap.get(d.sourceItemId) ?? 0;
                     return unitsToMine > 0 ? s + Math.ceil((unitsToMine * d.volumePerUnit) / cargoCapacity) : s;
                   }, 0);
@@ -145,7 +209,7 @@ export default function OreSection({
       )}
 
       <div className="space-y-2">
-        {decomps.filter(d => !d.isUnrefined).map((d) => {
+        {oreDecomps.map((d) => {
           const op = picoMap.get(d.sourceItemId);
           const isTarget = suggestion?.target.d.sourceItemId === d.sourceItemId;
           return (
@@ -221,41 +285,35 @@ export default function OreSection({
               </div>
               <div className="flex flex-wrap gap-1 text-xs">
                 <span className="text-gray-600 self-center">→</span>
-                {d.isUnrefined ? (
-                  <span className="bg-gray-700 border border-gray-600 rounded px-1.5 py-0.5 text-gray-400 italic">
-                    Consumed without refining
-                  </span>
-                ) : (
-                  d.outputs.map((o) => {
-                    const needed = neededIds.has(o.itemId);
-                    return needed ? (
-                      <span key={o.itemId} className="bg-purple-900/60 border border-purple-700 rounded px-1.5 py-0.5 text-purple-200 font-medium">
-                        {o.itemName} <span className="text-yellow-400">×{o.quantityObtained}</span>
-                      </span>
-                    ) : (
-                      <span key={o.itemId} className="bg-gray-700 border border-gray-500 rounded px-1.5 py-0.5 text-gray-300">
-                        {o.itemName} <span className="text-gray-400">×{o.quantityObtained}</span>
-                      </span>
-                    );
-                  })
-                )}
+                {d.outputs.map((o) => {
+                  const needed = neededIds.has(o.itemId);
+                  return needed ? (
+                    <span key={o.itemId} className="bg-purple-900/60 border border-purple-700 rounded px-1.5 py-0.5 text-purple-200 font-medium">
+                      {o.itemName} <span className="text-yellow-400">×{o.quantityObtained}</span>
+                    </span>
+                  ) : (
+                    <span key={o.itemId} className="bg-gray-700 border border-gray-500 rounded px-1.5 py-0.5 text-gray-300">
+                      {o.itemName} <span className="text-gray-400">×{o.quantityObtained}</span>
+                    </span>
+                  );
+                })}
               </div>
             </div>
           );
         })}
       </div>
 
-      {decomps.length > 0 && (
+      {oreDecomps.length > 0 && (
         <div className="mt-2 flex flex-col items-end gap-0.5">
           <span className="text-sm text-gray-400">
             Total ore to decompose:{" "}
             <span className="text-purple-300 font-bold">
-              {decomps.reduce((sum, d) => sum + d.unitsToDecompose, 0).toLocaleString()}
+              {oreDecomps.reduce((sum, d) => sum + d.unitsToDecompose, 0).toLocaleString()}
             </span>{" "}
             units
           </span>
           {cargoCapacity > 0 && (() => {
-            const totalTrips = decomps.reduce((sum, d) => {
+            const totalTrips = oreDecomps.reduce((sum, d) => {
               const unitsToMine = toMineMap.get(d.sourceItemId) ?? 0;
               if (unitsToMine === 0) return sum;
               return sum + Math.ceil((unitsToMine * d.volumePerUnit) / cargoCapacity);
@@ -267,6 +325,8 @@ export default function OreSection({
             );
           })()}
         </div>
+      )}
+      </div>
       )}
     </div>
   );
