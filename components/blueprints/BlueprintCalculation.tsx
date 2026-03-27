@@ -105,7 +105,7 @@ export default function BlueprintCalculation({ itemId }: { itemId: string; itemN
   return (
     <div className={`space-y-4 ${isRecalculating ? "opacity-60" : ""}`}>
       {/* SSU address */}
-      <SsuAddressBar address={ssuAddress} onSave={saveAddress} />
+      <SsuAddressBar address={ssuAddress} onSave={saveAddress} onRefresh={() => load(true)} />
 
       {/* Quantity selector */}
       <div className="flex items-center gap-2">

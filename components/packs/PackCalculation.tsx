@@ -88,7 +88,7 @@ export default function PackCalculation({ packId }: { packId: string }) {
 
   return (
     <div className={`mt-3 space-y-4 border-t border-gray-800 pt-4 ${isRecalculating ? "opacity-60" : ""}`}>
-      <SsuAddressBar address={ssuAddress} onSave={saveAddress} />
+      <SsuAddressBar address={ssuAddress} onSave={saveAddress} onRefresh={() => load(true)} />
 
       {stockSufficient && (
         <div className="flex items-center gap-2 rounded-md bg-green-900/30 border border-green-800 px-3 py-2">
