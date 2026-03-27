@@ -2365,7 +2365,7 @@
       "categoryId": 7
     },
     {
-      "name": "Unknown (83524)",
+      "name": "83524",
       "typeId": 83524,
       "isRawMaterial": false,
       "isFound": false,
@@ -2690,7 +2690,7 @@
       "categoryId": 7
     },
     {
-      "name": "Unknown (83775)",
+      "name": "83775",
       "typeId": 83775,
       "isRawMaterial": false,
       "isFound": false,
@@ -5854,7 +5854,7 @@
       "categoryId": 22
     },
     {
-      "name": "Unknown (91749)",
+      "name": "91749",
       "typeId": 91749,
       "isRawMaterial": false,
       "isFound": false,
@@ -5959,7 +5959,7 @@
       "categoryId": 17
     },
     {
-      "name": "Unknown (91967)",
+      "name": "91967",
       "typeId": 91967,
       "isRawMaterial": false,
       "isFound": false,
@@ -5967,7 +5967,7 @@
       "volume": 0
     },
     {
-      "name": "Unknown (91968)",
+      "name": "91968",
       "typeId": 91968,
       "isRawMaterial": false,
       "isFound": false,
