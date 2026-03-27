@@ -50,9 +50,13 @@ async function main() {
     ]);
 
   const facilitiesData = [
-    ...factories.map((f) => ({ name: f.name, type: "factory" as const })),
-    ...refineries.map((r) => ({ name: r.name, type: "refinery" as const })),
+    ...factories.map((f) => ({ name: f.name, type: "factory" as const, ...(f.typeId !== null ? { typeId: f.typeId } : {}) })),
+    ...refineries.map((r) => ({ name: r.name, type: "refinery" as const, ...(r.typeId !== null ? { typeId: r.typeId } : {}) })),
   ];
+
+  // Lookup maps for resolving facility names → typeIds
+  const factoryTypeIdByName = new Map(factories.map((f) => [f.name, f.typeId]));
+  const refineryTypeIdByName = new Map(refineries.map((r) => [r.name, r.typeId]));
 
   const data = {
     facilities: facilitiesData,
@@ -77,21 +81,21 @@ async function main() {
     asteroidTypes: asteroidTypes.map((at) => ({
       name: at.name,
       locations: at.locations.map((l) => l.location.name).sort(),
-      items: at.items.map((i) => i.item.name).sort(),
+      items: at.items.map((i) => i.item.typeId).sort((a, b) => (a ?? 0) - (b ?? 0)),
     })),
     decompositions: decompositions.map((d) => ({
-      sourceItem: d.sourceItem.name,
-      facility: d.refinery,
+      sourceTypeId: d.sourceItem.typeId,
+      facilityTypeId: refineryTypeIdByName.get(d.refinery) ?? null,
       inputQty: d.inputQty,
       runTime: d.runTime,
-      outputs: d.outputs.map((o) => ({ item: o.item.name, quantity: o.quantity })),
+      outputs: d.outputs.map((o) => ({ typeId: o.item.typeId, quantity: o.quantity })),
     })),
     blueprints: blueprints.map((bp) => ({
-      outputItem: bp.outputItem.name,
-      facility: bp.factory,
+      outputTypeId: bp.outputItem.typeId,
+      facilityTypeId: factoryTypeIdByName.get(bp.factory) ?? null,
       outputQty: bp.outputQty,
       runTime: bp.runTime,
-      inputs: bp.inputs.map((i) => ({ item: i.item.name, quantity: i.quantity })),
+      inputs: bp.inputs.map((i) => ({ typeId: i.item.typeId, quantity: i.quantity })),
     })),
   };
 

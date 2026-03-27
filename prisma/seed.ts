@@ -67,6 +67,16 @@ async function main() {
   }
   console.log(`  ✓ ${data.items.length} items`);
 
+  // Build lookup maps (loaded after items are seeded)
+  const allItems = await prisma.item.findMany({ select: { id: true, typeId: true } });
+  const itemIdByTypeId = new Map(allItems.map((i) => [i.typeId, i.id]));
+
+  const allFactories = await prisma.factory.findMany({ select: { id: true, name: true, typeId: true } });
+  const factoryNameByTypeId = new Map(allFactories.map((f) => [f.typeId, f.name]));
+
+  const allRefineries = await prisma.refinery.findMany({ select: { id: true, name: true, typeId: true } });
+  const refineryNameByTypeId = new Map(allRefineries.map((r) => [r.typeId, r.name]));
+
   // Asteroid types
   for (const at of data.asteroidTypes) {
     const created = await prisma.asteroidType.upsert({ where: { name: at.name }, update: {}, create: { name: at.name } });
@@ -80,14 +90,16 @@ async function main() {
         });
       }
     }
-    for (const itemName of at.items) {
-      const item = await prisma.item.findFirst({ where: { name: itemName } });
-      if (item) {
+    for (const typeId of at.items) {
+      const itemId = itemIdByTypeId.get(typeId);
+      if (itemId) {
         await prisma.itemAsteroidType.upsert({
-          where: { itemId_asteroidTypeId: { itemId: item.id, asteroidTypeId: created.id } },
+          where: { itemId_asteroidTypeId: { itemId, asteroidTypeId: created.id } },
           update: {},
-          create: { itemId: item.id, asteroidTypeId: created.id },
+          create: { itemId, asteroidTypeId: created.id },
         });
+      } else {
+        console.warn(`  ⚠ Item typeId ${typeId} not found for asteroidType: ${at.name}`);
       }
     }
   }
@@ -95,43 +107,49 @@ async function main() {
 
   // Decompositions
   for (const d of data.decompositions) {
-    const source = await prisma.item.findFirst({ where: { name: d.sourceItem } });
-    if (!source) { console.warn(`  ⚠ Item not found for decomposition: ${d.sourceItem}`); continue; }
+    const sourceId = itemIdByTypeId.get(d.sourceTypeId);
+    if (!sourceId) { console.warn(`  ⚠ Item typeId ${d.sourceTypeId} not found for decomposition`); continue; }
+    const refineryName = refineryNameByTypeId.get(d.facilityTypeId) ?? String(d.facilityTypeId);
     const decomp = await prisma.decomposition.upsert({
-      where: { sourceItemId_refinery: { sourceItemId: source.id, refinery: d.facility } },
+      where: { sourceItemId_refinery: { sourceItemId: sourceId, refinery: refineryName } },
       update: { inputQty: d.inputQty, runTime: d.runTime },
-      create: { sourceItemId: source.id, refinery: d.facility, inputQty: d.inputQty, runTime: d.runTime },
+      create: { sourceItemId: sourceId, refinery: refineryName, inputQty: d.inputQty, runTime: d.runTime },
     });
     for (const out of d.outputs) {
-      const outItem = await prisma.item.findFirst({ where: { name: out.item } });
-      if (outItem) {
+      const outItemId = itemIdByTypeId.get(out.typeId);
+      if (outItemId) {
         await prisma.decompositionOutput.upsert({
-          where: { decompositionId_itemId: { decompositionId: decomp.id, itemId: outItem.id } },
+          where: { decompositionId_itemId: { decompositionId: decomp.id, itemId: outItemId } },
           update: { quantity: out.quantity },
-          create: { decompositionId: decomp.id, itemId: outItem.id, quantity: out.quantity },
+          create: { decompositionId: decomp.id, itemId: outItemId, quantity: out.quantity },
         });
+      } else {
+        console.warn(`  ⚠ Output typeId ${out.typeId} not found in decomposition of typeId ${d.sourceTypeId}`);
       }
     }
   }
   console.log(`  ✓ ${data.decompositions.length} decompositions`);
 
-  // Blueprints — upsert by (outputItemId, factory)
+  // Blueprints
   for (const bp of data.blueprints) {
-    const outputItem = await prisma.item.findFirst({ where: { name: bp.outputItem } });
-    if (!outputItem) { console.warn(`  ⚠ Item not found for blueprint: ${bp.outputItem}`); continue; }
+    const outputItemId = itemIdByTypeId.get(bp.outputTypeId);
+    if (!outputItemId) { console.warn(`  ⚠ Item typeId ${bp.outputTypeId} not found for blueprint`); continue; }
+    const factoryName = factoryNameByTypeId.get(bp.facilityTypeId) ?? String(bp.facilityTypeId);
     const upserted = await prisma.blueprint.upsert({
-      where: { outputItemId_factory: { outputItemId: outputItem.id, factory: bp.facility } },
+      where: { outputItemId_factory: { outputItemId, factory: factoryName } },
       update: { outputQty: bp.outputQty, runTime: bp.runTime },
-      create: { outputItemId: outputItem.id, factory: bp.facility, outputQty: bp.outputQty, runTime: bp.runTime, isDefault: false },
+      create: { outputItemId, factory: factoryName, outputQty: bp.outputQty, runTime: bp.runTime, isDefault: false },
     });
     for (const inp of bp.inputs) {
-      const inpItem = await prisma.item.findFirst({ where: { name: inp.item } });
-      if (inpItem) {
+      const inpItemId = itemIdByTypeId.get(inp.typeId);
+      if (inpItemId) {
         await prisma.blueprintInput.upsert({
-          where: { blueprintId_itemId: { blueprintId: upserted.id, itemId: inpItem.id } },
+          where: { blueprintId_itemId: { blueprintId: upserted.id, itemId: inpItemId } },
           update: { quantity: inp.quantity },
-          create: { blueprintId: upserted.id, itemId: inpItem.id, quantity: inp.quantity },
+          create: { blueprintId: upserted.id, itemId: inpItemId, quantity: inp.quantity },
         });
+      } else {
+        console.warn(`  ⚠ Input typeId ${inp.typeId} not found in blueprint for typeId ${bp.outputTypeId}`);
       }
     }
   }

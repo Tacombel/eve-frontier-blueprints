@@ -6323,7 +6323,7 @@
         "Trojan garden"
       ],
       "items": [
-        "Feldspar Crystals"
+        77800
       ]
     },
     {
@@ -6334,7 +6334,7 @@
         "Outer grove"
       ],
       "items": [
-        "Hydrated Sulfide Matrix"
+        77811
       ]
     },
     {
@@ -6343,7 +6343,7 @@
         "Outer grove"
       ],
       "items": [
-        "Methane Ice Shards"
+        78446
       ]
     },
     {
@@ -6355,7 +6355,7 @@
         "Trojan garden"
       ],
       "items": [
-        "Primitive Kerogen Matrix"
+        78447
       ]
     },
     {
@@ -6365,7 +6365,7 @@
         "Trojan garden"
       ],
       "items": [
-        "Aromatic Carbon Veins"
+        78448
       ]
     },
     {
@@ -6378,7 +6378,7 @@
         "Trojan garden"
       ],
       "items": [
-        "Iridosmine Nodules"
+        78426
       ]
     },
     {
@@ -6392,7 +6392,7 @@
         "Trojan garden"
       ],
       "items": [
-        "Platinum-Palladium Matrix"
+        77810
       ]
     },
     {
@@ -6402,475 +6402,475 @@
         "Trojan garden"
       ],
       "items": [
-        "Tholin Nodules"
+        78449
       ]
     }
   ],
   "decompositions": [
     {
-      "sourceItem": "Aromatic Carbon Veins",
-      "facility": "Refinery",
+      "sourceTypeId": 78448,
+      "facilityTypeId": 88063,
       "inputQty": 100,
       "runTime": 15,
       "outputs": [
         {
-          "item": "Aromatic Carbon Weave",
+          "typeId": 88782,
           "quantity": 4
         },
         {
-          "item": "Chitinous Organics",
+          "typeId": 88781,
           "quantity": 1
         },
         {
-          "item": "Kerogen Tar",
+          "typeId": 88783,
           "quantity": 8
         }
       ]
     },
     {
-      "sourceItem": "D2 Fuel",
-      "facility": "Field Refinery",
+      "sourceTypeId": 88319,
+      "facilityTypeId": 87161,
       "inputQty": 200,
       "runTime": 3,
       "outputs": [
         {
-          "item": "Salt",
+          "typeId": 83839,
           "quantity": 1
         }
       ]
     },
     {
-      "sourceItem": "D2 Fuel",
-      "facility": "Refinery",
+      "sourceTypeId": 88319,
+      "facilityTypeId": 88063,
       "inputQty": 200,
       "runTime": 3,
       "outputs": [
         {
-          "item": "Salt",
+          "typeId": 83839,
           "quantity": 1
         }
       ]
     },
     {
-      "sourceItem": "Eupraxite",
-      "facility": "Refinery",
+      "sourceTypeId": 78435,
+      "facilityTypeId": 88063,
       "inputQty": 10,
       "runTime": 18,
       "outputs": [
         {
-          "item": "EU-40 Fuel",
+          "typeId": 78516,
           "quantity": 600
         }
       ]
     },
     {
-      "sourceItem": "Feldspar Crystals",
-      "facility": "Field Refinery",
+      "sourceTypeId": 77800,
+      "facilityTypeId": 87161,
       "inputQty": 20,
       "runTime": 3,
       "outputs": [
         {
-          "item": "Hydrocarbon Residue",
+          "typeId": 89258,
           "quantity": 5
         },
         {
-          "item": "Silica Grains",
+          "typeId": 89259,
           "quantity": 15
         }
       ]
     },
     {
-      "sourceItem": "Feldspar Crystals",
-      "facility": "Refinery",
+      "sourceTypeId": 77800,
+      "facilityTypeId": 88063,
       "inputQty": 40,
       "runTime": 3,
       "outputs": [
         {
-          "item": "Hydrocarbon Residue",
+          "typeId": 89258,
           "quantity": 10
         },
         {
-          "item": "Silica Grains",
+          "typeId": 89259,
           "quantity": 30
         }
       ]
     },
     {
-      "sourceItem": "Fine Old Crude Matter",
-      "facility": "Field Refinery",
+      "sourceTypeId": 92414,
+      "facilityTypeId": 87161,
       "inputQty": 30,
       "runTime": 20,
       "outputs": [
         {
-          "item": "Brine",
+          "typeId": 92422,
           "quantity": 26
         },
         {
-          "item": "Sophrogon",
+          "typeId": 77728,
           "quantity": 3
         }
       ]
     },
     {
-      "sourceItem": "Fine Old Crude Matter",
-      "facility": "Refinery",
+      "sourceTypeId": 92414,
+      "facilityTypeId": 88063,
       "inputQty": 30,
       "runTime": 20,
       "outputs": [
         {
-          "item": "Brine",
+          "typeId": 92422,
           "quantity": 26
         },
         {
-          "item": "Sophrogon",
+          "typeId": 77728,
           "quantity": 3
         }
       ]
     },
     {
-      "sourceItem": "Fine Young Crude Matter",
-      "facility": "Field Refinery",
+      "sourceTypeId": 92394,
+      "facilityTypeId": 87161,
       "inputQty": 30,
       "runTime": 20,
       "outputs": [
         {
-          "item": "Brine",
+          "typeId": 92422,
           "quantity": 26
         },
         {
-          "item": "Eupraxite",
+          "typeId": 78435,
           "quantity": 3
         }
       ]
     },
     {
-      "sourceItem": "Fine Young Crude Matter",
-      "facility": "Refinery",
+      "sourceTypeId": 92394,
+      "facilityTypeId": 88063,
       "inputQty": 30,
       "runTime": 20,
       "outputs": [
         {
-          "item": "Brine",
+          "typeId": 92422,
           "quantity": 26
         },
         {
-          "item": "Eupraxite",
+          "typeId": 78435,
           "quantity": 3
         }
       ]
     },
     {
-      "sourceItem": "Hydrated Sulfide Matrix",
-      "facility": "Field Refinery",
+      "sourceTypeId": 77811,
+      "facilityTypeId": 87161,
       "inputQty": 20,
       "runTime": 3,
       "outputs": [
         {
-          "item": "Hydrocarbon Residue",
+          "typeId": 89258,
           "quantity": 10
         },
         {
-          "item": "Water Ice",
+          "typeId": 78423,
           "quantity": 150
         }
       ]
     },
     {
-      "sourceItem": "Hydrated Sulfide Matrix",
-      "facility": "Refinery",
+      "sourceTypeId": 77811,
+      "facilityTypeId": 88063,
       "inputQty": 40,
       "runTime": 3,
       "outputs": [
         {
-          "item": "Hydrocarbon Residue",
+          "typeId": 89258,
           "quantity": 20
         },
         {
-          "item": "Water Ice",
+          "typeId": 78423,
           "quantity": 200
         }
       ]
     },
     {
-      "sourceItem": "Hydrocarbon Residue",
-      "facility": "Refinery",
+      "sourceTypeId": 89258,
+      "facilityTypeId": 88063,
       "inputQty": 20,
       "runTime": 9,
       "outputs": [
         {
-          "item": "Tholin Aggregates",
+          "typeId": 77804,
           "quantity": 180
         },
         {
-          "item": "Troilite Sulfide Grains",
+          "typeId": 88234,
           "quantity": 20
         }
       ]
     },
     {
-      "sourceItem": "Iridosmine Nodules",
-      "facility": "Refinery",
+      "sourceTypeId": 78426,
+      "facilityTypeId": 88063,
       "inputQty": 40,
       "runTime": 5,
       "outputs": [
         {
-          "item": "Iron-Rich Nodules",
+          "typeId": 89260,
           "quantity": 40
         }
       ]
     },
     {
-      "sourceItem": "Iron-Rich Nodules",
-      "facility": "Refinery",
+      "sourceTypeId": 89260,
+      "facilityTypeId": 88063,
       "inputQty": 10,
       "runTime": 9,
       "outputs": [
         {
-          "item": "Nickel-Iron Veins",
+          "typeId": 77801,
           "quantity": 198
         },
         {
-          "item": "Platinum-Group Veins",
+          "typeId": 77805,
           "quantity": 20
         }
       ]
     },
     {
-      "sourceItem": "Methane Ice Shards",
-      "facility": "Refinery",
+      "sourceTypeId": 78446,
+      "facilityTypeId": 88063,
       "inputQty": 100,
       "runTime": 15,
       "outputs": [
         {
-          "item": "Chitinous Organics",
+          "typeId": 88781,
           "quantity": 1
         },
         {
-          "item": "Tholin Aggregates",
+          "typeId": 77804,
           "quantity": 126
         },
         {
-          "item": "Water Ice",
+          "typeId": 78423,
           "quantity": 349
         }
       ]
     },
     {
-      "sourceItem": "Mummified Clone",
-      "facility": "Field Refinery",
+      "sourceTypeId": 88765,
+      "facilityTypeId": 87161,
       "inputQty": 1,
       "runTime": 3,
       "outputs": [
         {
-          "item": "Water Ice",
+          "typeId": 78423,
           "quantity": 7
         }
       ]
     },
     {
-      "sourceItem": "Mummified Clone",
-      "facility": "Refinery",
+      "sourceTypeId": 88765,
+      "facilityTypeId": 88063,
       "inputQty": 5,
       "runTime": 3,
       "outputs": [
         {
-          "item": "Aromatic Carbon Weave",
+          "typeId": 88782,
           "quantity": 1
         },
         {
-          "item": "Kerogen Tar",
+          "typeId": 88783,
           "quantity": 1
         },
         {
-          "item": "Water Ice",
+          "typeId": 78423,
           "quantity": 50
         }
       ]
     },
     {
-      "sourceItem": "Platinum-Palladium Matrix",
-      "facility": "Field Refinery",
+      "sourceTypeId": 77810,
+      "facilityTypeId": 87161,
       "inputQty": 20,
       "runTime": 3,
       "outputs": [
         {
-          "item": "Iron-Rich Nodules",
+          "typeId": 89260,
           "quantity": 15
         },
         {
-          "item": "Palladium",
+          "typeId": 99001,
           "quantity": 4
         },
         {
-          "item": "Silica Grains",
+          "typeId": 89259,
           "quantity": 8
         }
       ]
     },
     {
-      "sourceItem": "Platinum-Palladium Matrix",
-      "facility": "Refinery",
+      "sourceTypeId": 77810,
+      "facilityTypeId": 88063,
       "inputQty": 40,
       "runTime": 3,
       "outputs": [
         {
-          "item": "Iron-Rich Nodules",
+          "typeId": 89260,
           "quantity": 30
         },
         {
-          "item": "Palladium",
+          "typeId": 99001,
           "quantity": 8
         },
         {
-          "item": "Silica Grains",
+          "typeId": 89259,
           "quantity": 10
         }
       ]
     },
     {
-      "sourceItem": "Primitive Kerogen Matrix",
-      "facility": "Refinery",
+      "sourceTypeId": 78447,
+      "facilityTypeId": 88063,
       "inputQty": 100,
       "runTime": 15,
       "outputs": [
         {
-          "item": "Chitinous Organics",
+          "typeId": 88781,
           "quantity": 1
         },
         {
-          "item": "Kerogen Tar",
+          "typeId": 88783,
           "quantity": 16
         }
       ]
     },
     {
-      "sourceItem": "Rough Old Crude Matter",
-      "facility": "Refinery",
+      "sourceTypeId": 77729,
+      "facilityTypeId": 88063,
       "inputQty": 30,
       "runTime": 20,
       "outputs": [
         {
-          "item": "Salt",
+          "typeId": 83839,
           "quantity": 16
         },
         {
-          "item": "Sophrogon",
+          "typeId": 77728,
           "quantity": 28
         }
       ]
     },
     {
-      "sourceItem": "Rough Young Crude Matter",
-      "facility": "Refinery",
+      "sourceTypeId": 78434,
+      "facilityTypeId": 88063,
       "inputQty": 30,
       "runTime": 20,
       "outputs": [
         {
-          "item": "Eupraxite",
+          "typeId": 78435,
           "quantity": 28
         },
         {
-          "item": "Salt",
+          "typeId": 83839,
           "quantity": 1
         }
       ]
     },
     {
-      "sourceItem": "Salvaged Materials",
-      "facility": "Field Refinery",
+      "sourceTypeId": 88764,
+      "facilityTypeId": 87161,
       "inputQty": 3,
       "runTime": 3,
       "outputs": [
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 1
         }
       ]
     },
     {
-      "sourceItem": "Salvaged Materials",
-      "facility": "Refinery",
+      "sourceTypeId": 88764,
+      "facilityTypeId": 88063,
       "inputQty": 10,
       "runTime": 4,
       "outputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 1
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 6
         },
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 2
         }
       ]
     },
     {
-      "sourceItem": "Silica Grains",
-      "facility": "Refinery",
+      "sourceTypeId": 89259,
+      "facilityTypeId": 88063,
       "inputQty": 20,
       "runTime": 9,
       "outputs": [
         {
-          "item": "Feldspar Crystal Shards",
+          "typeId": 88235,
           "quantity": 50
         },
         {
-          "item": "Silicon Dust",
+          "typeId": 77803,
           "quantity": 150
         }
       ]
     },
     {
-      "sourceItem": "Sophrogon",
-      "facility": "Refinery",
+      "sourceTypeId": 77728,
+      "facilityTypeId": 88063,
       "inputQty": 10,
       "runTime": 18,
       "outputs": [
         {
-          "item": "SOF-40 Fuel",
+          "typeId": 84868,
           "quantity": 600
         }
       ]
     },
     {
-      "sourceItem": "Tholin Nodules",
-      "facility": "Refinery",
+      "sourceTypeId": 78449,
+      "facilityTypeId": 88063,
       "inputQty": 100,
       "runTime": 15,
       "outputs": [
         {
-          "item": "Aromatic Carbon Weave",
+          "typeId": 88782,
           "quantity": 8
         },
         {
-          "item": "Chitinous Organics",
+          "typeId": 88781,
           "quantity": 1
         }
       ]
     },
     {
-      "sourceItem": "Water Ice",
-      "facility": "Field Refinery",
+      "sourceTypeId": 78423,
+      "facilityTypeId": 87161,
       "inputQty": 275,
       "runTime": 3,
       "outputs": [
         {
-          "item": "D1 Fuel",
+          "typeId": 88335,
           "quantity": 75
         }
       ]
     },
     {
-      "sourceItem": "Water Ice",
-      "facility": "Refinery",
+      "sourceTypeId": 78423,
+      "facilityTypeId": 88063,
       "inputQty": 275,
       "runTime": 3,
       "outputs": [
         {
-          "item": "D1 Fuel",
+          "typeId": 88335,
           "quantity": 75
         }
       ]
@@ -6878,2961 +6878,2961 @@
   ],
   "blueprints": [
     {
-      "outputItem": "AC Gyrojet Ammo 1 (S)",
-      "facility": "Field Printer",
+      "outputTypeId": 82128,
+      "facilityTypeId": 87162,
       "outputQty": 100,
       "runTime": 3,
       "inputs": [
         {
-          "item": "Iron-Rich Nodules",
+          "typeId": 89260,
           "quantity": 24
         }
       ]
     },
     {
-      "outputItem": "AC Gyrojet Ammo 1 (S)",
-      "facility": "Mini Printer",
+      "outputTypeId": 82128,
+      "facilityTypeId": 87119,
       "outputQty": 100,
       "runTime": 3,
       "inputs": [
         {
-          "item": "Iron-Rich Nodules",
+          "typeId": 89260,
           "quantity": 24
         }
       ]
     },
     {
-      "outputItem": "Adaptive Nanitic Armor Weave II",
-      "facility": "Assembler",
+      "outputTypeId": 83441,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 97,
       "inputs": [
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 1
         }
       ]
     },
     {
-      "outputItem": "Adaptive Nanitic Armor Weave III",
-      "facility": "Assembler",
+      "outputTypeId": 83442,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 194,
       "inputs": [
         {
-          "item": "Still Kernel",
+          "typeId": 92483,
           "quantity": 1
         },
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 1
         }
       ]
     },
     {
-      "outputItem": "Adaptive Nanitic Armor Weave IV",
-      "facility": "Assembler",
+      "outputTypeId": 83443,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 804,
       "inputs": [
         {
-          "item": "Still Kernel",
+          "typeId": 92483,
           "quantity": 6
         },
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 12
         }
       ]
     },
     {
-      "outputItem": "Afterburner II",
-      "facility": "Field Printer",
+      "outputTypeId": 82681,
+      "facilityTypeId": 87162,
       "outputQty": 1,
       "runTime": 97,
       "inputs": [
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 1
         }
       ]
     },
     {
-      "outputItem": "Afterburner II",
-      "facility": "Assembler",
+      "outputTypeId": 82681,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 97,
       "inputs": [
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 1
         }
       ]
     },
     {
-      "outputItem": "Afterburner III",
-      "facility": "Assembler",
+      "outputTypeId": 83536,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 194,
       "inputs": [
         {
-          "item": "Still Kernel",
+          "typeId": 92483,
           "quantity": 1
         },
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 1
         }
       ]
     },
     {
-      "outputItem": "Afterburner IV",
-      "facility": "Assembler",
+      "outputTypeId": 82915,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 798,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 4
         },
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 4
         },
         {
-          "item": "Still Kernel",
+          "typeId": 92483,
           "quantity": 3
         },
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 4
         }
       ]
     },
     {
-      "outputItem": "Assembler",
-      "facility": "Build",
+      "outputTypeId": 91708,
+      "facilityTypeId": 10000014,
       "outputQty": 1,
       "runTime": 0,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 10
         },
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 5
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 20
         }
       ]
     },
     {
-      "outputItem": "Attuned Shield Generator II",
-      "facility": "Assembler",
+      "outputTypeId": 82653,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 207,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 8
         },
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 4
         }
       ]
     },
     {
-      "outputItem": "Attuned Shield Generator III",
-      "facility": "Assembler",
+      "outputTypeId": 83450,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 505,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 24
         },
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 12
         }
       ]
     },
     {
-      "outputItem": "Attuned Shield Generator IV",
-      "facility": "Assembler",
+      "outputTypeId": 83451,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 1169,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 62
         },
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 31
         }
       ]
     },
     {
-      "outputItem": "Base Autocannon (S)",
-      "facility": "Field Printer",
+      "outputTypeId": 81974,
+      "facilityTypeId": 87162,
       "outputQty": 1,
       "runTime": 156,
       "inputs": [
         {
-          "item": "Iron-Rich Nodules",
+          "typeId": 89260,
           "quantity": 10
         },
         {
-          "item": "Silica Grains",
+          "typeId": 89259,
           "quantity": 30
         }
       ]
     },
     {
-      "outputItem": "Base Autocannon (S)",
-      "facility": "Assembler",
+      "outputTypeId": 81974,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 156,
       "inputs": [
         {
-          "item": "Iron-Rich Nodules",
+          "typeId": 89260,
           "quantity": 10
         },
         {
-          "item": "Silica Grains",
+          "typeId": 89259,
           "quantity": 30
         }
       ]
     },
     {
-      "outputItem": "Base Coilgun (M)",
-      "facility": "Assembler",
+      "outputTypeId": 82028,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 574,
       "inputs": [
         {
-          "item": "Palladium",
+          "typeId": 99001,
           "quantity": 120
         },
         {
-          "item": "Platinum-Group Veins",
+          "typeId": 77805,
           "quantity": 120
         },
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 2
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 2
         }
       ]
     },
     {
-      "outputItem": "Base Coilgun (S)",
-      "facility": "Assembler",
+      "outputTypeId": 81972,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 115,
       "inputs": [
         {
-          "item": "Palladium",
+          "typeId": 99001,
           "quantity": 60
         },
         {
-          "item": "Platinum-Group Veins",
+          "typeId": 77805,
           "quantity": 60
         },
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 1
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 1
         }
       ]
     },
     {
-      "outputItem": "Base Howitzer (M)",
-      "facility": "Assembler",
+      "outputTypeId": 82030,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 632,
       "inputs": [
         {
-          "item": "Feldspar Crystal Shards",
+          "typeId": 88235,
           "quantity": 150
         },
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 2
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 2
         }
       ]
     },
     {
-      "outputItem": "Base Rapid Plasma (S)",
-      "facility": "Assembler",
+      "outputTypeId": 82032,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 132,
       "inputs": [
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 1
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 1
         },
         {
-          "item": "Troilite Sulfide Grains",
+          "typeId": 88234,
           "quantity": 90
         }
       ]
     },
     {
-      "outputItem": "Building Foam",
-      "facility": "Mini Printer",
+      "outputTypeId": 89089,
+      "facilityTypeId": 87119,
       "outputQty": 10,
       "runTime": 25,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 65
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 65
         },
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 65
         }
       ]
     },
     {
-      "outputItem": "Bulky Armor Plates II",
-      "facility": "Field Printer",
+      "outputTypeId": 82647,
+      "facilityTypeId": 87162,
       "outputQty": 1,
       "runTime": 155,
       "inputs": [
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 4
         }
       ]
     },
     {
-      "outputItem": "Bulky Armor Plates II",
-      "facility": "Assembler",
+      "outputTypeId": 82647,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 155,
       "inputs": [
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 4
         }
       ]
     },
     {
-      "outputItem": "Bulky Armor Plates III",
-      "facility": "Assembler",
+      "outputTypeId": 83421,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 357,
       "inputs": [
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 7
         }
       ]
     },
     {
-      "outputItem": "Bulky Armor Plates V",
-      "facility": "Assembler",
+      "outputTypeId": 83423,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 921,
       "inputs": [
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 24
         }
       ]
     },
     {
-      "outputItem": "Bulwark Shield Generator II",
-      "facility": "Field Printer",
+      "outputTypeId": 82652,
+      "facilityTypeId": 87162,
       "outputQty": 1,
       "runTime": 207,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 7
         },
         {
-          "item": "Palladium",
+          "typeId": 99001,
           "quantity": 150
         },
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 4
         }
       ]
     },
     {
-      "outputItem": "Bulwark Shield Generator III",
-      "facility": "Assembler",
+      "outputTypeId": 83448,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 505,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 21
         },
         {
-          "item": "Palladium",
+          "typeId": 99001,
           "quantity": 450
         },
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 12
         }
       ]
     },
     {
-      "outputItem": "Bulwark Shield Generator IV",
-      "facility": "Assembler",
+      "outputTypeId": 83449,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 1169,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 60
         },
         {
-          "item": "Palladium",
+          "typeId": 99001,
           "quantity": 600
         },
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 31
         }
       ]
     },
     {
-      "outputItem": "Carbon Weave",
-      "facility": "Field Printer",
+      "outputTypeId": 84210,
+      "facilityTypeId": 87162,
       "outputQty": 14,
       "runTime": 5,
       "inputs": [
         {
-          "item": "Hydrocarbon Residue",
+          "typeId": 89258,
           "quantity": 350
         }
       ]
     },
     {
-      "outputItem": "Carbon Weave",
-      "facility": "Mini Printer",
+      "outputTypeId": 84210,
+      "facilityTypeId": 87119,
       "outputQty": 14,
       "runTime": 5,
       "inputs": [
         {
-          "item": "Tholin Aggregates",
+          "typeId": 77804,
           "quantity": 3150
         }
       ]
     },
     {
-      "outputItem": "Cargo Grid II",
-      "facility": "Assembler",
+      "outputTypeId": 83497,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 209,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 7
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 4
         }
       ]
     },
     {
-      "outputItem": "Cargo Grid III",
-      "facility": "Assembler",
+      "outputTypeId": 83498,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 469,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 13
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 7
         }
       ]
     },
     {
-      "outputItem": "Cargo Grid IV",
-      "facility": "Assembler",
+      "outputTypeId": 83499,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 1054,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 26
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 14
         }
       ]
     },
     {
-      "outputItem": "Cargo Grid V",
-      "facility": "Assembler",
+      "outputTypeId": 83500,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 2339,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 52
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 28
         }
       ]
     },
     {
-      "outputItem": "Cargo Grid VI",
-      "facility": "Assembler",
+      "outputTypeId": 83501,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 5144,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 104
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 56
         }
       ]
     },
     {
-      "outputItem": "Carom",
-      "facility": "Mini Berth",
+      "outputTypeId": 91107,
+      "facilityTypeId": 88069,
       "outputQty": 1,
       "runTime": 10260,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 44
         },
         {
-          "item": "Carom Stack",
+          "typeId": 10000001,
           "quantity": 1
         },
         {
-          "item": "Nomad Program Frame",
+          "typeId": 78418,
           "quantity": 2
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 88
         },
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 44
         }
       ]
     },
     {
-      "outputItem": "Carom Stack",
-      "facility": "Mini Printer",
+      "outputTypeId": 10000001,
+      "facilityTypeId": 87119,
       "outputQty": 1,
       "runTime": 43200,
       "inputs": [
         {
-          "item": "Stack Slice 31F",
+          "typeId": 10000004,
           "quantity": 1
         },
         {
-          "item": "Stack Slice 31Q",
+          "typeId": 10000006,
           "quantity": 1
         },
         {
-          "item": "Stack Slice 31V",
+          "typeId": 10000007,
           "quantity": 1
         },
         {
-          "item": "Stack Slice 5C1",
+          "typeId": 10000009,
           "quantity": 1
         },
         {
-          "item": "Stack Slice 5DE",
+          "typeId": 10000010,
           "quantity": 1
         },
         {
-          "item": "Stack Slice 5DW",
+          "typeId": 10000012,
           "quantity": 1
         }
       ]
     },
     {
-      "outputItem": "Celerity CD01",
-      "facility": "Assembler",
+      "outputTypeId": 78506,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 207,
       "inputs": [
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 4
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 4
         },
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 8
         }
       ]
     },
     {
-      "outputItem": "Celerity CD02",
-      "facility": "Assembler",
+      "outputTypeId": 78507,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 471,
       "inputs": [
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 8
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 8
         },
         {
-          "item": "Still Kernel",
+          "typeId": 92483,
           "quantity": 1
         },
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 16
         }
       ]
     },
     {
-      "outputItem": "Celerity CD03",
-      "facility": "Assembler",
+      "outputTypeId": 78508,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 4230,
       "inputs": [
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 16
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 16
         },
         {
-          "item": "Still Kernel",
+          "typeId": 92483,
           "quantity": 2
         },
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 32
         }
       ]
     },
     {
-      "outputItem": "Coated Armor Plates II",
-      "facility": "Assembler",
+      "outputTypeId": 82648,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 172,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 4
         }
       ]
     },
     {
-      "outputItem": "Coated Armor Plates III",
-      "facility": "Assembler",
+      "outputTypeId": 83425,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 391,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 7
         }
       ]
     },
     {
-      "outputItem": "Coated Armor Plates IV",
-      "facility": "Assembler",
+      "outputTypeId": 83426,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 921,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 16
         }
       ]
     },
     {
-      "outputItem": "Coilgun Ammo 1 (S)",
-      "facility": "Mini Printer",
+      "outputTypeId": 82133,
+      "facilityTypeId": 87119,
       "outputQty": 100,
       "runTime": 5,
       "inputs": [
         {
-          "item": "Nickel-Iron Veins",
+          "typeId": 77801,
           "quantity": 230
         }
       ]
     },
     {
-      "outputItem": "Compressed Coolant",
-      "facility": "Field Printer",
+      "outputTypeId": 88887,
+      "facilityTypeId": 87162,
       "outputQty": 10,
       "runTime": 3,
       "inputs": [
         {
-          "item": "D1 Fuel",
+          "typeId": 88335,
           "quantity": 115
         },
         {
-          "item": "Iron-Rich Nodules",
+          "typeId": 89260,
           "quantity": 1
         }
       ]
     },
     {
-      "outputItem": "Compressed Coolant",
-      "facility": "Mini Printer",
+      "outputTypeId": 88887,
+      "facilityTypeId": 87119,
       "outputQty": 10,
       "runTime": 3,
       "inputs": [
         {
-          "item": "D1 Fuel",
+          "typeId": 88335,
           "quantity": 115
         },
         {
-          "item": "Iron-Rich Nodules",
+          "typeId": 89260,
           "quantity": 1
         }
       ]
     },
     {
-      "outputItem": "Crude Extractor",
-      "facility": "Assembler",
+      "outputTypeId": 77484,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 750,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 5
         },
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 3
         }
       ]
     },
     {
-      "outputItem": "Cryogenic Ejector S",
-      "facility": "Assembler",
+      "outputTypeId": 87599,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 904,
       "inputs": [
         {
-          "item": "D1 Fuel",
+          "typeId": 88335,
           "quantity": 560
         },
         {
-          "item": "Palladium",
+          "typeId": 99001,
           "quantity": 35
         },
         {
-          "item": "Platinum-Group Veins",
+          "typeId": 77805,
           "quantity": 35
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 6
         }
       ]
     },
     {
-      "outputItem": "D2 Fuel",
-      "facility": "Mini Printer",
+      "outputTypeId": 88319,
+      "facilityTypeId": 87119,
       "outputQty": 200,
       "runTime": 6,
       "inputs": [
         {
-          "item": "D1 Fuel",
+          "typeId": 88335,
           "quantity": 200
         },
         {
-          "item": "Salt",
+          "typeId": 83839,
           "quantity": 1
         }
       ]
     },
     {
-      "outputItem": "EM Field Array II",
-      "facility": "Assembler",
+      "outputTypeId": 83768,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 218,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 12
         }
       ]
     },
     {
-      "outputItem": "EM Field Array III",
-      "facility": "Assembler",
+      "outputTypeId": 83769,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 461,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 16
         }
       ]
     },
     {
-      "outputItem": "EM Field Array IV",
-      "facility": "Assembler",
+      "outputTypeId": 83770,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 949,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 19
         }
       ]
     },
     {
-      "outputItem": "Echo Chamber",
-      "facility": "Mini Printer",
+      "outputTypeId": 88780,
+      "facilityTypeId": 87119,
       "outputQty": 1,
       "runTime": 17,
       "inputs": [
         {
-          "item": "Feldspar Crystal Shards",
+          "typeId": 88235,
           "quantity": 105
         },
         {
-          "item": "Nickel-Iron Veins",
+          "typeId": 77801,
           "quantity": 120
         },
         {
-          "item": "Troilite Sulfide Grains",
+          "typeId": 88234,
           "quantity": 45
         }
       ]
     },
     {
-      "outputItem": "Embark",
-      "facility": "Assembler",
+      "outputTypeId": 77753,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 89,
       "inputs": [
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 2
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 2
         },
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 4
         }
       ]
     },
     {
-      "outputItem": "Explo-electro Nanitic Brace II",
-      "facility": "Assembler",
+      "outputTypeId": 83623,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 159,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 2
         },
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 1
         },
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 1
         }
       ]
     },
     {
-      "outputItem": "Explo-electro Nanitic Brace III",
-      "facility": "Assembler",
+      "outputTypeId": 83624,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 350,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 2
         },
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 1
         },
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 3
         }
       ]
     },
     {
-      "outputItem": "Explo-electro Nanitic Brace IV",
-      "facility": "Assembler",
+      "outputTypeId": 83625,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 796,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 2
         },
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 1
         },
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 8
         }
       ]
     },
     {
-      "outputItem": "Explonetic-electro Nanitic Brace II",
-      "facility": "Assembler",
+      "outputTypeId": 83618,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 159,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 2
         },
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 1
         },
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 1
         }
       ]
     },
     {
-      "outputItem": "Explonetic-electro Nanitic Brace III",
-      "facility": "Assembler",
+      "outputTypeId": 83619,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 362,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 2
         },
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 1
         },
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 4
         }
       ]
     },
     {
-      "outputItem": "Explonetic-electro Nanitic Brace IV",
-      "facility": "Assembler",
+      "outputTypeId": 83620,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 835,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 2
         },
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 1
         },
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 11
         }
       ]
     },
     {
-      "outputItem": "Explosive Field Array II",
-      "facility": "Assembler",
+      "outputTypeId": 83777,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 201,
       "inputs": [
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 6
         },
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 6
         }
       ]
     },
     {
-      "outputItem": "Explosive Field Array III",
-      "facility": "Assembler",
+      "outputTypeId": 83778,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 415,
       "inputs": [
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 7
         },
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 7
         }
       ]
     },
     {
-      "outputItem": "Explosive Field Array IV",
-      "facility": "Assembler",
+      "outputTypeId": 83779,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 863,
       "inputs": [
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 9
         },
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 8
         }
       ]
     },
     {
-      "outputItem": "Heat Exchanger S",
-      "facility": "Assembler",
+      "outputTypeId": 88889,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 452,
       "inputs": [
         {
-          "item": "D1 Fuel",
+          "typeId": 88335,
           "quantity": 560
         },
         {
-          "item": "Palladium",
+          "typeId": 99001,
           "quantity": 35
         },
         {
-          "item": "Platinum-Group Veins",
+          "typeId": 77805,
           "quantity": 35
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 6
         }
       ]
     },
     {
-      "outputItem": "Heat Exchanger XS",
-      "facility": "Field Printer",
+      "outputTypeId": 88886,
+      "facilityTypeId": 87162,
       "outputQty": 1,
       "runTime": 197,
       "inputs": [
         {
-          "item": "D1 Fuel",
+          "typeId": 88335,
           "quantity": 280
         },
         {
-          "item": "Palladium",
+          "typeId": 99001,
           "quantity": 2
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 3
         }
       ]
     },
     {
-      "outputItem": "Heat Exchanger XS",
-      "facility": "Assembler",
+      "outputTypeId": 88886,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 197,
       "inputs": [
         {
-          "item": "D1 Fuel",
+          "typeId": 88335,
           "quantity": 280
         },
         {
-          "item": "Palladium",
+          "typeId": 99001,
           "quantity": 2
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 3
         }
       ]
     },
     {
-      "outputItem": "Heavy Printer",
-      "facility": "Build",
+      "outputTypeId": 91702,
+      "facilityTypeId": 10000014,
       "outputQty": 1,
       "runTime": 0,
       "inputs": [
         {
-          "item": "Building Foam",
+          "typeId": 89089,
           "quantity": 100
         }
       ]
     },
     {
-      "outputItem": "Hop",
-      "facility": "Field Printer",
+      "outputTypeId": 90887,
+      "facilityTypeId": 87162,
       "outputQty": 1,
       "runTime": 120,
       "inputs": [
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 1
         },
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 2
         }
       ]
     },
     {
-      "outputItem": "Hop",
-      "facility": "Assembler",
+      "outputTypeId": 90887,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 120,
       "inputs": [
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 1
         },
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 2
         }
       ]
     },
     {
-      "outputItem": "Hull Repairer",
-      "facility": "Assembler",
+      "outputTypeId": 72960,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 148,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 2
         },
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 1
         }
       ]
     },
     {
-      "outputItem": "Kinetic Field Array II",
-      "facility": "Assembler",
+      "outputTypeId": 83782,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 184,
       "inputs": [
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 8
         }
       ]
     },
     {
-      "outputItem": "Kinetic Field Array III",
-      "facility": "Assembler",
+      "outputTypeId": 83783,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 387,
       "inputs": [
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 10
         }
       ]
     },
     {
-      "outputItem": "Kinetic Field Array IV",
-      "facility": "Assembler",
+      "outputTypeId": 83784,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 804,
       "inputs": [
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 12
         }
       ]
     },
     {
-      "outputItem": "Large Cutting Laser",
-      "facility": "Assembler",
+      "outputTypeId": 10000002,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 14863,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 15
         },
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 7
         }
       ]
     },
     {
-      "outputItem": "Leap",
-      "facility": "Assembler",
+      "outputTypeId": 92421,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 320,
       "inputs": [
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 4
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 4
         },
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 4
         }
       ]
     },
     {
-      "outputItem": "Luminalis Mining Lens",
-      "facility": "Mini Printer",
+      "outputTypeId": 83897,
+      "facilityTypeId": 87119,
       "outputQty": 1,
       "runTime": 3,
       "inputs": [
         {
-          "item": "Luminalis",
+          "typeId": 83892,
           "quantity": 1
         },
         {
-          "item": "Silicon Dust",
+          "typeId": 77803,
           "quantity": 45
         }
       ]
     },
     {
-      "outputItem": "Lunge",
-      "facility": "Assembler",
+      "outputTypeId": 92390,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 800,
       "inputs": [
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 16
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 16
         },
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 8
         }
       ]
     },
     {
-      "outputItem": "Medium Cutting Laser",
-      "facility": "Assembler",
+      "outputTypeId": 83528,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 863,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 10
         },
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 5
         }
       ]
     },
     {
-      "outputItem": "Mini Berth",
-      "facility": "Build",
+      "outputTypeId": 91705,
+      "facilityTypeId": 10000014,
       "outputQty": 1,
       "runTime": 0,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 10
         },
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 5
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 20
         }
       ]
     },
     {
-      "outputItem": "Mini Printer",
-      "facility": "Build",
+      "outputTypeId": 91700,
+      "facilityTypeId": 10000014,
       "outputQty": 1,
       "runTime": 0,
       "inputs": [
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 15
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 15
         }
       ]
     },
     {
-      "outputItem": "Mini Storage",
-      "facility": "Build",
+      "outputTypeId": 91713,
+      "facilityTypeId": 10000014,
       "outputQty": 1,
       "runTime": 0,
       "inputs": [
         {
-          "item": "Feldspar Crystals",
+          "typeId": 77800,
           "quantity": 250
         },
         {
-          "item": "Platinum-Palladium Matrix",
+          "typeId": 77810,
           "quantity": 250
         }
       ]
     },
     {
-      "outputItem": "Network Node",
-      "facility": "Build",
+      "outputTypeId": 88092,
+      "facilityTypeId": 10000014,
       "outputQty": 1,
       "runTime": 0,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 10
         },
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 10
         },
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 10
         }
       ]
     },
     {
-      "outputItem": "Nimble Armor Plates II",
-      "facility": "Assembler",
+      "outputTypeId": 82650,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 150,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 1
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 2
         }
       ]
     },
     {
-      "outputItem": "Nimble Armor Plates III",
-      "facility": "Assembler",
+      "outputTypeId": 83433,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 357,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 2
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 4
         }
       ]
     },
     {
-      "outputItem": "Nimble Armor Plates IV",
-      "facility": "Assembler",
+      "outputTypeId": 83434,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 830,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 4
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 8
         }
       ]
     },
     {
-      "outputItem": "Nomad Program Frame",
-      "facility": "Field Printer",
+      "outputTypeId": 78418,
+      "facilityTypeId": 87162,
       "outputQty": 1,
       "runTime": 20,
       "inputs": [
         {
-          "item": "Fossilized Exotronics",
+          "typeId": 83818,
           "quantity": 5
         }
       ]
     },
     {
-      "outputItem": "Nomad Program Frame",
-      "facility": "Mini Printer",
+      "outputTypeId": 78418,
+      "facilityTypeId": 87119,
       "outputQty": 1,
       "runTime": 20,
       "inputs": [
         {
-          "item": "Fossilized Exotronics",
+          "typeId": 83818,
           "quantity": 5
         }
       ]
     },
     {
-      "outputItem": "Nursery",
-      "facility": "Build",
+      "outputTypeId": 92165,
+      "facilityTypeId": 10000014,
       "outputQty": 1,
       "runTime": 0,
       "inputs": [
         {
-          "item": "Building Foam",
+          "typeId": 89089,
           "quantity": 20
         }
       ]
     },
     {
-      "outputItem": "Printed Circuits",
-      "facility": "Field Printer",
+      "outputTypeId": 84180,
+      "facilityTypeId": 87162,
       "outputQty": 1,
       "runTime": 3,
       "inputs": [
         {
-          "item": "Hydrocarbon Residue",
+          "typeId": 89258,
           "quantity": 3
         },
         {
-          "item": "Silica Grains",
+          "typeId": 89259,
           "quantity": 5
         }
       ]
     },
     {
-      "outputItem": "Printed Circuits",
-      "facility": "Mini Printer",
+      "outputTypeId": 84180,
+      "facilityTypeId": 87119,
       "outputQty": 1,
       "runTime": 3,
       "inputs": [
         {
-          "item": "Silicon Dust",
+          "typeId": 77803,
           "quantity": 37
         },
         {
-          "item": "Tholin Aggregates",
+          "typeId": 77804,
           "quantity": 22
         }
       ]
     },
     {
-      "outputItem": "Printer",
-      "facility": "Build",
+      "outputTypeId": 91701,
+      "facilityTypeId": 10000014,
       "outputQty": 1,
       "runTime": 0,
       "inputs": [
         {
-          "item": "Building Foam",
+          "typeId": 89089,
           "quantity": 20
         }
       ]
     },
     {
-      "outputItem": "Radiantium Mining Lens",
-      "facility": "Mini Printer",
+      "outputTypeId": 83895,
+      "facilityTypeId": 87119,
       "outputQty": 1,
       "runTime": 3,
       "inputs": [
         {
-          "item": "Radiantium",
+          "typeId": 83894,
           "quantity": 1
         },
         {
-          "item": "Silicon Dust",
+          "typeId": 77803,
           "quantity": 45
         }
       ]
     },
     {
-      "outputItem": "Rapid Plasma (M)",
-      "facility": "Assembler",
+      "outputTypeId": 82033,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 643,
       "inputs": [
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 2
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 2
         },
         {
-          "item": "Troilite Sulfide Grains",
+          "typeId": 88234,
           "quantity": 180
         }
       ]
     },
     {
-      "outputItem": "Rapid Plasma Ammo 1 (S)",
-      "facility": "Mini Printer",
+      "outputTypeId": 82130,
+      "facilityTypeId": 87119,
       "outputQty": 100,
       "runTime": 5,
       "inputs": [
         {
-          "item": "Platinum-Group Veins",
+          "typeId": 77805,
           "quantity": 400
         },
         {
-          "item": "Troilite Sulfide Grains",
+          "typeId": 88234,
           "quantity": 400
         }
       ]
     },
     {
-      "outputItem": "Reactive Armor Plates II",
-      "facility": "Assembler",
+      "outputTypeId": 82649,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 182,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 3
         },
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 3
         }
       ]
     },
     {
-      "outputItem": "Reactive Armor Plates III",
-      "facility": "Assembler",
+      "outputTypeId": 83429,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 421,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 6
         },
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 6
         }
       ]
     },
     {
-      "outputItem": "Reactive Armor Plates IV",
-      "facility": "Assembler",
+      "outputTypeId": 83430,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 943,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 11
         },
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 11
         }
       ]
     },
     {
-      "outputItem": "Recurve",
-      "facility": "Mini Berth",
+      "outputTypeId": 87846,
+      "facilityTypeId": 88069,
       "outputQty": 1,
       "runTime": 130,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 25
         },
         {
-          "item": "Nomad Program Frame",
+          "typeId": 78418,
           "quantity": 2
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 45
         },
         {
-          "item": "Still Kernel",
+          "typeId": 92483,
           "quantity": 2
         },
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 25
         }
       ]
     },
     {
-      "outputItem": "Refinery",
-      "facility": "Build",
+      "outputTypeId": 91703,
+      "facilityTypeId": 10000014,
       "outputQty": 1,
       "runTime": 0,
       "inputs": [
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 15
         },
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 15
         }
       ]
     },
     {
-      "outputItem": "Reflex",
-      "facility": "Field Printer",
+      "outputTypeId": 87847,
+      "facilityTypeId": 87162,
       "outputQty": 1,
       "runTime": 50,
       "inputs": [
         {
-          "item": "Hydrocarbon Residue",
+          "typeId": 89258,
           "quantity": 40
         },
         {
-          "item": "Nomad Program Frame",
+          "typeId": 78418,
           "quantity": 1
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 28
         }
       ]
     },
     {
-      "outputItem": "Reflex",
-      "facility": "Mini Berth",
+      "outputTypeId": 87847,
+      "facilityTypeId": 88069,
       "outputQty": 1,
       "runTime": 50,
       "inputs": [
         {
-          "item": "Hydrocarbon Residue",
+          "typeId": 89258,
           "quantity": 40
         },
         {
-          "item": "Nomad Program Frame",
+          "typeId": 78418,
           "quantity": 1
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 28
         }
       ]
     },
     {
-      "outputItem": "Refuge",
-      "facility": "Build",
+      "outputTypeId": 91751,
+      "facilityTypeId": 10000014,
       "outputQty": 1,
       "runTime": 0,
       "inputs": [
         {
-          "item": "Platinum-Palladium Matrix",
+          "typeId": 77810,
           "quantity": 50
         }
       ]
     },
     {
-      "outputItem": "Reinforced Alloys",
-      "facility": "Field Printer",
+      "outputTypeId": 84182,
+      "facilityTypeId": 87162,
       "outputQty": 8,
       "runTime": 4,
       "inputs": [
         {
-          "item": "Iron-Rich Nodules",
+          "typeId": 89260,
           "quantity": 70
         },
         {
-          "item": "Palladium",
+          "typeId": 99001,
           "quantity": 70
         },
         {
-          "item": "Silica Grains",
+          "typeId": 89259,
           "quantity": 105
         }
       ]
     },
     {
-      "outputItem": "Reinforced Alloys",
-      "facility": "Mini Printer",
+      "outputTypeId": 84182,
+      "facilityTypeId": 87119,
       "outputQty": 14,
       "runTime": 4,
       "inputs": [
         {
-          "item": "Feldspar Crystal Shards",
+          "typeId": 88235,
           "quantity": 1050
         },
         {
-          "item": "Nickel-Iron Veins",
+          "typeId": 77801,
           "quantity": 1050
         }
       ]
     },
     {
-      "outputItem": "Reinforced Shield Generator II",
-      "facility": "Assembler",
+      "outputTypeId": 82654,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 207,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 8
         },
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 4
         }
       ]
     },
     {
-      "outputItem": "Reinforced Shield Generator III",
-      "facility": "Assembler",
+      "outputTypeId": 83456,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 505,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 24
         },
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 12
         }
       ]
     },
     {
-      "outputItem": "Reiver",
-      "facility": "Mini Berth",
+      "outputTypeId": 87848,
+      "facilityTypeId": 88069,
       "outputQty": 1,
       "runTime": 150,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 33
         },
         {
-          "item": "Nomad Program Frame",
+          "typeId": 78418,
           "quantity": 2
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 78
         },
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 33
         }
       ]
     },
     {
-      "outputItem": "Relay",
-      "facility": "Build",
+      "outputTypeId": 91717,
+      "facilityTypeId": 10000014,
       "outputQty": 1,
       "runTime": 0,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 6
         },
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 6
         },
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 6
         }
       ]
     },
     {
-      "outputItem": "Shield Restorer II",
-      "facility": "Assembler",
+      "outputTypeId": 82667,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 243,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 17
         },
         {
-          "item": "Platinum-Group Veins",
+          "typeId": 77805,
           "quantity": 13
         },
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 17
         }
       ]
     },
     {
-      "outputItem": "Shield Restorer III",
-      "facility": "Assembler",
+      "outputTypeId": 83458,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 496,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 19
         },
         {
-          "item": "Platinum-Group Veins",
+          "typeId": 77805,
           "quantity": 15
         },
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 20
         }
       ]
     },
     {
-      "outputItem": "Shield Restorer IV",
-      "facility": "Assembler",
+      "outputTypeId": 83459,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 970,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 17
         },
         {
-          "item": "Platinum-Group Veins",
+          "typeId": 77805,
           "quantity": 13
         },
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 17
         },
         {
-          "item": "Still Kernel",
+          "typeId": 92483,
           "quantity": 3
         }
       ]
     },
     {
-      "outputItem": "Skip",
-      "facility": "Field Printer",
+      "outputTypeId": 92389,
+      "facilityTypeId": 87162,
       "outputQty": 1,
       "runTime": 97,
       "inputs": [
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 1
         }
       ]
     },
     {
-      "outputItem": "Small Cutting Laser",
-      "facility": "Field Printer",
+      "outputTypeId": 77852,
+      "facilityTypeId": 87162,
       "outputQty": 1,
       "runTime": 167,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 3
         },
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 2
         }
       ]
     },
     {
-      "outputItem": "Small Cutting Laser",
-      "facility": "Assembler",
+      "outputTypeId": 77852,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 167,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 3
         },
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 2
         }
       ]
     },
     {
-      "outputItem": "Sojourn",
-      "facility": "Field Printer",
+      "outputTypeId": 81846,
+      "facilityTypeId": 87162,
       "outputQty": 1,
       "runTime": 39,
       "inputs": [
         {
-          "item": "Hydrocarbon Residue",
+          "typeId": 89258,
           "quantity": 10
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 2
         }
       ]
     },
     {
-      "outputItem": "Sojourn",
-      "facility": "Assembler",
+      "outputTypeId": 81846,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 39,
       "inputs": [
         {
-          "item": "Hydrocarbon Residue",
+          "typeId": 89258,
           "quantity": 10
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 2
         }
       ]
     },
     {
-      "outputItem": "Stasis Net II",
-      "facility": "Assembler",
+      "outputTypeId": 82683,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 178,
       "inputs": [
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 2
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 2
         },
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 4
         }
       ]
     },
     {
-      "outputItem": "Stasis Net III",
-      "facility": "Assembler",
+      "outputTypeId": 83520,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 366,
       "inputs": [
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 2
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 3
         },
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 4
         }
       ]
     },
     {
-      "outputItem": "Stasis Net IV",
-      "facility": "Assembler",
+      "outputTypeId": 83521,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 760,
       "inputs": [
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 3
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 3
         },
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 5
         }
       ]
     },
     {
-      "outputItem": "Stasis Net V",
-      "facility": "Assembler",
+      "outputTypeId": 83522,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 1553,
       "inputs": [
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 3
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 4
         },
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 5
         }
       ]
     },
     {
-      "outputItem": "Stasis Net VI",
-      "facility": "Assembler",
+      "outputTypeId": 83523,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 3192,
       "inputs": [
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 4
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 4
         },
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 6
         }
       ]
     },
     {
-      "outputItem": "Still Kernel",
-      "facility": "Mini Printer",
+      "outputTypeId": 92483,
+      "facilityTypeId": 87119,
       "outputQty": 1,
       "runTime": 11,
       "inputs": [
         {
-          "item": "Brine",
+          "typeId": 92422,
           "quantity": 50
         },
         {
-          "item": "Tholin Nodules",
+          "typeId": 78449,
           "quantity": 5
         }
       ]
     },
     {
-      "outputItem": "Still Knot",
-      "facility": "Mini Printer",
+      "outputTypeId": 88565,
+      "facilityTypeId": 87119,
       "outputQty": 1,
       "runTime": 11,
       "inputs": [
         {
-          "item": "Feral Echo",
+          "typeId": 88564,
           "quantity": 5
         },
         {
-          "item": "Salt",
+          "typeId": 83839,
           "quantity": 5
         }
       ]
     },
     {
-      "outputItem": "Stride",
-      "facility": "Mini Berth",
+      "outputTypeId": 91106,
+      "facilityTypeId": 88069,
       "outputQty": 1,
       "runTime": 10630,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 48
         },
         {
-          "item": "Nomad Program Frame",
+          "typeId": 78418,
           "quantity": 2
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 96
         },
         {
-          "item": "Stride Stack",
+          "typeId": 10000003,
           "quantity": 1
         },
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 48
         }
       ]
     },
     {
-      "outputItem": "Stride Stack",
-      "facility": "Mini Printer",
+      "outputTypeId": 10000003,
+      "facilityTypeId": 87119,
       "outputQty": 1,
       "runTime": 43200,
       "inputs": [
         {
-          "item": "Stack Slice 31P",
+          "typeId": 10000005,
           "quantity": 1
         },
         {
-          "item": "Stack Slice 5C0",
+          "typeId": 10000008,
           "quantity": 1
         },
         {
-          "item": "Stack Slice 5DK",
+          "typeId": 10000011,
           "quantity": 1
         },
         {
-          "item": "Stack Slice 5DZ",
+          "typeId": 10000013,
           "quantity": 1
         }
       ]
     },
     {
-      "outputItem": "Synthetic Mining Lens",
-      "facility": "Field Printer",
+      "outputTypeId": 83463,
+      "facilityTypeId": 87162,
       "outputQty": 1,
       "runTime": 3,
       "inputs": [
         {
-          "item": "Silica Grains",
+          "typeId": 89259,
           "quantity": 3
         }
       ]
     },
     {
-      "outputItem": "Synthetic Mining Lens",
-      "facility": "Mini Printer",
+      "outputTypeId": 83463,
+      "facilityTypeId": 87119,
       "outputQty": 1,
       "runTime": 3,
       "inputs": [
         {
-          "item": "Silica Grains",
+          "typeId": 89259,
           "quantity": 3
         }
       ]
     },
     {
-      "outputItem": "Systematic Armor Restorer II",
-      "facility": "Assembler",
+      "outputTypeId": 82651,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 111,
       "inputs": [
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 1
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 1
         }
       ]
     },
     {
-      "outputItem": "Systematic Armor Restorer III",
-      "facility": "Assembler",
+      "outputTypeId": 83437,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 222,
       "inputs": [
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 1
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 1
         },
         {
-          "item": "Still Kernel",
+          "typeId": 92483,
           "quantity": 1
         }
       ]
     },
     {
-      "outputItem": "Systematic Armor Restorer IV",
-      "facility": "Assembler",
+      "outputTypeId": 83438,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 962,
       "inputs": [
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 22
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 22
         },
         {
-          "item": "Still Kernel",
+          "typeId": 92483,
           "quantity": 4
         }
       ]
     },
     {
-      "outputItem": "Tempo CD41",
-      "facility": "Assembler",
+      "outputTypeId": 78511,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 413,
       "inputs": [
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 4
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 4
         },
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 8
         }
       ]
     },
     {
-      "outputItem": "Tempo CD42",
-      "facility": "Assembler",
+      "outputTypeId": 78510,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 942,
       "inputs": [
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 8
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 8
         },
         {
-          "item": "Still Kernel",
+          "typeId": 92483,
           "quantity": 1
         },
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 16
         }
       ]
     },
     {
-      "outputItem": "Thermal Composites",
-      "facility": "Field Printer",
+      "outputTypeId": 88561,
+      "facilityTypeId": 87162,
       "outputQty": 14,
       "runTime": 4,
       "inputs": [
         {
-          "item": "Hydrocarbon Residue",
+          "typeId": 89258,
           "quantity": 140
         },
         {
-          "item": "Silica Grains",
+          "typeId": 89259,
           "quantity": 90
         }
       ]
     },
     {
-      "outputItem": "Thermal Composites",
-      "facility": "Mini Printer",
+      "outputTypeId": 88561,
+      "facilityTypeId": 87119,
       "outputQty": 14,
       "runTime": 4,
       "inputs": [
         {
-          "item": "Feldspar Crystal Shards",
+          "typeId": 88235,
           "quantity": 210
         },
         {
-          "item": "Silicon Dust",
+          "typeId": 77803,
           "quantity": 630
         },
         {
-          "item": "Tholin Aggregates",
+          "typeId": 77804,
           "quantity": 1260
         }
       ]
     },
     {
-      "outputItem": "Thermal Field Array II",
-      "facility": "Assembler",
+      "outputTypeId": 83772,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 201,
       "inputs": [
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 12
         }
       ]
     },
     {
-      "outputItem": "Thermal Field Array III",
-      "facility": "Assembler",
+      "outputTypeId": 83773,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 426,
       "inputs": [
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 16
         }
       ]
     },
     {
-      "outputItem": "Thermal Field Array IV",
-      "facility": "Assembler",
+      "outputTypeId": 83774,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 881,
       "inputs": [
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 19
         }
       ]
     },
     {
-      "outputItem": "Thermal-electro Nanitic Brace II",
-      "facility": "Assembler",
+      "outputTypeId": 83613,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 181,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 2
         },
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 1
         },
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 4
         }
       ]
     },
     {
-      "outputItem": "Thermal-electro Nanitic Brace III",
-      "facility": "Assembler",
+      "outputTypeId": 83614,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 405,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 2
         },
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 1
         },
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 9
         }
       ]
     },
     {
-      "outputItem": "Thermal-electro Nanitic Brace IV",
-      "facility": "Assembler",
+      "outputTypeId": 83615,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 916,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 2
         },
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 1
         },
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 20
         }
       ]
     },
     {
-      "outputItem": "Thermalnetic Nanitic Brace II",
-      "facility": "Assembler",
+      "outputTypeId": 83628,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 181,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 2
         },
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 1
         },
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 4
         }
       ]
     },
     {
-      "outputItem": "Thermalnetic Nanitic Brace III",
-      "facility": "Assembler",
+      "outputTypeId": 83629,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 405,
       "inputs": [
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 1
         },
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 12
         }
       ]
     },
     {
-      "outputItem": "Thermalnetic Nanitic Brace IV",
-      "facility": "Assembler",
+      "outputTypeId": 83630,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 923,
       "inputs": [
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 1
         },
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 24
         }
       ]
     },
     {
-      "outputItem": "Tier 2 Autocannon (S)",
-      "facility": "Assembler",
+      "outputTypeId": 82084,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 276,
       "inputs": [
         {
-          "item": "Feldspar Crystal Shards",
+          "typeId": 88235,
           "quantity": 125
         },
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 1
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 1
         }
       ]
     },
     {
-      "outputItem": "Tier 2 Coilgun (M)",
-      "facility": "Assembler",
+      "outputTypeId": 82092,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 2457,
       "inputs": [
         {
-          "item": "Palladium",
+          "typeId": 99001,
           "quantity": 70
         },
         {
-          "item": "Platinum-Group Veins",
+          "typeId": 77805,
           "quantity": 70
         },
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 2
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 1
         }
       ]
     },
     {
-      "outputItem": "Tier 2 Coilgun (S)",
-      "facility": "Assembler",
+      "outputTypeId": 82088,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 249,
       "inputs": [
         {
-          "item": "Platinum-Group Veins",
+          "typeId": 77805,
           "quantity": 140
         },
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 2
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 1
         }
       ]
     },
     {
-      "outputItem": "Tier 2 Howitzer (M)",
-      "facility": "Assembler",
+      "outputTypeId": 82098,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 2667,
       "inputs": [
         {
-          "item": "Feldspar Crystal Shards",
+          "typeId": 88235,
           "quantity": 250
         },
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 2
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 2
         }
       ]
     },
     {
-      "outputItem": "Tier 2 Rapid Plasma (M)",
-      "facility": "Assembler",
+      "outputTypeId": 82096,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 2727,
       "inputs": [
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 2
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 2
         },
         {
-          "item": "Troilite Sulfide Grains",
+          "typeId": 88234,
           "quantity": 300
         }
       ]
     },
     {
-      "outputItem": "Tier 2 Rapid Plasma (S)",
-      "facility": "Assembler",
+      "outputTypeId": 82086,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 283,
       "inputs": [
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 1
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 1
         },
         {
-          "item": "Troilite Sulfide Grains",
+          "typeId": 88234,
           "quantity": 150
         }
       ]
     },
     {
-      "outputItem": "Tier 3 Autocannon (S)",
-      "facility": "Assembler",
+      "outputTypeId": 82085,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 577,
       "inputs": [
         {
-          "item": "Feldspar Crystal Shards",
+          "typeId": 88235,
           "quantity": 170
         },
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 1
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 1
         }
       ]
     },
     {
-      "outputItem": "Tier 3 Coilgun (M)",
-      "facility": "Assembler",
+      "outputTypeId": 82093,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 9935,
       "inputs": [
         {
-          "item": "Platinum-Group Veins",
+          "typeId": 77805,
           "quantity": 440
         },
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 4
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 2
         }
       ]
     },
     {
-      "outputItem": "Tier 3 Coilgun (S)",
-      "facility": "Assembler",
+      "outputTypeId": 82089,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 505,
       "inputs": [
         {
-          "item": "Palladium",
+          "typeId": 99001,
           "quantity": 110
         },
         {
-          "item": "Platinum-Group Veins",
+          "typeId": 77805,
           "quantity": 110
         },
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 2
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 1
         }
       ]
     },
     {
-      "outputItem": "Tier 3 Howitzer (M)",
-      "facility": "Assembler",
+      "outputTypeId": 82099,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 11086,
       "inputs": [
         {
-          "item": "Feldspar Crystal Shards",
+          "typeId": 88235,
           "quantity": 340
         },
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 2
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 2
         }
       ]
     },
     {
-      "outputItem": "Tier 3 Rapid Plasma (M)",
-      "facility": "Assembler",
+      "outputTypeId": 82097,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 11412,
       "inputs": [
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 2
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 2
         },
         {
-          "item": "Troilite Sulfide Grains",
+          "typeId": 88234,
           "quantity": 420
         }
       ]
     },
     {
-      "outputItem": "Tier 3 Rapid Plasma (S)",
-      "facility": "Assembler",
+      "outputTypeId": 82087,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 597,
       "inputs": [
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 1
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 1
         },
         {
-          "item": "Troilite Sulfide Grains",
+          "typeId": 88234,
           "quantity": 210
         }
       ]
     },
     {
-      "outputItem": "Tuho 7",
-      "facility": "Assembler",
+      "outputTypeId": 81656,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 137,
       "inputs": [
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 4
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 1
         }
       ]
     },
     {
-      "outputItem": "Tuho 9",
-      "facility": "Assembler",
+      "outputTypeId": 82090,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 301,
       "inputs": [
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 4
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 2
         }
       ]
     },
     {
-      "outputItem": "Tuho S",
-      "facility": "Assembler",
+      "outputTypeId": 82091,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 620,
       "inputs": [
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 5
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 2
         }
       ]
     },
     {
-      "outputItem": "Velocity CD81",
-      "facility": "Assembler",
+      "outputTypeId": 78490,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 825,
       "inputs": [
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 4
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 4
         },
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 8
         }
       ]
     },
     {
-      "outputItem": "Velocity CD82",
-      "facility": "Assembler",
+      "outputTypeId": 78502,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 1883,
       "inputs": [
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 8
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 8
         },
         {
-          "item": "Still Kernel",
+          "typeId": 92483,
           "quantity": 2
         },
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 16
         }
       ]
     },
     {
-      "outputItem": "Warp Entangler II",
-      "facility": "Assembler",
+      "outputTypeId": 82682,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 181,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 3
         },
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 2
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 2
         }
       ]
     },
     {
-      "outputItem": "Warp Entangler III",
-      "facility": "Assembler",
+      "outputTypeId": 83516,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 371,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 3
         },
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 2
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 3
         }
       ]
     },
     {
-      "outputItem": "Warp Entangler IV",
-      "facility": "Assembler",
+      "outputTypeId": 83517,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 777,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 4
         },
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 3
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 3
         }
       ]
     },
     {
-      "outputItem": "Warp Entangler V",
-      "facility": "Assembler",
+      "outputTypeId": 83518,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 1585,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 4
         },
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 3
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 4
         }
       ]
     },
     {
-      "outputItem": "Warp Entangler VI",
-      "facility": "Assembler",
+      "outputTypeId": 83519,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 3274,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 5
         },
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 4
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 4
         }
       ]
     },
     {
-      "outputItem": "Wend",
-      "facility": "Mini Berth",
+      "outputTypeId": 87698,
+      "facilityTypeId": 88069,
       "outputQty": 1,
       "runTime": 60,
       "inputs": [
         {
-          "item": "Carbon Weave",
+          "typeId": 84210,
           "quantity": 17
         },
         {
-          "item": "Nomad Program Frame",
+          "typeId": 78418,
           "quantity": 1
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 34
         },
         {
-          "item": "Thermal Composites",
+          "typeId": 88561,
           "quantity": 17
         }
       ]
     },
     {
-      "outputItem": "Xoru 7",
-      "facility": "Assembler",
+      "outputTypeId": 81657,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 664,
       "inputs": [
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 8
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 2
         }
       ]
     },
     {
-      "outputItem": "Xoru 9",
-      "facility": "Assembler",
+      "outputTypeId": 82094,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 2872,
       "inputs": [
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 8
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 4
         }
       ]
     },
     {
-      "outputItem": "Xoru S",
-      "facility": "Assembler",
+      "outputTypeId": 82095,
+      "facilityTypeId": 88068,
       "outputQty": 1,
       "runTime": 11770,
       "inputs": [
         {
-          "item": "Printed Circuits",
+          "typeId": 84180,
           "quantity": 10
         },
         {
-          "item": "Reinforced Alloys",
+          "typeId": 84182,
           "quantity": 4
         }
       ]
