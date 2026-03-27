@@ -33,6 +33,7 @@ export default function DecompositionsPage() {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
   const [search, setSearch] = useState("");
+  const [filterRefinery, setFilterRefinery] = useState("");
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -108,13 +109,13 @@ export default function DecompositionsPage() {
 
   const outputItems = items.filter((i) => i.id !== sourceItemId);
 
-  const filteredGrouped = search.trim()
-    ? Array.from(grouped.entries()).filter(([, entries]) => {
-        const q = search.trim().toLowerCase();
-        return entries[0].sourceItem.name.toLowerCase().includes(q) ||
-          entries.some((d) => d.outputs.some((o) => o.item.name.toLowerCase().includes(q)));
-      })
-    : Array.from(grouped.entries());
+  const filteredGrouped = Array.from(grouped.entries()).filter(([, entries]) => {
+    if (filterRefinery && !entries.some((d) => d.refinery === filterRefinery)) return false;
+    if (!search.trim()) return true;
+    const q = search.trim().toLowerCase();
+    return entries[0].sourceItem.name.toLowerCase().includes(q) ||
+      entries.some((d) => d.outputs.some((o) => o.item.name.toLowerCase().includes(q)));
+  });
 
   return (
     <div className="max-w-4xl mx-auto">
@@ -125,14 +126,26 @@ export default function DecompositionsPage() {
       <p className="text-sm text-gray-500 mb-3">
         Define how a material breaks down when reprocessed. Multiple refineries can yield different outputs.
       </p>
-      <div className="relative mb-6">
-        <input
-          placeholder="Search by input or output…"
-          className="input w-full"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-        {search && <button onClick={() => setSearch("")} className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-300">✕</button>}
+      <div className="flex gap-2 mb-6">
+        <div className="relative flex-1">
+          <input
+            placeholder="Search by input or output…"
+            className="input w-full"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          {search && <button onClick={() => setSearch("")} className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-300">✕</button>}
+        </div>
+        <select
+          className="input w-48"
+          value={filterRefinery}
+          onChange={(e) => setFilterRefinery(e.target.value)}
+        >
+          <option value="">All refineries</option>
+          {refineries.map((r) => (
+            <option key={r.id} value={r.name}>{r.name}</option>
+          ))}
+        </select>
       </div>
 
       {loading ? (

@@ -38,6 +38,7 @@ export default function BlueprintsPage() {
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
   const [calcItemId, setCalcItemId] = useState<string | null>(null);
   const [search, setSearch] = useState("");
+  const [filterFactory, setFilterFactory] = useState("");
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -118,9 +119,11 @@ export default function BlueprintsPage() {
   }
 
   const inputItems = allItems.filter((i) => i.id !== outputItemId);
-  const searchFiltered = search.trim()
-    ? grouped.filter(({ item }) => item.name.toLowerCase().includes(search.trim().toLowerCase()))
-    : grouped;
+  const searchFiltered = grouped.filter(({ item, blueprints }) => {
+    if (filterFactory && !blueprints.some((bp) => bp.factory === filterFactory)) return false;
+    if (!search.trim()) return true;
+    return item.name.toLowerCase().includes(search.trim().toLowerCase());
+  });
   const filteredGrouped = calcItemId
     ? searchFiltered.filter(({ item }) => item.id === calcItemId)
     : searchFiltered;
@@ -136,14 +139,26 @@ export default function BlueprintsPage() {
         </div>
         {isAdmin && <button onClick={openNew} className="btn-primary">+ New Blueprint</button>}
       </div>
-      <div className="mb-4 relative">
-        <input
-          placeholder="Search blueprints…"
-          className="input w-full"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-        {search && <button onClick={() => setSearch("")} className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-300">✕</button>}
+      <div className="flex gap-2 mb-4">
+        <div className="relative flex-1">
+          <input
+            placeholder="Search blueprints…"
+            className="input w-full"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          {search && <button onClick={() => setSearch("")} className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-300">✕</button>}
+        </div>
+        <select
+          className="input w-48"
+          value={filterFactory}
+          onChange={(e) => setFilterFactory(e.target.value)}
+        >
+          <option value="">All factories</option>
+          {factories.map((f) => (
+            <option key={f.id} value={f.name}>{f.name}</option>
+          ))}
+        </select>
       </div>
 
       {loading ? (
