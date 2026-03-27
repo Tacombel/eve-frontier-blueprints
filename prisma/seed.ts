@@ -4,11 +4,20 @@ import data from "./seed.json";
 
 type SeedItem = {
   name: string;
+  typeId: number;
   isRawMaterial: boolean;
   isFound: boolean;
   isFinalProduct: boolean;
   volume?: number;
-  typeId?: number | null;
+  description?: string | null;
+  mass?: number | null;
+  radius?: number | null;
+  portionSize?: number | null;
+  groupName?: string | null;
+  groupId?: number | null;
+  categoryName?: string | null;
+  categoryId?: number | null;
+  iconUrl?: string | null;
 };
 
 const prisma = new PrismaClient();
@@ -36,8 +45,23 @@ async function main() {
   // Items
   for (const item of data.items as SeedItem[]) {
     await prisma.item.upsert({
-      where: { name: item.name },
-      update: { isRawMaterial: item.isRawMaterial, isFound: item.isFound, isFinalProduct: item.isFinalProduct, volume: item.volume ?? 0, typeId: item.typeId ?? null },
+      where: { typeId: item.typeId },
+      update: {
+        name: item.name,
+        isRawMaterial: item.isRawMaterial,
+        isFound: item.isFound,
+        isFinalProduct: item.isFinalProduct,
+        volume: item.volume ?? 0,
+        description: item.description ?? null,
+        mass: item.mass ?? null,
+        radius: item.radius ?? null,
+        portionSize: item.portionSize ?? null,
+        groupName: item.groupName ?? null,
+        groupId: item.groupId ?? null,
+        categoryName: item.categoryName ?? null,
+        categoryId: item.categoryId ?? null,
+        iconUrl: item.iconUrl ?? null,
+      },
       create: { ...item, volume: item.volume ?? 0 },
     });
   }
@@ -57,7 +81,7 @@ async function main() {
       }
     }
     for (const itemName of at.items) {
-      const item = await prisma.item.findUnique({ where: { name: itemName } });
+      const item = await prisma.item.findFirst({ where: { name: itemName } });
       if (item) {
         await prisma.itemAsteroidType.upsert({
           where: { itemId_asteroidTypeId: { itemId: item.id, asteroidTypeId: created.id } },
@@ -71,7 +95,7 @@ async function main() {
 
   // Decompositions
   for (const d of data.decompositions) {
-    const source = await prisma.item.findUnique({ where: { name: d.sourceItem } });
+    const source = await prisma.item.findFirst({ where: { name: d.sourceItem } });
     if (!source) { console.warn(`  ⚠ Item not found for decomposition: ${d.sourceItem}`); continue; }
     const decomp = await prisma.decomposition.upsert({
       where: { sourceItemId_refinery: { sourceItemId: source.id, refinery: d.facility } },
@@ -79,7 +103,7 @@ async function main() {
       create: { sourceItemId: source.id, refinery: d.facility, inputQty: d.inputQty, runTime: d.runTime },
     });
     for (const out of d.outputs) {
-      const outItem = await prisma.item.findUnique({ where: { name: out.item } });
+      const outItem = await prisma.item.findFirst({ where: { name: out.item } });
       if (outItem) {
         await prisma.decompositionOutput.upsert({
           where: { decompositionId_itemId: { decompositionId: decomp.id, itemId: outItem.id } },
@@ -93,7 +117,7 @@ async function main() {
 
   // Blueprints — upsert by (outputItemId, factory)
   for (const bp of data.blueprints) {
-    const outputItem = await prisma.item.findUnique({ where: { name: bp.outputItem } });
+    const outputItem = await prisma.item.findFirst({ where: { name: bp.outputItem } });
     if (!outputItem) { console.warn(`  ⚠ Item not found for blueprint: ${bp.outputItem}`); continue; }
     const upserted = await prisma.blueprint.upsert({
       where: { outputItemId_factory: { outputItemId: outputItem.id, factory: bp.facility } },
@@ -101,7 +125,7 @@ async function main() {
       create: { outputItemId: outputItem.id, factory: bp.facility, outputQty: bp.outputQty, runTime: bp.runTime, isDefault: false },
     });
     for (const inp of bp.inputs) {
-      const inpItem = await prisma.item.findUnique({ where: { name: inp.item } });
+      const inpItem = await prisma.item.findFirst({ where: { name: inp.item } });
       if (inpItem) {
         await prisma.blueprintInput.upsert({
           where: { blueprintId_itemId: { blueprintId: upserted.id, itemId: inpItem.id } },

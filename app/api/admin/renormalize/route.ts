@@ -10,7 +10,7 @@ async function renormalizeItems(): Promise<Stats> {
   for (const item of items) {
     const correct = normalizeName(item.name);
     if (correct === item.name) continue;
-    const conflict = await prisma.item.findUnique({ where: { name: correct } });
+    const conflict = await prisma.item.findFirst({ where: { name: correct, NOT: { id: item.id } } });
     if (conflict) {
       // Keep the correctly-named one, delete this duplicate
       await prisma.item.delete({ where: { id: item.id } });
