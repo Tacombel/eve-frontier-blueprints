@@ -186,6 +186,7 @@ model PackItem {
 model Factory {
   id        String   @id @default(cuid())
   name      String   @unique
+  typeId    Int?     @unique
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -193,6 +194,7 @@ model Factory {
 model Refinery {
   id        String   @id @default(cuid())
   name      String   @unique
+  typeId    Int?     @unique
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

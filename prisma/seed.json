@@ -2,51 +2,63 @@
   "facilities": [
     {
       "name": "Assembler",
-      "type": "factory"
+      "type": "factory",
+      "typeId": 88068
     },
     {
       "name": "Berth",
-      "type": "factory"
+      "type": "factory",
+      "typeId": 88070
     },
     {
       "name": "Build",
-      "type": "factory"
+      "type": "factory",
+      "typeId": 10000014
     },
     {
       "name": "Field printer",
-      "type": "factory"
+      "type": "factory",
+      "typeId": 87162
     },
     {
       "name": "Heavy Berth",
-      "type": "factory"
+      "type": "factory",
+      "typeId": 88071
     },
     {
       "name": "Heavy Printer",
-      "type": "factory"
+      "type": "factory",
+      "typeId": 87120
     },
     {
       "name": "Mini Berth",
-      "type": "factory"
+      "type": "factory",
+      "typeId": 88069
     },
     {
       "name": "Mini Printer",
-      "type": "factory"
+      "type": "factory",
+      "typeId": 87119
     },
     {
       "name": "Printer",
-      "type": "factory"
+      "type": "factory",
+      "typeId": 88067
     },
     {
       "name": "Field Refinery",
-      "type": "refinery"
+      "type": "refinery",
+      "typeId": 87161
     },
     {
       "name": "Heavy Refinery",
-      "type": "refinery"
+      "type": "refinery",
+      "typeId": 88064
     },
     {
       "name": "Refinery",
-      "type": "refinery"
+      "type": "refinery",
+      "typeId": 88063
     }
   ],
   "locations": [

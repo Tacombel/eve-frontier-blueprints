@@ -29,10 +29,10 @@ async function main() {
   const factories = data.facilities.filter((f) => f.type === "factory");
   const refineries = data.facilities.filter((f) => f.type === "refinery");
   for (const f of factories) {
-    await prisma.factory.upsert({ where: { name: f.name }, update: {}, create: { name: f.name } });
+    await prisma.factory.upsert({ where: { name: f.name }, update: { typeId: f.typeId ?? null }, create: { name: f.name, typeId: f.typeId ?? null } });
   }
   for (const r of refineries) {
-    await prisma.refinery.upsert({ where: { name: r.name }, update: {}, create: { name: r.name } });
+    await prisma.refinery.upsert({ where: { name: r.name }, update: { typeId: r.typeId ?? null }, create: { name: r.name, typeId: r.typeId ?? null } });
   }
   console.log(`  ✓ ${factories.length} factories, ${refineries.length} refineries`);
 
