@@ -59,6 +59,11 @@
       "name": "Refinery",
       "type": "refinery",
       "typeId": 88063
+    },
+    {
+      "name": "Nursery",
+      "type": "factory",
+      "typeId": 91978
     }
   ],
   "locations": [
@@ -5073,7 +5078,7 @@
       "typeId": 89978,
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true,
+      "isFinalProduct": false,
       "volume": 0
     },
     {
@@ -5081,7 +5086,7 @@
       "typeId": 89979,
       "isRawMaterial": false,
       "isFound": false,
-      "isFinalProduct": true,
+      "isFinalProduct": false,
       "volume": 0
     },
     {
@@ -10410,22 +10415,6 @@
         {
           "typeId": 84210,
           "quantity": 62
-        }
-      ]
-    },
-    {
-      "outputTypeId": 83524,
-      "facilityTypeId": 88068,
-      "outputQty": 1,
-      "runTime": 14863,
-      "inputs": [
-        {
-          "typeId": 84180,
-          "quantity": 7
-        },
-        {
-          "typeId": 84210,
-          "quantity": 15
         }
       ]
     },
