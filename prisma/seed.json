@@ -226,7 +226,7 @@
       "isFound": false,
       "isFinalProduct": false,
       "volume": 1,
-      "description": "Braids of serenity and power entwine and disperse across the surface. Within, they dance as if begging to be set free. From this rhythm, the dreams of those long passed and those newly awoken may spring forth.\r\n\r\nA quiet fragility eminates from the matter’s movements, the ethereal beauty of transience. Practicality has no need of such things.",
+      "description": "Braids of serenity and power entwine and disperse across the surface. Within, they dance as if begging to be set free. From this rhythm, the dreams of those long passed and those newly awoken may spring forth.\r\n\r\nA quiet fragility eminates from the matter\u2019s movements, the ethereal beauty of transience. Practicality has no need of such things.",
       "mass": 1100,
       "radius": 1,
       "portionSize": 10000,
@@ -2384,7 +2384,7 @@
       "isFound": false,
       "isFinalProduct": false,
       "volume": 0,
-      "description": "The violence necessary to obtain such a trophy has reduced its functionality to a fraction of its potential. Yet, this laser remains operational in the face of all the Frontier’s hostilities, natural and computational alike. Fitting a feralized component, even one with its protocols exorcised and rebuilt, can be considered an act of hubris.",
+      "description": "The violence necessary to obtain such a trophy has reduced its functionality to a fraction of its potential. Yet, this laser remains operational in the face of all the Frontier\u2019s hostilities, natural and computational alike. Fitting a feralized component, even one with its protocols exorcised and rebuilt, can be considered an act of hubris.",
       "mass": 240000,
       "radius": 25,
       "portionSize": 910,
@@ -5211,7 +5211,7 @@
       "isFound": false,
       "isFinalProduct": true,
       "volume": 0,
-      "description": "A frame stripped for range, built to leap between stars.\r\nThe design bears apparent alterations — conduits rerouted through spaces that seem improvised, geometries bent into configurations that defy intuition.\r\nNo signature remains to mark its maker.",
+      "description": "A frame stripped for range, built to leap between stars.\r\nThe design bears apparent alterations \u2014 conduits rerouted through spaces that seem improvised, geometries bent into configurations that defy intuition.\r\nNo signature remains to mark its maker.",
       "mass": 7900000,
       "radius": 13.5,
       "portionSize": 1,
@@ -5227,7 +5227,7 @@
       "isFound": false,
       "isFinalProduct": true,
       "volume": 0,
-      "description": "A hull shaped for distance and solitude. The proportions are spare, stripped of anything not essential to the crossing. The drive assembly carries unexpected mass — bracing layered over bracing, housings reinforced beyond apparent need, structure filling spaces the original geometry left hollow. What necessity shaped these adaptations remains unclear.",
+      "description": "A hull shaped for distance and solitude. The proportions are spare, stripped of anything not essential to the crossing. The drive assembly carries unexpected mass \u2014 bracing layered over bracing, housings reinforced beyond apparent need, structure filling spaces the original geometry left hollow. What necessity shaped these adaptations remains unclear.",
       "mass": 7200000,
       "radius": 13.5,
       "portionSize": 1,
@@ -5324,7 +5324,7 @@
       "isFound": false,
       "isFinalProduct": false,
       "volume": 0,
-      "description": "Industrial waste from the cosmos—metallic slag asteroids are the leftover cores of shattered worlds. Rich in platinum and palladium, these slowly-cooled metallic matrices represent the most precious remnants of planetary formation, concentrated in dense nickel-rich grains.\r\n\r\nSlag asteroids are a common source of  <a href=\"showinfo:77810\">Platinum-Palladium Matrix</a> and can typically be found in Inner Belts. ",
+      "description": "Industrial waste from the cosmos\u2014metallic slag asteroids are the leftover cores of shattered worlds. Rich in platinum and palladium, these slowly-cooled metallic matrices represent the most precious remnants of planetary formation, concentrated in dense nickel-rich grains.\r\n\r\nSlag asteroids are a common source of  <a href=\"showinfo:77810\">Platinum-Palladium Matrix</a> and can typically be found in Inner Belts. ",
       "mass": 6925,
       "radius": 1,
       "portionSize": 10000,
@@ -5341,7 +5341,7 @@
       "isFound": false,
       "isFinalProduct": false,
       "volume": 0,
-      "description": "Pure metallic ingots drifting through space, these asteroids are nature's own refined metal bars. Containing the densest materials known—iridium, osmium, and ruthenium—they're the treasure vaults of the asteroid belt, forged in the deepest, hottest cores of primordial worlds.\r\n\r\nIngot asteroids are a common source of <a href=\"showinfo:78426\">Iridosmine Nodules</a>.",
+      "description": "Pure metallic ingots drifting through space, these asteroids are nature's own refined metal bars. Containing the densest materials known\u2014iridium, osmium, and ruthenium\u2014they're the treasure vaults of the asteroid belt, forged in the deepest, hottest cores of primordial worlds.\r\n\r\nIngot asteroids are a common source of <a href=\"showinfo:78426\">Iridosmine Nodules</a>.",
       "mass": 8200,
       "radius": 1,
       "portionSize": 10000,
@@ -5390,7 +5390,7 @@
       "isFound": false,
       "isFinalProduct": false,
       "volume": 0,
-      "description": "Still glowing with primordial organic heat, ember asteroids contain pristine kerogen—complex carbon polymers that have remained unaltered since formation. These dark, coal-like bodies hold valuable chemical building blocks.\r\n\r\nEmber asteroids are a common source of <a href=\"showinfo:78447\">Primitive Kerogen Matrix</a>.",
+      "description": "Still glowing with primordial organic heat, ember asteroids contain pristine kerogen\u2014complex carbon polymers that have remained unaltered since formation. These dark, coal-like bodies hold valuable chemical building blocks.\r\n\r\nEmber asteroids are a common source of <a href=\"showinfo:78447\">Primitive Kerogen Matrix</a>.",
       "mass": 2000,
       "radius": 1,
       "portionSize": 10000,
@@ -5406,7 +5406,7 @@
       "isFound": false,
       "isFinalProduct": false,
       "volume": 0,
-      "description": "Shimmering with rainbow-like iridescence, glint asteroids sparkle with veins of complex aromatic hydrocarbons. Radiation-forged through extended exposure, their surfaces gleam with polycyclic organic compounds—the cosmic equivalent of liquid crystal displays, beautiful and chemically exotic.\r\n\r\nGlint asteroids are a common source of <a href=\"showinfo:78448\">Aromatic Hydrocarbon Veins</a>.",
+      "description": "Shimmering with rainbow-like iridescence, glint asteroids sparkle with veins of complex aromatic hydrocarbons. Radiation-forged through extended exposure, their surfaces gleam with polycyclic organic compounds\u2014the cosmic equivalent of liquid crystal displays, beautiful and chemically exotic.\r\n\r\nGlint asteroids are a common source of <a href=\"showinfo:78448\">Aromatic Hydrocarbon Veins</a>.",
       "mass": 3500,
       "radius": 1,
       "portionSize": 10000,
@@ -5422,7 +5422,7 @@
       "isFound": false,
       "isFinalProduct": false,
       "volume": 0,
-      "description": "Dark as coal dust and deeply primordial, soot asteroids are coated in prebiotic tholin nodules—tar-like organic compounds formed through radiation chemistry. These sooty spheres are laboratories of cosmic chemistry, their surfaces slowly processing in the radiation of deep space.\r\n\r\nSoot asteroids are a common source of <a href=\"showinfo:78449\">Tholin Nodules</a>.",
+      "description": "Dark as coal dust and deeply primordial, soot asteroids are coated in prebiotic tholin nodules\u2014tar-like organic compounds formed through radiation chemistry. These sooty spheres are laboratories of cosmic chemistry, their surfaces slowly processing in the radiation of deep space.\r\n\r\nSoot asteroids are a common source of <a href=\"showinfo:78449\">Tholin Nodules</a>.",
       "mass": 3000,
       "radius": 1,
       "portionSize": 10000,
@@ -6914,6 +6914,342 @@
         {
           "typeId": 88335,
           "quantity": 75
+        }
+      ]
+    },
+    {
+      "sourceTypeId": 88319,
+      "facilityTypeId": 88064,
+      "inputQty": 200,
+      "runTime": 3,
+      "outputs": [
+        {
+          "typeId": 83839,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "sourceTypeId": 78423,
+      "facilityTypeId": 88064,
+      "inputQty": 275,
+      "runTime": 3,
+      "outputs": [
+        {
+          "typeId": 88335,
+          "quantity": 75
+        }
+      ]
+    },
+    {
+      "sourceTypeId": 88764,
+      "facilityTypeId": 88064,
+      "inputQty": 10,
+      "runTime": 4,
+      "outputs": [
+        {
+          "typeId": 84210,
+          "quantity": 1
+        },
+        {
+          "typeId": 88561,
+          "quantity": 2
+        },
+        {
+          "typeId": 84182,
+          "quantity": 6
+        }
+      ]
+    },
+    {
+      "sourceTypeId": 78435,
+      "facilityTypeId": 88064,
+      "inputQty": 10,
+      "runTime": 18,
+      "outputs": [
+        {
+          "typeId": 78516,
+          "quantity": 600
+        }
+      ]
+    },
+    {
+      "sourceTypeId": 77728,
+      "facilityTypeId": 88064,
+      "inputQty": 10,
+      "runTime": 18,
+      "outputs": [
+        {
+          "typeId": 84868,
+          "quantity": 600
+        }
+      ]
+    },
+    {
+      "sourceTypeId": 88765,
+      "facilityTypeId": 88064,
+      "inputQty": 5,
+      "runTime": 3,
+      "outputs": [
+        {
+          "typeId": 88782,
+          "quantity": 1
+        },
+        {
+          "typeId": 88783,
+          "quantity": 1
+        },
+        {
+          "typeId": 78423,
+          "quantity": 50
+        }
+      ]
+    },
+    {
+      "sourceTypeId": 77729,
+      "facilityTypeId": 88064,
+      "inputQty": 30,
+      "runTime": 20,
+      "outputs": [
+        {
+          "typeId": 83839,
+          "quantity": 16
+        },
+        {
+          "typeId": 77728,
+          "quantity": 28
+        }
+      ]
+    },
+    {
+      "sourceTypeId": 78434,
+      "facilityTypeId": 88064,
+      "inputQty": 30,
+      "runTime": 20,
+      "outputs": [
+        {
+          "typeId": 83839,
+          "quantity": 1
+        },
+        {
+          "typeId": 78435,
+          "quantity": 28
+        }
+      ]
+    },
+    {
+      "sourceTypeId": 78446,
+      "facilityTypeId": 88064,
+      "inputQty": 100,
+      "runTime": 15,
+      "outputs": [
+        {
+          "typeId": 88781,
+          "quantity": 1
+        },
+        {
+          "typeId": 77804,
+          "quantity": 126
+        },
+        {
+          "typeId": 78423,
+          "quantity": 349
+        }
+      ]
+    },
+    {
+      "sourceTypeId": 78447,
+      "facilityTypeId": 88064,
+      "inputQty": 100,
+      "runTime": 15,
+      "outputs": [
+        {
+          "typeId": 88781,
+          "quantity": 1
+        },
+        {
+          "typeId": 88783,
+          "quantity": 16
+        }
+      ]
+    },
+    {
+      "sourceTypeId": 78448,
+      "facilityTypeId": 88064,
+      "inputQty": 100,
+      "runTime": 15,
+      "outputs": [
+        {
+          "typeId": 88781,
+          "quantity": 1
+        },
+        {
+          "typeId": 88782,
+          "quantity": 4
+        },
+        {
+          "typeId": 88783,
+          "quantity": 8
+        }
+      ]
+    },
+    {
+      "sourceTypeId": 78449,
+      "facilityTypeId": 88064,
+      "inputQty": 100,
+      "runTime": 15,
+      "outputs": [
+        {
+          "typeId": 88781,
+          "quantity": 1
+        },
+        {
+          "typeId": 88782,
+          "quantity": 8
+        }
+      ]
+    },
+    {
+      "sourceTypeId": 89258,
+      "facilityTypeId": 88064,
+      "inputQty": 60,
+      "runTime": 25,
+      "outputs": [
+        {
+          "typeId": 88234,
+          "quantity": 60
+        },
+        {
+          "typeId": 77804,
+          "quantity": 540
+        }
+      ]
+    },
+    {
+      "sourceTypeId": 89259,
+      "facilityTypeId": 88064,
+      "inputQty": 60,
+      "runTime": 25,
+      "outputs": [
+        {
+          "typeId": 88235,
+          "quantity": 150
+        },
+        {
+          "typeId": 77803,
+          "quantity": 450
+        }
+      ]
+    },
+    {
+      "sourceTypeId": 89260,
+      "facilityTypeId": 88064,
+      "inputQty": 60,
+      "runTime": 25,
+      "outputs": [
+        {
+          "typeId": 77805,
+          "quantity": 60
+        },
+        {
+          "typeId": 77801,
+          "quantity": 594
+        }
+      ]
+    },
+    {
+      "sourceTypeId": 77800,
+      "facilityTypeId": 88064,
+      "inputQty": 120,
+      "runTime": 4,
+      "outputs": [
+        {
+          "typeId": 89258,
+          "quantity": 30
+        },
+        {
+          "typeId": 89259,
+          "quantity": 90
+        }
+      ]
+    },
+    {
+      "sourceTypeId": 77810,
+      "facilityTypeId": 88064,
+      "inputQty": 120,
+      "runTime": 4,
+      "outputs": [
+        {
+          "typeId": 89259,
+          "quantity": 30
+        },
+        {
+          "typeId": 89260,
+          "quantity": 90
+        },
+        {
+          "typeId": 99001,
+          "quantity": 24
+        }
+      ]
+    },
+    {
+      "sourceTypeId": 77811,
+      "facilityTypeId": 88064,
+      "inputQty": 120,
+      "runTime": 4,
+      "outputs": [
+        {
+          "typeId": 89258,
+          "quantity": 60
+        },
+        {
+          "typeId": 78423,
+          "quantity": 600
+        }
+      ]
+    },
+    {
+      "sourceTypeId": 78426,
+      "facilityTypeId": 88064,
+      "inputQty": 120,
+      "runTime": 8,
+      "outputs": [
+        {
+          "typeId": 89260,
+          "quantity": 120
+        }
+      ]
+    },
+    {
+      "sourceTypeId": 92394,
+      "facilityTypeId": 88064,
+      "inputQty": 30,
+      "runTime": 20,
+      "outputs": [
+        {
+          "typeId": 78435,
+          "quantity": 3
+        },
+        {
+          "typeId": 92422,
+          "quantity": 26
+        }
+      ]
+    },
+    {
+      "sourceTypeId": 92414,
+      "facilityTypeId": 88064,
+      "inputQty": 30,
+      "runTime": 20,
+      "outputs": [
+        {
+          "typeId": 77728,
+          "quantity": 3
+        },
+        {
+          "typeId": 92422,
+          "quantity": 26
         }
       ]
     }
@@ -10448,30 +10784,6 @@
       ]
     },
     {
-      "outputTypeId": 88319,
-      "facilityTypeId": 88064,
-      "outputQty": 1,
-      "runTime": 3,
-      "inputs": [
-        {
-          "typeId": 88319,
-          "quantity": 200
-        }
-      ]
-    },
-    {
-      "outputTypeId": 78423,
-      "facilityTypeId": 88064,
-      "outputQty": 75,
-      "runTime": 3,
-      "inputs": [
-        {
-          "typeId": 78423,
-          "quantity": 275
-        }
-      ]
-    },
-    {
       "outputTypeId": 77800,
       "facilityTypeId": 87161,
       "outputQty": 5,
@@ -10532,18 +10844,6 @@
       ]
     },
     {
-      "outputTypeId": 88764,
-      "facilityTypeId": 88064,
-      "outputQty": 1,
-      "runTime": 4,
-      "inputs": [
-        {
-          "typeId": 88764,
-          "quantity": 10
-        }
-      ]
-    },
-    {
       "outputTypeId": 89259,
       "facilityTypeId": 88063,
       "outputQty": 50,
@@ -10556,18 +10856,6 @@
       ]
     },
     {
-      "outputTypeId": 78435,
-      "facilityTypeId": 88064,
-      "outputQty": 3,
-      "runTime": 20,
-      "inputs": [
-        {
-          "typeId": 92394,
-          "quantity": 30
-        }
-      ]
-    },
-    {
       "outputTypeId": 89260,
       "facilityTypeId": 88063,
       "outputQty": 20,
@@ -10576,102 +10864,6 @@
         {
           "typeId": 89260,
           "quantity": 10
-        }
-      ]
-    },
-    {
-      "outputTypeId": 77728,
-      "facilityTypeId": 88064,
-      "outputQty": 3,
-      "runTime": 20,
-      "inputs": [
-        {
-          "typeId": 92414,
-          "quantity": 30
-        }
-      ]
-    },
-    {
-      "outputTypeId": 88765,
-      "facilityTypeId": 88064,
-      "outputQty": 1,
-      "runTime": 3,
-      "inputs": [
-        {
-          "typeId": 88765,
-          "quantity": 5
-        }
-      ]
-    },
-    {
-      "outputTypeId": 77729,
-      "facilityTypeId": 88064,
-      "outputQty": 16,
-      "runTime": 20,
-      "inputs": [
-        {
-          "typeId": 77729,
-          "quantity": 30
-        }
-      ]
-    },
-    {
-      "outputTypeId": 78434,
-      "facilityTypeId": 88064,
-      "outputQty": 1,
-      "runTime": 20,
-      "inputs": [
-        {
-          "typeId": 78434,
-          "quantity": 30
-        }
-      ]
-    },
-    {
-      "outputTypeId": 78446,
-      "facilityTypeId": 88064,
-      "outputQty": 1,
-      "runTime": 15,
-      "inputs": [
-        {
-          "typeId": 78446,
-          "quantity": 100
-        }
-      ]
-    },
-    {
-      "outputTypeId": 78447,
-      "facilityTypeId": 88064,
-      "outputQty": 1,
-      "runTime": 15,
-      "inputs": [
-        {
-          "typeId": 78447,
-          "quantity": 100
-        }
-      ]
-    },
-    {
-      "outputTypeId": 78448,
-      "facilityTypeId": 88064,
-      "outputQty": 1,
-      "runTime": 15,
-      "inputs": [
-        {
-          "typeId": 78448,
-          "quantity": 100
-        }
-      ]
-    },
-    {
-      "outputTypeId": 78449,
-      "facilityTypeId": 88064,
-      "outputQty": 1,
-      "runTime": 15,
-      "inputs": [
-        {
-          "typeId": 78449,
-          "quantity": 100
         }
       ]
     },
@@ -10720,90 +10912,6 @@
         {
           "typeId": 78426,
           "quantity": 40
-        }
-      ]
-    },
-    {
-      "outputTypeId": 89258,
-      "facilityTypeId": 88064,
-      "outputQty": 60,
-      "runTime": 25,
-      "inputs": [
-        {
-          "typeId": 89258,
-          "quantity": 60
-        }
-      ]
-    },
-    {
-      "outputTypeId": 89259,
-      "facilityTypeId": 88064,
-      "outputQty": 150,
-      "runTime": 25,
-      "inputs": [
-        {
-          "typeId": 89259,
-          "quantity": 60
-        }
-      ]
-    },
-    {
-      "outputTypeId": 89260,
-      "facilityTypeId": 88064,
-      "outputQty": 60,
-      "runTime": 25,
-      "inputs": [
-        {
-          "typeId": 89260,
-          "quantity": 60
-        }
-      ]
-    },
-    {
-      "outputTypeId": 77800,
-      "facilityTypeId": 88064,
-      "outputQty": 30,
-      "runTime": 4,
-      "inputs": [
-        {
-          "typeId": 77800,
-          "quantity": 120
-        }
-      ]
-    },
-    {
-      "outputTypeId": 77810,
-      "facilityTypeId": 88064,
-      "outputQty": 30,
-      "runTime": 4,
-      "inputs": [
-        {
-          "typeId": 77810,
-          "quantity": 120
-        }
-      ]
-    },
-    {
-      "outputTypeId": 77811,
-      "facilityTypeId": 88064,
-      "outputQty": 60,
-      "runTime": 4,
-      "inputs": [
-        {
-          "typeId": 77811,
-          "quantity": 120
-        }
-      ]
-    },
-    {
-      "outputTypeId": 78426,
-      "facilityTypeId": 88064,
-      "outputQty": 120,
-      "runTime": 8,
-      "inputs": [
-        {
-          "typeId": 78426,
-          "quantity": 120
         }
       ]
     },
