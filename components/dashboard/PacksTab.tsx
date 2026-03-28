@@ -26,6 +26,7 @@ export default function PacksTab() {
   const [calcPackId, setCalcPackId] = useState<string | null>(null);
   const [search, setSearch] = useState("");
   const [refreshKey, setRefreshKey] = useState(0);
+  const [ignoreSsu, setIgnoreSsu] = useState(false);
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -97,12 +98,23 @@ export default function PacksTab() {
       </div>
 
       {/* SSU Address Bar */}
-      <div className="mb-4">
-        <SsuAddressBar
-          address={ssuAddress}
-          onSave={saveAddress}
-          onRefresh={() => calcPackId && setRefreshKey(k => k + 1)}
-        />
+      <div className="mb-4 flex items-center gap-3">
+        <div className="flex-1">
+          <SsuAddressBar
+            address={ssuAddress}
+            onSave={saveAddress}
+            onRefresh={() => calcPackId && setRefreshKey(k => k + 1)}
+          />
+        </div>
+        <label className="flex items-center gap-2 text-xs text-gray-400 hover:text-gray-300 cursor-pointer shrink-0">
+          <input
+            type="checkbox"
+            checked={ignoreSsu}
+            onChange={(e) => setIgnoreSsu(e.target.checked)}
+            className="w-4 h-4"
+          />
+          <span>Ignore SSU</span>
+        </label>
       </div>
 
       {/* Search */}
@@ -160,7 +172,7 @@ export default function PacksTab() {
                 </div>
               </div>
 
-              {calcPackId === pack.id && <PackCalculation packId={pack.id} refreshKey={refreshKey} />}
+              {calcPackId === pack.id && <PackCalculation packId={pack.id} refreshKey={refreshKey} ignoreSsu={ignoreSsu} />}
             </div>
           ))}
         </div>

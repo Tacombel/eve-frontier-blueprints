@@ -6,7 +6,7 @@ import OreSection from "@/components/common/OreSection";
 import SsuAddressBar from "@/components/common/SsuAddressBar";
 import { useSsuAddress } from "@/hooks/useSsuAddress";
 
-export default function BlueprintCalculation({ itemId, refreshKey = 0 }: { itemId: string; itemName: string; refreshKey?: number }) {
+export default function BlueprintCalculation({ itemId, refreshKey = 0, ignoreSsu = false }: { itemId: string; itemName: string; refreshKey?: number; ignoreSsu?: boolean }) {
   const { address: ssuAddress, saveAddress } = useSsuAddress();
   const ssuAddressRef = useRef(ssuAddress);
   useEffect(() => { ssuAddressRef.current = ssuAddress; }, [ssuAddress]);
@@ -44,7 +44,7 @@ export default function BlueprintCalculation({ itemId, refreshKey = 0 }: { itemI
     setError("");
     const qty = quantityRef.current;
     const excluded = [...excludedOreIdsRef.current].join(",");
-    const addr = ssuAddressRef.current.trim();
+    const addr = ignoreSsu ? "" : ssuAddressRef.current.trim();
     const url = `/api/calculate?itemId=${itemId}&runs=${qty}${excluded ? `&excludedOres=${excluded}` : ""}${addr ? `&ssuAddress=${encodeURIComponent(addr)}` : ""}`;
     fetch(url, { signal: controller.signal })
       .then((r) => r.json())
@@ -68,6 +68,7 @@ export default function BlueprintCalculation({ itemId, refreshKey = 0 }: { itemI
   useEffect(() => { load(); }, [load]);
   useEffect(() => { if (result !== null) load(true); }, [ssuAddress]); // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => { if (result !== null && refreshKey > 0) load(true); }, [refreshKey]); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => { if (result !== null) load(true); }, [ignoreSsu]); // eslint-disable-line react-hooks/exhaustive-deps
 
   function applyQuantity() {
     quantityRef.current = pendingQty;

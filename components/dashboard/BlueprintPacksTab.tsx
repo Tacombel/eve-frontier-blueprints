@@ -28,6 +28,7 @@ export default function BlueprintPacksTab() {
   const [search, setSearch] = useState("");
   const [filterFactory, setFilterFactory] = useState("");
   const [refreshKey, setRefreshKey] = useState(0);
+  const [ignoreSsu, setIgnoreSsu] = useState(false);
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -111,12 +112,23 @@ export default function BlueprintPacksTab() {
       </div>
 
       {/* SSU Address Bar */}
-      <div className="mb-4">
-        <SsuAddressBar
-          address={ssuAddress}
-          onSave={saveAddress}
-          onRefresh={() => calcItemId && setRefreshKey(k => k + 1)}
-        />
+      <div className="mb-4 flex items-center gap-3">
+        <div className="flex-1">
+          <SsuAddressBar
+            address={ssuAddress}
+            onSave={saveAddress}
+            onRefresh={() => calcItemId && setRefreshKey(k => k + 1)}
+          />
+        </div>
+        <label className="flex items-center gap-2 text-xs text-gray-400 hover:text-gray-300 cursor-pointer shrink-0">
+          <input
+            type="checkbox"
+            checked={ignoreSsu}
+            onChange={(e) => setIgnoreSsu(e.target.checked)}
+            className="w-4 h-4"
+          />
+          <span>Ignore SSU</span>
+        </label>
       </div>
 
       {loading ? (
@@ -150,7 +162,7 @@ export default function BlueprintPacksTab() {
 
               {calcItemId === item.id && (
                 <div className="px-4 py-4 border-b border-gray-800 bg-gray-900/50">
-                  <BlueprintCalculation itemId={item.id} itemName={item.name} refreshKey={refreshKey} />
+                  <BlueprintCalculation itemId={item.id} itemName={item.name} refreshKey={refreshKey} ignoreSsu={ignoreSsu} />
                 </div>
               )}
 

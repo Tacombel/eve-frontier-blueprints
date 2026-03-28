@@ -6,7 +6,7 @@ import OreSection from "@/components/common/OreSection";
 import SsuAddressBar from "@/components/common/SsuAddressBar";
 import { useSsuAddress } from "@/hooks/useSsuAddress";
 
-export default function PackCalculation({ packId, refreshKey = 0 }: { packId: string; refreshKey?: number }) {
+export default function PackCalculation({ packId, refreshKey = 0, ignoreSsu = false }: { packId: string; refreshKey?: number; ignoreSsu?: boolean }) {
   const { address: ssuAddress, saveAddress } = useSsuAddress();
   const ssuAddressRef = useRef(ssuAddress);
   useEffect(() => { ssuAddressRef.current = ssuAddress; }, [ssuAddress]);
@@ -34,7 +34,7 @@ export default function PackCalculation({ packId, refreshKey = 0 }: { packId: st
     else setLoading(true);
     setError("");
     const ignored = ignoredRef.current;
-    const addr = ssuAddressRef.current.trim();
+    const addr = ignoreSsu ? "" : ssuAddressRef.current.trim();
     const params = new URLSearchParams();
     if (ignored.size > 0) params.set("ignore", [...ignored].join(","));
     if (addr) params.set("ssuAddress", addr);
@@ -76,6 +76,7 @@ export default function PackCalculation({ packId, refreshKey = 0 }: { packId: st
 
   useEffect(() => { if (result !== null) load(true); }, [ssuAddress]); // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => { if (result !== null && refreshKey > 0) load(true); }, [refreshKey]); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => { if (result !== null) load(true); }, [ignoreSsu]); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (loading) return <p className="text-gray-500 text-sm">Calculating…</p>;
   if (error) return <p className="text-red-400 text-sm">Error: {error}</p>;
