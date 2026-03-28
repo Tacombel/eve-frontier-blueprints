@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { useSession } from "@/hooks/useSession";
 
 export default function ProfilePage() {
@@ -48,8 +49,20 @@ export default function ProfilePage() {
   }
 
   return (
-    <div className="max-w-md mx-auto space-y-6">
-      <h1 className="text-2xl font-bold text-gray-100">Profile</h1>
+    <div className="min-h-screen bg-gray-950 flex flex-col">
+      {/* Header */}
+      <div className="bg-gray-900 border-b border-gray-800 px-6 py-4">
+        <div className="flex items-center justify-between">
+          <h1 className="text-2xl font-bold text-gray-100">Profile</h1>
+          <Link href="/dashboard" className="btn-sm btn-secondary">
+            ← Back to Dashboard
+          </Link>
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="flex-1 flex items-center justify-center p-6">
+        <div className="max-w-md w-full space-y-6">
 
       <div className="rounded-lg border border-gray-800 bg-gray-900 p-6">
         <p className="text-sm text-gray-400 mb-4">
@@ -112,6 +125,8 @@ export default function ProfilePage() {
             {loading ? "Saving…" : "Change password"}
           </button>
         </form>
+      </div>
+        </div>
       </div>
     </div>
   );
