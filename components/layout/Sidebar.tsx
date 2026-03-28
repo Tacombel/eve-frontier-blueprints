@@ -23,6 +23,11 @@ const adminNavItems = [
 export default function Sidebar() {
   const pathname = usePathname();
   const router = useRouter();
+
+  // Hide sidebar on dashboard
+  if (pathname === '/dashboard' || pathname === '/') {
+    return null;
+  }
   const [username, setUsername] = useState<string | null>(null);
   const [role, setRole] = useState<string | null>(null);
   const [itemCount, setItemCount] = useState<number | null>(null);
