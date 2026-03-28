@@ -51,20 +51,22 @@ export default function DashboardPage() {
       </div>
 
       {/* Tab buttons bar */}
-      <div className="flex items-center gap-0 border-b border-gray-800 px-6 py-4 bg-gray-950 flex-shrink-0">
-        {(Object.keys(tabConfig) as TabType[]).map((tab) => (
-          <button
-            key={tab}
-            onClick={() => setActiveTab(tab)}
-            className={`px-4 py-2 text-sm font-medium transition-colors border-b-2 ${
-              activeTab === tab
-                ? 'text-cyan-300 border-cyan-400 bg-cyan-900/30'
-                : 'text-gray-400 border-transparent hover:text-gray-100 hover:bg-gray-800/30'
-            }`}
-          >
-            {tabConfig[tab].label}
-          </button>
-        ))}
+      <div className="flex items-center justify-center gap-0 border-b border-gray-800 px-6 py-4 bg-gray-950 flex-shrink-0">
+        <div className="flex gap-0">
+          {(Object.keys(tabConfig) as TabType[]).map((tab) => (
+            <button
+              key={tab}
+              onClick={() => setActiveTab(tab)}
+              className={`px-4 py-2 text-sm font-medium transition-colors border-b-2 ${
+                activeTab === tab
+                  ? 'text-cyan-300 border-cyan-400 bg-cyan-900/30'
+                  : 'text-gray-400 border-transparent hover:text-gray-100 hover:bg-gray-800/30'
+              }`}
+            >
+              {tabConfig[tab].label}
+            </button>
+          ))}
+        </div>
 
         {/* Admin and auth links - right side */}
         <div className="ml-auto flex items-center gap-2">
