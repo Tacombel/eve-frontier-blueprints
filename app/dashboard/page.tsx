@@ -82,7 +82,13 @@ export default function DashboardPage() {
 
           {username ? (
             <div className="flex items-center gap-2 pl-2 border-l border-gray-800">
-              <span className="text-sm text-gray-400">👤 {username}</span>
+              <Link
+                href="/profile"
+                className="text-sm text-gray-400 hover:text-cyan-300 hover:bg-gray-800/30 px-3 py-2 rounded transition-colors cursor-pointer"
+                title="Change password"
+              >
+                👤 {username}
+              </Link>
               <button
                 onClick={handleLogout}
                 className="px-3 py-2 text-sm font-medium text-gray-400 hover:text-gray-100 hover:bg-gray-800/30 rounded transition-colors"
