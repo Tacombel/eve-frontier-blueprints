@@ -51,8 +51,9 @@ export default function DashboardPage() {
       </div>
 
       {/* Tab buttons bar */}
-      <div className="flex items-center justify-center gap-0 border-b border-gray-800 px-6 py-4 bg-gray-950 flex-shrink-0">
-        <div className="flex gap-0">
+      <div className="flex items-center gap-0 border-b border-gray-800 px-6 py-4 bg-gray-950 flex-shrink-0">
+        {/* Tabs centered */}
+        <div className="flex-1 flex justify-center gap-0">
           {(Object.keys(tabConfig) as TabType[]).map((tab) => (
             <button
               key={tab}
@@ -69,7 +70,7 @@ export default function DashboardPage() {
         </div>
 
         {/* Admin and auth links - right side */}
-        <div className="ml-auto flex items-center gap-2">
+        <div className="flex items-center gap-2">
           {(role === "ADMIN" || role === "SUPERADMIN") && (
             <Link
               href="/admin"
