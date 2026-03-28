@@ -75,12 +75,27 @@ export default function Sidebar() {
 
   return (
     <aside className="flex h-full w-56 flex-col bg-gray-900 border-r border-gray-800">
-      <div className="px-4 py-5 border-b border-gray-800">
+      <Link href="/dashboard" className="px-4 py-5 border-b border-gray-800 hover:bg-gray-800/50 transition-colors">
         <h1 className="text-lg font-bold text-cyan-400 tracking-wide">EVE Frontier</h1>
         <p className="text-xs text-gray-500 mt-0.5">Industry Calculator</p>
-      </div>
+      </Link>
 
       <nav className="flex-1 flex flex-col">
+        {/* Dashboard link */}
+        <div className="px-2 py-4 space-y-1 border-b border-gray-800">
+          <Link
+            href="/dashboard"
+            className={`flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors ${
+              pathname === "/dashboard"
+                ? "bg-cyan-900/50 text-cyan-300"
+                : "text-gray-400 hover:bg-gray-800 hover:text-gray-100"
+            }`}
+          >
+            <span className="w-5 text-center shrink-0">🏠</span>
+            <span className="flex-1">Dashboard</span>
+          </Link>
+        </div>
+
         {/* Main navigation items */}
         <div className="px-2 py-4 space-y-1">
           {mainNavItems.map((item) => {
