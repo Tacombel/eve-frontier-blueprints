@@ -32,7 +32,7 @@ function LoginForm() {
       return;
     }
 
-    const from = searchParams.get("from") ?? "/blueprints";
+    const from = searchParams.get("from") ?? "/dashboard";
     window.location.href = from;
   }
 

@@ -24,8 +24,8 @@ export default function Sidebar() {
   const pathname = usePathname();
   const router = useRouter();
 
-  // Hide sidebar on dashboard
-  if (pathname === '/dashboard' || pathname === '/') {
+  // Hide sidebar on dashboard and login
+  if (pathname === '/dashboard' || pathname === '/' || pathname === '/login') {
     return null;
   }
   const [username, setUsername] = useState<string | null>(null);
