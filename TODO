@@ -27,4 +27,9 @@ La Heavy refinery muestra 0 descompositions ¿Correcto?
 En el listado de items mostrar el typeId
 No poner en modo apagado los Intermediate que se dispone de stock
 Filtros por categorias del itemId
-Boton para ignorr el stock y poder ver la cantidad total de materiales
+Boton para ignorar el stock y poder ver la cantidad total de materiales
+Cambiar de lotes a unidades en la calculadora de los blueprints
+Añadir numero de packs en el calculador de packs
+Pasar items, asteroids, factories y refineries a admin
+Estudiar distribuciones verticales para uso en un SSU
+Revisar textos en español

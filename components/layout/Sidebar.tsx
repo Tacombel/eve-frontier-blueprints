@@ -6,15 +6,18 @@ import { useEffect, useState } from "react";
 import pkg from "@/package.json";
 const version = pkg.version;
 
-const navItems = [
-  { href: "/items", label: "Items", icon: "⬡" },
-  { href: "/asteroids", label: "Asteroids", icon: "🪨" },
-  { href: "/factories", label: "Factories", icon: "🏭" },
-  { href: "/refineries", label: "Refineries", icon: "⚗️" },
+const mainNavItems = [
   { href: "/ssu", label: "SSU", icon: "🛰️" },
   { href: "/decompositions", label: "Decompositions", icon: "🔩" },
   { href: "/blueprints", label: "Blueprints", icon: "📐" },
   { href: "/packs", label: "Packs", icon: "🗃️" },
+];
+
+const adminNavItems = [
+  { href: "/items", label: "Items", icon: "⬡" },
+  { href: "/asteroids", label: "Asteroids", icon: "🪨" },
+  { href: "/factories", label: "Factories", icon: "🏭" },
+  { href: "/refineries", label: "Refineries", icon: "⚗️" },
 ];
 
 export default function Sidebar() {
@@ -72,26 +75,52 @@ export default function Sidebar() {
         <p className="text-xs text-gray-500 mt-0.5">Industry Calculator</p>
       </div>
 
-      <nav className="flex-1 px-2 py-4 space-y-1">
-        {navItems.map((item) => {
-          const active = pathname.startsWith(item.href);
-          const count = item.label === "Items" ? itemCount : item.label === "Blueprints" ? blueprintCount : item.label === "Decompositions" ? decompositionCount : item.label === "Factories" ? factoryCount : item.label === "Refineries" ? refineryCount : item.label === "Asteroids" ? asteroidCount : item.label === "Packs" ? packCount : null;
-          return (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors ${
-                active
-                  ? "bg-cyan-900/50 text-cyan-300"
-                  : "text-gray-400 hover:bg-gray-800 hover:text-gray-100"
-              }`}
-            >
-              <span className="w-5 text-center shrink-0">{item.icon}</span>
-              <span className="flex-1">{item.label}</span>
-              {count !== null && <span className="text-xs text-gray-500">{count}</span>}
-            </Link>
-          );
-        })}
+      <nav className="flex-1 flex flex-col">
+        {/* Main navigation items */}
+        <div className="px-2 py-4 space-y-1">
+          {mainNavItems.map((item) => {
+            const active = pathname.startsWith(item.href);
+            const count = item.label === "Blueprints" ? blueprintCount : item.label === "Decompositions" ? decompositionCount : item.label === "Packs" ? packCount : null;
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors ${
+                  active
+                    ? "bg-cyan-900/50 text-cyan-300"
+                    : "text-gray-400 hover:bg-gray-800 hover:text-gray-100"
+                }`}
+              >
+                <span className="w-5 text-center shrink-0">{item.icon}</span>
+                <span className="flex-1">{item.label}</span>
+                {count !== null && <span className="text-xs text-gray-500">{count}</span>}
+              </Link>
+            );
+          })}
+        </div>
+
+        {/* Admin navigation items */}
+        <div className="px-2 py-4 space-y-1 border-t border-gray-800">
+          {adminNavItems.map((item) => {
+            const active = pathname.startsWith(item.href);
+            const count = item.label === "Items" ? itemCount : item.label === "Factories" ? factoryCount : item.label === "Refineries" ? refineryCount : item.label === "Asteroids" ? asteroidCount : null;
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors ${
+                  active
+                    ? "bg-cyan-900/50 text-cyan-300"
+                    : "text-gray-400 hover:bg-gray-800 hover:text-gray-100"
+                }`}
+              >
+                <span className="w-5 text-center shrink-0">{item.icon}</span>
+                <span className="flex-1">{item.label}</span>
+                {count !== null && <span className="text-xs text-gray-500">{count}</span>}
+              </Link>
+            );
+          })}
+        </div>
       </nav>
 
       <div className="px-2 pb-2 space-y-1">
