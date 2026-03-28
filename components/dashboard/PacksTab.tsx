@@ -106,14 +106,22 @@ export default function PacksTab() {
             onRefresh={() => calcPackId && setRefreshKey(k => k + 1)}
           />
         </div>
-        <label className="flex items-center gap-2 text-xs text-gray-400 hover:text-gray-300 cursor-pointer shrink-0">
-          <input
-            type="checkbox"
-            checked={ignoreSsu}
-            onChange={(e) => setIgnoreSsu(e.target.checked)}
-            className="w-4 h-4"
-          />
+        <label className="flex items-center gap-2 text-xs text-gray-400 cursor-pointer shrink-0">
           <span>Ignore SSU</span>
+          <button
+            type="button"
+            onClick={() => setIgnoreSsu(!ignoreSsu)}
+            title={ignoreSsu ? "Click to use SSU" : "Click to ignore SSU"}
+            className={`relative inline-flex h-4 w-8 flex-shrink-0 rounded-full border-2 border-transparent transition-colors duration-200 focus:outline-none ${
+              ignoreSsu ? "bg-gray-600" : "bg-cyan-600"
+            }`}
+          >
+            <span
+              className={`inline-block h-3 w-3 transform rounded-full bg-white shadow transition duration-200 ${
+                ignoreSsu ? "translate-x-0" : "translate-x-4"
+              }`}
+            />
+          </button>
         </label>
       </div>
 
