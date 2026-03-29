@@ -226,7 +226,7 @@
       "isFound": false,
       "isFinalProduct": false,
       "volume": 1,
-      "description": "Braids of serenity and power entwine and disperse across the surface. Within, they dance as if begging to be set free. From this rhythm, the dreams of those long passed and those newly awoken may spring forth.\r\n\r\nA quiet fragility eminates from the matter’s movements, the ethereal beauty of transience. Practicality has no need of such things.",
+      "description": "Braids of serenity and power entwine and disperse across the surface. Within, they dance as if begging to be set free. From this rhythm, the dreams of those long passed and those newly awoken may spring forth.\r\n\r\nA quiet fragility eminates from the matter\u2019s movements, the ethereal beauty of transience. Practicality has no need of such things.",
       "mass": 1100,
       "radius": 1,
       "portionSize": 10000,
@@ -2384,7 +2384,7 @@
       "isFound": false,
       "isFinalProduct": false,
       "volume": 0,
-      "description": "The violence necessary to obtain such a trophy has reduced its functionality to a fraction of its potential. Yet, this laser remains operational in the face of all the Frontier’s hostilities, natural and computational alike. Fitting a feralized component, even one with its protocols exorcised and rebuilt, can be considered an act of hubris.",
+      "description": "The violence necessary to obtain such a trophy has reduced its functionality to a fraction of its potential. Yet, this laser remains operational in the face of all the Frontier\u2019s hostilities, natural and computational alike. Fitting a feralized component, even one with its protocols exorcised and rebuilt, can be considered an act of hubris.",
       "mass": 240000,
       "radius": 25,
       "portionSize": 910,
@@ -5211,7 +5211,7 @@
       "isFound": false,
       "isFinalProduct": true,
       "volume": 0,
-      "description": "A frame stripped for range, built to leap between stars.\r\nThe design bears apparent alterations — conduits rerouted through spaces that seem improvised, geometries bent into configurations that defy intuition.\r\nNo signature remains to mark its maker.",
+      "description": "A frame stripped for range, built to leap between stars.\r\nThe design bears apparent alterations \u2014 conduits rerouted through spaces that seem improvised, geometries bent into configurations that defy intuition.\r\nNo signature remains to mark its maker.",
       "mass": 7900000,
       "radius": 13.5,
       "portionSize": 1,
@@ -5227,7 +5227,7 @@
       "isFound": false,
       "isFinalProduct": true,
       "volume": 0,
-      "description": "A hull shaped for distance and solitude. The proportions are spare, stripped of anything not essential to the crossing. The drive assembly carries unexpected mass — bracing layered over bracing, housings reinforced beyond apparent need, structure filling spaces the original geometry left hollow. What necessity shaped these adaptations remains unclear.",
+      "description": "A hull shaped for distance and solitude. The proportions are spare, stripped of anything not essential to the crossing. The drive assembly carries unexpected mass \u2014 bracing layered over bracing, housings reinforced beyond apparent need, structure filling spaces the original geometry left hollow. What necessity shaped these adaptations remains unclear.",
       "mass": 7200000,
       "radius": 13.5,
       "portionSize": 1,
@@ -5324,7 +5324,7 @@
       "isFound": false,
       "isFinalProduct": false,
       "volume": 0,
-      "description": "Industrial waste from the cosmos—metallic slag asteroids are the leftover cores of shattered worlds. Rich in platinum and palladium, these slowly-cooled metallic matrices represent the most precious remnants of planetary formation, concentrated in dense nickel-rich grains.\r\n\r\nSlag asteroids are a common source of  <a href=\"showinfo:77810\">Platinum-Palladium Matrix</a> and can typically be found in Inner Belts. ",
+      "description": "Industrial waste from the cosmos\u2014metallic slag asteroids are the leftover cores of shattered worlds. Rich in platinum and palladium, these slowly-cooled metallic matrices represent the most precious remnants of planetary formation, concentrated in dense nickel-rich grains.\r\n\r\nSlag asteroids are a common source of  <a href=\"showinfo:77810\">Platinum-Palladium Matrix</a> and can typically be found in Inner Belts. ",
       "mass": 6925,
       "radius": 1,
       "portionSize": 10000,
@@ -5341,7 +5341,7 @@
       "isFound": false,
       "isFinalProduct": false,
       "volume": 0,
-      "description": "Pure metallic ingots drifting through space, these asteroids are nature's own refined metal bars. Containing the densest materials known—iridium, osmium, and ruthenium—they're the treasure vaults of the asteroid belt, forged in the deepest, hottest cores of primordial worlds.\r\n\r\nIngot asteroids are a common source of <a href=\"showinfo:78426\">Iridosmine Nodules</a>.",
+      "description": "Pure metallic ingots drifting through space, these asteroids are nature's own refined metal bars. Containing the densest materials known\u2014iridium, osmium, and ruthenium\u2014they're the treasure vaults of the asteroid belt, forged in the deepest, hottest cores of primordial worlds.\r\n\r\nIngot asteroids are a common source of <a href=\"showinfo:78426\">Iridosmine Nodules</a>.",
       "mass": 8200,
       "radius": 1,
       "portionSize": 10000,
@@ -5390,7 +5390,7 @@
       "isFound": false,
       "isFinalProduct": false,
       "volume": 0,
-      "description": "Still glowing with primordial organic heat, ember asteroids contain pristine kerogen—complex carbon polymers that have remained unaltered since formation. These dark, coal-like bodies hold valuable chemical building blocks.\r\n\r\nEmber asteroids are a common source of <a href=\"showinfo:78447\">Primitive Kerogen Matrix</a>.",
+      "description": "Still glowing with primordial organic heat, ember asteroids contain pristine kerogen\u2014complex carbon polymers that have remained unaltered since formation. These dark, coal-like bodies hold valuable chemical building blocks.\r\n\r\nEmber asteroids are a common source of <a href=\"showinfo:78447\">Primitive Kerogen Matrix</a>.",
       "mass": 2000,
       "radius": 1,
       "portionSize": 10000,
@@ -5406,7 +5406,7 @@
       "isFound": false,
       "isFinalProduct": false,
       "volume": 0,
-      "description": "Shimmering with rainbow-like iridescence, glint asteroids sparkle with veins of complex aromatic hydrocarbons. Radiation-forged through extended exposure, their surfaces gleam with polycyclic organic compounds—the cosmic equivalent of liquid crystal displays, beautiful and chemically exotic.\r\n\r\nGlint asteroids are a common source of <a href=\"showinfo:78448\">Aromatic Hydrocarbon Veins</a>.",
+      "description": "Shimmering with rainbow-like iridescence, glint asteroids sparkle with veins of complex aromatic hydrocarbons. Radiation-forged through extended exposure, their surfaces gleam with polycyclic organic compounds\u2014the cosmic equivalent of liquid crystal displays, beautiful and chemically exotic.\r\n\r\nGlint asteroids are a common source of <a href=\"showinfo:78448\">Aromatic Hydrocarbon Veins</a>.",
       "mass": 3500,
       "radius": 1,
       "portionSize": 10000,
@@ -5422,7 +5422,7 @@
       "isFound": false,
       "isFinalProduct": false,
       "volume": 0,
-      "description": "Dark as coal dust and deeply primordial, soot asteroids are coated in prebiotic tholin nodules—tar-like organic compounds formed through radiation chemistry. These sooty spheres are laboratories of cosmic chemistry, their surfaces slowly processing in the radiation of deep space.\r\n\r\nSoot asteroids are a common source of <a href=\"showinfo:78449\">Tholin Nodules</a>.",
+      "description": "Dark as coal dust and deeply primordial, soot asteroids are coated in prebiotic tholin nodules\u2014tar-like organic compounds formed through radiation chemistry. These sooty spheres are laboratories of cosmic chemistry, their surfaces slowly processing in the radiation of deep space.\r\n\r\nSoot asteroids are a common source of <a href=\"showinfo:78449\">Tholin Nodules</a>.",
       "mass": 3000,
       "radius": 1,
       "portionSize": 10000,
@@ -7265,19 +7265,8 @@
           "typeId": 89260,
           "quantity": 24
         }
-      ]
-    },
-    {
-      "outputTypeId": 82128,
-      "facilityTypeId": 87119,
-      "outputQty": 100,
-      "runTime": 3,
-      "inputs": [
-        {
-          "typeId": 89260,
-          "quantity": 24
-        }
-      ]
+      ],
+      "gameId": 1010
     },
     {
       "outputTypeId": 83441,
@@ -7289,7 +7278,8 @@
           "typeId": 88561,
           "quantity": 1
         }
-      ]
+      ],
+      "gameId": 1120
     },
     {
       "outputTypeId": 83442,
@@ -7305,7 +7295,8 @@
           "typeId": 88561,
           "quantity": 1
         }
-      ]
+      ],
+      "gameId": 1121
     },
     {
       "outputTypeId": 83443,
@@ -7321,19 +7312,8 @@
           "typeId": 88561,
           "quantity": 12
         }
-      ]
-    },
-    {
-      "outputTypeId": 82681,
-      "facilityTypeId": 87162,
-      "outputQty": 1,
-      "runTime": 97,
-      "inputs": [
-        {
-          "typeId": 88561,
-          "quantity": 1
-        }
-      ]
+      ],
+      "gameId": 1086
     },
     {
       "outputTypeId": 82681,
@@ -7345,7 +7325,8 @@
           "typeId": 88561,
           "quantity": 1
         }
-      ]
+      ],
+      "gameId": 1116
     },
     {
       "outputTypeId": 83536,
@@ -7361,7 +7342,8 @@
           "typeId": 88561,
           "quantity": 1
         }
-      ]
+      ],
+      "gameId": 1117
     },
     {
       "outputTypeId": 82915,
@@ -7385,7 +7367,8 @@
           "typeId": 88561,
           "quantity": 4
         }
-      ]
+      ],
+      "gameId": 1092
     },
     {
       "outputTypeId": 91708,
@@ -7405,7 +7388,8 @@
           "typeId": 84182,
           "quantity": 20
         }
-      ]
+      ],
+      "gameId": 9000
     },
     {
       "outputTypeId": 82653,
@@ -7421,7 +7405,8 @@
           "typeId": 84180,
           "quantity": 4
         }
-      ]
+      ],
+      "gameId": 1150
     },
     {
       "outputTypeId": 83450,
@@ -7437,7 +7422,8 @@
           "typeId": 84180,
           "quantity": 12
         }
-      ]
+      ],
+      "gameId": 1151
     },
     {
       "outputTypeId": 83451,
@@ -7453,23 +7439,8 @@
           "typeId": 84180,
           "quantity": 31
         }
-      ]
-    },
-    {
-      "outputTypeId": 81974,
-      "facilityTypeId": 87162,
-      "outputQty": 1,
-      "runTime": 156,
-      "inputs": [
-        {
-          "typeId": 89260,
-          "quantity": 10
-        },
-        {
-          "typeId": 89259,
-          "quantity": 30
-        }
-      ]
+      ],
+      "gameId": 1083
     },
     {
       "outputTypeId": 81974,
@@ -7485,7 +7456,8 @@
           "typeId": 89259,
           "quantity": 30
         }
-      ]
+      ],
+      "gameId": 1006
     },
     {
       "outputTypeId": 82028,
@@ -7509,7 +7481,8 @@
           "typeId": 84182,
           "quantity": 2
         }
-      ]
+      ],
+      "gameId": 1069
     },
     {
       "outputTypeId": 81972,
@@ -7533,7 +7506,8 @@
           "typeId": 84182,
           "quantity": 1
         }
-      ]
+      ],
+      "gameId": 1107
     },
     {
       "outputTypeId": 82030,
@@ -7553,7 +7527,8 @@
           "typeId": 84182,
           "quantity": 2
         }
-      ]
+      ],
+      "gameId": 1070
     },
     {
       "outputTypeId": 82032,
@@ -7573,7 +7548,8 @@
           "typeId": 88234,
           "quantity": 90
         }
-      ]
+      ],
+      "gameId": 1112
     },
     {
       "outputTypeId": 89089,
@@ -7593,19 +7569,8 @@
           "typeId": 88561,
           "quantity": 65
         }
-      ]
-    },
-    {
-      "outputTypeId": 82647,
-      "facilityTypeId": 87162,
-      "outputQty": 1,
-      "runTime": 155,
-      "inputs": [
-        {
-          "typeId": 84182,
-          "quantity": 4
-        }
-      ]
+      ],
+      "gameId": 1015
     },
     {
       "outputTypeId": 82647,
@@ -7617,7 +7582,8 @@
           "typeId": 84182,
           "quantity": 4
         }
-      ]
+      ],
+      "gameId": 1012
     },
     {
       "outputTypeId": 83421,
@@ -7629,7 +7595,8 @@
           "typeId": 84182,
           "quantity": 7
         }
-      ]
+      ],
+      "gameId": 1169
     },
     {
       "outputTypeId": 83423,
@@ -7641,27 +7608,8 @@
           "typeId": 84182,
           "quantity": 24
         }
-      ]
-    },
-    {
-      "outputTypeId": 82652,
-      "facilityTypeId": 87162,
-      "outputQty": 1,
-      "runTime": 207,
-      "inputs": [
-        {
-          "typeId": 84210,
-          "quantity": 7
-        },
-        {
-          "typeId": 99001,
-          "quantity": 150
-        },
-        {
-          "typeId": 84180,
-          "quantity": 4
-        }
-      ]
+      ],
+      "gameId": 1081
     },
     {
       "outputTypeId": 83448,
@@ -7681,7 +7629,8 @@
           "typeId": 84180,
           "quantity": 12
         }
-      ]
+      ],
+      "gameId": 1149
     },
     {
       "outputTypeId": 83449,
@@ -7701,7 +7650,8 @@
           "typeId": 84180,
           "quantity": 31
         }
-      ]
+      ],
+      "gameId": 1084
     },
     {
       "outputTypeId": 84210,
@@ -7713,7 +7663,8 @@
           "typeId": 89258,
           "quantity": 350
         }
-      ]
+      ],
+      "gameId": 1003
     },
     {
       "outputTypeId": 84210,
@@ -7725,7 +7676,8 @@
           "typeId": 77804,
           "quantity": 3150
         }
-      ]
+      ],
+      "gameId": 1020
     },
     {
       "outputTypeId": 83497,
@@ -7741,7 +7693,8 @@
           "typeId": 84182,
           "quantity": 4
         }
-      ]
+      ],
+      "gameId": 1100
     },
     {
       "outputTypeId": 83498,
@@ -7757,7 +7710,8 @@
           "typeId": 84182,
           "quantity": 7
         }
-      ]
+      ],
+      "gameId": 1145
     },
     {
       "outputTypeId": 83499,
@@ -7773,7 +7727,8 @@
           "typeId": 84182,
           "quantity": 14
         }
-      ]
+      ],
+      "gameId": 1146
     },
     {
       "outputTypeId": 83500,
@@ -7789,7 +7744,8 @@
           "typeId": 84182,
           "quantity": 28
         }
-      ]
+      ],
+      "gameId": 1147
     },
     {
       "outputTypeId": 83501,
@@ -7805,7 +7761,8 @@
           "typeId": 84182,
           "quantity": 56
         }
-      ]
+      ],
+      "gameId": 1148
     },
     {
       "outputTypeId": 91107,
@@ -7833,7 +7790,8 @@
           "typeId": 88561,
           "quantity": 44
         }
-      ]
+      ],
+      "gameId": 1471
     },
     {
       "outputTypeId": 89979,
@@ -7865,7 +7823,8 @@
           "typeId": 89989,
           "quantity": 1
         }
-      ]
+      ],
+      "gameId": 1032
     },
     {
       "outputTypeId": 78506,
@@ -7885,7 +7844,8 @@
           "typeId": 88561,
           "quantity": 8
         }
-      ]
+      ],
+      "gameId": 1178
     },
     {
       "outputTypeId": 78507,
@@ -7909,7 +7869,8 @@
           "typeId": 88561,
           "quantity": 16
         }
-      ]
+      ],
+      "gameId": 1098
     },
     {
       "outputTypeId": 78508,
@@ -7933,7 +7894,8 @@
           "typeId": 88561,
           "quantity": 32
         }
-      ]
+      ],
+      "gameId": 1068
     },
     {
       "outputTypeId": 82648,
@@ -7945,7 +7907,8 @@
           "typeId": 84210,
           "quantity": 4
         }
-      ]
+      ],
+      "gameId": 1170
     },
     {
       "outputTypeId": 83425,
@@ -7957,7 +7920,8 @@
           "typeId": 84210,
           "quantity": 7
         }
-      ]
+      ],
+      "gameId": 1171
     },
     {
       "outputTypeId": 83426,
@@ -7969,7 +7933,8 @@
           "typeId": 84210,
           "quantity": 16
         }
-      ]
+      ],
+      "gameId": 1082
     },
     {
       "outputTypeId": 82133,
@@ -7981,7 +7946,8 @@
           "typeId": 77801,
           "quantity": 230
         }
-      ]
+      ],
+      "gameId": 1030
     },
     {
       "outputTypeId": 88887,
@@ -7997,23 +7963,8 @@
           "typeId": 89260,
           "quantity": 1
         }
-      ]
-    },
-    {
-      "outputTypeId": 88887,
-      "facilityTypeId": 87119,
-      "outputQty": 10,
-      "runTime": 3,
-      "inputs": [
-        {
-          "typeId": 88335,
-          "quantity": 115
-        },
-        {
-          "typeId": 89260,
-          "quantity": 1
-        }
-      ]
+      ],
+      "gameId": 1013
     },
     {
       "outputTypeId": 77484,
@@ -8029,7 +7980,8 @@
           "typeId": 84180,
           "quantity": 3
         }
-      ]
+      ],
+      "gameId": 1115
     },
     {
       "outputTypeId": 87599,
@@ -8053,7 +8005,8 @@
           "typeId": 84182,
           "quantity": 6
         }
-      ]
+      ],
+      "gameId": 1067
     },
     {
       "outputTypeId": 88319,
@@ -8069,7 +8022,8 @@
           "typeId": 83839,
           "quantity": 1
         }
-      ]
+      ],
+      "gameId": 1016
     },
     {
       "outputTypeId": 83768,
@@ -8081,7 +8035,8 @@
           "typeId": 84210,
           "quantity": 12
         }
-      ]
+      ],
+      "gameId": 1156
     },
     {
       "outputTypeId": 83769,
@@ -8093,7 +8048,8 @@
           "typeId": 84210,
           "quantity": 16
         }
-      ]
+      ],
+      "gameId": 1157
     },
     {
       "outputTypeId": 83770,
@@ -8105,27 +8061,8 @@
           "typeId": 84210,
           "quantity": 19
         }
-      ]
-    },
-    {
-      "outputTypeId": 88780,
-      "facilityTypeId": 87119,
-      "outputQty": 1,
-      "runTime": 17,
-      "inputs": [
-        {
-          "typeId": 88235,
-          "quantity": 105
-        },
-        {
-          "typeId": 77801,
-          "quantity": 120
-        },
-        {
-          "typeId": 88234,
-          "quantity": 45
-        }
-      ]
+      ],
+      "gameId": 1158
     },
     {
       "outputTypeId": 77753,
@@ -8145,7 +8082,8 @@
           "typeId": 88561,
           "quantity": 4
         }
-      ]
+      ],
+      "gameId": 1175
     },
     {
       "outputTypeId": 83623,
@@ -8165,7 +8103,8 @@
           "typeId": 88561,
           "quantity": 1
         }
-      ]
+      ],
+      "gameId": 1128
     },
     {
       "outputTypeId": 83624,
@@ -8185,7 +8124,8 @@
           "typeId": 88561,
           "quantity": 3
         }
-      ]
+      ],
+      "gameId": 1129
     },
     {
       "outputTypeId": 83625,
@@ -8205,7 +8145,8 @@
           "typeId": 88561,
           "quantity": 8
         }
-      ]
+      ],
+      "gameId": 1131
     },
     {
       "outputTypeId": 83618,
@@ -8225,7 +8166,8 @@
           "typeId": 88561,
           "quantity": 1
         }
-      ]
+      ],
+      "gameId": 1125
     },
     {
       "outputTypeId": 83619,
@@ -8245,7 +8187,8 @@
           "typeId": 88561,
           "quantity": 4
         }
-      ]
+      ],
+      "gameId": 1126
     },
     {
       "outputTypeId": 83620,
@@ -8265,7 +8208,8 @@
           "typeId": 88561,
           "quantity": 11
         }
-      ]
+      ],
+      "gameId": 1127
     },
     {
       "outputTypeId": 83777,
@@ -8281,7 +8225,8 @@
           "typeId": 88561,
           "quantity": 6
         }
-      ]
+      ],
+      "gameId": 1163
     },
     {
       "outputTypeId": 83778,
@@ -8297,7 +8242,8 @@
           "typeId": 88561,
           "quantity": 7
         }
-      ]
+      ],
+      "gameId": 1164
     },
     {
       "outputTypeId": 83779,
@@ -8313,7 +8259,8 @@
           "typeId": 88561,
           "quantity": 8
         }
-      ]
+      ],
+      "gameId": 1165
     },
     {
       "outputTypeId": 88889,
@@ -8337,27 +8284,8 @@
           "typeId": 84182,
           "quantity": 6
         }
-      ]
-    },
-    {
-      "outputTypeId": 88886,
-      "facilityTypeId": 87162,
-      "outputQty": 1,
-      "runTime": 197,
-      "inputs": [
-        {
-          "typeId": 88335,
-          "quantity": 280
-        },
-        {
-          "typeId": 99001,
-          "quantity": 2
-        },
-        {
-          "typeId": 84182,
-          "quantity": 3
-        }
-      ]
+      ],
+      "gameId": 1066
     },
     {
       "outputTypeId": 88886,
@@ -8377,7 +8305,8 @@
           "typeId": 84182,
           "quantity": 3
         }
-      ]
+      ],
+      "gameId": 1001
     },
     {
       "outputTypeId": 91702,
@@ -8389,23 +8318,8 @@
           "typeId": 89089,
           "quantity": 100
         }
-      ]
-    },
-    {
-      "outputTypeId": 90887,
-      "facilityTypeId": 87162,
-      "outputQty": 1,
-      "runTime": 120,
-      "inputs": [
-        {
-          "typeId": 84180,
-          "quantity": 1
-        },
-        {
-          "typeId": 88561,
-          "quantity": 2
-        }
-      ]
+      ],
+      "gameId": 9001
     },
     {
       "outputTypeId": 90887,
@@ -8421,7 +8335,8 @@
           "typeId": 88561,
           "quantity": 2
         }
-      ]
+      ],
+      "gameId": 1472
     },
     {
       "outputTypeId": 72960,
@@ -8437,7 +8352,8 @@
           "typeId": 84180,
           "quantity": 1
         }
-      ]
+      ],
+      "gameId": 1130
     },
     {
       "outputTypeId": 83782,
@@ -8449,7 +8365,8 @@
           "typeId": 84182,
           "quantity": 8
         }
-      ]
+      ],
+      "gameId": 1166
     },
     {
       "outputTypeId": 83783,
@@ -8461,7 +8378,8 @@
           "typeId": 84182,
           "quantity": 10
         }
-      ]
+      ],
+      "gameId": 1167
     },
     {
       "outputTypeId": 83784,
@@ -8473,7 +8391,8 @@
           "typeId": 84182,
           "quantity": 12
         }
-      ]
+      ],
+      "gameId": 1168
     },
     {
       "outputTypeId": 83524,
@@ -8489,7 +8408,8 @@
           "typeId": 84180,
           "quantity": 7
         }
-      ]
+      ],
+      "gameId": 1090
     },
     {
       "outputTypeId": 92421,
@@ -8509,7 +8429,8 @@
           "typeId": 88561,
           "quantity": 4
         }
-      ]
+      ],
+      "gameId": 1479
     },
     {
       "outputTypeId": 83897,
@@ -8525,7 +8446,8 @@
           "typeId": 77803,
           "quantity": 45
         }
-      ]
+      ],
+      "gameId": 1027
     },
     {
       "outputTypeId": 92390,
@@ -8545,7 +8467,8 @@
           "typeId": 88561,
           "quantity": 8
         }
-      ]
+      ],
+      "gameId": 1474
     },
     {
       "outputTypeId": 83528,
@@ -8561,7 +8484,8 @@
           "typeId": 84180,
           "quantity": 5
         }
-      ]
+      ],
+      "gameId": 1089
     },
     {
       "outputTypeId": 91705,
@@ -8581,7 +8505,8 @@
           "typeId": 84182,
           "quantity": 20
         }
-      ]
+      ],
+      "gameId": 9002
     },
     {
       "outputTypeId": 91700,
@@ -8597,7 +8522,8 @@
           "typeId": 84182,
           "quantity": 15
         }
-      ]
+      ],
+      "gameId": 9003
     },
     {
       "outputTypeId": 91713,
@@ -8613,7 +8539,8 @@
           "typeId": 77810,
           "quantity": 250
         }
-      ]
+      ],
+      "gameId": 9004
     },
     {
       "outputTypeId": 88092,
@@ -8633,7 +8560,8 @@
           "typeId": 88561,
           "quantity": 10
         }
-      ]
+      ],
+      "gameId": 9005
     },
     {
       "outputTypeId": 82650,
@@ -8649,7 +8577,8 @@
           "typeId": 84182,
           "quantity": 2
         }
-      ]
+      ],
+      "gameId": 1096
     },
     {
       "outputTypeId": 83433,
@@ -8665,7 +8594,8 @@
           "typeId": 84182,
           "quantity": 4
         }
-      ]
+      ],
+      "gameId": 1174
     },
     {
       "outputTypeId": 83434,
@@ -8681,7 +8611,8 @@
           "typeId": 84182,
           "quantity": 8
         }
-      ]
+      ],
+      "gameId": 1094
     },
     {
       "outputTypeId": 78418,
@@ -8693,19 +8624,8 @@
           "typeId": 83818,
           "quantity": 5
         }
-      ]
-    },
-    {
-      "outputTypeId": 78418,
-      "facilityTypeId": 87119,
-      "outputQty": 1,
-      "runTime": 20,
-      "inputs": [
-        {
-          "typeId": 83818,
-          "quantity": 5
-        }
-      ]
+      ],
+      "gameId": 1005
     },
     {
       "outputTypeId": 92165,
@@ -8717,7 +8637,8 @@
           "typeId": 89089,
           "quantity": 20
         }
-      ]
+      ],
+      "gameId": 9006
     },
     {
       "outputTypeId": 84180,
@@ -8733,7 +8654,8 @@
           "typeId": 89259,
           "quantity": 5
         }
-      ]
+      ],
+      "gameId": 1002
     },
     {
       "outputTypeId": 84180,
@@ -8749,7 +8671,8 @@
           "typeId": 77804,
           "quantity": 22
         }
-      ]
+      ],
+      "gameId": 1017
     },
     {
       "outputTypeId": 91701,
@@ -8761,7 +8684,8 @@
           "typeId": 89089,
           "quantity": 20
         }
-      ]
+      ],
+      "gameId": 9007
     },
     {
       "outputTypeId": 83895,
@@ -8777,7 +8701,8 @@
           "typeId": 77803,
           "quantity": 45
         }
-      ]
+      ],
+      "gameId": 1026
     },
     {
       "outputTypeId": 82033,
@@ -8797,7 +8722,8 @@
           "typeId": 88234,
           "quantity": 180
         }
-      ]
+      ],
+      "gameId": 1072
     },
     {
       "outputTypeId": 82130,
@@ -8813,7 +8739,8 @@
           "typeId": 88234,
           "quantity": 400
         }
-      ]
+      ],
+      "gameId": 1029
     },
     {
       "outputTypeId": 82649,
@@ -8829,7 +8756,8 @@
           "typeId": 88561,
           "quantity": 3
         }
-      ]
+      ],
+      "gameId": 1172
     },
     {
       "outputTypeId": 83429,
@@ -8845,7 +8773,8 @@
           "typeId": 88561,
           "quantity": 6
         }
-      ]
+      ],
+      "gameId": 1173
     },
     {
       "outputTypeId": 83430,
@@ -8861,7 +8790,8 @@
           "typeId": 88561,
           "quantity": 11
         }
-      ]
+      ],
+      "gameId": 1095
     },
     {
       "outputTypeId": 87846,
@@ -8889,7 +8819,8 @@
           "typeId": 88561,
           "quantity": 25
         }
-      ]
+      ],
+      "gameId": 1226
     },
     {
       "outputTypeId": 91703,
@@ -8905,27 +8836,8 @@
           "typeId": 88561,
           "quantity": 15
         }
-      ]
-    },
-    {
-      "outputTypeId": 87847,
-      "facilityTypeId": 87162,
-      "outputQty": 1,
-      "runTime": 50,
-      "inputs": [
-        {
-          "typeId": 89258,
-          "quantity": 40
-        },
-        {
-          "typeId": 78418,
-          "quantity": 1
-        },
-        {
-          "typeId": 84182,
-          "quantity": 28
-        }
-      ]
+      ],
+      "gameId": 9008
     },
     {
       "outputTypeId": 87847,
@@ -8945,7 +8857,8 @@
           "typeId": 84182,
           "quantity": 28
         }
-      ]
+      ],
+      "gameId": 1009
     },
     {
       "outputTypeId": 91751,
@@ -8957,7 +8870,8 @@
           "typeId": 77810,
           "quantity": 50
         }
-      ]
+      ],
+      "gameId": 9009
     },
     {
       "outputTypeId": 84182,
@@ -8977,7 +8891,8 @@
           "typeId": 89259,
           "quantity": 105
         }
-      ]
+      ],
+      "gameId": 1004
     },
     {
       "outputTypeId": 84182,
@@ -8993,7 +8908,8 @@
           "typeId": 77801,
           "quantity": 1050
         }
-      ]
+      ],
+      "gameId": 1019
     },
     {
       "outputTypeId": 82654,
@@ -9009,7 +8925,8 @@
           "typeId": 84180,
           "quantity": 4
         }
-      ]
+      ],
+      "gameId": 1152
     },
     {
       "outputTypeId": 83456,
@@ -9025,7 +8942,8 @@
           "typeId": 84180,
           "quantity": 12
         }
-      ]
+      ],
+      "gameId": 1153
     },
     {
       "outputTypeId": 87848,
@@ -9049,7 +8967,8 @@
           "typeId": 88561,
           "quantity": 33
         }
-      ]
+      ],
+      "gameId": 1224
     },
     {
       "outputTypeId": 91717,
@@ -9069,7 +8988,8 @@
           "typeId": 88561,
           "quantity": 6
         }
-      ]
+      ],
+      "gameId": 9010
     },
     {
       "outputTypeId": 82667,
@@ -9089,7 +9009,8 @@
           "typeId": 84180,
           "quantity": 17
         }
-      ]
+      ],
+      "gameId": 1154
     },
     {
       "outputTypeId": 83458,
@@ -9109,7 +9030,8 @@
           "typeId": 84180,
           "quantity": 20
         }
-      ]
+      ],
+      "gameId": 1155
     },
     {
       "outputTypeId": 83459,
@@ -9133,7 +9055,8 @@
           "typeId": 92483,
           "quantity": 3
         }
-      ]
+      ],
+      "gameId": 1088
     },
     {
       "outputTypeId": 92389,
@@ -9145,23 +9068,8 @@
           "typeId": 88561,
           "quantity": 1
         }
-      ]
-    },
-    {
-      "outputTypeId": 77852,
-      "facilityTypeId": 87162,
-      "outputQty": 1,
-      "runTime": 167,
-      "inputs": [
-        {
-          "typeId": 84210,
-          "quantity": 3
-        },
-        {
-          "typeId": 84180,
-          "quantity": 2
-        }
-      ]
+      ],
+      "gameId": 1473
     },
     {
       "outputTypeId": 77852,
@@ -9177,23 +9085,8 @@
           "typeId": 84180,
           "quantity": 2
         }
-      ]
-    },
-    {
-      "outputTypeId": 81846,
-      "facilityTypeId": 87162,
-      "outputQty": 1,
-      "runTime": 39,
-      "inputs": [
-        {
-          "typeId": 89258,
-          "quantity": 10
-        },
-        {
-          "typeId": 84182,
-          "quantity": 2
-        }
-      ]
+      ],
+      "gameId": 1008
     },
     {
       "outputTypeId": 81846,
@@ -9209,7 +9102,8 @@
           "typeId": 84182,
           "quantity": 2
         }
-      ]
+      ],
+      "gameId": 1011
     },
     {
       "outputTypeId": 82683,
@@ -9229,7 +9123,8 @@
           "typeId": 88561,
           "quantity": 4
         }
-      ]
+      ],
+      "gameId": 1140
     },
     {
       "outputTypeId": 83520,
@@ -9249,7 +9144,8 @@
           "typeId": 88561,
           "quantity": 4
         }
-      ]
+      ],
+      "gameId": 1141
     },
     {
       "outputTypeId": 83521,
@@ -9269,7 +9165,8 @@
           "typeId": 88561,
           "quantity": 5
         }
-      ]
+      ],
+      "gameId": 1142
     },
     {
       "outputTypeId": 83522,
@@ -9289,7 +9186,8 @@
           "typeId": 88561,
           "quantity": 5
         }
-      ]
+      ],
+      "gameId": 1143
     },
     {
       "outputTypeId": 83523,
@@ -9309,39 +9207,8 @@
           "typeId": 88561,
           "quantity": 6
         }
-      ]
-    },
-    {
-      "outputTypeId": 92483,
-      "facilityTypeId": 87119,
-      "outputQty": 1,
-      "runTime": 11,
-      "inputs": [
-        {
-          "typeId": 92422,
-          "quantity": 50
-        },
-        {
-          "typeId": 78449,
-          "quantity": 5
-        }
-      ]
-    },
-    {
-      "outputTypeId": 88565,
-      "facilityTypeId": 87119,
-      "outputQty": 1,
-      "runTime": 11,
-      "inputs": [
-        {
-          "typeId": 88564,
-          "quantity": 5
-        },
-        {
-          "typeId": 83839,
-          "quantity": 5
-        }
-      ]
+      ],
+      "gameId": 1144
     },
     {
       "outputTypeId": 91106,
@@ -9369,7 +9236,8 @@
           "typeId": 88561,
           "quantity": 48
         }
-      ]
+      ],
+      "gameId": 1470
     },
     {
       "outputTypeId": 89978,
@@ -9393,7 +9261,8 @@
           "typeId": 89986,
           "quantity": 1
         }
-      ]
+      ],
+      "gameId": 1031
     },
     {
       "outputTypeId": 83463,
@@ -9405,19 +9274,8 @@
           "typeId": 89259,
           "quantity": 3
         }
-      ]
-    },
-    {
-      "outputTypeId": 83463,
-      "facilityTypeId": 87119,
-      "outputQty": 1,
-      "runTime": 3,
-      "inputs": [
-        {
-          "typeId": 89259,
-          "quantity": 3
-        }
-      ]
+      ],
+      "gameId": 1007
     },
     {
       "outputTypeId": 82651,
@@ -9433,7 +9291,8 @@
           "typeId": 84182,
           "quantity": 1
         }
-      ]
+      ],
+      "gameId": 1118
     },
     {
       "outputTypeId": 83437,
@@ -9453,7 +9312,8 @@
           "typeId": 92483,
           "quantity": 1
         }
-      ]
+      ],
+      "gameId": 1119
     },
     {
       "outputTypeId": 83438,
@@ -9473,7 +9333,8 @@
           "typeId": 92483,
           "quantity": 4
         }
-      ]
+      ],
+      "gameId": 1087
     },
     {
       "outputTypeId": 78511,
@@ -9493,7 +9354,8 @@
           "typeId": 88561,
           "quantity": 8
         }
-      ]
+      ],
+      "gameId": 1177
     },
     {
       "outputTypeId": 78510,
@@ -9517,7 +9379,8 @@
           "typeId": 88561,
           "quantity": 16
         }
-      ]
+      ],
+      "gameId": 1103
     },
     {
       "outputTypeId": 88561,
@@ -9533,7 +9396,8 @@
           "typeId": 89259,
           "quantity": 90
         }
-      ]
+      ],
+      "gameId": 1000
     },
     {
       "outputTypeId": 88561,
@@ -9553,7 +9417,8 @@
           "typeId": 77804,
           "quantity": 1260
         }
-      ]
+      ],
+      "gameId": 1021
     },
     {
       "outputTypeId": 83772,
@@ -9565,7 +9430,8 @@
           "typeId": 88561,
           "quantity": 12
         }
-      ]
+      ],
+      "gameId": 1159
     },
     {
       "outputTypeId": 83773,
@@ -9577,7 +9443,8 @@
           "typeId": 88561,
           "quantity": 16
         }
-      ]
+      ],
+      "gameId": 1160
     },
     {
       "outputTypeId": 83774,
@@ -9589,7 +9456,8 @@
           "typeId": 88561,
           "quantity": 19
         }
-      ]
+      ],
+      "gameId": 1161
     },
     {
       "outputTypeId": 83613,
@@ -9609,7 +9477,8 @@
           "typeId": 88561,
           "quantity": 4
         }
-      ]
+      ],
+      "gameId": 1122
     },
     {
       "outputTypeId": 83614,
@@ -9629,7 +9498,8 @@
           "typeId": 88561,
           "quantity": 9
         }
-      ]
+      ],
+      "gameId": 1123
     },
     {
       "outputTypeId": 83615,
@@ -9649,7 +9519,8 @@
           "typeId": 88561,
           "quantity": 20
         }
-      ]
+      ],
+      "gameId": 1124
     },
     {
       "outputTypeId": 83628,
@@ -9669,7 +9540,8 @@
           "typeId": 88561,
           "quantity": 4
         }
-      ]
+      ],
+      "gameId": 1132
     },
     {
       "outputTypeId": 83629,
@@ -9685,7 +9557,8 @@
           "typeId": 88561,
           "quantity": 12
         }
-      ]
+      ],
+      "gameId": 1133
     },
     {
       "outputTypeId": 83630,
@@ -9701,7 +9574,8 @@
           "typeId": 88561,
           "quantity": 24
         }
-      ]
+      ],
+      "gameId": 1134
     },
     {
       "outputTypeId": 82084,
@@ -9721,7 +9595,8 @@
           "typeId": 84182,
           "quantity": 1
         }
-      ]
+      ],
+      "gameId": 1110
     },
     {
       "outputTypeId": 82092,
@@ -9745,7 +9620,8 @@
           "typeId": 84182,
           "quantity": 1
         }
-      ]
+      ],
+      "gameId": 1073
     },
     {
       "outputTypeId": 82088,
@@ -9765,7 +9641,8 @@
           "typeId": 84182,
           "quantity": 1
         }
-      ]
+      ],
+      "gameId": 1108
     },
     {
       "outputTypeId": 82098,
@@ -9785,7 +9662,8 @@
           "typeId": 84182,
           "quantity": 2
         }
-      ]
+      ],
+      "gameId": 1075
     },
     {
       "outputTypeId": 82096,
@@ -9805,7 +9683,8 @@
           "typeId": 88234,
           "quantity": 300
         }
-      ]
+      ],
+      "gameId": 1076
     },
     {
       "outputTypeId": 82086,
@@ -9825,7 +9704,8 @@
           "typeId": 88234,
           "quantity": 150
         }
-      ]
+      ],
+      "gameId": 1113
     },
     {
       "outputTypeId": 82085,
@@ -9845,7 +9725,8 @@
           "typeId": 84182,
           "quantity": 1
         }
-      ]
+      ],
+      "gameId": 1111
     },
     {
       "outputTypeId": 82093,
@@ -9865,7 +9746,8 @@
           "typeId": 84182,
           "quantity": 2
         }
-      ]
+      ],
+      "gameId": 1077
     },
     {
       "outputTypeId": 82089,
@@ -9889,7 +9771,8 @@
           "typeId": 84182,
           "quantity": 1
         }
-      ]
+      ],
+      "gameId": 1109
     },
     {
       "outputTypeId": 82099,
@@ -9909,7 +9792,8 @@
           "typeId": 84182,
           "quantity": 2
         }
-      ]
+      ],
+      "gameId": 1079
     },
     {
       "outputTypeId": 82097,
@@ -9929,7 +9813,8 @@
           "typeId": 88234,
           "quantity": 420
         }
-      ]
+      ],
+      "gameId": 1080
     },
     {
       "outputTypeId": 82087,
@@ -9949,7 +9834,8 @@
           "typeId": 88234,
           "quantity": 210
         }
-      ]
+      ],
+      "gameId": 1114
     },
     {
       "outputTypeId": 81656,
@@ -9965,7 +9851,8 @@
           "typeId": 84182,
           "quantity": 1
         }
-      ]
+      ],
+      "gameId": 1104
     },
     {
       "outputTypeId": 82090,
@@ -9981,7 +9868,8 @@
           "typeId": 84182,
           "quantity": 2
         }
-      ]
+      ],
+      "gameId": 1105
     },
     {
       "outputTypeId": 82091,
@@ -9997,7 +9885,8 @@
           "typeId": 84182,
           "quantity": 2
         }
-      ]
+      ],
+      "gameId": 1106
     },
     {
       "outputTypeId": 78490,
@@ -10017,7 +9906,8 @@
           "typeId": 88561,
           "quantity": 8
         }
-      ]
+      ],
+      "gameId": 1176
     },
     {
       "outputTypeId": 78502,
@@ -10041,7 +9931,8 @@
           "typeId": 88561,
           "quantity": 16
         }
-      ]
+      ],
+      "gameId": 1102
     },
     {
       "outputTypeId": 82682,
@@ -10061,7 +9952,8 @@
           "typeId": 84182,
           "quantity": 2
         }
-      ]
+      ],
+      "gameId": 1135
     },
     {
       "outputTypeId": 83516,
@@ -10081,7 +9973,8 @@
           "typeId": 84182,
           "quantity": 3
         }
-      ]
+      ],
+      "gameId": 1136
     },
     {
       "outputTypeId": 83517,
@@ -10101,7 +9994,8 @@
           "typeId": 84182,
           "quantity": 3
         }
-      ]
+      ],
+      "gameId": 1137
     },
     {
       "outputTypeId": 83518,
@@ -10121,7 +10015,8 @@
           "typeId": 84182,
           "quantity": 4
         }
-      ]
+      ],
+      "gameId": 1138
     },
     {
       "outputTypeId": 83519,
@@ -10141,7 +10036,8 @@
           "typeId": 84182,
           "quantity": 4
         }
-      ]
+      ],
+      "gameId": 1139
     },
     {
       "outputTypeId": 87698,
@@ -10165,7 +10061,8 @@
           "typeId": 88561,
           "quantity": 17
         }
-      ]
+      ],
+      "gameId": 1227
     },
     {
       "outputTypeId": 81657,
@@ -10181,7 +10078,8 @@
           "typeId": 84182,
           "quantity": 2
         }
-      ]
+      ],
+      "gameId": 1071
     },
     {
       "outputTypeId": 82094,
@@ -10197,7 +10095,8 @@
           "typeId": 84182,
           "quantity": 4
         }
-      ]
+      ],
+      "gameId": 1074
     },
     {
       "outputTypeId": 82095,
@@ -10213,7 +10112,8 @@
           "typeId": 84182,
           "quantity": 4
         }
-      ]
+      ],
+      "gameId": 1078
     },
     {
       "outputTypeId": 82652,
@@ -10233,7 +10133,8 @@
           "typeId": 99001,
           "quantity": 150
         }
-      ]
+      ],
+      "gameId": 1014
     },
     {
       "outputTypeId": 88780,
@@ -10253,7 +10154,8 @@
           "typeId": 88235,
           "quantity": 105
         }
-      ]
+      ],
+      "gameId": 1022
     },
     {
       "outputTypeId": 88565,
@@ -10269,7 +10171,8 @@
           "typeId": 88564,
           "quantity": 5
         }
-      ]
+      ],
+      "gameId": 1023
     },
     {
       "outputTypeId": 78515,
@@ -10285,7 +10188,8 @@
           "typeId": 84868,
           "quantity": 600
         }
-      ]
+      ],
+      "gameId": 1033
     },
     {
       "outputTypeId": 82137,
@@ -10301,7 +10205,8 @@
           "typeId": 77805,
           "quantity": 60
         }
-      ]
+      ],
+      "gameId": 1034
     },
     {
       "outputTypeId": 88843,
@@ -10313,7 +10218,8 @@
           "typeId": 88561,
           "quantity": 10
         }
-      ]
+      ],
+      "gameId": 1035
     },
     {
       "outputTypeId": 88839,
@@ -10325,7 +10231,8 @@
           "typeId": 84180,
           "quantity": 10
         }
-      ]
+      ],
+      "gameId": 1037
     },
     {
       "outputTypeId": 88841,
@@ -10337,7 +10244,8 @@
           "typeId": 84210,
           "quantity": 10
         }
-      ]
+      ],
+      "gameId": 1038
     },
     {
       "outputTypeId": 84204,
@@ -10349,7 +10257,8 @@
           "typeId": 84182,
           "quantity": 10
         }
-      ]
+      ],
+      "gameId": 1039
     },
     {
       "outputTypeId": 82411,
@@ -10365,7 +10274,8 @@
           "typeId": 84210,
           "quantity": 1
         }
-      ]
+      ],
+      "gameId": 1040
     },
     {
       "outputTypeId": 82412,
@@ -10381,7 +10291,8 @@
           "typeId": 88561,
           "quantity": 1
         }
-      ]
+      ],
+      "gameId": 1042
     },
     {
       "outputTypeId": 78416,
@@ -10401,7 +10312,8 @@
           "typeId": 88783,
           "quantity": 128
         }
-      ]
+      ],
+      "gameId": 1043
     },
     {
       "outputTypeId": 78417,
@@ -10421,7 +10333,8 @@
           "typeId": 88783,
           "quantity": 38
         }
-      ]
+      ],
+      "gameId": 1044
     },
     {
       "outputTypeId": 82413,
@@ -10437,7 +10350,8 @@
           "typeId": 88561,
           "quantity": 1
         }
-      ]
+      ],
+      "gameId": 1045
     },
     {
       "outputTypeId": 82410,
@@ -10453,7 +10367,8 @@
           "typeId": 88561,
           "quantity": 1
         }
-      ]
+      ],
+      "gameId": 1046
     },
     {
       "outputTypeId": 78420,
@@ -10473,7 +10388,8 @@
           "typeId": 88783,
           "quantity": 38
         }
-      ]
+      ],
+      "gameId": 1047
     },
     {
       "outputTypeId": 78421,
@@ -10493,7 +10409,8 @@
           "typeId": 88783,
           "quantity": 38
         }
-      ]
+      ],
+      "gameId": 1048
     },
     {
       "outputTypeId": 83896,
@@ -10509,7 +10426,8 @@
           "typeId": 83891,
           "quantity": 1
         }
-      ]
+      ],
+      "gameId": 1049
     },
     {
       "outputTypeId": 83898,
@@ -10525,7 +10443,8 @@
           "typeId": 83893,
           "quantity": 1
         }
-      ]
+      ],
+      "gameId": 1050
     },
     {
       "outputTypeId": 82127,
@@ -10537,7 +10456,8 @@
           "typeId": 77801,
           "quantity": 230
         }
-      ]
+      ],
+      "gameId": 1051
     },
     {
       "outputTypeId": 82131,
@@ -10553,7 +10473,8 @@
           "typeId": 88234,
           "quantity": 400
         }
-      ]
+      ],
+      "gameId": 1052
     },
     {
       "outputTypeId": 82126,
@@ -10565,7 +10486,8 @@
           "typeId": 77801,
           "quantity": 230
         }
-      ]
+      ],
+      "gameId": 1053
     },
     {
       "outputTypeId": 81658,
@@ -10581,7 +10503,8 @@
           "typeId": 77805,
           "quantity": 10
         }
-      ]
+      ],
+      "gameId": 1054
     },
     {
       "outputTypeId": 88844,
@@ -10593,7 +10516,8 @@
           "typeId": 88843,
           "quantity": 10
         }
-      ]
+      ],
+      "gameId": 1055
     },
     {
       "outputTypeId": 78437,
@@ -10609,7 +10533,8 @@
           "typeId": 83899,
           "quantity": 60
         }
-      ]
+      ],
+      "gameId": 1056
     },
     {
       "outputTypeId": 88840,
@@ -10621,7 +10546,8 @@
           "typeId": 88839,
           "quantity": 10
         }
-      ]
+      ],
+      "gameId": 1057
     },
     {
       "outputTypeId": 88842,
@@ -10633,7 +10559,8 @@
           "typeId": 88841,
           "quantity": 10
         }
-      ]
+      ],
+      "gameId": 1058
     },
     {
       "outputTypeId": 84206,
@@ -10645,7 +10572,8 @@
           "typeId": 84204,
           "quantity": 10
         }
-      ]
+      ],
+      "gameId": 1059
     },
     {
       "outputTypeId": 78422,
@@ -10665,7 +10593,8 @@
           "typeId": 88782,
           "quantity": 1347
         }
-      ]
+      ],
+      "gameId": 1060
     },
     {
       "outputTypeId": 82134,
@@ -10677,7 +10606,8 @@
           "typeId": 84182,
           "quantity": 7
         }
-      ]
+      ],
+      "gameId": 1061
     },
     {
       "outputTypeId": 82132,
@@ -10709,7 +10639,8 @@
           "typeId": 77811,
           "quantity": 100
         }
-      ]
+      ],
+      "gameId": 1062
     },
     {
       "outputTypeId": 82140,
@@ -10725,7 +10656,8 @@
           "typeId": 88234,
           "quantity": 400
         }
-      ]
+      ],
+      "gameId": 1063
     },
     {
       "outputTypeId": 82137,
@@ -10741,7 +10673,8 @@
           "typeId": 77805,
           "quantity": 20
         }
-      ]
+      ],
+      "gameId": 1064
     },
     {
       "outputTypeId": 83457,
@@ -10757,7 +10690,8 @@
           "typeId": 84210,
           "quantity": 62
         }
-      ]
+      ],
+      "gameId": 1085
     },
     {
       "outputTypeId": 83775,
@@ -10769,151 +10703,8 @@
           "typeId": 88561,
           "quantity": 22
         }
-      ]
-    },
-    {
-      "outputTypeId": 88764,
-      "facilityTypeId": 87161,
-      "outputQty": 1,
-      "runTime": 3,
-      "inputs": [
-        {
-          "typeId": 88764,
-          "quantity": 3
-        }
-      ]
-    },
-    {
-      "outputTypeId": 77800,
-      "facilityTypeId": 87161,
-      "outputQty": 5,
-      "runTime": 3,
-      "inputs": [
-        {
-          "typeId": 77800,
-          "quantity": 20
-        }
-      ]
-    },
-    {
-      "outputTypeId": 77811,
-      "facilityTypeId": 87161,
-      "outputQty": 10,
-      "runTime": 3,
-      "inputs": [
-        {
-          "typeId": 77811,
-          "quantity": 20
-        }
-      ]
-    },
-    {
-      "outputTypeId": 77810,
-      "facilityTypeId": 87161,
-      "outputQty": 8,
-      "runTime": 3,
-      "inputs": [
-        {
-          "typeId": 77810,
-          "quantity": 20
-        }
-      ]
-    },
-    {
-      "outputTypeId": 88765,
-      "facilityTypeId": 87161,
-      "outputQty": 7,
-      "runTime": 3,
-      "inputs": [
-        {
-          "typeId": 88765,
-          "quantity": 1
-        }
-      ]
-    },
-    {
-      "outputTypeId": 89258,
-      "facilityTypeId": 88063,
-      "outputQty": 20,
-      "runTime": 9,
-      "inputs": [
-        {
-          "typeId": 89258,
-          "quantity": 20
-        }
-      ]
-    },
-    {
-      "outputTypeId": 89259,
-      "facilityTypeId": 88063,
-      "outputQty": 50,
-      "runTime": 9,
-      "inputs": [
-        {
-          "typeId": 89259,
-          "quantity": 20
-        }
-      ]
-    },
-    {
-      "outputTypeId": 89260,
-      "facilityTypeId": 88063,
-      "outputQty": 20,
-      "runTime": 9,
-      "inputs": [
-        {
-          "typeId": 89260,
-          "quantity": 10
-        }
-      ]
-    },
-    {
-      "outputTypeId": 77800,
-      "facilityTypeId": 88063,
-      "outputQty": 10,
-      "runTime": 3,
-      "inputs": [
-        {
-          "typeId": 77800,
-          "quantity": 40
-        }
-      ]
-    },
-    {
-      "outputTypeId": 77810,
-      "facilityTypeId": 88063,
-      "outputQty": 10,
-      "runTime": 3,
-      "inputs": [
-        {
-          "typeId": 77810,
-          "quantity": 40
-        }
-      ]
-    },
-    {
-      "outputTypeId": 77811,
-      "facilityTypeId": 88063,
-      "outputQty": 20,
-      "runTime": 3,
-      "inputs": [
-        {
-          "typeId": 77811,
-          "quantity": 40
-        }
-      ]
-    },
-    {
-      "outputTypeId": 78426,
-      "facilityTypeId": 88063,
-      "outputQty": 40,
-      "runTime": 5,
-      "inputs": [
-        {
-          "typeId": 78426,
-          "quantity": 40
-        }
-      ]
+      ],
+      "gameId": 1162
     },
     {
       "outputTypeId": 82426,
@@ -10937,7 +10728,8 @@
           "typeId": 88843,
           "quantity": 29
         }
-      ]
+      ],
+      "gameId": 1228
     },
     {
       "outputTypeId": 81904,
@@ -10965,7 +10757,8 @@
           "typeId": 92483,
           "quantity": 3
         }
-      ]
+      ],
+      "gameId": 1229
     },
     {
       "outputTypeId": 81808,
@@ -10993,7 +10786,8 @@
           "typeId": 92483,
           "quantity": 4
         }
-      ]
+      ],
+      "gameId": 1230
     },
     {
       "outputTypeId": 82424,
@@ -11017,7 +10811,8 @@
           "typeId": 88843,
           "quantity": 74
         }
-      ]
+      ],
+      "gameId": 1231
     },
     {
       "outputTypeId": 81609,
@@ -11041,7 +10836,8 @@
           "typeId": 88843,
           "quantity": 28
         }
-      ]
+      ],
+      "gameId": 1232
     },
     {
       "outputTypeId": 82430,
@@ -11073,7 +10869,8 @@
           "typeId": 88565,
           "quantity": 2
         }
-      ]
+      ],
+      "gameId": 1233
     },
     {
       "outputTypeId": 81611,
@@ -11097,7 +10894,8 @@
           "typeId": 84206,
           "quantity": 256
         }
-      ]
+      ],
+      "gameId": 1234
     },
     {
       "outputTypeId": 91967,
@@ -11117,7 +10915,8 @@
           "typeId": 92483,
           "quantity": 1
         }
-      ]
+      ],
+      "gameId": 1475
     },
     {
       "outputTypeId": 91968,
@@ -11149,7 +10948,8 @@
           "typeId": 78423,
           "quantity": 4
         }
-      ]
+      ],
+      "gameId": 1476
     },
     {
       "outputTypeId": 92483,
@@ -11165,7 +10965,8 @@
           "typeId": 78449,
           "quantity": 5
         }
-      ]
+      ],
+      "gameId": 1482
     },
     {
       "outputTypeId": 82425,
@@ -11193,7 +10994,8 @@
           "typeId": 92483,
           "quantity": 4
         }
-      ]
+      ],
+      "gameId": 1483
     },
     {
       "outputTypeId": 91749,
@@ -11217,7 +11019,8 @@
           "typeId": 78423,
           "quantity": 8
         }
-      ]
+      ],
+      "gameId": 1487
     },
     {
       "outputTypeId": 88070,
@@ -11232,7 +11035,8 @@
           "typeId": 89088,
           "quantity": 1
         }
-      ]
+      ],
+      "gameId": 9011
     },
     {
       "outputTypeId": 93228,
@@ -11243,7 +11047,8 @@
           "typeId": 84180,
           "quantity": 20
         }
-      ]
+      ],
+      "gameId": 9012
     },
     {
       "outputTypeId": 91753,
@@ -11254,7 +11059,8 @@
           "typeId": 77811,
           "quantity": 50
         }
-      ]
+      ],
+      "gameId": 9013
     },
     {
       "outputTypeId": 87161,
@@ -11265,7 +11071,8 @@
           "typeId": 77800,
           "quantity": 50
         }
-      ]
+      ],
+      "gameId": 9014
     },
     {
       "outputTypeId": 91756,
@@ -11276,7 +11083,8 @@
           "typeId": 77800,
           "quantity": 50
         }
-      ]
+      ],
+      "gameId": 9015
     },
     {
       "outputTypeId": 88071,
@@ -11291,7 +11099,8 @@
           "typeId": 89087,
           "quantity": 1
         }
-      ]
+      ],
+      "gameId": 9016
     },
     {
       "outputTypeId": 91712,
@@ -11302,7 +11111,8 @@
           "typeId": 89089,
           "quantity": 4300
         }
-      ]
+      ],
+      "gameId": 9017
     },
     {
       "outputTypeId": 88064,
@@ -11313,7 +11123,8 @@
           "typeId": 89089,
           "quantity": 100
         }
-      ]
+      ],
+      "gameId": 9018
     },
     {
       "outputTypeId": 91710,
@@ -11324,7 +11135,8 @@
           "typeId": 89089,
           "quantity": 130
         }
-      ]
+      ],
+      "gameId": 9019
     },
     {
       "outputTypeId": 91715,
@@ -11335,7 +11147,8 @@
           "typeId": 89089,
           "quantity": 120
         }
-      ]
+      ],
+      "gameId": 9020
     },
     {
       "outputTypeId": 92407,
@@ -11346,7 +11159,8 @@
           "typeId": 89089,
           "quantity": 20
         }
-      ]
+      ],
+      "gameId": 9021
     },
     {
       "outputTypeId": 91711,
@@ -11357,7 +11171,8 @@
           "typeId": 89089,
           "quantity": 430
         }
-      ]
+      ],
+      "gameId": 9022
     },
     {
       "outputTypeId": 92280,
@@ -11376,7 +11191,8 @@
           "typeId": 88561,
           "quantity": 20
         }
-      ]
+      ],
+      "gameId": 9023
     },
     {
       "outputTypeId": 91718,
@@ -11387,7 +11203,8 @@
           "typeId": 89089,
           "quantity": 20
         }
-      ]
+      ],
+      "gameId": 9024
     },
     {
       "outputTypeId": 91719,
@@ -11398,7 +11215,8 @@
           "typeId": 89089,
           "quantity": 20
         }
-      ]
+      ],
+      "gameId": 9025
     },
     {
       "outputTypeId": 92166,
@@ -11409,7 +11227,8 @@
           "typeId": 89089,
           "quantity": 20
         }
-      ]
+      ],
+      "gameId": 9026
     },
     {
       "outputTypeId": 91709,
@@ -11420,7 +11239,8 @@
           "typeId": 89089,
           "quantity": 20
         }
-      ]
+      ],
+      "gameId": 9027
     },
     {
       "outputTypeId": 91714,
@@ -11431,7 +11251,8 @@
           "typeId": 89089,
           "quantity": 20
         }
-      ]
+      ],
+      "gameId": 9028
     },
     {
       "outputTypeId": 92406,
@@ -11442,7 +11263,8 @@
           "typeId": 89089,
           "quantity": 10
         }
-      ]
+      ],
+      "gameId": 9029
     },
     {
       "outputTypeId": 91720,
@@ -11453,7 +11275,8 @@
           "typeId": 89089,
           "quantity": 20
         }
-      ]
+      ],
+      "gameId": 9030
     },
     {
       "outputTypeId": 91721,
@@ -11463,6 +11286,275 @@
         {
           "typeId": 89089,
           "quantity": 20
+        }
+      ],
+      "gameId": 9031
+    },
+    {
+      "gameId": 1005,
+      "outputTypeId": 78418,
+      "facilityTypeId": 87119,
+      "outputQty": 1,
+      "runTime": 20,
+      "inputs": [
+        {
+          "typeId": 83818,
+          "quantity": 5
+        }
+      ]
+    },
+    {
+      "gameId": 1007,
+      "outputTypeId": 83463,
+      "facilityTypeId": 87119,
+      "outputQty": 1,
+      "runTime": 3,
+      "inputs": [
+        {
+          "typeId": 89259,
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "gameId": 1010,
+      "outputTypeId": 82128,
+      "facilityTypeId": 87119,
+      "outputQty": 100,
+      "runTime": 3,
+      "inputs": [
+        {
+          "typeId": 89260,
+          "quantity": 24
+        }
+      ]
+    },
+    {
+      "gameId": 1013,
+      "outputTypeId": 88887,
+      "facilityTypeId": 87119,
+      "outputQty": 10,
+      "runTime": 3,
+      "inputs": [
+        {
+          "typeId": 88335,
+          "quantity": 115
+        },
+        {
+          "typeId": 89260,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "gameId": 1022,
+      "outputTypeId": 88780,
+      "facilityTypeId": 87119,
+      "outputQty": 1,
+      "runTime": 17,
+      "inputs": [
+        {
+          "typeId": 77801,
+          "quantity": 120
+        },
+        {
+          "typeId": 88234,
+          "quantity": 45
+        },
+        {
+          "typeId": 88235,
+          "quantity": 105
+        }
+      ]
+    },
+    {
+      "gameId": 1023,
+      "outputTypeId": 88565,
+      "facilityTypeId": 87119,
+      "outputQty": 1,
+      "runTime": 11,
+      "inputs": [
+        {
+          "typeId": 83839,
+          "quantity": 5
+        },
+        {
+          "typeId": 88564,
+          "quantity": 5
+        }
+      ]
+    },
+    {
+      "gameId": 1482,
+      "outputTypeId": 92483,
+      "facilityTypeId": 87119,
+      "outputQty": 1,
+      "runTime": 11,
+      "inputs": [
+        {
+          "typeId": 92422,
+          "quantity": 50
+        },
+        {
+          "typeId": 78449,
+          "quantity": 5
+        }
+      ]
+    },
+    {
+      "gameId": 1001,
+      "outputTypeId": 88886,
+      "facilityTypeId": 87162,
+      "outputQty": 1,
+      "runTime": 197,
+      "inputs": [
+        {
+          "typeId": 84182,
+          "quantity": 3
+        },
+        {
+          "typeId": 88335,
+          "quantity": 280
+        },
+        {
+          "typeId": 99001,
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "gameId": 1006,
+      "outputTypeId": 81974,
+      "facilityTypeId": 87162,
+      "outputQty": 1,
+      "runTime": 156,
+      "inputs": [
+        {
+          "typeId": 89260,
+          "quantity": 10
+        },
+        {
+          "typeId": 89259,
+          "quantity": 30
+        }
+      ]
+    },
+    {
+      "gameId": 1008,
+      "outputTypeId": 77852,
+      "facilityTypeId": 87162,
+      "outputQty": 1,
+      "runTime": 167,
+      "inputs": [
+        {
+          "typeId": 84180,
+          "quantity": 2
+        },
+        {
+          "typeId": 84210,
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "gameId": 1009,
+      "outputTypeId": 87847,
+      "facilityTypeId": 87162,
+      "outputQty": 1,
+      "runTime": 50,
+      "inputs": [
+        {
+          "typeId": 78418,
+          "quantity": 1
+        },
+        {
+          "typeId": 84182,
+          "quantity": 28
+        },
+        {
+          "typeId": 89258,
+          "quantity": 40
+        }
+      ]
+    },
+    {
+      "gameId": 1011,
+      "outputTypeId": 81846,
+      "facilityTypeId": 87162,
+      "outputQty": 1,
+      "runTime": 39,
+      "inputs": [
+        {
+          "typeId": 84182,
+          "quantity": 2
+        },
+        {
+          "typeId": 89258,
+          "quantity": 10
+        }
+      ]
+    },
+    {
+      "gameId": 1012,
+      "outputTypeId": 82647,
+      "facilityTypeId": 87162,
+      "outputQty": 1,
+      "runTime": 155,
+      "inputs": [
+        {
+          "typeId": 84182,
+          "quantity": 4
+        }
+      ]
+    },
+    {
+      "gameId": 1014,
+      "outputTypeId": 82652,
+      "facilityTypeId": 87162,
+      "outputQty": 1,
+      "runTime": 207,
+      "inputs": [
+        {
+          "typeId": 84180,
+          "quantity": 4
+        },
+        {
+          "typeId": 84210,
+          "quantity": 7
+        },
+        {
+          "typeId": 99001,
+          "quantity": 150
+        }
+      ]
+    },
+    {
+      "gameId": 1472,
+      "outputTypeId": 90887,
+      "facilityTypeId": 87162,
+      "outputQty": 1,
+      "runTime": 120,
+      "inputs": [
+        {
+          "typeId": 88561,
+          "quantity": 2
+        },
+        {
+          "typeId": 84180,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "gameId": 1116,
+      "outputTypeId": 82681,
+      "facilityTypeId": 87162,
+      "outputQty": 1,
+      "runTime": 97,
+      "inputs": [
+        {
+          "typeId": 88561,
+          "quantity": 1
         }
       ]
     }

@@ -139,8 +139,8 @@ async function main() {
     const factoryName = factoryNameByTypeId.get(bp.facilityTypeId) ?? String(bp.facilityTypeId);
     const upserted = await prisma.blueprint.upsert({
       where: { outputItemId_factory: { outputItemId, factory: factoryName } },
-      update: { outputQty: bp.outputQty, runTime: bp.runTime },
-      create: { outputItemId, factory: factoryName, outputQty: bp.outputQty, runTime: bp.runTime, isDefault: false },
+      update: { outputQty: bp.outputQty, runTime: bp.runTime, gameId: bp.gameId ?? null },
+      create: { outputItemId, factory: factoryName, outputQty: bp.outputQty, runTime: bp.runTime, isDefault: false, gameId: bp.gameId ?? null },
     });
     for (const inp of bp.inputs) {
       const inpItemId = itemIdByTypeId.get(inp.typeId);
