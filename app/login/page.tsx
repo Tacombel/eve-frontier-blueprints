@@ -1,15 +1,13 @@
 "use client";
 
-import { Suspense, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { useConnection } from "@evefrontier/dapp-kit";
-import { useSignPersonalMessage } from "@mysten/dapp-kit-react";
 import { getWalletCharacters } from "@evefrontier/dapp-kit/graphql";
 
-function VaultLoginButton({ onSuccess }: { onSuccess: (from: string) => void }) {
+function VaultLoginButton() {
   const searchParams = useSearchParams();
-  const { isConnected, hasEveVault, walletAddress, handleConnect, handleDisconnect, currentAccount } = useConnection();
-  const { mutateAsync: signMessage } = useSignPersonalMessage();
+  const { isConnected, hasEveVault, walletAddress, handleConnect, handleDisconnect } = useConnection();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -24,41 +22,31 @@ function VaultLoginButton({ onSuccess }: { onSuccess: (from: string) => void }) 
         return;
       }
 
-      if (!walletAddress || !currentAccount) {
+      if (!walletAddress) {
         setError("No wallet account selected");
         setLoading(false);
         return;
       }
 
-      // 1. Get nonce from server
+      // 1. Get fresh nonce from server (proves request is recent, 5 min TTL)
       const nonceRes = await fetch("/api/auth/nonce");
       if (!nonceRes.ok) throw new Error("Failed to get nonce");
       const { nonce } = await nonceRes.json();
 
-      // 2. Decode the inner nonce value to sign (the JWT payload's nonce field)
-      const payload = JSON.parse(atob(nonce.split(".")[1]));
-      const innerNonce: string = payload.nonce;
-
-      // 3. Sign the inner nonce with the wallet
-      const { signature } = await signMessage({
-        message: new TextEncoder().encode(innerNonce),
-        account: currentAccount,
-      });
-
-      // 4. Try to get character name from EVE Frontier
+      // 2. Try to get character name from EVE Frontier GraphQL
       let characterName: string | undefined;
       try {
         const characters = await getWalletCharacters(walletAddress);
         characterName = characters?.[0]?.name ?? undefined;
       } catch {
-        // Not critical — fall back to wallet address
+        // Not critical — fall back to wallet address as display name
       }
 
-      // 5. Authenticate with server
+      // 3. Authenticate with server
       const authRes = await fetch("/api/auth/wallet", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ walletAddress, characterName, signature, nonce }),
+        body: JSON.stringify({ walletAddress, characterName, nonce }),
       });
 
       if (!authRes.ok) {
@@ -67,7 +55,7 @@ function VaultLoginButton({ onSuccess }: { onSuccess: (from: string) => void }) 
       }
 
       const from = searchParams.get("from") ?? "/dashboard";
-      onSuccess(from);
+      window.location.href = from;
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong");
     } finally {
@@ -135,12 +123,12 @@ function AdminLoginForm() {
   const [registrationOpen, setRegistrationOpen] = useState<boolean | null>(null);
 
   // Fetch registration status once on mount to show/hide Register tab
-  useState(() => {
-    fetch("/api/admin/settings")
+  useEffect(() => {
+    fetch("/api/settings")
       .then((r) => r.json())
       .then((d) => setRegistrationOpen(d.registrationOpen ?? true))
       .catch(() => setRegistrationOpen(true));
-  });
+  }, []);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -239,13 +227,6 @@ function AdminLoginForm() {
 }
 
 function LoginPage() {
-  const [redirect, setRedirect] = useState<string | null>(null);
-
-  if (redirect) {
-    window.location.href = redirect;
-    return null;
-  }
-
   return (
     <div className="min-h-screen bg-gray-950 flex items-center justify-center p-4">
       <div className="w-full max-w-sm space-y-6">
@@ -257,7 +238,7 @@ function LoginPage() {
         {/* EVE Vault — primary login */}
         <div className="bg-gray-900 border border-gray-800 rounded-lg p-6 space-y-4">
           <p className="text-xs text-gray-400 text-center uppercase tracking-wider">Login with EVE Vault</p>
-          <VaultLoginButton onSuccess={setRedirect} />
+          <VaultLoginButton />
         </div>
 
         {/* Divider */}
