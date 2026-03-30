@@ -113,7 +113,7 @@ async function main() {
     if (!sourceId) { console.warn(`  ⚠ Item typeId ${d.sourceTypeId} not found for decomposition`); continue; }
     const refineryName = refineryNameByTypeId.get(d.facilityTypeId) ?? String(d.facilityTypeId);
     const decomp = await prisma.decomposition.upsert({
-      where: { sourceItemId_refinery: { sourceItemId: sourceId, refinery: refineryName } },
+      where: { sourceItemId_refinery_blueprintId: { sourceItemId: sourceId, refinery: refineryName, blueprintId: d.blueprintId ?? null } },
       update: { inputQty: d.inputQty, runTime: d.runTime, blueprintId: d.blueprintId ?? null },
       create: { sourceItemId: sourceId, refinery: refineryName, inputQty: d.inputQty, runTime: d.runTime, blueprintId: d.blueprintId ?? null },
     });

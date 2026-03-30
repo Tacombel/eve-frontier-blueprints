@@ -114,7 +114,7 @@ model Decomposition {
   sourceItem Item                  @relation(fields: [sourceItemId], references: [id], onDelete: Cascade)
   outputs    DecompositionOutput[]
 
-  @@unique([sourceItemId, refinery])
+  @@unique([sourceItemId, refinery, blueprintId])
 }
 
 model DecompositionOutput {
