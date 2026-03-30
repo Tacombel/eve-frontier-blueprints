@@ -22,7 +22,7 @@ function resolveBackupDir(): string {
     mkdirSync(dir, { recursive: true });
     writeFileSync(
       resolve(dir, "test_de_backup.txt"),
-      `Fichero de prueba creado el ${new Date().toISOString()}.\nEl primer backup real se generará automáticamente a las 02:00.\n`,
+      `Test file created on ${new Date().toISOString()}.\nThe first real backup will be generated automatically at 02:00.\n`,
       "utf8"
     );
   }
@@ -58,28 +58,28 @@ export async function POST() {
 
   const configPath = resolveRemoteConfigPath();
   if (!existsSync(configPath)) {
-    return NextResponse.json({ ok: false, error: "No hay configuración remota. Configura el servidor destino primero." }, { status: 400 });
+    return NextResponse.json({ ok: false, error: "No remote configuration found. Set up the target server first." }, { status: 400 });
   }
 
   let config: RemoteConfig;
   try {
     config = JSON.parse(readFileSync(configPath, "utf8")) as RemoteConfig;
   } catch {
-    return NextResponse.json({ ok: false, error: "Error leyendo configuración remota." }, { status: 500 });
+    return NextResponse.json({ ok: false, error: "Error reading remote configuration." }, { status: 500 });
   }
 
   if (!config.host) {
-    return NextResponse.json({ ok: false, error: "No hay servidor remoto configurado." }, { status: 400 });
+    return NextResponse.json({ ok: false, error: "No remote server configured." }, { status: 400 });
   }
 
   if (!/^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+$/.test(config.host)) {
-    return NextResponse.json({ ok: false, error: "Configuración de host inválida." }, { status: 400 });
+    return NextResponse.json({ ok: false, error: "Invalid host configuration." }, { status: 400 });
   }
 
   const sshDir = resolveSSHDir();
   const keyPath = resolve(sshDir, `${appName}_backup_ed25519`);
   if (!existsSync(keyPath)) {
-    return NextResponse.json({ ok: false, error: "No hay clave SSH generada. Genera una clave primero." }, { status: 400 });
+    return NextResponse.json({ ok: false, error: "No SSH key generated. Generate a key first." }, { status: 400 });
   }
 
   const backupDir = resolveBackupDir();
@@ -97,12 +97,12 @@ export async function POST() {
   );
 
   if (result.stderr.includes("ENOENT") || result.stderr.includes("not found")) {
-    return NextResponse.json({ ok: false, error: "rsync no está disponible en este entorno." }, { status: 500 });
+    return NextResponse.json({ ok: false, error: "rsync is not available in this environment." }, { status: 500 });
   }
 
   if (result.code !== 0) {
     return NextResponse.json(
-      { ok: false, error: result.stderr || result.stdout || `rsync salió con código ${result.code}` },
+      { ok: false, error: result.stderr || result.stdout || `rsync exited with code ${result.code}` },
       { status: 500 }
     );
   }

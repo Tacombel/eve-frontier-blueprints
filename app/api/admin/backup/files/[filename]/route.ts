@@ -62,11 +62,11 @@ export async function GET(
 
   const { filename } = params;
   if (!VALID_FILENAME.test(filename)) {
-    return NextResponse.json({ error: "Nombre de archivo inválido" }, { status: 400 });
+    return NextResponse.json({ error: "Invalid filename" }, { status: 400 });
   }
 
   const backupDir = resolveBackupDir();
-  if (!backupDir) return NextResponse.json({ error: "No se encontró el directorio de backups" }, { status: 404 });
+  if (!backupDir) return NextResponse.json({ error: "Backup directory not found" }, { status: 404 });
 
   const filePath = resolve(backupDir, filename);
   let fileSize: number;
@@ -74,8 +74,8 @@ export async function GET(
     fileSize = statSync(filePath).size;
   } catch (err: unknown) {
     const code = (err as NodeJS.ErrnoException).code;
-    if (code === "ENOENT") return NextResponse.json({ error: "Backup no encontrado" }, { status: 404 });
-    return NextResponse.json({ error: "Error accediendo al backup" }, { status: 500 });
+    if (code === "ENOENT") return NextResponse.json({ error: "Backup not found" }, { status: 404 });
+    return NextResponse.json({ error: "Error accessing backup" }, { status: 500 });
   }
 
   const fileStream = createReadStream(filePath);
@@ -106,33 +106,33 @@ export async function POST(
 
   const { filename } = params;
   if (!VALID_FILENAME.test(filename)) {
-    return NextResponse.json({ error: "Nombre de archivo inválido" }, { status: 400 });
+    return NextResponse.json({ error: "Invalid filename" }, { status: 400 });
   }
 
   const backupDir = resolveBackupDir();
-  if (!backupDir) return NextResponse.json({ error: "No se encontró el directorio de backups" }, { status: 404 });
+  if (!backupDir) return NextResponse.json({ error: "Backup directory not found" }, { status: 404 });
 
   const filePath = resolve(backupDir, filename);
   let buffer: Buffer;
   try {
     buffer = readFileSync(filePath);
   } catch {
-    return NextResponse.json({ error: "Backup no encontrado" }, { status: 404 });
+    return NextResponse.json({ error: "Backup not found" }, { status: 404 });
   }
 
   const magic = buffer.slice(0, 16).toString("binary");
   if (magic !== SQLITE_MAGIC) {
-    return NextResponse.json({ error: "El archivo no es una base de datos SQLite válida" }, { status: 400 });
+    return NextResponse.json({ error: "File is not a valid SQLite database" }, { status: 400 });
   }
 
   const dbPath = resolveDbPath();
-  if (!dbPath) return NextResponse.json({ error: "No se encontró la ruta de la base de datos" }, { status: 500 });
+  if (!dbPath) return NextResponse.json({ error: "Database path not found" }, { status: 500 });
 
   const schemaCheck = validateSchema(buffer, dbPath);
   if (!schemaCheck.ok) {
-    const missing = schemaCheck.missing?.join(", ") ?? "desconocidas";
+    const missing = schemaCheck.missing?.join(", ") ?? "unknown";
     return NextResponse.json(
-      { error: `El backup no es compatible con esta versión. Tablas faltantes: ${missing}` },
+      { error: `Backup is not compatible with this version. Missing tables: ${missing}` },
       { status: 400 }
     );
   }
@@ -142,7 +142,7 @@ export async function POST(
   try {
     writeFileSync(dbPath, buffer);
   } catch {
-    return NextResponse.json({ error: "No se pudo escribir la base de datos" }, { status: 500 });
+    return NextResponse.json({ error: "Could not write database" }, { status: 500 });
   }
 
   return NextResponse.json({ ok: true });

@@ -48,9 +48,9 @@ export async function POST() {
   } catch (err: unknown) {
     const msg = err instanceof Error ? err.message : String(err);
     if (msg.includes("ENOENT") || msg.includes("not found")) {
-      return NextResponse.json({ error: "ssh-keygen no está disponible en este entorno" }, { status: 500 });
+      return NextResponse.json({ error: "ssh-keygen is not available in this environment" }, { status: 500 });
     }
-    return NextResponse.json({ error: `Error generando clave SSH: ${msg}` }, { status: 500 });
+    return NextResponse.json({ error: `Error generating SSH key: ${msg}` }, { status: 500 });
   }
 
   const publicKey = readFileSync(`${keyPath}.pub`, "utf8").trim();

@@ -56,13 +56,13 @@ export async function GET() {
   if (authError) return authError;
 
   const dbPath = resolveDbPath();
-  if (!dbPath) return NextResponse.json({ error: "No se encontró la base de datos" }, { status: 500 });
+  if (!dbPath) return NextResponse.json({ error: "Database not found" }, { status: 500 });
 
   let dbSize: number;
   try {
     dbSize = statSync(dbPath).size;
   } catch {
-    return NextResponse.json({ error: "No se puede acceder a la base de datos" }, { status: 500 });
+    return NextResponse.json({ error: "Cannot access database" }, { status: 500 });
   }
 
   const timestamp = new Date().toISOString().replace(/[:.]/g, "-").slice(0, 19);
@@ -95,31 +95,31 @@ export async function POST(req: NextRequest) {
   try {
     formData = await req.formData();
   } catch {
-    return NextResponse.json({ error: "Solicitud inválida" }, { status: 400 });
+    return NextResponse.json({ error: "Invalid request" }, { status: 400 });
   }
 
   const file = formData.get("backup");
   if (!file || !(file instanceof Blob)) {
-    return NextResponse.json({ error: "No se proporcionó el archivo" }, { status: 400 });
+    return NextResponse.json({ error: "No file provided" }, { status: 400 });
   }
   if (file.size > MAX_SIZE) {
-    return NextResponse.json({ error: "El archivo supera el límite de 100 MB" }, { status: 400 });
+    return NextResponse.json({ error: "File exceeds the 100 MB limit" }, { status: 400 });
   }
 
   const buffer = Buffer.from(await file.arrayBuffer());
   const magic = buffer.subarray(0, 16).toString("binary");
   if (magic !== SQLITE_MAGIC) {
-    return NextResponse.json({ error: "El archivo no es una base de datos SQLite válida" }, { status: 400 });
+    return NextResponse.json({ error: "File is not a valid SQLite database" }, { status: 400 });
   }
 
   const dbPath = resolveDbPath();
-  if (!dbPath) return NextResponse.json({ error: "No se encontró la ruta de la base de datos" }, { status: 500 });
+  if (!dbPath) return NextResponse.json({ error: "Database path not found" }, { status: 500 });
 
   const schemaCheck = validateSchema(buffer, dbPath);
   if (!schemaCheck.ok) {
-    const missing = schemaCheck.missing?.join(", ") ?? "desconocidas";
+    const missing = schemaCheck.missing?.join(", ") ?? "unknown";
     return NextResponse.json(
-      { error: `El backup no es compatible con esta versión. Tablas faltantes: ${missing}` },
+      { error: `Backup is not compatible with this version. Missing tables: ${missing}` },
       { status: 400 }
     );
   }
@@ -129,7 +129,7 @@ export async function POST(req: NextRequest) {
   try {
     writeFileSync(dbPath, buffer);
   } catch {
-    return NextResponse.json({ error: "No se pudo escribir la base de datos" }, { status: 500 });
+    return NextResponse.json({ error: "Could not write database" }, { status: 500 });
   }
 
   return NextResponse.json({ ok: true });

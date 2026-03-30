@@ -38,25 +38,25 @@ export async function POST(req: NextRequest) {
 
   const body = await req.json().catch(() => null);
   if (!body || typeof body.host !== "string") {
-    return NextResponse.json({ error: "host es requerido" }, { status: 400 });
+    return NextResponse.json({ error: "host is required" }, { status: 400 });
   }
 
   const host = body.host.trim();
   if (!/^[^@\s]+@[^@\s]+$/.test(host)) {
-    return NextResponse.json({ error: "Formato inválido. Usa usuario@servidor" }, { status: 400 });
+    return NextResponse.json({ error: "Invalid format. Use user@server" }, { status: 400 });
   }
 
   const rawPath = typeof body.path === "string" ? body.path.trim() : "";
   const remotePath = rawPath || `~/sync/${appName}`;
   if (remotePath.includes("..") || !/^[\w.~\-/]+$/.test(remotePath)) {
-    return NextResponse.json({ error: "Ruta remota inválida" }, { status: 400 });
+    return NextResponse.json({ error: "Invalid remote path" }, { status: 400 });
   }
 
   let port: number | null = null;
   if (body.port !== undefined && body.port !== null && body.port !== "") {
     const p = Number(body.port);
     if (!Number.isInteger(p) || p < 1 || p > 65535) {
-      return NextResponse.json({ error: "Puerto inválido (1-65535)" }, { status: 400 });
+      return NextResponse.json({ error: "Invalid port (1-65535)" }, { status: 400 });
     }
     port = p;
   }

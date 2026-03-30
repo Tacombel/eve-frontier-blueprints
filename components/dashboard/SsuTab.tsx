@@ -60,7 +60,7 @@ function ItemTable({ items, sortKey, sortDir, onSort }: {
   onSort: (k: SortKey) => void;
 }) {
   if (items.length === 0) {
-    return <p className="text-sm text-gray-500 text-center py-8">Sin items</p>;
+    return <p className="text-sm text-gray-500 text-center py-8">No items</p>;
   }
   return (
     <div className="rounded-lg border border-gray-800 overflow-hidden">
@@ -68,9 +68,9 @@ function ItemTable({ items, sortKey, sortDir, onSort }: {
         <thead>
           <tr className="bg-gray-900 text-xs text-gray-400 uppercase tracking-wider">
             <SortHeader label="Item" sortKey="name" current={sortKey} dir={sortDir} onSort={onSort} className="text-left" />
-            <SortHeader label="Grupo" sortKey="groupName" current={sortKey} dir={sortDir} onSort={onSort} className="text-left hidden sm:table-cell" />
-            <SortHeader label="Cantidad" sortKey="quantity" current={sortKey} dir={sortDir} onSort={onSort} className="text-right" />
-            <SortHeader label="Vol. total" sortKey="totalVolume" current={sortKey} dir={sortDir} onSort={onSort} className="text-right hidden sm:table-cell" />
+            <SortHeader label="Group" sortKey="groupName" current={sortKey} dir={sortDir} onSort={onSort} className="text-left hidden sm:table-cell" />
+            <SortHeader label="Quantity" sortKey="quantity" current={sortKey} dir={sortDir} onSort={onSort} className="text-right" />
+            <SortHeader label="Total vol." sortKey="totalVolume" current={sortKey} dir={sortDir} onSort={onSort} className="text-right hidden sm:table-cell" />
           </tr>
         </thead>
         <tbody className="divide-y divide-gray-800">
@@ -205,7 +205,7 @@ export default function SsuTab() {
         <div>
           <h2 className="text-xl font-bold text-gray-100">Smart Storage Units</h2>
           <p className="text-sm text-gray-500 mt-1">
-            {activeCount} de {ssus.length} SSUs incluidos en el cálculo de stock
+            {activeCount} of {ssus.length} SSUs included in stock calculation
           </p>
         </div>
         <button
@@ -218,7 +218,7 @@ export default function SsuTab() {
         </button>
       </div>
 
-      {listLoading && <p className="text-xs text-gray-500">Buscando SSUs…</p>}
+      {listLoading && <p className="text-xs text-gray-500">Looking for SSUs…</p>}
       {listError && <p className="text-xs text-red-400">{listError}</p>}
 
       {ssus.length > 0 && (
@@ -227,9 +227,9 @@ export default function SsuTab() {
             <thead>
               <tr className="bg-gray-900 text-xs text-gray-400 uppercase tracking-wider">
                 <th className="px-4 py-2 text-left">SSU</th>
-                <th className="px-4 py-2 text-center">Estado</th>
-                <th className="px-4 py-2 text-center" title="Incluir en cálculo de stock">Stock</th>
-                <th className="px-4 py-2 text-right">Inventario</th>
+                <th className="px-4 py-2 text-center">Status</th>
+                <th className="px-4 py-2 text-center" title="Include in stock calculation">Stock</th>
+                <th className="px-4 py-2 text-right">Inventory</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-800">
@@ -256,8 +256,8 @@ export default function SsuTab() {
                         onChange={() => toggleIgnored(ssu.address)}
                         title={
                           offline
-                            ? included ? "OFFLINE — excluir al volver online" : "OFFLINE — incluir al volver online"
-                            : included ? "Excluir del cálculo" : "Incluir en el cálculo"
+                            ? included ? "OFFLINE — exclude when back online" : "OFFLINE — include when back online"
+                            : included ? "Exclude from calculation" : "Include in calculation"
                         }
                       />
                     </td>
@@ -270,7 +270,7 @@ export default function SsuTab() {
                             : "border-gray-700 text-gray-400 hover:border-gray-500 hover:text-gray-300"
                         }`}
                       >
-                        {isActive ? "Cerrar" : "Ver"}
+                        {isActive ? "Close" : "View"}
                       </button>
                     </td>
                   </tr>
@@ -286,9 +286,9 @@ export default function SsuTab() {
         <div className="space-y-3">
           <div className="flex items-center justify-between">
             <h3 className="text-sm font-semibold text-gray-300">
-              Stock combinado
+              Combined stock
               {activeCount > 0 && (
-                <span className="ml-2 text-xs text-gray-500 font-normal">({activeCount} SSU activo{activeCount !== 1 ? "s" : ""})</span>
+                <span className="ml-2 text-xs text-gray-500 font-normal">({activeCount} active SSU{activeCount !== 1 ? "s" : ""})</span>
               )}
             </h3>
             {!combinedLoading && combinedItems.length > 0 && (
@@ -298,9 +298,9 @@ export default function SsuTab() {
             )}
           </div>
           {combinedLoading
-            ? <p className="text-sm text-gray-500">Cargando stock…</p>
+            ? <p className="text-sm text-gray-500">Loading stock…</p>
             : activeCount === 0
-              ? <p className="text-sm text-gray-500">No hay SSUs activos incluidos en el cálculo.</p>
+              ? <p className="text-sm text-gray-500">No active SSUs included in the calculation.</p>
               : <ItemTable items={sortedCombined} sortKey={sortKey} sortDir={sortDir} onSort={handleSort} />
           }
         </div>
@@ -309,8 +309,8 @@ export default function SsuTab() {
       {/* Individual SSU detail */}
       {selectedAddress && (
         <div className="space-y-3 border-t border-gray-800 pt-4">
-          <h3 className="text-sm font-semibold text-gray-300">Detalle SSU individual</h3>
-          {detailLoading && <p className="text-sm text-gray-500">Cargando inventario…</p>}
+          <h3 className="text-sm font-semibold text-gray-300">SSU detail</h3>
+          {detailLoading && <p className="text-sm text-gray-500">Loading inventory…</p>}
           {detailError && (
             <div className="rounded bg-red-900/40 border border-red-700 px-4 py-3 text-sm text-red-300">{detailError}</div>
           )}
@@ -328,7 +328,7 @@ export default function SsuTab() {
                 </div>
                 <div>
                   <div className="flex justify-between text-xs text-gray-500 mb-1">
-                    <span>Capacidad</span>
+                    <span>Capacity</span>
                     <span>{detailData.usedCapacity.toLocaleString()} / {detailData.maxCapacity.toLocaleString()} m³ ({detailCapacityPct}%)</span>
                   </div>
                   <div className="h-1.5 rounded-full bg-gray-800">
@@ -339,7 +339,7 @@ export default function SsuTab() {
                   </div>
                 </div>
                 <div className="text-xs text-gray-500">
-                  {detailData.items.length} tipos de item · {detailData.items.reduce((s, i) => s + i.quantity * i.volume, 0).toLocaleString()} m³ total
+                  {detailData.items.length} item types · {detailData.items.reduce((s, i) => s + i.quantity * i.volume, 0).toLocaleString()} m³ total
                 </div>
               </div>
               <ItemTable items={sortedDetailItems} sortKey={sortKey} sortDir={sortDir} onSort={handleSort} />

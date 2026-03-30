@@ -61,10 +61,10 @@ export default function AdminBackupPage() {
     try {
       const res = await fetch("/api/admin/backup/ssh-key", { method: "POST" });
       const data = await res.json().catch(() => ({}));
-      if (!res.ok) { setSshKeyError(data.error ?? "Error generando clave SSH"); return; }
+      if (!res.ok) { setSshKeyError(data.error ?? "Error generating SSH key"); return; }
       setSshPublicKey(data.publicKey);
     } catch {
-      setSshKeyError("Error de conexión");
+      setSshKeyError("Connection error");
     } finally {
       setSshKeyGenerating(false);
     }
@@ -85,13 +85,13 @@ export default function AdminBackupPage() {
       const res = await fetch("/api/admin/backup/remote", { method: "DELETE" });
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
-        setRemoteSaveError(data.error ?? "Error al desactivar");
+        setRemoteSaveError(data.error ?? "Error disabling remote sync");
         return;
       }
       setRemoteHost(""); setRemotePort(""); setRemoteLastSync(null);
       setRemoteDisableConfirming(false); setSavedRemoteHost(null); setSavedRemotePort(null);
     } catch {
-      setRemoteSaveError("Error de conexión");
+      setRemoteSaveError("Connection error");
     } finally {
       setRemoteDisabling(false);
     }
@@ -108,12 +108,12 @@ export default function AdminBackupPage() {
         body: JSON.stringify({ host: remoteHost, port: remotePort || null, path: remotePath }),
       });
       const data = await res.json().catch(() => ({}));
-      if (!res.ok) { setRemoteSaveError(data.error ?? "Error guardando configuración"); return; }
+      if (!res.ok) { setRemoteSaveError(data.error ?? "Error saving configuration"); return; }
       setRemoteSaveSuccess(true);
       setSavedRemoteHost(remoteHost.trim());
       setSavedRemotePort(remotePort.trim() || null);
     } catch {
-      setRemoteSaveError("Error de conexión");
+      setRemoteSaveError("Connection error");
     } finally {
       setRemoteSaving(false);
     }
@@ -125,12 +125,12 @@ export default function AdminBackupPage() {
     try {
       const res = await fetch("/api/admin/backup/sync", { method: "POST" });
       const data = await res.json().catch(() => ({}));
-      if (!res.ok || !data.ok) { setSyncError(data.error ?? "Error en la sincronización"); return; }
+      if (!res.ok || !data.ok) { setSyncError(data.error ?? "Sync error"); return; }
       setSyncSuccess(true);
       setSyncOutput(data.output ?? "");
       setRemoteLastSync(new Date().toISOString());
     } catch {
-      setSyncError("Error de conexión");
+      setSyncError("Connection error");
     } finally {
       setSyncing(false);
     }
@@ -177,7 +177,7 @@ export default function AdminBackupPage() {
       const res = await fetch("/api/admin/backup");
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
-        setDownloadError(data.error ?? "Error al generar el backup");
+        setDownloadError(data.error ?? "Error generating backup");
         return;
       }
       const blob = await res.blob();
@@ -190,7 +190,7 @@ export default function AdminBackupPage() {
       document.body.appendChild(a); a.click(); document.body.removeChild(a);
       URL.revokeObjectURL(url);
     } catch {
-      setDownloadError("Error de conexión");
+      setDownloadError("Connection error");
     } finally {
       setDownloadLoading(false);
     }
@@ -206,10 +206,10 @@ export default function AdminBackupPage() {
     try {
       const res = await fetch(`/api/admin/backup/files/${encodeURIComponent(filename)}`, { method: "POST" });
       const data = await res.json().catch(() => ({}));
-      if (!res.ok) { setServerRestoreError(data.error ?? "Error al restaurar"); return; }
+      if (!res.ok) { setServerRestoreError(data.error ?? "Error restoring backup"); return; }
       setServerRestoreSuccess(true); setConfirmingServerRestore(null);
     } catch {
-      setServerRestoreError("Error de conexión");
+      setServerRestoreError("Connection error");
     } finally {
       setServerRestoreLoading(false);
     }
@@ -252,11 +252,11 @@ export default function AdminBackupPage() {
       formData.append("backup", selectedFile);
       const res = await fetch("/api/admin/backup", { method: "POST", body: formData });
       const data = await res.json().catch(() => ({}));
-      if (!res.ok) { setRestoreError(data.error ?? "Error al restaurar"); return; }
+      if (!res.ok) { setRestoreError(data.error ?? "Error restoring backup"); return; }
       setRestoreSuccess(true); setSelectedFile(null); setConfirming(false);
       if (fileInputRef.current) fileInputRef.current.value = "";
     } catch {
-      setRestoreError("Error de conexión");
+      setRestoreError("Connection error");
     } finally {
       setRestoreLoading(false);
     }
@@ -264,32 +264,32 @@ export default function AdminBackupPage() {
 
   return (
     <div className="max-w-5xl space-y-4">
-      <h1 className="text-2xl font-bold text-gray-100">Copias de seguridad</h1>
+      <h1 className="text-2xl font-bold text-gray-100">Backups</h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-start">
 
-        {/* ── Columna izquierda: operaciones locales ── */}
+        {/* ── Left column: local operations ── */}
         <div className="space-y-4">
 
-          {/* Backup manual */}
+          {/* Manual backup */}
           <div className="rounded-lg border border-gray-800 bg-gray-900 p-5 space-y-3">
             <div>
-              <h2 className="text-base font-semibold text-gray-100">Backup manual</h2>
-              <p className="text-sm text-gray-500 mt-1">Descarga una copia de la base de datos en este momento.</p>
+              <h2 className="text-base font-semibold text-gray-100">Manual backup</h2>
+              <p className="text-sm text-gray-500 mt-1">Download a copy of the database right now.</p>
             </div>
             {downloadError && <p className="text-sm text-red-400">{downloadError}</p>}
             <button onClick={handleDownload} disabled={downloadLoading} className="btn-sm btn-primary disabled:opacity-50">
-              {downloadLoading ? "Generando…" : "↓ Descargar backup"}
+              {downloadLoading ? "Generating…" : "↓ Download backup"}
             </button>
           </div>
 
-          {/* Restaurar backup */}
+          {/* Restore backup */}
           <div className="rounded-lg border border-gray-800 bg-gray-900 p-5 space-y-3">
             <div>
-              <h2 className="text-base font-semibold text-gray-100">Restaurar backup</h2>
+              <h2 className="text-base font-semibold text-gray-100">Restore backup</h2>
               <p className="text-sm text-gray-500 mt-1">
-                Sube un fichero <code className="bg-gray-800 px-1 rounded text-xs">.db</code> para
-                reemplazar la base de datos actual. Esta acción es irreversible.
+                Upload a <code className="bg-gray-800 px-1 rounded text-xs">.db</code> file to
+                replace the current database. This action is irreversible.
               </p>
             </div>
 
@@ -298,7 +298,7 @@ export default function AdminBackupPage() {
               onClick={() => fileInputRef.current?.click()}
               className="btn-sm btn-ghost"
             >
-              ↑ Seleccionar archivo
+              ↑ Select file
             </button>
 
             {selectedFile && !confirming && (
@@ -307,52 +307,52 @@ export default function AdminBackupPage() {
                   {selectedFile.name} <span className="text-gray-500">({formatSize(selectedFile.size)})</span>
                 </span>
                 <button onClick={() => setConfirming(true)} className="btn-sm btn-danger shrink-0">
-                  Restaurar
+                  Restore
                 </button>
               </div>
             )}
 
             {confirming && (
               <div className="rounded border border-yellow-800 bg-yellow-900/20 p-4 space-y-3">
-                <p className="text-sm text-yellow-300 font-medium">¿Seguro que quieres restaurar este backup?</p>
+                <p className="text-sm text-yellow-300 font-medium">Are you sure you want to restore this backup?</p>
                 <p className="text-sm text-yellow-400">
-                  Se reemplazará la base de datos con <strong>{selectedFile?.name}</strong>.
-                  Todos los cambios posteriores se perderán permanentemente.
+                  The database will be replaced with <strong>{selectedFile?.name}</strong>.
+                  All subsequent changes will be permanently lost.
                 </p>
                 <div className="flex gap-2">
                   <button onClick={handleRestore} disabled={restoreLoading} className="btn-sm btn-danger disabled:opacity-50">
-                    {restoreLoading ? "Restaurando…" : "Confirmar restauración"}
+                    {restoreLoading ? "Restoring…" : "Confirm restore"}
                   </button>
                   <button onClick={() => setConfirming(false)} disabled={restoreLoading} className="btn-ghost text-sm disabled:opacity-50">
-                    Cancelar
+                    Cancel
                   </button>
                 </div>
               </div>
             )}
 
             {restoreError && <p className="text-sm text-red-400">{restoreError}</p>}
-            {restoreSuccess && <p className="text-sm text-green-400 font-medium">Backup restaurado correctamente</p>}
+            {restoreSuccess && <p className="text-sm text-green-400 font-medium">Backup restored successfully</p>}
           </div>
 
-          {/* Backups guardados */}
+          {/* Saved backups */}
           <div className="rounded-lg border border-gray-800 bg-gray-900 p-5 space-y-3">
             <div className="flex items-center justify-between">
               <div>
-                <h2 className="text-base font-semibold text-gray-100">Backups guardados</h2>
-                <p className="text-sm text-gray-500 mt-1">Copias automáticas almacenadas en el servidor.</p>
+                <h2 className="text-base font-semibold text-gray-100">Saved backups</h2>
+                <p className="text-sm text-gray-500 mt-1">Automatic copies stored on the server.</p>
               </div>
               <button onClick={loadBackups} disabled={backupsLoading} className="btn-ghost text-xs disabled:opacity-40">
-                ↻ Actualizar
+                ↻ Refresh
               </button>
             </div>
 
             {serverRestoreError && <p className="text-sm text-red-400">{serverRestoreError}</p>}
-            {serverRestoreSuccess && <p className="text-sm text-green-400 font-medium">Backup restaurado correctamente</p>}
+            {serverRestoreSuccess && <p className="text-sm text-green-400 font-medium">Backup restored successfully</p>}
 
             {backupsLoading ? (
-              <p className="text-sm text-gray-500">Cargando…</p>
+              <p className="text-sm text-gray-500">Loading…</p>
             ) : backups.length === 0 ? (
-              <p className="text-sm text-gray-500">No hay backups guardados en el servidor.</p>
+              <p className="text-sm text-gray-500">No backups found on the server.</p>
             ) : (
               <div className="space-y-2">
                 <div className="rounded border border-gray-800 overflow-hidden">
@@ -360,8 +360,8 @@ export default function AdminBackupPage() {
                     <table className="w-full text-sm">
                       <thead className="sticky top-0">
                         <tr className="bg-gray-800 border-b border-gray-700">
-                          <th className="text-left px-3 py-2 font-medium text-gray-400">Fecha</th>
-                          <th className="text-right px-3 py-2 font-medium text-gray-400">Tamaño</th>
+                          <th className="text-left px-3 py-2 font-medium text-gray-400">Date</th>
+                          <th className="text-right px-3 py-2 font-medium text-gray-400">Size</th>
                           <th className="px-3 py-2" />
                         </tr>
                       </thead>
@@ -377,14 +377,14 @@ export default function AdminBackupPage() {
                                   disabled={serverRestoreLoading}
                                   className="btn-ghost btn-danger text-xs disabled:opacity-40"
                                 >
-                                  Restaurar
+                                  Restore
                                 </button>
                                 <button
                                   onClick={() => handleDownloadFile(b.name)}
                                   disabled={downloadingFile === b.name}
                                   className="btn-ghost text-xs disabled:opacity-40"
                                 >
-                                  {downloadingFile === b.name ? "…" : "↓ Descargar"}
+                                  {downloadingFile === b.name ? "…" : "↓ Download"}
                                 </button>
                               </div>
                             </td>
@@ -397,17 +397,17 @@ export default function AdminBackupPage() {
 
                 {confirmingServerRestore && (
                   <div className="rounded border border-yellow-800 bg-yellow-900/20 p-4 space-y-3">
-                    <p className="text-sm text-yellow-300 font-medium">¿Seguro que quieres restaurar este backup?</p>
+                    <p className="text-sm text-yellow-300 font-medium">Are you sure you want to restore this backup?</p>
                     <p className="text-sm text-yellow-400">
-                      Se reemplazará la base de datos con <strong>{formatBackupName(confirmingServerRestore)}</strong>.
-                      Todos los cambios posteriores se perderán permanentemente.
+                      The database will be replaced with <strong>{formatBackupName(confirmingServerRestore)}</strong>.
+                      All subsequent changes will be permanently lost.
                     </p>
                     <div className="flex gap-2">
                       <button onClick={() => handleServerRestore(confirmingServerRestore)} disabled={serverRestoreLoading} className="btn-sm btn-danger disabled:opacity-50">
-                        {serverRestoreLoading ? "Restaurando…" : "Confirmar restauración"}
+                        {serverRestoreLoading ? "Restoring…" : "Confirm restore"}
                       </button>
                       <button onClick={() => setConfirmingServerRestore(null)} disabled={serverRestoreLoading} className="btn-ghost text-sm disabled:opacity-50">
-                        Cancelar
+                        Cancel
                       </button>
                     </div>
                   </div>
@@ -417,18 +417,18 @@ export default function AdminBackupPage() {
           </div>
         </div>
 
-        {/* ── Columna derecha: sincronización remota ── */}
+        {/* ── Right column: remote sync ── */}
         <div className="space-y-4">
 
           <div className="rounded-lg border border-gray-800 bg-gray-900 p-5 space-y-4">
-            <h2 className="text-base font-semibold text-gray-100">Sincronización remota</h2>
+            <h2 className="text-base font-semibold text-gray-100">Remote sync</h2>
 
             {/* SSH key */}
             <div className="space-y-2">
-              <h3 className="text-sm font-medium text-gray-300">Clave SSH pública</h3>
+              <h3 className="text-sm font-medium text-gray-300">Public SSH key</h3>
               {sshKeyError && <p className="text-sm text-red-400">{sshKeyError}</p>}
               {sshKeyLoading ? (
-                <p className="text-sm text-gray-500">Cargando…</p>
+                <p className="text-sm text-gray-500">Loading…</p>
               ) : sshPublicKey ? (
                 <div className="space-y-2">
                   <textarea
@@ -439,21 +439,21 @@ export default function AdminBackupPage() {
                   />
                   <div className="flex gap-2">
                     <button onClick={handleCopyKey} className="btn-ghost text-xs">
-                      {sshKeyCopied ? "✓ Copiado" : "Copiar"}
+                      {sshKeyCopied ? "✓ Copied" : "Copy"}
                     </button>
                     <button onClick={handleGenerateKey} disabled={sshKeyGenerating} className="btn-ghost text-xs disabled:opacity-50">
-                      {sshKeyGenerating ? "Generando…" : "↻ Regenerar"}
+                      {sshKeyGenerating ? "Generating…" : "↻ Regenerate"}
                     </button>
                   </div>
                   <p className="text-xs text-gray-600">
-                    Añade esta clave a <code className="bg-gray-800 px-1 rounded">~/.ssh/authorized_keys</code> del servidor remoto.
+                    Add this key to <code className="bg-gray-800 px-1 rounded">~/.ssh/authorized_keys</code> on the remote server.
                   </p>
                 </div>
               ) : (
                 <div className="space-y-2">
-                  <p className="text-sm text-gray-500">No hay clave SSH generada.</p>
+                  <p className="text-sm text-gray-500">No SSH key generated.</p>
                   <button onClick={handleGenerateKey} disabled={sshKeyGenerating} className="btn-sm btn-ghost disabled:opacity-50">
-                    {sshKeyGenerating ? "Generando…" : "Generar clave SSH"}
+                    {sshKeyGenerating ? "Generating…" : "Generate SSH key"}
                   </button>
                 </div>
               )}
@@ -461,51 +461,51 @@ export default function AdminBackupPage() {
 
             {/* Remote config */}
             <div className="space-y-2 border-t border-gray-800 pt-4">
-              <h3 className="text-sm font-medium text-gray-300">Servidor destino</h3>
+              <h3 className="text-sm font-medium text-gray-300">Target server</h3>
               {savedRemoteHost && (
                 <div className="flex items-center gap-2 px-3 py-2 rounded bg-green-900/20 border border-green-800">
-                  <span className="text-xs text-green-400 font-medium">Configurado:</span>
+                  <span className="text-xs text-green-400 font-medium">Configured:</span>
                   <code className="text-xs text-green-300 font-mono flex-1">{savedRemoteHost}:{savedRemotePort ?? "22"}</code>
                   {!remoteDisableConfirming && (
                     <button onClick={() => setRemoteDisableConfirming(true)} className="btn-ghost btn-danger text-xs">
-                      Desactivar
+                      Disable
                     </button>
                   )}
                 </div>
               )}
               {remoteLoading ? (
-                <p className="text-sm text-gray-500">Cargando…</p>
+                <p className="text-sm text-gray-500">Loading…</p>
               ) : (
                 <div className="space-y-2">
                   <div className="flex gap-2">
                     <div className="flex-1">
-                      <label className="block text-xs text-gray-500 mb-1">usuario@servidor</label>
+                      <label className="block text-xs text-gray-500 mb-1">user@server</label>
                       <input type="text" value={remoteHost} onChange={(e) => { setRemoteHost(e.target.value); setRemoteSaveSuccess(false); }} placeholder="user@host.example.com" className="input w-full" />
                     </div>
                     <div className="w-24">
-                      <label className="block text-xs text-gray-500 mb-1">Puerto SSH</label>
+                      <label className="block text-xs text-gray-500 mb-1">SSH port</label>
                       <input type="number" value={remotePort} onChange={(e) => { setRemotePort(e.target.value); setRemoteSaveSuccess(false); }} placeholder="22" min={1} max={65535} className="input w-full" />
                     </div>
                   </div>
                   <div>
-                    <label className="block text-xs text-gray-500 mb-1">Ruta remota</label>
+                    <label className="block text-xs text-gray-500 mb-1">Remote path</label>
                     <input type="text" value={remotePath} onChange={(e) => { setRemotePath(e.target.value); setRemoteSaveSuccess(false); }} placeholder="~/eve-backups" className="input w-full" />
                   </div>
                   {remoteSaveError && <p className="text-sm text-red-400">{remoteSaveError}</p>}
-                  {remoteSaveSuccess && <p className="text-sm text-green-400">Configuración guardada.</p>}
+                  {remoteSaveSuccess && <p className="text-sm text-green-400">Configuration saved.</p>}
                   <button onClick={handleSaveRemote} disabled={remoteSaving || !remoteHost.trim()} className="btn-sm btn-primary disabled:opacity-50">
-                    {remoteSaving ? "Guardando…" : "Guardar configuración"}
+                    {remoteSaving ? "Saving…" : "Save configuration"}
                   </button>
                   {remoteDisableConfirming && (
                     <div className="rounded border border-red-800 bg-red-900/20 p-3 space-y-2">
-                      <p className="text-sm text-red-300 font-medium">¿Desactivar la sincronización remota?</p>
-                      <p className="text-xs text-red-400">Se borrará la configuración del servidor destino.</p>
+                      <p className="text-sm text-red-300 font-medium">Disable remote sync?</p>
+                      <p className="text-xs text-red-400">The target server configuration will be deleted.</p>
                       <div className="flex gap-2">
                         <button onClick={handleDisableRemote} disabled={remoteDisabling} className="btn-sm btn-danger disabled:opacity-50">
-                          {remoteDisabling ? "Desactivando…" : "Confirmar"}
+                          {remoteDisabling ? "Disabling…" : "Confirm"}
                         </button>
                         <button onClick={() => setRemoteDisableConfirming(false)} disabled={remoteDisabling} className="btn-ghost text-sm disabled:opacity-50">
-                          Cancelar
+                          Cancel
                         </button>
                       </div>
                     </div>
@@ -518,24 +518,24 @@ export default function AdminBackupPage() {
             <div className="border-t border-gray-800 pt-4 space-y-2">
               <div className="flex items-center gap-3 flex-wrap">
                 <button onClick={handleSync} disabled={syncing} className="btn-sm btn-ghost disabled:opacity-50">
-                  {syncing ? "Sincronizando…" : "↻ Sincronizar ahora"}
+                  {syncing ? "Syncing…" : "↻ Sync now"}
                 </button>
                 <span className="text-xs text-gray-500">
-                  {remoteLastSync ? `Última sync: ${formatDate(remoteLastSync)}` : "Sin sincronizar"}
+                  {remoteLastSync ? `Last sync: ${formatDate(remoteLastSync)}` : "Never synced"}
                 </span>
               </div>
               {syncError && (
                 <div className="rounded border border-red-800 bg-red-900/20 p-3">
-                  <p className="text-sm text-red-400 font-medium mb-1">Error de sincronización</p>
+                  <p className="text-sm text-red-400 font-medium mb-1">Sync error</p>
                   <pre className="text-xs text-red-400 whitespace-pre-wrap overflow-auto max-h-28">{syncError}</pre>
                 </div>
               )}
               {syncSuccess && (
                 <div className="space-y-1">
-                  <p className="text-sm text-green-400 font-medium">Sincronización completada.</p>
+                  <p className="text-sm text-green-400 font-medium">Sync completed.</p>
                   {syncOutput && (
                     <details className="text-xs">
-                      <summary className="cursor-pointer text-gray-500 hover:text-gray-300">Ver output</summary>
+                      <summary className="cursor-pointer text-gray-500 hover:text-gray-300">View output</summary>
                       <pre className="mt-1 p-2 bg-gray-950 rounded text-gray-400 whitespace-pre-wrap overflow-auto max-h-36">{syncOutput}</pre>
                     </details>
                   )}
@@ -544,16 +544,16 @@ export default function AdminBackupPage() {
             </div>
           </div>
 
-          {/* Backup automático */}
+          {/* Automatic backup */}
           <div className="rounded-lg border border-gray-800 bg-gray-900 p-5 space-y-2">
-            <h2 className="text-base font-semibold text-gray-100">Backup automático (Docker)</h2>
+            <h2 className="text-base font-semibold text-gray-100">Automatic backup (Docker)</h2>
             <p className="text-sm text-gray-500">
-              Cuando la aplicación se ejecuta en Docker, se realiza automáticamente una copia
-              cada noche a las 02:00. Los backups se guardan en{" "}
-              <code className="bg-gray-800 px-1 rounded text-xs">/data/backups/</code> y
-              se conservan las últimas copias indicadas en{" "}
-              <code className="bg-gray-800 px-1 rounded text-xs">BACKUP_KEEP_COPIES</code> (por defecto: 7).
-              Si está configurada la sincronización remota, el cron también ejecuta rsync tras cada backup.
+              When running in Docker, a backup is automatically created every night at 02:00.
+              Backups are stored in{" "}
+              <code className="bg-gray-800 px-1 rounded text-xs">/data/backups/</code> and
+              the number of copies kept is set by{" "}
+              <code className="bg-gray-800 px-1 rounded text-xs">BACKUP_KEEP_COPIES</code> (default: 7).
+              If remote sync is configured, the cron job also runs rsync after each backup.
             </p>
           </div>
 

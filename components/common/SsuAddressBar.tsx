@@ -33,7 +33,7 @@ export default function SsuAddressBar({ address, onSave, onRefresh }: SsuAddress
         onChange={(e) => { setDraft(e.target.value); setJustSaved(false); }}
         onBlur={commit}
         onKeyDown={(e) => e.key === "Enter" && commit()}
-        placeholder="0x... (dirección del Smart Storage Unit)"
+        placeholder="0x... (Smart Storage Unit address)"
         className="flex-1 bg-transparent text-xs font-mono text-gray-300 placeholder-gray-600 focus:outline-none"
       />
       {justSaved && <span className="text-xs text-green-500 shrink-0">✓</span>}
