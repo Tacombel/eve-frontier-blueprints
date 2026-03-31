@@ -24,7 +24,7 @@ export async function GET(req: NextRequest, { params }: { params: { id: string }
   if (!pack) return NextResponse.json({ error: "Not found" }, { status: 404 });
   if (pack.userId !== session.userId) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   if (pack.items.length === 0) {
-    return NextResponse.json({ rawMaterials: [], intermediates: [], decompositions: [], finalProducts: [] });
+    return NextResponse.json({ rawMaterials: [], intermediates: [], decompositions: [], finalProducts: [], totalRunTime: 0 });
   }
 
   const stockMap = ssuAddressesParam

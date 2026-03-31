@@ -4,6 +4,16 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import type { CalculationResult } from "@/lib/calculator";
 import OreSection from "@/components/common/OreSection";
 
+function formatDuration(seconds: number): string {
+  if (seconds <= 0) return "0s";
+  const h = Math.floor(seconds / 3600);
+  const m = Math.floor((seconds % 3600) / 60);
+  const s = seconds % 60;
+  if (h > 0) return `${h}h ${m}m ${s}s`;
+  if (m > 0) return `${m}m ${s}s`;
+  return `${s}s`;
+}
+
 export default function BlueprintCalculation({ itemId, refreshKey = 0, ssuAddresses = [] }: { itemId: string; itemName: string; refreshKey?: number; ssuAddresses?: string[] }) {
   const ssuAddressesRef = useRef(ssuAddresses);
   useEffect(() => { ssuAddressesRef.current = ssuAddresses; }, [ssuAddresses]);
@@ -20,11 +30,21 @@ export default function BlueprintCalculation({ itemId, refreshKey = 0, ssuAddres
     if (typeof window === "undefined") return 0;
     return Number(localStorage.getItem("cargoVolume") ?? 0);
   });
+  const [miningRate, setMiningRate] = useState<number>(() => {
+    if (typeof window === "undefined") return 0;
+    return Number(localStorage.getItem("miningRate") ?? 0);
+  });
 
   function updateCargoCapacity(value: number) {
     setCargoCapacity(value);
     if (value > 0) localStorage.setItem("cargoVolume", String(value));
     else localStorage.removeItem("cargoVolume");
+  }
+
+  function updateMiningRate(value: number) {
+    setMiningRate(value);
+    if (value > 0) localStorage.setItem("miningRate", String(value));
+    else localStorage.removeItem("miningRate");
   }
 
   const quantityRef = useRef(quantity);
@@ -103,7 +123,7 @@ export default function BlueprintCalculation({ itemId, refreshKey = 0, ssuAddres
     <div className={`space-y-4 ${isRecalculating ? "opacity-60" : ""}`}>
 
       {/* Quantity selector */}
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 flex-wrap">
         <span className="text-xs text-gray-400">Units to produce:</span>
         <input
           type="number"
@@ -112,6 +132,28 @@ export default function BlueprintCalculation({ itemId, refreshKey = 0, ssuAddres
           value={quantity}
           onChange={(e) => setQuantity(Math.max(1, Number(e.target.value)))}
         />
+        {result.totalRunTime > 0 && (
+          <span className="flex items-center gap-1 text-xs text-gray-400">
+            <span>⏱ Process time:</span>
+            <span className="font-medium text-cyan-300">{formatDuration(result.totalRunTime)}</span>
+            <span
+              className="cursor-help text-gray-600 hover:text-gray-400"
+              title="Assumes sequential processing. Having multiple facilities running in parallel would reduce this time."
+            >?</span>
+          </span>
+        )}
+        {miningRate > 0 && (() => {
+          const totalVolume = (result.decompositions ?? [])
+            .filter(d => !d.isUnrefined && !d.sourceIsFound)
+            .reduce((sum, d) => sum + Math.max(0, d.unitsToDecompose - d.actualStock) * d.volumePerUnit, 0);
+          if (totalVolume <= 0) return null;
+          return (
+            <span className="flex items-center gap-1 text-xs text-gray-400">
+              <span>⛏ Mining time:</span>
+              <span className="font-medium text-cyan-300">{formatDuration(totalVolume / miningRate)}</span>
+            </span>
+          );
+        })()}
       </div>
 
       {stockSufficient && (
@@ -281,6 +323,8 @@ export default function BlueprintCalculation({ itemId, refreshKey = 0, ssuAddres
         ])}
         cargoCapacity={cargoCapacity}
         onCargoChange={updateCargoCapacity}
+        miningRate={miningRate}
+        onMiningRateChange={updateMiningRate}
         onExcludeOre={excludeOre}
       />
 

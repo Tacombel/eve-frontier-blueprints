@@ -11,7 +11,19 @@ interface OreSectionProps {
   neededIds: Set<string>;
   cargoCapacity: number;
   onCargoChange: (v: number) => void;
+  miningRate: number;
+  onMiningRateChange: (v: number) => void;
   onExcludeOre?: (id: string, name: string) => void;
+}
+
+function formatDuration(seconds: number): string {
+  if (seconds <= 0) return "0s";
+  const h = Math.floor(seconds / 3600);
+  const m = Math.floor((seconds % 3600) / 60);
+  const s = Math.floor(seconds % 60);
+  if (h > 0) return `${h}h ${m}m ${s}s`;
+  if (m > 0) return `${m}m ${s}s`;
+  return `${s}s`;
 }
 
 export default function OreSection({
@@ -20,6 +32,8 @@ export default function OreSection({
   neededIds,
   cargoCapacity,
   onCargoChange,
+  miningRate,
+  onMiningRateChange,
   onExcludeOre,
 }: OreSectionProps) {
   const [hoveredItemId, setHoveredItemId] = useState<string | null>(null);
@@ -122,6 +136,19 @@ export default function OreSection({
             onChange={(e) => onCargoChange(Math.max(0, Number(e.target.value)))}
           />
           <span className="text-gray-600">m³</span>
+        </label>
+        <label className="flex items-center gap-1.5 text-xs text-gray-500">
+          <span>Mining rate:</span>
+          <input
+            type="number"
+            min={0}
+            step={0.01}
+            placeholder="m³/s"
+            className="input w-24 text-right py-0.5 text-xs"
+            value={miningRate || ""}
+            onChange={(e) => onMiningRateChange(Math.max(0, Number(e.target.value)))}
+          />
+          <span className="text-gray-600">m³/s</span>
         </label>
       </div>
 
@@ -298,6 +325,18 @@ export default function OreSection({
             return (
               <span className="text-sm text-gray-400">
                 Total trips: <span className="text-blue-400 font-bold">{totalTrips}</span>
+              </span>
+            );
+          })()}
+          {miningRate > 0 && (() => {
+            const totalVolume = oreDecomps.reduce((sum, d) => {
+              const unitsToMine = toMineMap.get(d.sourceItemId) ?? 0;
+              return sum + unitsToMine * d.volumePerUnit;
+            }, 0);
+            const miningSeconds = totalVolume / miningRate;
+            return (
+              <span className="text-sm text-gray-400">
+                Mining time: <span className="text-cyan-300 font-bold">{formatDuration(miningSeconds)}</span>
               </span>
             );
           })()}

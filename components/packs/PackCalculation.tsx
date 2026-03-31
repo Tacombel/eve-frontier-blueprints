@@ -4,6 +4,16 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import type { CalculationResult } from "@/lib/calculator";
 import OreSection from "@/components/common/OreSection";
 
+function formatDuration(seconds: number): string {
+  if (seconds <= 0) return "0s";
+  const h = Math.floor(seconds / 3600);
+  const m = Math.floor((seconds % 3600) / 60);
+  const s = seconds % 60;
+  if (h > 0) return `${h}h ${m}m ${s}s`;
+  if (m > 0) return `${m}m ${s}s`;
+  return `${s}s`;
+}
+
 export default function PackCalculation({ packId, refreshKey = 0, ssuAddresses = [], packsCount = 1 }: { packId: string; refreshKey?: number; ssuAddresses?: string[]; packsCount?: number }) {
   const ssuAddressesRef = useRef(ssuAddresses);
   useEffect(() => { ssuAddressesRef.current = ssuAddresses; }, [ssuAddresses]);
@@ -16,11 +26,21 @@ export default function PackCalculation({ packId, refreshKey = 0, ssuAddresses =
     if (typeof window === "undefined") return 0;
     return Number(localStorage.getItem("cargoVolume") ?? 0);
   });
+  const [miningRate, setMiningRate] = useState<number>(() => {
+    if (typeof window === "undefined") return 0;
+    return Number(localStorage.getItem("miningRate") ?? 0);
+  });
 
   function updateCargoCapacity(value: number) {
     setCargoCapacity(value);
     if (value > 0) localStorage.setItem("cargoVolume", String(value));
     else localStorage.removeItem("cargoVolume");
+  }
+
+  function updateMiningRate(value: number) {
+    setMiningRate(value);
+    if (value > 0) localStorage.setItem("miningRate", String(value));
+    else localStorage.removeItem("miningRate");
   }
 
   const packsCountRef = useRef(packsCount);
@@ -94,6 +114,33 @@ export default function PackCalculation({ packId, refreshKey = 0, ssuAddresses =
 
   return (
     <div className={`mt-3 space-y-4 border-t border-gray-800 pt-4 ${isRecalculating ? "opacity-60" : ""}`}>
+
+      {(result.totalRunTime > 0 || miningRate > 0) && (
+        <div className="flex items-center gap-3 flex-wrap text-xs text-gray-400">
+          {result.totalRunTime > 0 && (
+            <span className="flex items-center gap-1">
+              <span>⏱ Process time:</span>
+              <span className="font-medium text-cyan-300">{formatDuration(result.totalRunTime)}</span>
+              <span
+                className="cursor-help text-gray-600 hover:text-gray-400"
+                title="Assumes sequential processing. Having multiple facilities running in parallel would reduce this time."
+              >?</span>
+            </span>
+          )}
+          {miningRate > 0 && (() => {
+            const totalVolume = (result.decompositions ?? [])
+              .filter(d => !d.isUnrefined && !d.sourceIsFound)
+              .reduce((sum, d) => sum + Math.max(0, d.unitsToDecompose - d.actualStock) * d.volumePerUnit, 0);
+            if (totalVolume <= 0) return null;
+            return (
+              <span className="flex items-center gap-1">
+                <span>⛏ Mining time:</span>
+                <span className="font-medium text-cyan-300">{formatDuration(totalVolume / miningRate)}</span>
+              </span>
+            );
+          })()}
+        </div>
+      )}
 
       {stockSufficient && (
         <div className="flex items-center gap-2 rounded-md bg-green-900/30 border border-green-800 px-3 py-2">
@@ -256,6 +303,8 @@ export default function PackCalculation({ packId, refreshKey = 0, ssuAddresses =
         ])}
         cargoCapacity={cargoCapacity}
         onCargoChange={updateCargoCapacity}
+        miningRate={miningRate}
+        onMiningRateChange={updateMiningRate}
       />
 
       {result.rawMaterials.length === 0 && result.intermediates.length === 0 && (

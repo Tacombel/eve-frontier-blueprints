@@ -4,56 +4,39 @@
 
 ## UX / UI
 
-- En ore to decompose indicar que los metros free son en el último viaje.
-- No poner en modo apagado los Intermediate de los que se dispone de stock.
-- Botón para ignorar el stock y ver la cantidad total de materiales.
-- Cambiar de lotes a unidades en la calculadora de blueprints.
-- Añadir número de packs en el calculador de packs.
-- Añadir número de packs en el calculador de packs.
-- Filtro para ver blueprints por factoría.
-- Decompositions debe estar antes que Blueprints en el menú.
 - En el listado de items mostrar el typeId.
 - Filtros por categorías del itemId.
-- Mover Profile a la parte de abajo del sidebar.
-- Que el mensaje legal solo aparezca la primera vez.
-- Textos en español de la página SSU.
-- Revisar textos en español (general).
-- Añadir los CUDE a la página de asteroides.
+- Mostrar nombre de personaje EVE en el header en vez de la wallet address (ver `app/dashboard/page.tsx` ~86-93).
 
 ## Features
 
 - Que los usuarios puedan marcar packs como públicos → biblioteca pública consultable.
-- Refresco del inventario desde el calculador.
-- Identificar al usuario con la EVE wallet. El login queda solo para administración.
 - Añadir cálculos de tiempo de proceso.
 - Incluir cálculo de tiempo de minado (campo mining rate).
-- Solicitudes de aprovisionamiento: el sistema presenta volúmenes totales y el proveedor selecciona cuánto suministra.
-- Estudiar distribuciones verticales para uso en un SSU.
 - Estudiar vías de optimización teniendo en cuenta las refinerías (ej: Heavy Refinery ahorra lotes a costa de menos silica).
+
+## Features (futuro)
+
+- Indicar número de facilities disponibles por tipo para calcular tiempo de proceso en paralelo.
+
+- Solicitudes de aprovisionamiento: el sistema presenta volúmenes totales y el proveedor selecciona cuánto suministra.
+- Mover los cálculos al cliente: cachear `itemMap` en el browser, ejecutar `calculate()` en un Web Worker.
 
 ## Datos / Seed
 
 - Repasar la tabla de loot. Muchas cosas están ahí por ser builds sin receta todavía.
 - Revisar etiquetas en items.
-- Confirmar que no se guarda stock en la Build.
-- Al importar, respetar los builds y sus recetas. Hay que completarlas.
-
-## Performance
-
-- Mover los cálculos al cliente: cachear `itemMap` en el browser (es estático), ejecutar `calculate()` en un Web Worker. El servidor dejaría de hacer `fetchCalcItems` en cada keypress → recálculo instantáneo, escala a cualquier número de usuarios. `lib/calculator.ts` ya es código puro sin dependencias de Node.
+- Confirmar nombres reales de Stack Slices (typeIds 89980-89989) — esperando API de EVE Frontier.
+- Confirmar nombres reales de Shell 1/2/3 (typeIds 91749, 91967, 91968) — esperando API de EVE Frontier.
 
 ## Deuda técnica / Refactor
 
 - Utilizar el typeId del item como ID único (en lugar de ID interno).
-- Eliminar toda la parte de edición UI. Se hará siempre por CLI.
-- Pasar items, asteroids, factories y refineries a admin.
-- Revisar BD y limpiar campos obsoletos.
-- La mecánica de reset password ya no hace falta.
+- Revisar BD y limpiar campos obsoletos (ej: `Item.isAsteroid`, `User.password`).
 - Ver si la parte de asteroides se puede eliminar. Alternativa: usar el grupo del material y mostrarlo directamente.
-- Ver para qué sirve game-data.json.
-- ¿La app es una SPA? Confirmar y documentar.
 - Repaso general de código.
+- `Blueprint.factory String` → `facilityTypeId Int?` y `Decomposition.refinery String` → `facilityTypeId Int?` (diferido).
 
 ## Infraestructura
 
-- Repasar la copia remota. No parece funcionar: "Error de sincronización — No se encontró el directorio de backups".
+- Repasar la copia remota. Error: "No se encontró el directorio de backups".

@@ -65,6 +65,7 @@ export interface IntermediateResult {
   toProduce: number;
   blueprintRuns: number;
   factory: string;
+  runTime?: number;
 }
 
 export interface DecompositionResult {
@@ -75,6 +76,7 @@ export interface DecompositionResult {
   volumePerUnit: number;
   inputQty: number;
   runs: number;
+  runTime?: number;
   actualStock: number;
   outputs: { itemId: string; itemName: string; quantityObtained: number }[];
   asteroids?: AsteroidInfo[];
@@ -90,6 +92,7 @@ export interface SecondaryDecompositionResult {
   unitsNeeded: number;
   inputQty: number;
   runs: number;
+  runTime?: number;
   outputs: { itemId: string; itemName: string; quantityProduced: number }[];
 }
 
@@ -117,6 +120,7 @@ export interface CalculationResult {
   secondaryDecompositions: SecondaryDecompositionResult[];
   finalProducts: FinalProductResult[];
   warnings?: CalculationWarning[];
+  totalRunTime: number;
 }
 
 type ItemMap = Map<string, CalcItem>;
@@ -272,6 +276,7 @@ export function calculate(
         toProduce: needed,
         blueprintRuns: runs,
         factory: factoryMap.get(itemId) ?? blueprint.factory,
+        runTime: blueprint.runTime,
       });
     }
     // Secondary refinery products (items with producedBy but no blueprint) are shown
@@ -319,6 +324,7 @@ export function calculate(
       unitsNeeded: runs * decomp.inputQty,
       inputQty: decomp.inputQty,
       runs,
+      runTime: decomp.runTime,
       outputs: decomp.outputs.map((o) => ({
         itemId: o.itemId,
         itemName: itemMap.get(o.itemId)?.name ?? o.itemId,
@@ -558,6 +564,7 @@ export function calculate(
       volumePerUnit: source.volume,
       inputQty: dec.inputQty,
       runs,
+      runTime: dec.runTime,
       actualStock: source.stock,
       sourceIsFound: source.isFound,
       outputs: dec.outputs.map((o) => {
@@ -630,7 +637,12 @@ export function calculate(
     }
   }
 
-  return { rawMaterials, intermediates, decompositions, secondaryDecompositions, finalProducts: [], warnings: warnings.length ? warnings : undefined };
+  const totalRunTime =
+    intermediates.reduce((sum, r) => sum + r.blueprintRuns * (r.runTime ?? 0), 0) +
+    decompositions.reduce((sum, r) => sum + r.runs * (r.runTime ?? 0), 0) +
+    secondaryDecompositions.reduce((sum, r) => sum + r.runs * (r.runTime ?? 0), 0);
+
+  return { rawMaterials, intermediates, decompositions, secondaryDecompositions, finalProducts: [], warnings: warnings.length ? warnings : undefined, totalRunTime };
 }
 
 export function buildItemMap(items: CalcItem[]): ItemMap {

@@ -28,9 +28,13 @@ export default function DashboardPage() {
   const [role, setRole] = useState<string | null>(null);
   const [authLoading, setAuthLoading] = useState(true);
   const [apiStatus, setApiStatus] = useState<"green" | "yellow" | "red" | null>(null);
+  const [incidents24h, setIncidents24h] = useState(0);
 
   useEffect(() => {
-    const fetchStatus = () => fetch("/api/status").then((r) => r.json()).then((d) => setApiStatus(d.status)).catch(() => setApiStatus("red"));
+    const fetchStatus = () => fetch("/api/status").then((r) => r.json()).then((d) => {
+      setApiStatus(d.status);
+      setIncidents24h(d.incidents24h ?? 0);
+    }).catch(() => setApiStatus("red"));
     fetchStatus();
     const id = setInterval(fetchStatus, 30_000);
     return () => clearInterval(id);
@@ -105,9 +109,15 @@ export default function DashboardPage() {
           {(role === "ADMIN" || role === "SUPERADMIN") && (
             <Link
               href="/admin"
-              className="px-4 py-2 text-sm font-medium text-gray-400 hover:text-gray-100 hover:bg-gray-800/30 rounded transition-colors"
+              className="relative px-4 py-2 text-sm font-medium text-gray-400 hover:text-gray-100 hover:bg-gray-800/30 rounded transition-colors"
+              title={incidents24h > 0 ? `${incidents24h} API incident(s) in the last 24h` : undefined}
             >
               ⚙️ Admin
+              {incidents24h > 0 && (
+                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center leading-none">
+                  {incidents24h > 9 ? "9+" : incidents24h}
+                </span>
+              )}
             </Link>
           )}
 

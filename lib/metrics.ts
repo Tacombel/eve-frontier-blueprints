@@ -7,6 +7,17 @@ interface Sample {
 const BUFFER_SIZE = 200;
 const store = new Map<string, Sample[]>();
 
+const incidents: number[] = [];
+
+export function recordIncident() {
+  incidents.push(Date.now());
+}
+
+export function getIncidentCount(hours = 24): number {
+  const cutoff = Date.now() - hours * 60 * 60 * 1000;
+  return incidents.filter((ts) => ts > cutoff).length;
+}
+
 export function recordRequest(endpoint: string, ms: number, ok: boolean) {
   const samples = store.get(endpoint) ?? [];
   samples.push({ ts: Date.now(), ms, ok });

@@ -8,13 +8,13 @@ export default function LegalModal() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    if (!sessionStorage.getItem(STORAGE_KEY)) {
+    if (!localStorage.getItem(STORAGE_KEY)) {
       setVisible(true);
     }
   }, []);
 
   function accept() {
-    sessionStorage.setItem(STORAGE_KEY, "1");
+    localStorage.setItem(STORAGE_KEY, "1");
     setVisible(false);
   }
 

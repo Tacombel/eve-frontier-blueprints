@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getMetrics } from "@/lib/metrics";
+import { getMetrics, recordIncident, getIncidentCount } from "@/lib/metrics";
 
 export async function GET() {
   const metrics = getMetrics();
@@ -19,5 +19,7 @@ export async function GET() {
   else if (maxP95 > 2000 || errorRate > 0.05) status = "yellow";
   else status = "green";
 
-  return NextResponse.json({ status, p95: maxP95 });
+  if (status !== "green") recordIncident();
+
+  return NextResponse.json({ status, p95: maxP95, incidents24h: getIncidentCount(24) });
 }
