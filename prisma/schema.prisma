@@ -31,7 +31,6 @@ model Item {
 
   blueprints           Blueprint[]
   usedAsInput          BlueprintInput[]
-  stocks               Stock[]
   packItems            PackItem[]
   decompositions       Decomposition[]
   decompositionOutputs DecompositionOutput[]
@@ -78,26 +77,12 @@ model User {
   ssuAddress    String?
   createdAt     DateTime @default(now())
 
-  stocks Stock[]
   packs  Pack[]
 }
 
 model Settings {
   id               String  @id @default("global")
   registrationOpen Boolean @default(true)
-}
-
-model Stock {
-  id        String   @id @default(cuid())
-  itemId    String
-  userId    String
-  quantity  Int      @default(0)
-  updatedAt DateTime @updatedAt
-
-  item Item @relation(fields: [itemId], references: [id], onDelete: Cascade)
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@unique([itemId, userId])
 }
 
 // 1 unit of sourceItem → multiple output materials (reprocessing/decomposition)

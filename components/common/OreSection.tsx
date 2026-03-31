@@ -252,8 +252,8 @@ export default function OreSection({
                         <span className="text-xs text-gray-500">{op.totalVolume.toFixed(2)} m³</span>
                       )}
                       {op && op.spare > 0 && toMine > 0 && (
-                        <span className={`text-xs ${op.spare >= cargoCapacity * 0.75 ? "text-yellow-500" : "text-gray-600"}`}>
-                          {op.spare.toFixed(2)} m³ free
+                        <span className="text-xs text-gray-600">
+                          {op.spare.toFixed(2)} m³ free in last trip
                         </span>
                       )}
                     </div>

@@ -9,7 +9,6 @@ export default function BlueprintCalculation({ itemId, refreshKey = 0, ssuAddres
   useEffect(() => { ssuAddressesRef.current = ssuAddresses; }, [ssuAddresses]);
 
   const [quantity, setQuantity] = useState(1);
-  const [pendingQty, setPendingQty] = useState(1);
   const [result, setResult] = useState<CalculationResult | null>(null);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
@@ -65,12 +64,12 @@ export default function BlueprintCalculation({ itemId, refreshKey = 0, ssuAddres
   useEffect(() => { load(); }, [load]);
   useEffect(() => { if (result !== null && refreshKey > 0) load(true); }, [refreshKey]); // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => { if (result !== null) load(true); }, [ssuAddresses]); // eslint-disable-line react-hooks/exhaustive-deps
-
-  function applyQuantity() {
-    quantityRef.current = pendingQty;
-    setQuantity(pendingQty);
-    load(true);
-  }
+  useEffect(() => {
+    quantityRef.current = quantity;
+    if (result === null) return;
+    const t = setTimeout(() => load(true), 400);
+    return () => clearTimeout(t);
+  }, [quantity]); // eslint-disable-line react-hooks/exhaustive-deps
 
   function excludeOre(oreId: string, oreName: string) {
     const next = new Set(excludedOreIdsRef.current);
@@ -110,15 +109,9 @@ export default function BlueprintCalculation({ itemId, refreshKey = 0, ssuAddres
           type="number"
           min={1}
           className="input w-20 text-right py-0.5 text-xs"
-          value={pendingQty}
-          onChange={(e) => setPendingQty(Math.max(1, Number(e.target.value)))}
-          onKeyDown={(e) => e.key === "Enter" && applyQuantity()}
+          value={quantity}
+          onChange={(e) => setQuantity(Math.max(1, Number(e.target.value)))}
         />
-        {pendingQty !== quantity && (
-          <button onClick={applyQuantity} className="btn-sm btn-primary">
-            Recalculate
-          </button>
-        )}
       </div>
 
       {stockSufficient && (
@@ -190,8 +183,8 @@ export default function BlueprintCalculation({ itemId, refreshKey = 0, ssuAddres
             </thead>
             <tbody>
               {result.intermediates.map((row) => (
-                <tr key={row.itemId} className={`border-b border-gray-800/40 ${row.toProduce === 0 ? "opacity-50" : ""}`}>
-                  <td className={`py-1 pr-4 ${row.toProduce === 0 ? "text-gray-400" : "text-gray-200"}`}>
+                <tr key={row.itemId} className="border-b border-gray-800/40">
+                  <td className="py-1 pr-4 text-gray-200">
                     <span>{row.itemName}</span>
                     {row.factory && <span className="badge badge-blue ml-1.5">{row.factory}</span>}
                   </td>

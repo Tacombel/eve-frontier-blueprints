@@ -1,51 +1,59 @@
-Que los usuarios puedan marcar packs como publicos para que se genere una biblioteca que el resto de gente pueda consultar.
-Repasar la copia remota. No parece funcionar. Dice Error de sincronización No se encontró el directorio de backups.
-Ver para que sirve game-data.json
-REfresco del inventario desde calculador
-Utilizar el numero del item como Id unico
-Al importar hay que acordarse de respetar los build y sus recetas. Hay que completarlas.
-Ver si la parte de asteroides se puede eliminar. Una posibilidad es utilizar el grupo de los materiales y sencillamente mostrar eso.
-Textos en español de la página SSU.
-Mover Profile a la parte de abajo
-Identificar al usuario con la EVE wallet. El login quedará solo para administracion.
-En ore to decompose indicar que los metros free son en el último viaje.
-Quitar de admin lo de fix capitalization
-Repaso general de codigo.
-¿La app es una SPA?
-Repasar la tabla de loot. Hay muchas cosas que estan ahí por que son buils sin receta todavia
-Las operaiones de concentracion en refineria no parecen salir en decompositions. Investigar
-Elimianr toda la parte de edicion. Lo haremos siempre por CLI
-Poner numero de packs en la sidebar
-REvisar etiquetas etiquetas en items
-Añadir calculos de tiempo de proceso
-Cuando afrontemos la parte de solicitudes de aprovisionamiento, hacer que el sistema presente volumenes totales y entonces el proveedor seleccionara la cantidad del volumen qu equiero sumninistrar.
-Añadir los cude a la pagina de asteroides
-Filtro para ver los blueprints por factoria
-DEcompositions debe estar antes de blueprints
-La Heavy refinery muestra 0 descompositions ¿Correcto?
-→ RESUELTO: 21 decompositions importadas. Pendiente: decidir cuáles deben ser isDefault=true (las 14 compartidas con Refinery usan la de Refinery por defecto; las 7 exclusivas se usan siempre al ser las únicas)
-En el listado de items mostrar el typeId
-No poner en modo apagado los Intermediate que se dispone de stock
-Filtros por categorias del itemId
-Boton para ignorar el stock y poder ver la cantidad total de materiales
-Cambiar de lotes a unidades en la calculadora de los blueprints
-Añadir numero de packs en el calculador de packs
-Pasar items, asteroids, factories y refineries a admin
-Estudiar distribuciones verticales para uso en un SSU
-Revisar textos en español
-Confirmar que no se guarda stock en la build
-El healthchek apunta a blueprints
-Si se cierra la sesion va la la pantalla login. Debe ir a l SPA
-Si no hay usuario logeado la pagina packs aparece vacia.
-Sin usuario logeado, la SSU muestra Unauthorized. DEbe funcionar aunque no se guarde la direccion
-REvisar BD y limpiar campos obsoletos
-Errores deprecated durant el build
-Que el mensaje legal solo aparezca la primera vez.
-Al hacer hover sobre la address sale change password
-La mecanica de reset password ya no hace falta
-La pantalla para meter el PN sale varias verticales
-Falta boton recargar stock
-Si miras en el BP hacer 120 foam, aparce un envio de 27 unidades de feldspar, y no hace optimizacion. Supongo qu ees porque hauy que recolocar dos raw. Hydro-->Hydrated y Silica-->Platinum
-Estudiar vias de optimizacion teniendo en cuenta las refinerias. Por ejemplo, si lo unico importante es el palladium, usar la heavy refinery ahorra trabajo al poder refinar todo en menos lotes, a costa de obtener menos silica.
-Incluir calculos de tiempo. Meter un campo para el mining rate, qu estime el tiempo de minado.
-El carbon weave tiene dos blueprints de Field printer.
+## Bugs / Fixes urgentes
+
+- Errores deprecated durante el build.
+
+## UX / UI
+
+- En ore to decompose indicar que los metros free son en el último viaje.
+- No poner en modo apagado los Intermediate de los que se dispone de stock.
+- Botón para ignorar el stock y ver la cantidad total de materiales.
+- Cambiar de lotes a unidades en la calculadora de blueprints.
+- Añadir número de packs en el calculador de packs.
+- Añadir número de packs en el calculador de packs.
+- Filtro para ver blueprints por factoría.
+- Decompositions debe estar antes que Blueprints en el menú.
+- En el listado de items mostrar el typeId.
+- Filtros por categorías del itemId.
+- Mover Profile a la parte de abajo del sidebar.
+- Que el mensaje legal solo aparezca la primera vez.
+- Textos en español de la página SSU.
+- Revisar textos en español (general).
+- Añadir los CUDE a la página de asteroides.
+
+## Features
+
+- Que los usuarios puedan marcar packs como públicos → biblioteca pública consultable.
+- Refresco del inventario desde el calculador.
+- Identificar al usuario con la EVE wallet. El login queda solo para administración.
+- Añadir cálculos de tiempo de proceso.
+- Incluir cálculo de tiempo de minado (campo mining rate).
+- Solicitudes de aprovisionamiento: el sistema presenta volúmenes totales y el proveedor selecciona cuánto suministra.
+- Estudiar distribuciones verticales para uso en un SSU.
+- Estudiar vías de optimización teniendo en cuenta las refinerías (ej: Heavy Refinery ahorra lotes a costa de menos silica).
+
+## Datos / Seed
+
+- Repasar la tabla de loot. Muchas cosas están ahí por ser builds sin receta todavía.
+- Revisar etiquetas en items.
+- Confirmar que no se guarda stock en la Build.
+- Al importar, respetar los builds y sus recetas. Hay que completarlas.
+
+## Performance
+
+- Mover los cálculos al cliente: cachear `itemMap` en el browser (es estático), ejecutar `calculate()` en un Web Worker. El servidor dejaría de hacer `fetchCalcItems` en cada keypress → recálculo instantáneo, escala a cualquier número de usuarios. `lib/calculator.ts` ya es código puro sin dependencias de Node.
+
+## Deuda técnica / Refactor
+
+- Utilizar el typeId del item como ID único (en lugar de ID interno).
+- Eliminar toda la parte de edición UI. Se hará siempre por CLI.
+- Pasar items, asteroids, factories y refineries a admin.
+- Revisar BD y limpiar campos obsoletos.
+- La mecánica de reset password ya no hace falta.
+- Ver si la parte de asteroides se puede eliminar. Alternativa: usar el grupo del material y mostrarlo directamente.
+- Ver para qué sirve game-data.json.
+- ¿La app es una SPA? Confirmar y documentar.
+- Repaso general de código.
+
+## Infraestructura
+
+- Repasar la copia remota. No parece funcionar: "Error de sincronización — No se encontró el directorio de backups".

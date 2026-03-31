@@ -27,6 +27,14 @@ export default function DashboardPage() {
   const [username, setUsername] = useState<string | null>(null);
   const [role, setRole] = useState<string | null>(null);
   const [authLoading, setAuthLoading] = useState(true);
+  const [apiStatus, setApiStatus] = useState<"green" | "yellow" | "red" | null>(null);
+
+  useEffect(() => {
+    const fetchStatus = () => fetch("/api/status").then((r) => r.json()).then((d) => setApiStatus(d.status)).catch(() => setApiStatus("red"));
+    fetchStatus();
+    const id = setInterval(fetchStatus, 30_000);
+    return () => clearInterval(id);
+  }, []);
 
   useEffect(() => {
     fetch("/api/auth/me")
@@ -53,9 +61,24 @@ export default function DashboardPage() {
   return (
     <div className="flex flex-col h-full -mx-6 -my-6">
       {/* App header */}
-      <div className="px-6 py-3 bg-gray-950 border-b border-gray-800 flex-shrink-0 flex items-center justify-center gap-3">
+      <div className="px-6 py-3 bg-gray-950 border-b border-gray-800 flex-shrink-0 flex items-center justify-center gap-3 relative">
         <Image src="/EF-Industry.png" alt="EF Industry" width={36} height={36} className="rounded-lg" />
         <h1 className="text-lg font-bold text-cyan-400 tracking-wide">EF Industry</h1>
+        {apiStatus && (
+          <span
+            className="absolute right-4 flex items-center gap-1.5"
+            title={apiStatus === "green" ? "API operational" : apiStatus === "yellow" ? "API degraded" : "API slow or errors"}
+          >
+            <span className={`inline-block w-2 h-2 rounded-full ${
+              apiStatus === "green" ? "bg-green-400" : apiStatus === "yellow" ? "bg-yellow-400" : "bg-red-400"
+            }`} />
+            <span className={`text-xs ${
+              apiStatus === "green" ? "text-green-600" : apiStatus === "yellow" ? "text-yellow-500" : "text-red-400"
+            }`}>
+              {apiStatus === "green" ? "API ok" : apiStatus === "yellow" ? "API slow" : "API err"}
+            </span>
+          </span>
+        )}
       </div>
 
       {/* Tab buttons bar */}

@@ -8,7 +8,6 @@ export async function GET(_req: NextRequest, { params }: { params: { id: string 
   const item = await prisma.item.findUnique({
     where: { id: params.id },
     include: {
-      stocks: true,
       blueprints: { include: { inputs: { include: { item: true } } } },
     },
   });
@@ -35,7 +34,6 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
       ...(isFinalProduct !== undefined && { isFinalProduct }),
       ...(volume !== undefined && { volume }),
     },
-    include: { stocks: true, blueprints: { select: { id: true, factory: true, outputQty: true, isDefault: true } } },
   });
 
   return NextResponse.json(item);

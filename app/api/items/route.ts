@@ -17,7 +17,6 @@ export async function GET(req: NextRequest) {
       isFinalProduct: isFinalProduct !== null ? isFinalProduct === "true" : undefined,
     },
     include: {
-      stocks: true,
       blueprints: { select: { id: true, factory: true, outputQty: true, isDefault: true } },
       decompositions: { select: { id: true, refinery: true, inputQty: true, isDefault: true, outputs: { select: { itemId: true, quantity: true } } } },
     },
@@ -43,7 +42,6 @@ export async function POST(req: NextRequest) {
   const item = await prisma.item.create({
     data: { name: normalizeName(name), isRawMaterial, isFound, isFinalProduct, volume },
     include: {
-      stocks: true,
       blueprints: { select: { id: true, factory: true, outputQty: true, isDefault: true } },
       decompositions: { select: { id: true, refinery: true, inputQty: true, isDefault: true, outputs: { select: { itemId: true, quantity: true } } } },
     },

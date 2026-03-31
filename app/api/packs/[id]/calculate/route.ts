@@ -4,14 +4,17 @@ import { calculate, buildItemMap } from "@/lib/calculator";
 import { fetchCalcItems, enrichAsteroids } from "@/lib/calc-helpers";
 import { fetchUserStockMap, fetchStockMapFromAddresses } from "@/lib/sui";
 import { getSession } from "@/lib/auth";
+import { recordRequest } from "@/lib/metrics";
 
 export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
+  const t0 = Date.now();
   const session = await getSession();
   if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const ignoreParam = req.nextUrl.searchParams.get("ignore");
   const ignoredIds = new Set(ignoreParam ? ignoreParam.split(",").filter(Boolean) : []);
   const ssuAddressesParam = req.nextUrl.searchParams.get("ssuAddresses");
+  const packsCount = Math.max(1, Number(req.nextUrl.searchParams.get("packs") ?? "1") || 1);
 
   const pack = await prisma.pack.findUnique({
     where: { id: params.id },
@@ -33,7 +36,7 @@ export async function GET(req: NextRequest, { params }: { params: { id: string }
     const packItemIds = new Set(pack.items.map((pi) => pi.itemId));
     const activeItems = pack.items.filter((pi) => !ignoredIds.has(pi.itemId));
     const result = calculate(
-      activeItems.map((pi) => ({ itemId: pi.itemId, quantity: pi.quantity })),
+      activeItems.map((pi) => ({ itemId: pi.itemId, quantity: pi.quantity * packsCount })),
       itemMap
     );
 
@@ -42,12 +45,13 @@ export async function GET(req: NextRequest, { params }: { params: { id: string }
       const item = itemMap.get(pi.itemId);
       const blueprint = item?.blueprints.find((b) => b.isDefault) ?? item?.blueprints[0];
       const outputQty = blueprint?.outputQty ?? 1;
+      const totalQty = pi.quantity * packsCount;
       return {
         itemId: pi.itemId,
         itemName: item?.name ?? pi.itemId,
-        quantityNeeded: pi.quantity,
+        quantityNeeded: totalQty,
         outputQty,
-        blueprintRuns: Math.ceil(pi.quantity / outputQty),
+        blueprintRuns: Math.ceil(totalQty / outputQty),
         actualStock: item?.stock ?? 0,
         factory: blueprint?.factory || undefined,
         ignored: ignoredIds.has(pi.itemId),
@@ -56,8 +60,10 @@ export async function GET(req: NextRequest, { params }: { params: { id: string }
 
     await enrichAsteroids(result);
 
+    recordRequest("packs/calculate", Date.now() - t0, true);
     return NextResponse.json(result);
   } catch (err: unknown) {
+    recordRequest("packs/calculate", Date.now() - t0, false);
     const message = err instanceof Error ? err.message : "Calculation error";
     return NextResponse.json({ error: message }, { status: 422 });
   }

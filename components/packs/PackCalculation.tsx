@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import type { CalculationResult } from "@/lib/calculator";
 import OreSection from "@/components/common/OreSection";
 
-export default function PackCalculation({ packId, refreshKey = 0, ssuAddresses = [] }: { packId: string; refreshKey?: number; ssuAddresses?: string[] }) {
+export default function PackCalculation({ packId, refreshKey = 0, ssuAddresses = [], packsCount = 1 }: { packId: string; refreshKey?: number; ssuAddresses?: string[]; packsCount?: number }) {
   const ssuAddressesRef = useRef(ssuAddresses);
   useEffect(() => { ssuAddressesRef.current = ssuAddresses; }, [ssuAddresses]);
 
@@ -23,6 +23,8 @@ export default function PackCalculation({ packId, refreshKey = 0, ssuAddresses =
     else localStorage.removeItem("cargoVolume");
   }
 
+  const packsCountRef = useRef(packsCount);
+
   const [ignoredItems, setIgnoredItems] = useState<Set<string>>(new Set());
   const ignoredRef = useRef(ignoredItems);
 
@@ -34,6 +36,7 @@ export default function PackCalculation({ packId, refreshKey = 0, ssuAddresses =
     const params = new URLSearchParams();
     if (ignored.size > 0) params.set("ignore", [...ignored].join(","));
     if (ssuAddressesRef.current.length > 0) params.set("ssuAddresses", ssuAddressesRef.current.join(","));
+    if (packsCountRef.current > 1) params.set("packs", String(packsCountRef.current));
     const query = params.toString() ? `?${params.toString()}` : "";
     fetch(`/api/packs/${packId}/calculate${query}`)
       .then((r) => r.json())
@@ -72,6 +75,12 @@ export default function PackCalculation({ packId, refreshKey = 0, ssuAddresses =
 
   useEffect(() => { if (result !== null && refreshKey > 0) load(true); }, [refreshKey]); // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => { if (result !== null) load(true); }, [ssuAddresses]); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    packsCountRef.current = packsCount;
+    if (result === null) return;
+    const t = setTimeout(() => load(true), 400);
+    return () => clearTimeout(t);
+  }, [packsCount]); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (loading) return <p className="text-gray-500 text-sm">Calculating…</p>;
   if (error) return <p className="text-red-400 text-sm">Error: {error}</p>;
@@ -177,8 +186,8 @@ export default function PackCalculation({ packId, refreshKey = 0, ssuAddresses =
             </thead>
             <tbody>
               {result.intermediates.map((row) => (
-                <tr key={row.itemId} className={`border-b border-gray-800/40 ${row.toProduce === 0 ? "opacity-50" : ""}`}>
-                  <td className={`py-1 pr-4 ${row.toProduce === 0 ? "text-gray-400" : "text-gray-200"}`}>
+                <tr key={row.itemId} className="border-b border-gray-800/40">
+                  <td className="py-1 pr-4 text-gray-200">
                     <span>{row.itemName}</span>
                     {row.factory && <span className="badge badge-blue ml-1.5">{row.factory}</span>}
                   </td>

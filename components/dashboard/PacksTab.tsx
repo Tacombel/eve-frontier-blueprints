@@ -30,6 +30,7 @@ export default function PacksTab() {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
   const [calcPackId, setCalcPackId] = useState<string | null>(null);
+  const [packsCount, setPacksCount] = useState(1);
   const [search, setSearch] = useState("");
   const [showImport, setShowImport] = useState(false);
   const [refreshKey, setRefreshKey] = useState(0);
@@ -152,9 +153,24 @@ export default function PacksTab() {
           {filtered.map((pack) => (
             <div key={pack.id} className="rounded-lg border border-gray-800 bg-gray-900 p-4">
               <div className="flex items-start justify-between gap-4 mb-3">
-                <div>
-                  <h3 className="font-semibold text-gray-100">{pack.name}</h3>
-                  {pack.description && <p className="text-sm text-gray-500 mt-0.5">{pack.description}</p>}
+                <div className="flex items-center gap-3 flex-1 min-w-0">
+                  <div>
+                    <h3 className="font-semibold text-gray-100">{pack.name}</h3>
+                    {pack.description && <p className="text-sm text-gray-500 mt-0.5">{pack.description}</p>}
+                  </div>
+                  {calcPackId === pack.id && (
+                    <label className="flex items-center gap-1.5 text-xs text-gray-500 shrink-0">
+                      <span>Packs:</span>
+                      <input
+                        type="number"
+                        min={1}
+                        step={1}
+                        className="input w-16 text-right py-0.5 text-xs"
+                        value={packsCount}
+                        onChange={(e) => setPacksCount(Math.max(1, Math.floor(Number(e.target.value) || 1)))}
+                      />
+                    </label>
+                  )}
                 </div>
                 {(() => {
                     const missing = pack.items.filter((pi) => !pi.item.isRawMaterial && !pi.item.isFound && pi.item.blueprints.length === 0);
@@ -167,7 +183,7 @@ export default function PacksTab() {
                   })()}
                 <div className="flex gap-2 shrink-0">
                   <button
-                    onClick={() => setCalcPackId(calcPackId === pack.id ? null : pack.id)}
+                    onClick={() => { setCalcPackId(calcPackId === pack.id ? null : pack.id); setPacksCount(1); }}
                     className={`btn-sm ${calcPackId === pack.id ? "btn-primary" : ""}`}
                   >
                     {calcPackId === pack.id ? "Hide Calc" : "Calculate"}
@@ -177,7 +193,7 @@ export default function PacksTab() {
                 </div>
               </div>
 
-              {calcPackId === pack.id && <PackCalculation packId={pack.id} refreshKey={refreshKey} ssuAddresses={ssuAddresses} />}
+              {calcPackId === pack.id && <PackCalculation packId={pack.id} refreshKey={refreshKey} ssuAddresses={ssuAddresses} packsCount={packsCount} />}
             </div>
           ))}
         </div>

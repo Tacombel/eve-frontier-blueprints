@@ -10,7 +10,6 @@ interface ItemData {
   isFinalProduct: boolean;
   isAsteroid: boolean;
   volume: number;
-  stock: { quantity: number } | null;
   blueprints: { id: string; factory: string; outputQty: number; isDefault: boolean }[];
 }
 
@@ -151,7 +150,6 @@ export default function ItemsPage() {
               <th className="pb-2 pr-3">Name</th>
               <th className="pb-2 pr-3">Type</th>
               <th className="pb-2 pr-3 text-right">Volume</th>
-              <th className="pb-2 pr-3">Stock</th>
               <th className="pb-2 pr-3">Recipes</th>
             </tr>
           </thead>
@@ -170,7 +168,6 @@ export default function ItemsPage() {
                 <td className="py-1 pr-3 text-right text-gray-400 whitespace-nowrap">
                   {item.volume > 0 ? <span>{item.volume} m³</span> : <span className="text-gray-600">—</span>}
                 </td>
-                <td className="py-1 pr-3 text-gray-400 whitespace-nowrap">{item.stock?.quantity ?? 0}</td>
                 <td className="py-1 pr-3 text-xs whitespace-nowrap overflow-hidden">
                   {(() => {
                     if (item.isRawMaterial || item.isAsteroid) {

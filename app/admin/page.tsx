@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useEffect, useMemo, useState } from "react";
+import { Fragment, useCallback, useEffect, useMemo, useState } from "react";
 import { useSession } from "@/hooks/useSession";
 
 interface User {
@@ -118,6 +118,14 @@ export default function AdminPage() {
     setResetCopied(true);
   }
 
+  // Metrics
+  type EndpointMetrics = { total: number; rpm: number; errors: number; p50: number; p95: number; lastMs: number };
+  const [metrics, setMetrics] = useState<Record<string, EndpointMetrics> | null>(null);
+  const loadMetrics = useCallback(() => {
+    fetch("/api/admin/metrics").then((r) => r.ok ? r.json() : null).then((d) => d && setMetrics(d)).catch(() => {});
+  }, []);
+  useEffect(() => { loadMetrics(); const id = setInterval(loadMetrics, 10_000); return () => clearInterval(id); }, [loadMetrics]);
+
   const selfId = useMemo(
     () => users.find((x) => x.username === me?.username)?.id,
     [users, me]
@@ -158,6 +166,57 @@ export default function AdminPage() {
               : "Closed — registration disabled"}
           </span>
         </div>
+      </div>
+
+      {/* Metrics */}
+      <div className="rounded-lg border border-gray-800 bg-gray-900 p-6">
+        <div className="flex items-center justify-between mb-4">
+          <div>
+            <h2 className="text-base font-semibold text-gray-100">Calculation metrics</h2>
+            <p className="text-xs text-gray-500 mt-0.5">Last 200 requests per endpoint. Resets on server restart. Updates every 10s.</p>
+          </div>
+          <button onClick={loadMetrics} className="btn-sm btn-secondary">↻</button>
+        </div>
+        {!metrics || Object.keys(metrics).length === 0 ? (
+          <p className="text-sm text-gray-500">No data yet — make a calculation to start tracking.</p>
+        ) : (
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="text-gray-500 border-b border-gray-800 text-left">
+                <th className="pb-2 pr-4">Endpoint</th>
+                <th className="pb-2 pr-4 text-right">Total</th>
+                <th className="pb-2 pr-4 text-right">Req/min</th>
+                <th className="pb-2 pr-4 text-right">Errors</th>
+                <th className="pb-2 pr-4 text-right">p50</th>
+                <th className="pb-2 text-right">p95</th>
+              </tr>
+            </thead>
+            <tbody>
+              {Object.entries(metrics).map(([ep, m]) => {
+                const p95Warn = m.p95 > 2000;
+                const p95Crit = m.p95 > 5000;
+                return (
+                  <tr key={ep} className="border-b border-gray-800/50">
+                    <td className="py-2 pr-4 font-mono text-xs text-gray-300">{ep}</td>
+                    <td className="py-2 pr-4 text-right text-gray-400">{m.total}</td>
+                    <td className="py-2 pr-4 text-right">
+                      <span className={m.rpm > 30 ? "text-yellow-400 font-semibold" : "text-gray-400"}>{m.rpm}</span>
+                    </td>
+                    <td className="py-2 pr-4 text-right">
+                      <span className={m.errors > 0 ? "text-red-400 font-semibold" : "text-gray-600"}>{m.errors}</span>
+                    </td>
+                    <td className="py-2 pr-4 text-right text-gray-400">{m.p50}ms</td>
+                    <td className="py-2 text-right">
+                      <span className={p95Crit ? "text-red-400 font-semibold" : p95Warn ? "text-yellow-400" : "text-gray-400"}>
+                        {m.p95}ms
+                      </span>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        )}
       </div>
 
       {/* Users */}

@@ -3,8 +3,10 @@ import { calculate, buildItemMap } from "@/lib/calculator";
 import { fetchCalcItems, enrichAsteroids } from "@/lib/calc-helpers";
 import { fetchUserStockMap, fetchStockMapFromAddresses } from "@/lib/sui";
 import { getSession } from "@/lib/auth";
+import { recordRequest } from "@/lib/metrics";
 
 export async function GET(req: NextRequest) {
+  const t0 = Date.now();
   const itemId = req.nextUrl.searchParams.get("itemId");
   const units = Number(req.nextUrl.searchParams.get("units") ?? "1");
   const excludedOres = req.nextUrl.searchParams.get("excludedOres");
@@ -48,8 +50,10 @@ export async function GET(req: NextRequest) {
 
     await enrichAsteroids(result);
 
+    recordRequest("calculate", Date.now() - t0, true);
     return NextResponse.json(result);
   } catch (err: unknown) {
+    recordRequest("calculate", Date.now() - t0, false);
     const message = err instanceof Error ? err.message : "Calculation error";
     return NextResponse.json({ error: message }, { status: 422 });
   }
