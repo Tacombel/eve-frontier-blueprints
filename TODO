@@ -6,7 +6,6 @@
 
 - En el listado de items mostrar el typeId.
 - Filtros por categorías del itemId.
-- Mostrar nombre de personaje EVE en el header en vez de la wallet address (ver `app/dashboard/page.tsx` ~86-93).
 
 ## Features
 
@@ -14,6 +13,8 @@
 - Estudiar vías de optimización teniendo en cuenta las refinerías (ej: Heavy Refinery ahorra lotes a costa de menos silica).
 
 ## Features (futuro)
+
+- Guardar packs en la blockchain (objetivo: no almacenar ningún dato de usuario en la BD).
 
 - Indicar número de facilities disponibles por tipo para calcular tiempo de proceso en paralelo.
 
