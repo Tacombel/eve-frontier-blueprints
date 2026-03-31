@@ -69,8 +69,8 @@ export async function getCharacterByWallet(walletAddress: string): Promise<EveCh
     const json = charObj.asMoveObject?.contents?.json;
     return {
       id: charObj.address,
-      name: json?.name ?? "",
-      corpId: json?.corp_id ?? undefined,
+      name: json?.metadata?.name ?? json?.name ?? "",
+      corpId: json?.tribe_id ?? json?.corp_id ?? undefined,
     };
   } catch {
     return null;

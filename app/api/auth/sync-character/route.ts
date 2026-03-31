@@ -32,10 +32,10 @@ export async function POST() {
 
   const updated = await prisma.user.update({
     where: { id: user.id },
-    data: { username: newName },
+    data: { characterName: newName },
   });
 
-  // Re-issue session with new username
-  await createSession({ userId: updated.id, username: updated.username, role: updated.role });
-  return NextResponse.json({ username: updated.username, updated: true });
+  // Re-issue session with updated characterName
+  await createSession({ userId: updated.id, username: updated.username, role: updated.role, characterName: updated.characterName ?? undefined });
+  return NextResponse.json({ username: updated.username, characterName: updated.characterName, updated: true });
 }

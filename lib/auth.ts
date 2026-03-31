@@ -8,6 +8,7 @@ export interface SessionPayload {
   userId: string;
   username: string;
   role: string;
+  characterName?: string;
 }
 
 function getSecret() {
@@ -41,7 +42,7 @@ export async function getSession(): Promise<SessionPayload | null> {
     if (typeof payload.userId !== "string" || typeof payload.username !== "string" || typeof payload.role !== "string") {
       return null;
     }
-    return { userId: payload.userId, username: payload.username, role: payload.role };
+    return { userId: payload.userId, username: payload.username, role: payload.role, characterName: typeof payload.characterName === "string" ? payload.characterName : undefined };
   } catch {
     return null;
   }

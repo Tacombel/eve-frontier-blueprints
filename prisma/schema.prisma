@@ -71,6 +71,7 @@ model BlueprintInput {
 model User {
   id            String   @id @default(cuid())
   username      String   @unique
+  characterName String?
   password      String?
   walletAddress String?  @unique
   role          String   @default("USER")

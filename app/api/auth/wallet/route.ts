@@ -40,21 +40,15 @@ export async function POST(req: NextRequest) {
       username = `${displayName}_${walletAddress.slice(-6)}`;
     }
     user = await prisma.user.create({
-      data: { username, walletAddress, role: "USER" },
+      data: { username, walletAddress, role: "USER", characterName: resolvedName ?? null },
     });
-  } else if (resolvedName && user.username !== resolvedName) {
-    const newName = resolvedName;
-    const taken = await prisma.user.findFirst({
-      where: { username: newName, NOT: { id: user.id } },
+  } else {
+    user = await prisma.user.update({
+      where: { id: user.id },
+      data: { characterName: resolvedName ?? user.characterName ?? null },
     });
-    if (!taken) {
-      user = await prisma.user.update({
-        where: { id: user.id },
-        data: { username: newName },
-      });
-    }
   }
 
-  await createSession({ userId: user.id, username: user.username, role: user.role });
-  return NextResponse.json({ username: user.username });
+  await createSession({ userId: user.id, username: user.username, role: user.role, characterName: user.characterName ?? undefined });
+  return NextResponse.json({ username: user.username, characterName: user.characterName ?? null });
 }

@@ -1,5 +1,7 @@
 ## Bugs / Fixes urgentes
 
+- Errores deprecated durante el build (en producción ARM — pendiente de log para diagnóstico).
+
 ## UX / UI
 
 - En el listado de items mostrar el typeId.
